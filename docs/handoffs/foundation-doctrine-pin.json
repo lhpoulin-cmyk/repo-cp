@@ -1,0 +1,12 @@
+{
+  "authority": "foundation-cp",
+  "kind": "active-doctrine-content-observation",
+  "commit": "d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca",
+  "version": "1.0.0",
+  "paths": [
+    "docs/ACTIVE_DOCTRINE.md",
+    "registries/active-doctrine.json"
+  ],
+  "unchanged_at_repository_pin": true,
+  "runtime_activation": false
+}

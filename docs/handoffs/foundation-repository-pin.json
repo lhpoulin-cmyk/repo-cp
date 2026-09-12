@@ -1,0 +1,11 @@
+{
+  "authority": "foundation-cp",
+  "kind": "repository-guidance-observation",
+  "remote": "git@github.com:lhpoulin-cmyk/foundation-cp.git",
+  "branch": "main",
+  "commit": "fb129f747c5c9eabaadb8b7c09e433f5b071af4b",
+  "direct_remote_parity": true,
+  "required_contract": "HELIX_OPERATOR_ACTION_CONTRACT_V1",
+  "required_contract_present": false,
+  "consumer_acceptance": "BLOCKED"
+}
