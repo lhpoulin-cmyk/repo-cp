@@ -51,14 +51,14 @@ reports express the same findings.
 
 ## Pilot and limits
 
-Three peers are inventoried: Foundation remains DISCOVERED; ansible-cp is PILOT;
-**auth-cp is ENROLLED** for its seven reviewed public metadata files at
-57815b15533ace72ee3ab2aef82fe3b764925652. Louis's exact approval and application
-are recorded in the [enrollment receipt](docs/acceptance/auth-cp-enrollment.md).
-Default audit selects auth-cp. RC001 through RC008 pass; RC009 and the overall
-result remain UNKNOWN. Repeated audits produce identical output and no changes.
-Earlier pilot reports, proposals and synthetic action fixtures are historical
-inputs; they are not current enrollment status.
+Three peers are inventoried: **auth-cp and ansible-cp are ENROLLED**; Foundation
+remains DISCOVERED. auth-cp retains its seven-file scope at
+57815b15533ace72ee3ab2aef82fe3b764925652. ansible-cp has ten reviewed metadata files
+at 554a8509d0b7b30d6e641ac80a15ba2bf22c4b55 under Louis's
+[verified enrollment approval](docs/acceptance/ansible-cp-enrollment.md).
+Default audits select both: 63 PASS, 2 UNKNOWN, no DRIFT/BLOCKED. RC009 remains
+UNKNOWN for each repository; overall status remains UNKNOWN. Earlier pilot
+reports and proposals remain historical evidence, not current fleet state.
 
 Only allowlisted metadata and Git HEAD/ref files are read. Unrelated dirty files
 and custody payloads are outside the audit. Secret indicators suppress values
@@ -74,8 +74,7 @@ See [compatibility requests](docs/FOUNDATION_REQUESTS.md).
 Read [ownership](OWNERSHIP.md), [provenance](PROVENANCE.md),
 [working rules](AGENTS.md) and [operations](docs/OPERATIONS.md) before changes.
 
-The [ansible-cp pilot](docs/acceptance/ansible-cp-pilot.md) selects six reviewed
-public files and explicitly records three absent metadata paths. Run
-`./tools/repo-cp audit --pilot --repository ansible-cp` for its isolated report.
-Four revision findings remain DRIFT; five results remain UNKNOWN. No ansible-cp
-enrollment proposal is justified until unresolved drift is reviewed by its owner.
+The [historical ansible-cp pilot](docs/acceptance/ansible-cp-pilot.md) preserves
+the original drift and missing metadata findings. The owner remediation and
+independent enrollment review close those findings in the accepted scope.
+`./tools/repo-cp audit --repository ansible-cp` selects the enrolled repository.

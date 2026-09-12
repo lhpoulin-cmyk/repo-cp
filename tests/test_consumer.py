@@ -158,6 +158,7 @@ class AuditTests(unittest.TestCase):
         for entry in self.data['repositories']:
             if entry['repository'] == 'ansible-cp':
                 entry['state'] = 'DISCOVERED'
+                entry['enrollment_authorization'] = None
         self.entry = next(r for r in self.data['repositories'] if r['repository'] == 'auth-cp')
         # Audit scenarios start from a synthetic pilot regardless of fleet enrollment.
         self.entry['state'] = 'PILOT'

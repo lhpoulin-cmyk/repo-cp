@@ -19,7 +19,8 @@ class AnsiblePilotTests(unittest.TestCase):
     def setUp(self):
         support.AuditTests.setUp(self)
         self.ans = next(e for e in self.data['repositories'] if e['repository'] == 'ansible-cp')
-        self.ans['state'] = 'PILOT'
+        self.ans.clear()
+        self.ans.update(json.loads((ROOT / 'tests/fixtures/enrollment/ansible-pilot-before.json').read_bytes()))
         receipt = self.root / 'docs/acceptance/rc008-owner-review.json'
         receipt.parent.mkdir(parents=True)
         shutil.copyfile(ROOT / 'docs/acceptance/rc008-owner-review.json', receipt)

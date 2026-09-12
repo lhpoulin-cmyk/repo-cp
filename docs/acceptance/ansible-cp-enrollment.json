@@ -1,0 +1,104 @@
+{
+  "approval_label": "Louis:approve-ansible-cp-public-metadata-enrollment-554a850",
+  "authorization": "OPERATOR AUTHORIZATION \u2014 ANSIBLE-CP ENROLLMENT",
+  "automatic_execution": false,
+  "canonical_remote": "git@github.com:lhpoulin-cmyk/ansible-cp.git",
+  "decision": "Enroll ansible-cp at the exact reviewed revision if independent verification reproduces 35 PASS, 1 UNKNOWN, 0 DRIFT, 0 BLOCKED and the specified identical audit SHA-256. RC009 offline freshness is accepted as a tracked, non-blocking UNKNOWN; never converted to PASS or suppressed. Commit and publish repository-only repo-cp change.",
+  "direct_remote_head_main": "554a8509d0b7b30d6e641ac80a15ba2bf22c4b55",
+  "enrollment_applied": true,
+  "files": {
+    "AGENTS.md": "9cd4a451f53c408f88e77d7b07253d4fcdc61af159b79cc9cd3613c17c0506cc",
+    "OWNERSHIP.md": "a03955b6a1ffe898be2b5cac3faa55daa8d62cd4d355d524a55b21ce28b5b9d6",
+    "PROVENANCE.md": "5b043ef4731f167361dd41f44db6065be8b107e2c74f5c3f4c95f5b39c394a3c",
+    "README.md": "b856f2b56f3ace3db29a6d4cabe3a05f2d1421e430345ab8da9b2c7dd42a41aa",
+    "VERSION": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67",
+    "contracts/linux-guest-admission/b70-doctrine-reconciliation.json": "cde851f6fd46bb6c8ab58c2dc0accc5c399807d807be346af2d433fe74d73c06",
+    "contracts/linux-guest-admission/b70-revision-handoff.json": "a78b763e57a29b38f5e85e8ff2143bac31952a26218b974b8d24930824870f29",
+    "docs/AUTHORITY.md": "a6d31c3299d2954eaf75ad5741e385d31dde405fca642f1e9ef74d39690ea064",
+    "scripts/validate": "cfa541d5b3e7bc7a49a4d0722ef770b2c9853f83383efb390d5ea77abdaef8b1",
+    "tools/validate": "bede2dd70c5c3a5216a6a66ed198735e35ab31e231ad78dd4645ff89a2964f55"
+  },
+  "final_audits": {
+    "ansible-cp-enrolled-audit": {
+      "consecutive_outputs_identical": true,
+      "counts": {
+        "BLOCKED": 0,
+        "DRIFT": 0,
+        "NOT_APPLICABLE": 0,
+        "PASS": 38,
+        "UNKNOWN": 1
+      },
+      "sha256": "815e3b4c1d7e0773434723afd30c39fd04267a420703a627761f2f49e778605f"
+    },
+    "fleet-after-ansible-enrollment": {
+      "consecutive_outputs_identical": true,
+      "counts": {
+        "BLOCKED": 0,
+        "DRIFT": 0,
+        "NOT_APPLICABLE": 0,
+        "PASS": 63,
+        "UNKNOWN": 2
+      },
+      "sha256": "6eb3e411937b0d2bd19af22266dcf9ad46a4e383efac6ed1b7ad8f58c63d1d78"
+    }
+  },
+  "foundation": {
+    "doctrine_revision": "d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca",
+    "repository_revision": "999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5"
+  },
+  "live_mutation": "NONE",
+  "live_observation": "NONE",
+  "operator": "Louis",
+  "peer_mutation": "NONE",
+  "peer_preflight": {
+    "ansible-cp": {
+      "dirty_sha256": {
+        "docs/SEMAPHORE_RECOVERY.md": "3c18bf12ad633cfd5b4569c0e250ebd3e32aa23eeb3c85d3131002ec56dbe6c0",
+        "docs/WS_WOWZER_WIN_ADMISSION.md": "e2be6bb2b6ab5f191e8ed911fad9b6a72d9712c45dcf52e504a8d74b191c3192"
+      },
+      "head": "554a8509d0b7b30d6e641ac80a15ba2bf22c4b55",
+      "status": " M docs/SEMAPHORE_RECOVERY.md\n M docs/WS_WOWZER_WIN_ADMISSION.md\n"
+    },
+    "auth-cp": {
+      "head": "57815b15533ace72ee3ab2aef82fe3b764925652",
+      "status": "?? contracts/ws-wowzer-win-observation.md\n"
+    },
+    "foundation-cp": {
+      "head": "999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5",
+      "status": "?? docs/WINDOWS_BACKUP_CUSTODY.md\n"
+    }
+  },
+  "pilot_verification": {
+    "counts": {
+      "BLOCKED": 0,
+      "DRIFT": 0,
+      "NOT_APPLICABLE": 0,
+      "PASS": 35,
+      "UNKNOWN": 1
+    },
+    "runs": 2,
+    "sha256_each": "cf0e4265c15ac206b74555eacfa88642a9a8ec759842419e91748734eb3e8cb7"
+  },
+  "previous_source_revision": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
+  "rc009": "UNKNOWN_ACCEPTED_NON_BLOCKING_FOR_ENROLLMENT",
+  "remediation_evidence": {
+    "path": "docs/REPO_CP_REMEDIATION.md",
+    "sha256": "acd99521b6e5a670191bf45bdf01d37ff0cce108d9731a9773caaa845a0ecd92"
+  },
+  "reviewed_repo_cp_revision": "9a40b40cadb4c495ea9731b67417e078edf0a69e",
+  "secret_access": "NONE",
+  "source_revision": "554a8509d0b7b30d6e641ac80a15ba2bf22c4b55",
+  "validation": {
+    "diff_check": "PASS",
+    "files_scanned": 77,
+    "focused_tests": 26,
+    "full_suite_tests": 52,
+    "json_parses": 28,
+    "peer_state_unchanged": true,
+    "python_syntax": 12,
+    "schemas": 2,
+    "secret_indicator_findings": 0,
+    "status": "PASS",
+    "yaml": 1
+  }
+}

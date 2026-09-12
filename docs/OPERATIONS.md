@@ -18,8 +18,9 @@ commits, pushes or merges enrollment or invokes peer validators.
 
 The auth-cp RC008 owner review is complete and COMPATIBLE. Louis approved the
 exact seven-file enrollment scope; the [enrollment receipt](acceptance/auth-cp-enrollment.md)
-records application. Default audits select auth-cp alone. RC009 stays UNKNOWN.
-Foundation remains discovered; ansible-cp is a separately authorized repository-only PILOT. Further enrollment requires a new
+records application. Default audits select auth-cp and ansible-cp. RC009 stays UNKNOWN for each.
+The [ansible-cp approval receipt](acceptance/ansible-cp-enrollment.md) records its
+verified ten-file enrollment. Foundation remains discovered. Further enrollment requires a new
 explicitly scoped approval; no sibling discovery enrolls peers.
 
 ## Checks
@@ -77,10 +78,10 @@ commits, acceptance/pilot evidence, checks, limitations, dirty-state handling,
 remote parity and the next exact decision. CI proves only local synthetic
 properties; no peer credentials or operational/live-infrastructure jobs exist.
 
-## ansible-cp pilot
+## Historical ansible-cp pilot
 
-`tools/repo-cp audit --pilot --repository ansible-cp` selects only the authorized
-pilot. The repository selector never grants enrollment or pilot authorization.
+The earlier `--pilot --repository ansible-cp` workflow selected the authorized
+pilot. ansible-cp is now enrolled and needs no --pilot flag. The repository selector never grants enrollment or pilot authorization.
 The additive local V1 enrollment schema permits null digests for the three
 explicitly absent ansible-cp metadata paths in PILOT only. Null is absence
 evidence, not accepted content or a waiver: absence reports UNKNOWN; newly

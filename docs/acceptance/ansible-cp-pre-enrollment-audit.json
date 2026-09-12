@@ -1,0 +1,228 @@
+{
+  "automatic_execution": false,
+  "live_mutation": "NONE",
+  "repositories_audited": [
+    "ansible-cp"
+  ],
+  "results": [
+    {
+      "check_id": "RC002",
+      "reason": "PILOT_ONLY",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC003",
+      "reason": "REVISION_MATCH",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:AGENTS.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:OWNERSHIP.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:PROVENANCE.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:README.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:VERSION",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:docs/AUTHORITY.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:scripts/validate",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:AGENTS.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:OWNERSHIP.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:PROVENANCE.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:README.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:VERSION",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:docs/AUTHORITY.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:scripts/validate",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:AGENTS.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:OWNERSHIP.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:PROVENANCE.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:README.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:VERSION",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:docs/AUTHORITY.md",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:scripts/validate",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC007",
+      "reason": "VERSION_DECLARED",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC008",
+      "reason": "HANDOFF_PINS_MATCH:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC008",
+      "reason": "HANDOFF_PINS_MATCH:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC009",
+      "reason": "OFFLINE_AUDIT_NO_REMOTE_QUERY",
+      "repository": "ansible-cp",
+      "status": "UNKNOWN"
+    },
+    {
+      "check_id": "RC010",
+      "reason": "AUTH_PINS_MATCH:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC010",
+      "reason": "AUTH_PINS_MATCH:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC001",
+      "reason": "ACCEPTED_ARTIFACTS_VERIFIED",
+      "repository": "repo-cp",
+      "status": "PASS"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "REPOSITORY_ONLY",
+  "status": "UNKNOWN"
+}

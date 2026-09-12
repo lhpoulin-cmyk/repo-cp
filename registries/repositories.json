@@ -3,22 +3,23 @@
     {
       "branch": "main",
       "canonical_remote": "git@github.com:lhpoulin-cmyk/ansible-cp.git",
-      "enrollment_authorization": null,
+      "enrollment_authorization": "Louis:approve-ansible-cp-public-metadata-enrollment-554a850",
       "files": {
         "AGENTS.md": "9cd4a451f53c408f88e77d7b07253d4fcdc61af159b79cc9cd3613c17c0506cc",
-        "OWNERSHIP.md": null,
-        "PROVENANCE.md": null,
-        "README.md": "885a5ba507b3a0599a4f845ef9e2effb8e7f10f7e8cdabb09a8c93d1139983b8",
-        "VERSION": null,
-        "contracts/linux-guest-admission/b70-doctrine-reconciliation.json": "6b67c6b2a7d9d6111aee0adeb3dae221d381da32432712388c2f46ffad599e26",
-        "contracts/linux-guest-admission/b70-revision-handoff.json": "4bd6566b72af51bdb1953dab0f6e419761b6d318005b7aaedf8dfdbeb9888d0b",
+        "OWNERSHIP.md": "a03955b6a1ffe898be2b5cac3faa55daa8d62cd4d355d524a55b21ce28b5b9d6",
+        "PROVENANCE.md": "5b043ef4731f167361dd41f44db6065be8b107e2c74f5c3f4c95f5b39c394a3c",
+        "README.md": "b856f2b56f3ace3db29a6d4cabe3a05f2d1421e430345ab8da9b2c7dd42a41aa",
+        "VERSION": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67",
+        "contracts/linux-guest-admission/b70-doctrine-reconciliation.json": "cde851f6fd46bb6c8ab58c2dc0accc5c399807d807be346af2d433fe74d73c06",
+        "contracts/linux-guest-admission/b70-revision-handoff.json": "a78b763e57a29b38f5e85e8ff2143bac31952a26218b974b8d24930824870f29",
         "docs/AUTHORITY.md": "a6d31c3299d2954eaf75ad5741e385d31dde405fca642f1e9ef74d39690ea064",
-        "scripts/validate": "d0ba8178dc4269932ad5d4ce611491cbd2fae3e2f5716803d903faf1e1664055"
+        "scripts/validate": "cfa541d5b3e7bc7a49a4d0722ef770b2c9853f83383efb390d5ea77abdaef8b1",
+        "tools/validate": "bede2dd70c5c3a5216a6a66ed198735e35ab31e231ad78dd4645ff89a2964f55"
       },
       "pilot_authorization": "Louis:repo-cp-ansible-cp-repository-only-pilot",
       "repository": "ansible-cp",
-      "source_revision": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
-      "state": "PILOT"
+      "source_revision": "554a8509d0b7b30d6e641ac80a15ba2bf22c4b55",
+      "state": "ENROLLED"
     },
     {
       "branch": "main",
