@@ -155,6 +155,9 @@ class AuditTests(unittest.TestCase):
         self.peer.mkdir()
         self.data = registry(self.root)
         self.entry = next(r for r in self.data['repositories'] if r['repository'] == 'auth-cp')
+        # Audit scenarios start from a synthetic pilot regardless of fleet enrollment.
+        self.entry['state'] = 'PILOT'
+        self.entry['enrollment_authorization'] = None
         for filename in self.entry['files']:
             path = self.peer / filename; path.parent.mkdir(parents=True, exist_ok=True)
             if filename == 'VERSION': content = b'1.0.0\n'
@@ -270,7 +273,8 @@ class AuditTests(unittest.TestCase):
 
     def test_enrollment_review_patch_and_reversal(self):
         # Apply only inside an isolated synthetic checkout, never repo-cp or peers.
-        shutil.copyfile(ROOT / 'registries/repositories.json', self.root / 'registries/repositories.json')
+        shutil.copyfile(ROOT / 'tests/fixtures/enrollment/repositories-before.json',
+                        self.root / 'registries/repositories.json')
         patch = (ROOT / 'docs/proposals/auth-cp-enrollment.patch').read_bytes()
         before = snapshot(self.root)
         def apply(*options):

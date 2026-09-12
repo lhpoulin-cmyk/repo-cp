@@ -16,11 +16,11 @@ tools/validate and the bounded pilot. Louis approves the enrollment diff; peer
 declaration/pin changes remain separately authorized peer work. The bot never
 commits, pushes or merges enrollment or invokes peer validators.
 
-The [next gate](proposals/auth-cp-enrollment.md) includes an unapplied, tested
-enrollment diff. No repository is enrolled. The auth-cp RC008 owner review is
-complete and COMPATIBLE. Next batch: auth-cp alone, pending Louis's approval of
-the regenerated exact audit scope and enrollment proposal. RC009 stays UNKNOWN.
-Foundation and ansible-cp remain discovered. No sibling discovery enrolls peers.
+The auth-cp RC008 owner review is complete and COMPATIBLE. Louis approved the
+exact seven-file enrollment scope; the [enrollment receipt](acceptance/auth-cp-enrollment.md)
+records application. Default audits select auth-cp alone. RC009 stays UNKNOWN.
+Foundation and ansible-cp remain discovered. Further enrollment requires a new
+explicitly scoped approval; no sibling discovery enrolls peers.
 
 ## Checks
 

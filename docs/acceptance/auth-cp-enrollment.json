@@ -1,0 +1,33 @@
+{
+  "approval_evidence_label": "Louis:approve-auth-cp-public-metadata-enrollment-57815b1",
+  "approval_source": "Louis explicit approval in this conversation on 2026-09-12",
+  "approval_wording": "Approve repository-only enrollment of auth-cp at 57815b15533ace72ee3ab2aef82fe3b764925652 for only the seven public metadata files and SHA-256 digests in docs/proposals/auth-cp-enrollment.md, applying its two-field enrollment patch; acknowledge RC009 remains UNKNOWN.",
+  "audit_counts": {
+    "BLOCKED": 0,
+    "DRIFT": 0,
+    "NOT_APPLICABLE": 0,
+    "PASS": 26,
+    "UNKNOWN": 1
+  },
+  "audit_sha256": "18124751d07aef49e9d46fad4357f2f39b54320f4a1d7ab2b46dbee2849bf98d",
+  "automatic_execution": false,
+  "enrollment_patch_applied": true,
+  "files": {
+    "AGENTS.md": "1faf6a118006608095c97a27d631d3415907d301c53e538bfe1e6f37279e8db9",
+    "OWNERSHIP.md": "71ca5d5802f3e7322661cc7fff6abb5e44b4919b1789b00245c1258e38b07b46",
+    "PROVENANCE.md": "82de165bb1d43a6a631a574c281df074a3f519ebec2b72d17bc79ea48dc8a37f",
+    "README.md": "f797a5877fe60c35b3f291995c31aebe2965344ce0114f503f994172ad196711",
+    "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+    "registries/b70-revision-handoff.json": "a78b763e57a29b38f5e85e8ff2143bac31952a26218b974b8d24930824870f29",
+    "tools/validate": "117a13971af854d9ecb120efd35da2cbc288589e71fab0f3ab0f7c38574045a4"
+  },
+  "live_mutation": "NONE",
+  "patch_sha256": "77e57867db027c848a11e4a3d5191e37c23b4ff7ea5d1dfb96661c87c0dafc30",
+  "peer_status_unchanged": true,
+  "proposal_revision": "185cc3526eb47a582a4a80661c92e730a499f66d",
+  "repeated_audit_identical": true,
+  "repository": "auth-cp",
+  "schema_version": 1,
+  "source_revision": "57815b15533ace72ee3ab2aef82fe3b764925652",
+  "state": "ENROLLED"
+}

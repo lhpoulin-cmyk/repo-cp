@@ -1,3 +1,9 @@
+# Applied proposal: historical approval input
+
+Louis approved and this exact patch was applied on 2026-09-12. See the
+[current enrollment receipt](../acceptance/auth-cp-enrollment.md). The text below
+is retained as the pre-application proposal, not a pending gate.
+
 # Current auth-cp enrollment approval gate
 
 Status: READY FOR LOUIS REVIEW / NOT APPROVED / NOT APPLIED.

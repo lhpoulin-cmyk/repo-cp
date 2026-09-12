@@ -51,16 +51,14 @@ reports express the same findings.
 
 ## Pilot and limits
 
-Three peers are inventoried: Foundation and ansible-cp are DISCOVERED; auth-cp
-is PILOT. **No repository is ENROLLED.** Default audit selects none; --pilot adds
-only auth-cp under Louis's repository-only request. The
-[pilot](docs/acceptance/auth-cp-pilot.md) now consumes the completed COMPATIBLE
-RC008 owner review at auth-cp 57815b15533ace72ee3ab2aef82fe3b764925652.
-RC001 through RC008 pass; RC009 and the overall offline result remain UNKNOWN.
-Repeated audits produce identical output and no changes. The
-[regenerated enrollment proposal](docs/proposals/auth-cp-enrollment.md) is
-unapproved and unapplied. The synthetic rendering fixtures retain their original
-bootstrap scenario; they are not current pilot findings.
+Three peers are inventoried: Foundation and ansible-cp remain DISCOVERED;
+**auth-cp is ENROLLED** for its seven reviewed public metadata files at
+57815b15533ace72ee3ab2aef82fe3b764925652. Louis's exact approval and application
+are recorded in the [enrollment receipt](docs/acceptance/auth-cp-enrollment.md).
+Default audit selects auth-cp. RC001 through RC008 pass; RC009 and the overall
+result remain UNKNOWN. Repeated audits produce identical output and no changes.
+Earlier pilot reports, proposals and synthetic action fixtures are historical
+inputs; they are not current enrollment status.
 
 Only allowlisted metadata and Git HEAD/ref files are read. Unrelated dirty files
 and custody payloads are outside the audit. Secret indicators suppress values
