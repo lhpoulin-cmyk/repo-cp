@@ -154,6 +154,10 @@ class AuditTests(unittest.TestCase):
         self.peer = self.base / 'auth-cp'
         self.peer.mkdir()
         self.data = registry(self.root)
+        # Existing auth scenarios do not implicitly include a second pilot.
+        for entry in self.data['repositories']:
+            if entry['repository'] == 'ansible-cp':
+                entry['state'] = 'DISCOVERED'
         self.entry = next(r for r in self.data['repositories'] if r['repository'] == 'auth-cp')
         # Audit scenarios start from a synthetic pilot regardless of fleet enrollment.
         self.entry['state'] = 'PILOT'

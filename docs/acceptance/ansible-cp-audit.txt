@@ -1,0 +1,34 @@
+REPO-CP REPOSITORY AUDIT
+STATUS: DRIFT
+ansible-cp RC002 PASS PILOT_ONLY
+ansible-cp RC003 PASS REVISION_MATCH
+ansible-cp RC004 PASS PUBLIC_FILE_PRESENT:AGENTS.md
+ansible-cp RC004 PASS PUBLIC_FILE_PRESENT:README.md
+ansible-cp RC004 PASS PUBLIC_FILE_PRESENT:contracts/linux-guest-admission/b70-doctrine-reconciliation.json
+ansible-cp RC004 PASS PUBLIC_FILE_PRESENT:contracts/linux-guest-admission/b70-revision-handoff.json
+ansible-cp RC004 PASS PUBLIC_FILE_PRESENT:docs/AUTHORITY.md
+ansible-cp RC004 PASS PUBLIC_FILE_PRESENT:scripts/validate
+ansible-cp RC004 UNKNOWN UNPINNED_METADATA_UNAVAILABLE:OWNERSHIP.md
+ansible-cp RC004 UNKNOWN UNPINNED_METADATA_UNAVAILABLE:PROVENANCE.md
+ansible-cp RC004 UNKNOWN UNPINNED_METADATA_UNAVAILABLE:VERSION
+ansible-cp RC005 PASS DIGEST_MATCH:AGENTS.md
+ansible-cp RC005 PASS DIGEST_MATCH:README.md
+ansible-cp RC005 PASS DIGEST_MATCH:contracts/linux-guest-admission/b70-doctrine-reconciliation.json
+ansible-cp RC005 PASS DIGEST_MATCH:contracts/linux-guest-admission/b70-revision-handoff.json
+ansible-cp RC005 PASS DIGEST_MATCH:docs/AUTHORITY.md
+ansible-cp RC005 PASS DIGEST_MATCH:scripts/validate
+ansible-cp RC006 PASS NO_INDICATOR:AGENTS.md
+ansible-cp RC006 PASS NO_INDICATOR:README.md
+ansible-cp RC006 PASS NO_INDICATOR:contracts/linux-guest-admission/b70-doctrine-reconciliation.json
+ansible-cp RC006 PASS NO_INDICATOR:contracts/linux-guest-admission/b70-revision-handoff.json
+ansible-cp RC006 PASS NO_INDICATOR:docs/AUTHORITY.md
+ansible-cp RC006 PASS NO_INDICATOR:scripts/validate
+ansible-cp RC007 UNKNOWN ACCEPTED_VERSION_UNAVAILABLE
+ansible-cp RC008 DRIFT HANDOFF_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-doctrine-reconciliation.json
+ansible-cp RC008 DRIFT HANDOFF_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-revision-handoff.json
+ansible-cp RC009 UNKNOWN OFFLINE_AUDIT_NO_REMOTE_QUERY
+ansible-cp RC010 DRIFT AUTH_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-doctrine-reconciliation.json
+ansible-cp RC010 DRIFT AUTH_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-revision-handoff.json
+repo-cp RC001 PASS ACCEPTED_ARTIFACTS_VERIFIED
+AUTOMATIC_EXECUTION: DISABLED
+LIVE_MUTATION: NONE

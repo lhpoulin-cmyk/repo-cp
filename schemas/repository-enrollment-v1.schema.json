@@ -21,6 +21,10 @@
                   "type": "string"
                 },
                 "files": {
+                  "additionalProperties": {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "type": "string"
+                  },
                   "required": [
                     "AGENTS.md",
                     "README.md",
@@ -46,29 +50,65 @@
               }
             },
             "then": {
-              "properties": {
-                "files": {
-                  "required": [
-                    "AGENTS.md",
-                    "README.md",
-                    "OWNERSHIP.md",
-                    "PROVENANCE.md",
-                    "VERSION",
-                    "tools/validate",
-                    "registries/b70-revision-handoff.json"
-                  ]
+              "oneOf": [
+                {
+                  "properties": {
+                    "files": {
+                      "additionalProperties": {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "type": "string"
+                      },
+                      "required": [
+                        "AGENTS.md",
+                        "README.md",
+                        "OWNERSHIP.md",
+                        "PROVENANCE.md",
+                        "VERSION",
+                        "tools/validate",
+                        "registries/b70-revision-handoff.json"
+                      ]
+                    },
+                    "pilot_authorization": {
+                      "const": "Louis:repo-cp-auth-cp-repository-only-pilot"
+                    },
+                    "repository": {
+                      "const": "auth-cp"
+                    },
+                    "source_revision": {
+                      "pattern": "^[0-9a-f]{40}$",
+                      "type": "string"
+                    }
+                  }
                 },
-                "pilot_authorization": {
-                  "const": "Louis:repo-cp-auth-cp-repository-only-pilot"
-                },
-                "repository": {
-                  "const": "auth-cp"
-                },
-                "source_revision": {
-                  "pattern": "^[0-9a-f]{40}$",
-                  "type": "string"
+                {
+                  "properties": {
+                    "files": {
+                      "maxProperties": 9,
+                      "required": [
+                        "AGENTS.md",
+                        "README.md",
+                        "VERSION",
+                        "OWNERSHIP.md",
+                        "PROVENANCE.md",
+                        "scripts/validate",
+                        "docs/AUTHORITY.md",
+                        "contracts/linux-guest-admission/b70-revision-handoff.json",
+                        "contracts/linux-guest-admission/b70-doctrine-reconciliation.json"
+                      ]
+                    },
+                    "pilot_authorization": {
+                      "const": "Louis:repo-cp-ansible-cp-repository-only-pilot"
+                    },
+                    "repository": {
+                      "const": "ansible-cp"
+                    },
+                    "source_revision": {
+                      "pattern": "^[0-9a-f]{40}$",
+                      "type": "string"
+                    }
+                  }
                 }
-              }
+              ]
             }
           }
         ],
@@ -97,22 +137,59 @@
                 "type": "string"
               },
               "OWNERSHIP.md": {
-                "pattern": "^[0-9a-f]{64}$",
-                "type": "string"
+                "oneOf": [
+                  {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "PROVENANCE.md": {
-                "pattern": "^[0-9a-f]{64}$",
-                "type": "string"
+                "oneOf": [
+                  {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "README.md": {
                 "pattern": "^[0-9a-f]{64}$",
                 "type": "string"
               },
               "VERSION": {
+                "oneOf": [
+                  {
+                    "pattern": "^[0-9a-f]{64}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "contracts/linux-guest-admission/b70-doctrine-reconciliation.json": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "contracts/linux-guest-admission/b70-revision-handoff.json": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "docs/AUTHORITY.md": {
                 "pattern": "^[0-9a-f]{64}$",
                 "type": "string"
               },
               "registries/b70-revision-handoff.json": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "scripts/validate": {
                 "pattern": "^[0-9a-f]{64}$",
                 "type": "string"
               },
@@ -126,7 +203,8 @@
           "pilot_authorization": {
             "enum": [
               null,
-              "Louis:repo-cp-auth-cp-repository-only-pilot"
+              "Louis:repo-cp-auth-cp-repository-only-pilot",
+              "Louis:repo-cp-ansible-cp-repository-only-pilot"
             ]
           },
           "repository": {

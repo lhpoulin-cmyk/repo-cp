@@ -28,7 +28,7 @@ repository and doctrine content revisions. V1 rendering is neither authorization
 nor execution. Do not extend its schema; route universal changes to Foundation.
 
 Enrollment is separate from bootstrap/pilot acceptance. Default audits select
-ENROLLED entries only; --pilot adds the approved auth-cp pilot. Local metadata
+ENROLLED entries only; --pilot adds explicitly schema-approved PILOT entries. Local metadata
 readiness checks are not a new universal Foundation standard. Do not rewrite
 peer pins merely to pass. Preserve UNKNOWN and DRIFT findings. Proposals are
 stdout-only review artifacts; no patch is supplied without a safe approved scope.

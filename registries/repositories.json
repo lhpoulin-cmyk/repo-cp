@@ -4,11 +4,21 @@
       "branch": "main",
       "canonical_remote": "git@github.com:lhpoulin-cmyk/ansible-cp.git",
       "enrollment_authorization": null,
-      "files": {},
-      "pilot_authorization": null,
+      "files": {
+        "AGENTS.md": "9cd4a451f53c408f88e77d7b07253d4fcdc61af159b79cc9cd3613c17c0506cc",
+        "OWNERSHIP.md": null,
+        "PROVENANCE.md": null,
+        "README.md": "885a5ba507b3a0599a4f845ef9e2effb8e7f10f7e8cdabb09a8c93d1139983b8",
+        "VERSION": null,
+        "contracts/linux-guest-admission/b70-doctrine-reconciliation.json": "6b67c6b2a7d9d6111aee0adeb3dae221d381da32432712388c2f46ffad599e26",
+        "contracts/linux-guest-admission/b70-revision-handoff.json": "4bd6566b72af51bdb1953dab0f6e419761b6d318005b7aaedf8dfdbeb9888d0b",
+        "docs/AUTHORITY.md": "a6d31c3299d2954eaf75ad5741e385d31dde405fca642f1e9ef74d39690ea064",
+        "scripts/validate": "d0ba8178dc4269932ad5d4ce611491cbd2fae3e2f5716803d903faf1e1664055"
+      },
+      "pilot_authorization": "Louis:repo-cp-ansible-cp-repository-only-pilot",
       "repository": "ansible-cp",
       "source_revision": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
-      "state": "DISCOVERED"
+      "state": "PILOT"
     },
     {
       "branch": "main",

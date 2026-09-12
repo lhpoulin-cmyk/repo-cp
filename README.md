@@ -46,12 +46,12 @@ exit 2, empty stdout and fixed non-disclosing stderr, without partial commands.
 `validate` checks contract integrity and enrollment structure, not fleet health.
 Audit/drift return 0 for PASS, 1 for DRIFT or UNKNOWN, and 2 for BLOCKED/invalid
 input. PASS applies only to each named property; NOT_APPLICABLE records
-unselected scope. RC001 through RC009 are stable check IDs. JSON and human
+unselected scope. RC001 through RC010 are stable check IDs. JSON and human
 reports express the same findings.
 
 ## Pilot and limits
 
-Three peers are inventoried: Foundation and ansible-cp remain DISCOVERED;
+Three peers are inventoried: Foundation remains DISCOVERED; ansible-cp is PILOT;
 **auth-cp is ENROLLED** for its seven reviewed public metadata files at
 57815b15533ace72ee3ab2aef82fe3b764925652. Louis's exact approval and application
 are recorded in the [enrollment receipt](docs/acceptance/auth-cp-enrollment.md).
@@ -73,3 +73,9 @@ See [compatibility requests](docs/FOUNDATION_REQUESTS.md).
 
 Read [ownership](OWNERSHIP.md), [provenance](PROVENANCE.md),
 [working rules](AGENTS.md) and [operations](docs/OPERATIONS.md) before changes.
+
+The [ansible-cp pilot](docs/acceptance/ansible-cp-pilot.md) selects six reviewed
+public files and explicitly records three absent metadata paths. Run
+`./tools/repo-cp audit --pilot --repository ansible-cp` for its isolated report.
+Four revision findings remain DRIFT; five results remain UNKNOWN. No ansible-cp
+enrollment proposal is justified until unresolved drift is reviewed by its owner.

@@ -1,0 +1,64 @@
+{
+  "automatic_execution": false,
+  "counts": {
+    "BLOCKED": 0,
+    "DRIFT": 4,
+    "NOT_APPLICABLE": 0,
+    "PASS": 21,
+    "UNKNOWN": 5
+  },
+  "determinism": {
+    "byte_identical": true,
+    "peer_state_unchanged": true,
+    "runs": 2,
+    "sha256_each": "6a3ce78c2aade7590cdbb1c8996c9feabdca4752d230dadce873ca1bffaaf689"
+  },
+  "enrollment_authorized": false,
+  "enrollment_proposal_justified": false,
+  "files": {
+    "AGENTS.md": "9cd4a451f53c408f88e77d7b07253d4fcdc61af159b79cc9cd3613c17c0506cc",
+    "OWNERSHIP.md": null,
+    "PROVENANCE.md": null,
+    "README.md": "885a5ba507b3a0599a4f845ef9e2effb8e7f10f7e8cdabb09a8c93d1139983b8",
+    "VERSION": null,
+    "contracts/linux-guest-admission/b70-doctrine-reconciliation.json": "6b67c6b2a7d9d6111aee0adeb3dae221d381da32432712388c2f46ffad599e26",
+    "contracts/linux-guest-admission/b70-revision-handoff.json": "4bd6566b72af51bdb1953dab0f6e419761b6d318005b7aaedf8dfdbeb9888d0b",
+    "docs/AUTHORITY.md": "a6d31c3299d2954eaf75ad5741e385d31dde405fca642f1e9ef74d39690ea064",
+    "scripts/validate": "d0ba8178dc4269932ad5d4ce611491cbd2fae3e2f5716803d903faf1e1664055"
+  },
+  "foundation": {
+    "doctrine_revision": "d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca",
+    "repository_revision": "999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5"
+  },
+  "live_mutation": "NONE",
+  "operator_instruction": "Prepare a repository-only PILOT of ansible-cp. Do not enroll it.",
+  "overall_status": "DRIFT",
+  "peer_mutation": "NONE",
+  "pilot_authorization": "Louis:repo-cp-ansible-cp-repository-only-pilot",
+  "preflight": {
+    "ansible_cp_revision": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
+    "branch": "main",
+    "local_upstream_direct_remote_parity": true,
+    "repo_cp_revision": "39681456ecc82d23c0e0af9b6b7c0f53b02df0d1"
+  },
+  "preserved_peer_state": {
+    "ansible-cp": {
+      "docs/SEMAPHORE_RECOVERY.md": "3c18bf12ad633cfd5b4569c0e250ebd3e32aa23eeb3c85d3131002ec56dbe6c0",
+      "docs/WS_WOWZER_WIN_ADMISSION.md": "e2be6bb2b6ab5f191e8ed911fad9b6a72d9712c45dcf52e504a8d74b191c3192",
+      "head": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
+      "status": " M docs/SEMAPHORE_RECOVERY.md\n M docs/WS_WOWZER_WIN_ADMISSION.md\n"
+    },
+    "auth-cp": {
+      "head": "57815b15533ace72ee3ab2aef82fe3b764925652",
+      "status": "?? contracts/ws-wowzer-win-observation.md\n"
+    },
+    "foundation-cp": {
+      "head": "999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5",
+      "status": "?? docs/WINDOWS_BACKUP_CUSTODY.md\n"
+    }
+  },
+  "scope": "REPOSITORY_ONLY",
+  "secret_access": "NONE",
+  "source_revision": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
+  "state": "PILOT"
+}

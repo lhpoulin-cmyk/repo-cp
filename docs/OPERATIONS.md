@@ -19,7 +19,7 @@ commits, pushes or merges enrollment or invokes peer validators.
 The auth-cp RC008 owner review is complete and COMPATIBLE. Louis approved the
 exact seven-file enrollment scope; the [enrollment receipt](acceptance/auth-cp-enrollment.md)
 records application. Default audits select auth-cp alone. RC009 stays UNKNOWN.
-Foundation and ansible-cp remain discovered. Further enrollment requires a new
+Foundation remains discovered; ansible-cp is a separately authorized repository-only PILOT. Further enrollment requires a new
 explicitly scoped approval; no sibling discovery enrolls peers.
 
 ## Checks
@@ -33,8 +33,9 @@ explicitly scoped approval; no sibling discovery enrolls peers.
 | RC005 | Allowlisted bytes match accepted digests | Changed bytes never become accepted authority |
 | RC006 | No configured secret indicators | Heuristic; values never printed |
 | RC007 | Accepted VERSION has semantic version shape | No release compatibility proof |
-| RC008 | auth-cp B70 handoff matches separate Foundation pins | Difference requires owner review, not automatic replacement |
+| RC008 | Reviewed B70 handoff records match separate Foundation pins | Difference requires owner review, not automatic replacement |
 | RC009 | Current remote publication freshness | UNKNOWN offline; separate operator preflight |
+| RC010 | ansible-cp derived auth policy and containing handoff pins | Independent compatible auth owner-review evidence; no automatic replacement |
 
 PASS means the named property was observed. DRIFT means accepted evidence
 differs. BLOCKED means a declared check cannot proceed safely. UNKNOWN means
@@ -75,3 +76,22 @@ rollback is needed because no runtime mutation occurs. Durable handoffs include
 commits, acceptance/pilot evidence, checks, limitations, dirty-state handling,
 remote parity and the next exact decision. CI proves only local synthetic
 properties; no peer credentials or operational/live-infrastructure jobs exist.
+
+## ansible-cp pilot
+
+`tools/repo-cp audit --pilot --repository ansible-cp` selects only the authorized
+pilot. The repository selector never grants enrollment or pilot authorization.
+The additive local V1 enrollment schema permits null digests for the three
+explicitly absent ansible-cp metadata paths in PILOT only. Null is absence
+evidence, not accepted content or a waiver: absence reports UNKNOWN; newly
+appearing content reports DRIFT until reviewed. ENROLLED requirements are unchanged.
+The absence of VERSION, OWNERSHIP.md and PROVENANCE.md does not establish a
+universal Foundation violation. docs/AUTHORITY.md is reviewed domain evidence,
+not an invented replacement file. scripts/validate is hashed, never executed.
+
+RC010 compares the derived policy pin to the separate reviewed auth policy
+commit, and the observed published pin to the containing auth handoff commit.
+Missing or stale independent owner evidence yields UNKNOWN. RC008/RC010 drift
+requires ansible-cp owner compatibility review; historical observation is not
+desired state. See the [pilot report](acceptance/ansible-cp-pilot.md) and
+[review proposals](proposals/ansible-cp-remediation.md).

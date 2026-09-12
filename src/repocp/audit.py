@@ -19,6 +19,7 @@ CHECKS = {
     'RC007': 'Repository version declaration',
     'RC008': 'B70 handoff separate Foundation pins',
     'RC009': 'Remote publication freshness',
+    'RC010': 'Derived auth policy and containing handoff pins',
 }
 
 
@@ -73,11 +74,15 @@ def result(repository, check, status, reason):
     return {'repository': repository, 'check_id': check, 'status': status, 'reason': reason}
 
 
-def audit(fleet_root, *, pilot=False, root=ROOT):
+def audit(fleet_root, *, pilot=False, repository=None, root=ROOT):
     verify(root)
     entries = registry(root)['repositories']
     selected = [r for r in entries if r['state'] == 'ENROLLED' or
-                (pilot and r['repository'] == 'auth-cp' and r['state'] == 'PILOT')]
+                (pilot and r['state'] == 'PILOT')]
+    if repository is not None:
+        selected = [r for r in selected if r['repository'] == repository]
+        if not selected:
+            raise Denied('REPOSITORY_NOT_SELECTED')
     results = [result('repo-cp', 'RC001', 'PASS', 'ACCEPTED_ARTIFACTS_VERIFIED')]
     if not selected:
         results.append(result('repo-cp', 'RC002', 'NOT_APPLICABLE', 'NO_ENROLLED_REPOSITORIES'))
@@ -98,7 +103,9 @@ def audit(fleet_root, *, pilot=False, root=ROOT):
             try:
                 raw = read_public(checkout, filename)
             except Denied:
-                results.append(result(name, 'RC004', 'BLOCKED', 'PUBLIC_FILE_UNAVAILABLE:' + filename))
+                absent = entry['files'][filename] is None
+                results.append(result(name, 'RC004', 'UNKNOWN' if absent else 'BLOCKED',
+                                      ('UNPINNED_METADATA_UNAVAILABLE:' if absent else 'PUBLIC_FILE_UNAVAILABLE:') + filename))
                 continue
             results.append(result(name, 'RC004', 'PASS', 'PUBLIC_FILE_PRESENT:' + filename))
             if has_indicator(raw):
@@ -125,6 +132,8 @@ def audit(fleet_root, *, pilot=False, root=ROOT):
                                       'HANDOFF_PINS_MATCH' if same else 'HANDOFF_PIN_REVIEW_REQUIRED'))
             except (KeyError, TypeError, Denied):
                 results.append(result(name, 'RC008', 'UNKNOWN', 'ACCEPTED_HANDOFF_UNAVAILABLE'))
+        elif name == 'ansible-cp':
+            results.extend(derived_handoff_checks(public, entries, root))
         else:
             results.append(result(name, 'RC008', 'NOT_APPLICABLE', 'NO_B70_HANDOFF_CHECK'))
         results.append(result(name, 'RC009', 'UNKNOWN', 'OFFLINE_AUDIT_NO_REMOTE_QUERY'))
@@ -133,6 +142,53 @@ def audit(fleet_root, *, pilot=False, root=ROOT):
     return {'schema_version': 1, 'status': overall, 'scope': 'REPOSITORY_ONLY',
             'automatic_execution': False, 'live_mutation': 'NONE',
             'repositories_audited': [r['repository'] for r in selected], 'results': results}
+
+
+def derived_handoff_checks(public, entries, root):
+    """Compare reviewed evidence, keeping auth policy and containing revisions distinct."""
+    results = []
+    try:
+        owner = load(read_public(root, 'docs/acceptance/rc008-owner-review.json'))
+        auth = next(e for e in entries if e['repository'] == 'auth-cp')
+        if (owner['source_revision'] != auth['source_revision'] or owner['disposition'] != 'COMPATIBLE'
+                or owner['foundation'] != SOURCE
+                or re.fullmatch('[0-9a-f]{40}', owner['policy_revision']) is None):
+            raise Denied('AUTH_REVIEW_UNAVAILABLE')
+    except (Denied, KeyError, TypeError, StopIteration):
+        owner = None
+    for filename in ('contracts/linux-guest-admission/b70-revision-handoff.json',
+                     'contracts/linux-guest-admission/b70-doctrine-reconciliation.json'):
+        try:
+            record = load(public[filename])
+            if filename.endswith('b70-revision-handoff.json'):
+                foundation = record['foundation']['revision']
+                doctrine = record['foundation']['doctrine_revision']
+                auth_policy = record['auth_cp']['revision']
+                containing = None
+            else:
+                foundation = record['foundation_current_revision']
+                doctrine = record['foundation_active_doctrine_revision']
+                auth_policy = record['auth_policy_revision']
+                containing = record['observed_auth_published_revision']
+            if any(not isinstance(v, str) or re.fullmatch('[0-9a-f]{40}', v) is None
+                   for v in (foundation, doctrine, auth_policy)) or (
+                       containing is not None and (not isinstance(containing, str)
+                       or re.fullmatch('[0-9a-f]{40}', containing) is None)):
+                raise Denied('INVALID_HANDOFF_PIN')
+            same = foundation == SOURCE['repository_revision'] and doctrine == SOURCE['doctrine_revision']
+            results.append(result('ansible-cp', 'RC008', 'PASS' if same else 'DRIFT',
+                                  ('HANDOFF_PINS_MATCH:' if same else 'HANDOFF_PIN_REVIEW_REQUIRED:') + filename))
+            if owner is None:
+                results.append(result('ansible-cp', 'RC010', 'UNKNOWN', 'AUTH_REVIEW_UNAVAILABLE:' + filename))
+            else:
+                same = auth_policy == owner['policy_revision'] and (
+                    containing is None or containing == owner['source_revision'])
+                results.append(result('ansible-cp', 'RC010', 'PASS' if same else 'DRIFT',
+                                      ('AUTH_PINS_MATCH:' if same else 'AUTH_PIN_REVIEW_REQUIRED:') + filename))
+        except (Denied, KeyError, TypeError):
+            for check in ('RC008', 'RC010'):
+                results.append(result('ansible-cp', check, 'UNKNOWN', 'ACCEPTED_HANDOFF_UNAVAILABLE:' + filename))
+    return results
 
 
 def proposals(report):

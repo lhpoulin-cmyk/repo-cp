@@ -21,6 +21,7 @@ def main():
         parser.add_argument('command', choices=('validate', 'render', 'inventory', 'audit', 'drift', 'propose'))
         parser.add_argument('--fleet-root', type=Path, default=ROOT.parent)
         parser.add_argument('--pilot', action='store_true')
+        parser.add_argument('--repository', help='Restrict an already selected enrolled/pilot scope')
         parser.add_argument('--text', action='store_true')
         args = parser.parse_args()
         if args.command == 'render':
@@ -33,7 +34,7 @@ def main():
                 data = {'status': 'PASS', 'foundation_integrity': 'PASS', 'enrollment_schema': 'PASS',
                         'automatic_execution': False, 'live_mutation': 'NONE'}
             elif args.command != 'inventory':
-                data = audit(args.fleet_root, pilot=args.pilot)
+                data = audit(args.fleet_root, pilot=args.pilot, repository=args.repository)
                 if args.command == 'propose':
                     data = proposals(data)
             status = 0

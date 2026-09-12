@@ -1,0 +1,75 @@
+{
+  "automatic_execution": false,
+  "patch": null,
+  "proposals": [
+    {
+      "check_id": "RC004",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "UNPINNED_METADATA_UNAVAILABLE:OWNERSHIP.md",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC004",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "UNPINNED_METADATA_UNAVAILABLE:PROVENANCE.md",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC004",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "UNPINNED_METADATA_UNAVAILABLE:VERSION",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC007",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "ACCEPTED_VERSION_UNAVAILABLE",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC008",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "HANDOFF_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC008",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "HANDOFF_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC009",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "OFFLINE_AUDIT_NO_REMOTE_QUERY",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC010",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "AUTH_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-doctrine-reconciliation.json",
+      "repository": "ansible-cp"
+    },
+    {
+      "check_id": "RC010",
+      "mutation_authorized": false,
+      "next_step": "OWNER_REVIEW_REQUIRED",
+      "reason": "AUTH_PIN_REVIEW_REQUIRED:contracts/linux-guest-admission/b70-revision-handoff.json",
+      "repository": "ansible-cp"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "doctrine_revision": "d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca",
+    "repository_revision": "999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5"
+  },
+  "status": "REVIEW_REQUIRED"
+}
