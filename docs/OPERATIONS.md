@@ -17,8 +17,9 @@ declaration/pin changes remain separately authorized peer work. The bot never
 commits, pushes or merges enrollment or invokes peer validators.
 
 The [next gate](proposals/auth-cp-enrollment.md) includes an unapplied, tested
-enrollment diff. No repository is enrolled. Next batch: auth-cp alone, after owner review of its
-B70 Foundation pin and Louis's approval of exact audit scope and enrollment.
+enrollment diff. No repository is enrolled. The auth-cp RC008 owner review is
+complete and COMPATIBLE. Next batch: auth-cp alone, pending Louis's approval of
+the regenerated exact audit scope and enrollment proposal. RC009 stays UNKNOWN.
 Foundation and ansible-cp remain discovered. No sibling discovery enrolls peers.
 
 ## Checks

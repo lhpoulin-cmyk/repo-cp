@@ -54,9 +54,13 @@ reports express the same findings.
 Three peers are inventoried: Foundation and ansible-cp are DISCOVERED; auth-cp
 is PILOT. **No repository is ENROLLED.** Default audit selects none; --pilot adds
 only auth-cp under Louis's repository-only request. The
-[pilot](docs/acceptance/auth-cp-pilot.md) found matching public metadata and one
-Foundation handoff pin requiring owner review. Offline remote freshness remains
-UNKNOWN. Repeated audits produce identical output and no changes.
+[pilot](docs/acceptance/auth-cp-pilot.md) now consumes the completed COMPATIBLE
+RC008 owner review at auth-cp 57815b15533ace72ee3ab2aef82fe3b764925652.
+RC001 through RC008 pass; RC009 and the overall offline result remain UNKNOWN.
+Repeated audits produce identical output and no changes. The
+[regenerated enrollment proposal](docs/proposals/auth-cp-enrollment.md) is
+unapproved and unapplied. The synthetic rendering fixtures retain their original
+bootstrap scenario; they are not current pilot findings.
 
 Only allowlisted metadata and Git HEAD/ref files are read. Unrelated dirty files
 and custody payloads are outside the audit. Secret indicators suppress values

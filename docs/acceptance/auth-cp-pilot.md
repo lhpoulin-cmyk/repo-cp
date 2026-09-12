@@ -1,44 +1,61 @@
-# auth-cp repository-only pilot
+# Current auth-cp repository-only pilot
 
-AUTH_CP_PILOT=REPOSITORY_ONLY
-ENROLLED_REPOSITORIES=NONE
-AUTOMATIC_EXECUTION=DISABLED
-LIVE_MUTATION=NONE
+Refreshed 2026-09-12 after completed RC008 owner review.
+AUTH_CP_PILOT=REPOSITORY_ONLY; ENROLLMENT=PILOT; ENROLLED_REPOSITORIES=NONE.
+AUTOMATIC_EXECUTION=DISABLED; LIVE_MUTATION=NONE.
 
-Observed auth-cp main HEAD f84b7292659d6c4b14a4a1f767367343105a0cfa.
-Canonical remote recorded from preflight:
-git@github.com:lhpoulin-cmyk/auth-cp.git. Seven committed public metadata files
-match reviewed digests in registries/repositories.json. No peer validator,
-operational command, account, credential, host or custody operation was invoked.
-The unrelated untracked contracts/ws-wowzer-win-observation.md was preserved.
+## Source and owner disposition
 
-[Machine report](auth-cp-audit.json), [human report](auth-cp-audit.txt), and
-[review proposals](auth-cp-proposals.json) are captured repository observations.
-Result: 27 check results, 25 PASS,
-1 DRIFT, 0 BLOCKED, 1 UNKNOWN,
-0 NOT_APPLICABLE. Overall DRIFT.
-The RC008 finding identifies the auth-cp B70 handoff's earlier Foundation
-repository pin fb129f747c5c9eabaadb8b7c09e433f5b071af4b, while the doctrine pin
-still matches d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca. This requires owner
-compatibility review, not automatic pin replacement or altered admission.
-RC009 is UNKNOWN because the runtime audit does not query remotes.
+Canonical auth-cp main: `57815b15533ace72ee3ab2aef82fe3b764925652`. Previous reviewed source:
+`f84b7292659d6c4b14a4a1f767367343105a0cfa`. Nested policy: `c36ec1e23fcd8ec11818a054374de3a6f64e1d4b`.
+Canonical remote was fetched; local HEAD and origin/main already matched the
+verified direct remote HEAD/main. An ancestry check passed; no merge or peer
+worktree update was needed. No reset, stash or history rewrite was used.
 
-Two consecutive audits produced identical results and unchanged peer Git status.
-Audit JSON SHA-256: 95ebd4427ac785cd6e73c24beaaa3afc2d9770f7546d25a8e1072fda5c5fd15e.
-Synthetic tests independently hash all temporary checkout files before and after
-two audits and prove zero changes, including no command execution.
+The exact upstream commit changes only registries/b70-revision-handoff.json,
+replacing foundation.revision with
+`999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5`. All other handoff values remain equal:
+doctrine
+`d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca`, version 1.0.0; B70 identity,
+policy and closed credential/adoption/APPLY gates unchanged. No target-facet
+authority was supplied or inferred. Disposition COMPATIBLE is recorded in the
+upstream commit message and [owner-review receipt](rc008-owner-review.json).
 
-The two tests/fixtures/auth-cp JSON declarations and their golden text outputs
-are synthetic presentation fixtures, not live observations or approvals.
-BLOCKED has no command; READY_FOR_REVIEW proposes a bounded public revision
-inspection, never executed by rendering. Both use real accepted Foundation pins.
-Negative tests cover invalid parsing, pins, versions, text, sizes, integrity and
-non-disclosing atomic denial. Foundation's 13 reference cases and repo-cp's 30
-consumer/audit cases pass (43 distinct tests).
+Only the pilot source revision and handoff SHA-256 changed in the inventory.
+The other six public digests, states, scope and null enrollment approval are
+unchanged. The [current proposal](../proposals/auth-cp-enrollment.md) lists all
+seven exact filenames and digests. Original pilot reports and proposals at
+repo-cp 904a5fd08b26465dd33ea3dea2e5859c04c789c6 are superseded historical
+snapshots retained in Git. The original bootstrap DELIVERY.md and synthetic
+action fixtures describe that historical bootstrap, not current audit findings.
 
-Next exact approval decision: Louis approves or declines enrollment of auth-cp
-alone for the seven listed public metadata files at the reviewed source revision,
-after its owner reviews RC008. The [exact proposed registry diff](../proposals/auth-cp-enrollment.patch) and
-[approval gate](../proposals/auth-cp-enrollment.md) are prepared for separate
-review. They remain unapplied; this pilot is not enrollment approval.
-No live command, APPLY, credential issuance/adoption or operational gate is open.
+## Audit evidence
+
+[JSON](auth-cp-audit.json), [human report](auth-cp-audit.txt), and
+[review artifacts](auth-cp-proposals.json) were regenerated.
+RC001, RC002, RC003, RC007 and RC008: one PASS each.
+RC004, RC005 and RC006: seven PASS each. RC009: one UNKNOWN.
+Overall UNKNOWN: 27 findings, 26 PASS, 0 DRIFT, 0 BLOCKED, 1 UNKNOWN,
+0 NOT_APPLICABLE. RC008=PASS / HANDOFF_PINS_MATCH.
+
+Two consecutive audits returned identical data and unchanged peer HEAD/status
+and unrelated public-document digests. Audit JSON SHA-256:
+`6ae6c01efae0829e60df0b843119dd1b54d28a47e363e60c1aca88c0443d4b8a`. Offline RC009 remains UNKNOWN even though this separate
+operator-authorized refresh verified direct remote parity. No audit network
+capability or new freshness policy was introduced.
+
+Existing tests cover negative conformance, deterministic no-change audits,
+and isolated enrollment patch apply/repeat-denial/reversal. Full suite: 43 tests
+(13 Foundation, 30 consumer/audit); focused AuditTests: 17 tests. Syntax/data,
+schema, indicator and diff checks passed: 11 Python files, 17 JSON files,
+2 schemas, 1 YAML file and 57 files scanned with zero indicators. No runtime code,
+Foundation pins or vendor artifacts changed.
+
+## Pending decision and effects
+
+Only Louis's approval of the [new exact proposal](../proposals/auth-cp-enrollment.md)
+remains; no approval is recorded and the patch is unapplied. Repository state is
+PILOT. No peer validators, operational actions, credentials or target operations
+were invoked. Unrelated auth-cp observation documents and Foundation/ansible-cp
+work remain untouched. Peer worktree mutations, enrollment, live observation,
+live mutation, secret access, issuance/adoption and infrastructure effects: NONE.

@@ -151,9 +151,9 @@
     },
     {
       "check_id": "RC008",
-      "reason": "HANDOFF_PIN_REVIEW_REQUIRED",
+      "reason": "HANDOFF_PINS_MATCH",
       "repository": "auth-cp",
-      "status": "DRIFT"
+      "status": "PASS"
     },
     {
       "check_id": "RC009",
@@ -170,5 +170,5 @@
   ],
   "schema_version": 1,
   "scope": "REPOSITORY_ONLY",
-  "status": "DRIFT"
+  "status": "UNKNOWN"
 }

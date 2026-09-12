@@ -3,13 +3,6 @@
   "patch": null,
   "proposals": [
     {
-      "check_id": "RC008",
-      "mutation_authorized": false,
-      "next_step": "OWNER_REVIEW_REQUIRED",
-      "reason": "HANDOFF_PIN_REVIEW_REQUIRED",
-      "repository": "auth-cp"
-    },
-    {
       "check_id": "RC009",
       "mutation_authorized": false,
       "next_step": "OWNER_REVIEW_REQUIRED",

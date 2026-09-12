@@ -20,12 +20,12 @@
         "PROVENANCE.md": "82de165bb1d43a6a631a574c281df074a3f519ebec2b72d17bc79ea48dc8a37f",
         "README.md": "f797a5877fe60c35b3f291995c31aebe2965344ce0114f503f994172ad196711",
         "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
-        "registries/b70-revision-handoff.json": "594ae976968aad6fde570246a5aa839d1b443becedfac3cb8293423eff6ec0f3",
+        "registries/b70-revision-handoff.json": "a78b763e57a29b38f5e85e8ff2143bac31952a26218b974b8d24930824870f29",
         "tools/validate": "117a13971af854d9ecb120efd35da2cbc288589e71fab0f3ab0f7c38574045a4"
       },
       "pilot_authorization": "Louis:repo-cp-auth-cp-repository-only-pilot",
       "repository": "auth-cp",
-      "source_revision": "f84b7292659d6c4b14a4a1f767367343105a0cfa",
+      "source_revision": "57815b15533ace72ee3ab2aef82fe3b764925652",
       "state": "PILOT"
     },
     {
