@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://helix.home.arpa/foundation/operator-action-v1.schema.json",
+  "title": "HELIX_OPERATOR_ACTION_CONTRACT_V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_id",
+    "contract_version",
+    "authority",
+    "source",
+    "repository",
+    "target",
+    "operation",
+    "phase",
+    "status",
+    "stop_reason",
+    "evidence",
+    "command",
+    "scope",
+    "effects",
+    "risks",
+    "downtime",
+    "removals",
+    "preconditions",
+    "success_evidence",
+    "failure_evidence",
+    "recovery",
+    "rollback",
+    "return_output",
+    "execution_occurred",
+    "mutation_authorized"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "contract_id": {
+      "type": "string",
+      "const": "HELIX_OPERATOR_ACTION_CONTRACT_V1"
+    },
+    "contract_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "authority": {
+      "type": "string",
+      "const": "foundation-cp"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_revision",
+        "doctrine_revision"
+      ],
+      "properties": {
+        "repository_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "minLength": 40,
+          "maxLength": 40
+        },
+        "doctrine_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "minLength": 40,
+          "maxLength": 40
+        }
+      }
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "[!-~]",
+      "not": {
+        "pattern": "[^ -~]"
+      }
+    },
+    "target": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "[!-~]",
+      "not": {
+        "pattern": "[^ -~]"
+      }
+    },
+    "operation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "[!-~]",
+      "not": {
+        "pattern": "[^ -~]"
+      }
+    },
+    "phase": {
+      "enum": [
+        "PREPARATION",
+        "REVIEW"
+      ]
+    },
+    "status": {
+      "enum": [
+        "BLOCKED",
+        "READY_FOR_REVIEW"
+      ]
+    },
+    "stop_reason": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "[!-~]",
+          "not": {
+            "pattern": "[^ -~]"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      }
+    },
+    "command": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "shell",
+            "working_directory",
+            "text"
+          ],
+          "properties": {
+            "shell": {
+              "enum": [
+                "bash",
+                "powershell"
+              ]
+            },
+            "working_directory": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "[!-~]",
+              "not": {
+                "pattern": "[^ -~]"
+              }
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "[!-~]",
+              "not": {
+                "pattern": "[^ -~]"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "scope": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "effects": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "risks": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "downtime": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "removals": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "preconditions": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "success_evidence": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "failure_evidence": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "recovery": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "rollback": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "return_output": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "[!-~]",
+        "not": {
+          "pattern": "[^ -~]"
+        }
+      },
+      "minItems": 1
+    },
+    "execution_occurred": {
+      "type": "boolean",
+      "const": false
+    },
+    "mutation_authorized": {
+      "type": "boolean",
+      "const": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "BLOCKED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "stop_reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "pattern": "[!-~]",
+            "not": {
+              "pattern": "[^ -~]"
+            }
+          },
+          "command": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "stop_reason": {
+            "type": "null"
+          },
+          "command": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}

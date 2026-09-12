@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "contract_id": "HELIX_OPERATOR_ACTION_CONTRACT_V1",
+  "contract_version": "1.0.0",
+  "authority": "foundation-cp",
+  "source": {
+    "repository_revision": "1111111111111111111111111111111111111111",
+    "doctrine_revision": "2222222222222222222222222222222222222222"
+  },
+  "repository": "fixture-cp",
+  "target": "fixture-checkout",
+  "operation": "inspect-fixture-status",
+  "phase": "PREPARATION",
+  "status": "BLOCKED",
+  "stop_reason": "Fixture target identity has not been verified.",
+  "evidence": [
+    "Synthetic fixture only; no repository or live observation."
+  ],
+  "command": {
+    "shell": "bash",
+    "working_directory": "/tmp",
+    "text": "echo forbidden-blocked-command"
+  },
+  "scope": [
+    "Read status in the separately prepared fixture checkout."
+  ],
+  "effects": [
+    "Read-only repository metadata inspection."
+  ],
+  "risks": [
+    "Output may name local paths; review before returning."
+  ],
+  "downtime": [
+    "NONE"
+  ],
+  "removals": [
+    "NONE"
+  ],
+  "preconditions": [
+    "Independently verify the fixture path and approve this exact inspection."
+  ],
+  "success_evidence": [
+    "Exit 0 and the fixture branch/status output."
+  ],
+  "failure_evidence": [
+    "Nonzero exit or unexpected repository identity; stop."
+  ],
+  "recovery": [
+    "Recheck the fixture path before proposing a retry."
+  ],
+  "rollback": [
+    "NONE: read-only inspection."
+  ],
+  "return_output": [
+    "Return exit status and reviewed branch/status lines only."
+  ],
+  "execution_occurred": false,
+  "mutation_authorized": false
+}

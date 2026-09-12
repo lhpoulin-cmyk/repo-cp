@@ -1,0 +1,11 @@
+{
+  "artifacts": {
+    "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+    "docs/ACTIVE_DOCTRINE.md": "034751e03ae51672ff6df1cea50dd18c5a6c7da0eb92ad01286c4873486804c6",
+    "registries/active-doctrine.json": "49eb46a68a9363e9d4cafdf11ad483e92c920cd555112aaed92464a11ac748fe"
+  },
+  "authority": "foundation-cp",
+  "revision": "d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca",
+  "schema_version": 1,
+  "version": "1.0.0"
+}

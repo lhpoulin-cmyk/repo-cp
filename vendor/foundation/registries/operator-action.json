@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "contract_id": "HELIX_OPERATOR_ACTION_CONTRACT_V1",
+  "contract_version": "1.0.0",
+  "authority": "foundation-cp",
+  "status": "REPOSITORY_CONTRACT_ONLY",
+  "contract": "contracts/HELIX_OPERATOR_ACTION_CONTRACT_V1.md",
+  "schema": "schemas/operator-action-v1.schema.json",
+  "implementation": "src/operator_action.py",
+  "cli": "tools/render_operator_action.py",
+  "tests": "tests/test_operator_action.py",
+  "fixtures": "tests/fixtures/operator_action",
+  "reference_implementation": "implemented",
+  "fleet_conformance": "unverified",
+  "runtime_activation": false,
+  "mutation_authorized": false,
+  "compatibility": "Additive interface 1.0.0; consolidated Foundation doctrine remains 1.0.0."
+}

@@ -1,0 +1,40 @@
+HELIX_OPERATOR_ACTION_CONTRACT_V1 1.0.0
+DECLARATION ONLY: independent review and authorization required.
+REPOSITORY: fixture-cp
+TARGET: fixture-checkout
+OPERATION: inspect-fixture-status
+PHASE: REVIEW
+STATUS: READY_FOR_REVIEW
+FOUNDATION_REPOSITORY_REVISION: 1111111111111111111111111111111111111111
+FOUNDATION_DOCTRINE_REVISION: 2222222222222222222222222222222222222222
+STOP_REASON: NONE
+EVIDENCE:
+  - Synthetic fixture only; no repository or live observation.
+SCOPE:
+  - Read status in the separately prepared fixture checkout.
+EFFECTS:
+  - Read-only repository metadata inspection.
+RISKS:
+  - Output may name local paths; review before returning.
+DOWNTIME:
+  - NONE
+REMOVALS:
+  - NONE
+PRECONDITIONS:
+  - Independently verify the fixture path and approve this exact inspection.
+SUCCESS_EVIDENCE:
+  - Exit 0 and the fixture branch/status output.
+FAILURE_EVIDENCE:
+  - Nonzero exit or unexpected repository identity; stop.
+RECOVERY:
+  - Recheck the fixture path before proposing a retry.
+ROLLBACK:
+  - NONE: read-only inspection.
+RETURN_OUTPUT:
+  - Return exit status and reviewed branch/status lines only.
+COMMAND_SHELL: bash
+COMMAND_WORKING_DIRECTORY: /tmp/helix-operator-action-fixture
+COMMAND (copy only the next line; review before execution):
+git status --short --branch
+EXECUTION_OCCURRED: NO
+MUTATION_AUTHORIZED: NO

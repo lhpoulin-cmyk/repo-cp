@@ -1,0 +1,43 @@
+HELIX_OPERATOR_ACTION_CONTRACT_V1 1.0.0
+DECLARATION ONLY: independent review and authorization required.
+REPOSITORY: auth-cp
+TARGET: auth-cp-checkout
+OPERATION: review-repository-revision
+PHASE: REVIEW
+STATUS: READY_FOR_REVIEW
+FOUNDATION_REPOSITORY_REVISION: 999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5
+FOUNDATION_DOCTRINE_REVISION: d2fe6c6291ea1eaffadb15ded6c0240fed0e96ca
+STOP_REASON: NONE
+EVIDENCE:
+  - Synthetic auth-cp repository-only presentation fixture; not live or enrollment evidence.
+  - Repository-only pilot source: auth-cp f84b7292659d6c4b14a4a1f767367343105a0cfa.
+SCOPE:
+  - Review the declared auth-cp repository revision only.
+EFFECTS:
+  - NONE: presentation only; the proposed inspection reads Git metadata.
+RISKS:
+  - Verify repository identity and public output before returning it.
+DOWNTIME:
+  - NONE
+REMOVALS:
+  - NONE
+PRECONDITIONS:
+  - Louis independently reviews and authorizes any command execution.
+  - Verify canonical auth-cp checkout and source revision f84b7292659d6c4b14a4a1f767367343105a0cfa.
+  - Pilot approval is not fleet enrollment or live admission.
+SUCCESS_EVIDENCE:
+  - If independently executed: exit 0 and exact expected commit f84b7292659d6c4b14a4a1f767367343105a0cfa.
+FAILURE_EVIDENCE:
+  - Nonzero exit or another commit means revision review is required.
+RECOVERY:
+  - Reverify the repository and prepare a new reviewed declaration; do not retry automatically.
+ROLLBACK:
+  - NONE: no mutation is proposed.
+RETURN_OUTPUT:
+  - Return only the exit code and reviewed 40-character commit ID; no credentials, environments or file contents.
+COMMAND_SHELL: bash
+COMMAND_WORKING_DIRECTORY: /home/louis/helix-arpa/auth-cp
+COMMAND (copy only the next line; review before execution):
+git --no-optional-locks rev-parse --verify HEAD
+EXECUTION_OCCURRED: NO
+MUTATION_AUTHORIZED: NO

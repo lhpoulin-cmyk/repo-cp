@@ -1,0 +1,183 @@
+{
+  "$id": "urn:helix:repo-cp:repository-enrollment:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "repositories": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "ENROLLED"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "enrollment_authorization": {
+                  "type": "string"
+                },
+                "files": {
+                  "required": [
+                    "AGENTS.md",
+                    "README.md",
+                    "OWNERSHIP.md",
+                    "PROVENANCE.md",
+                    "VERSION",
+                    "tools/validate"
+                  ]
+                },
+                "source_revision": {
+                  "pattern": "^[0-9a-f]{40}$",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "PILOT"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "files": {
+                  "required": [
+                    "AGENTS.md",
+                    "README.md",
+                    "OWNERSHIP.md",
+                    "PROVENANCE.md",
+                    "VERSION",
+                    "tools/validate",
+                    "registries/b70-revision-handoff.json"
+                  ]
+                },
+                "pilot_authorization": {
+                  "const": "Louis:repo-cp-auth-cp-repository-only-pilot"
+                },
+                "repository": {
+                  "const": "auth-cp"
+                },
+                "source_revision": {
+                  "pattern": "^[0-9a-f]{40}$",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "properties": {
+          "branch": {
+            "const": "main"
+          },
+          "canonical_remote": {
+            "pattern": "^git@github\\.com:lhpoulin-cmyk/[a-z][a-z0-9-]*-cp\\.git$",
+            "type": "string"
+          },
+          "enrollment_authorization": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[ -~]+$",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "files": {
+            "additionalProperties": false,
+            "properties": {
+              "AGENTS.md": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "OWNERSHIP.md": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "PROVENANCE.md": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "README.md": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "VERSION": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "registries/b70-revision-handoff.json": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "tools/validate": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "pilot_authorization": {
+            "enum": [
+              null,
+              "Louis:repo-cp-auth-cp-repository-only-pilot"
+            ]
+          },
+          "repository": {
+            "maxLength": 80,
+            "pattern": "^[a-z][a-z0-9-]*-cp$",
+            "type": "string"
+          },
+          "source_revision": {
+            "oneOf": [
+              {
+                "pattern": "^[0-9a-f]{40}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "state": {
+            "enum": [
+              "DISCOVERED",
+              "PILOT",
+              "ENROLLED",
+              "EXCLUDED"
+            ]
+          }
+        },
+        "required": [
+          "repository",
+          "state",
+          "canonical_remote",
+          "branch",
+          "source_revision",
+          "pilot_authorization",
+          "enrollment_authorization",
+          "files"
+        ],
+        "type": "object"
+      },
+      "maxItems": 64,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "repositories"
+  ],
+  "title": "repo-cp local enrollment interface v1; not universal Foundation doctrine",
+  "type": "object"
+}

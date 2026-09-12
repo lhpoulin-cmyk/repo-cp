@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Full local synthetic suite; never executes a peer validator or action."""
+import ast
+import json
+from pathlib import Path
+import re
+import subprocess
+import sys
+
+sys.dont_write_bytecode = True
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'src'))
+from repocp.consumer import verify
+from repocp.audit import registry
+from repocp.safety import Denied, has_indicator, load, read_public
+from jsonschema import Draft202012Validator
+import yaml
+
+
+def main():
+    verify()
+    registry()
+    counts = {'files_scanned': 0, 'python_syntax': 0, 'json_syntax': 0,
+              'yaml_syntax': 0, 'schemas': 0}
+    for path in sorted(ROOT.rglob('*')):
+        relative = path.relative_to(ROOT)
+        if any(p in ('.git', '__pycache__', '.venv') for p in relative.parts) or path.is_dir():
+            continue
+        raw = read_public(ROOT, str(relative))
+        counts['files_scanned'] += 1
+        if has_indicator(raw):
+            raise Denied('SECRET_INDICATOR')
+        if path.suffix == '.py' or relative.as_posix() in ('tools/validate', 'tools/repo-cp'):
+            ast.parse(raw)
+            counts['python_syntax'] += 1
+        if path.suffix == '.json':
+            data = load(raw)
+            counts['json_syntax'] += 1
+            if 'schemas' in relative.parts:
+                Draft202012Validator.check_schema(data)
+                counts['schemas'] += 1
+        if path.suffix in ('.yml', '.yaml'):
+            yaml.safe_load(raw)
+            counts['yaml_syntax'] += 1
+        if path.suffix == '.md' and relative.parts[0] != 'vendor':
+            for link in re.findall(r'\]\(([^)]+)\)', raw.decode()):
+                if '://' not in link and not link.startswith('#'):
+                    if not (path.parent / link.split('#')[0]).exists():
+                        raise Denied('BROKEN_DOCUMENT_LINK')
+    if read_public(ROOT, 'VERSION') != b'0.1.0\n':
+        raise Denied('VERSION_MISMATCH')
+    print(json.dumps({'metadata': 'PASS', **counts}, sort_keys=True), flush=True)
+    for directory in ('vendor/foundation/tests', 'tests'):
+        subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover', '-s', directory, '-v'],
+                       cwd=ROOT, check=True)
+    subprocess.run(['git', 'diff', '--check'], cwd=ROOT, check=True)
+    print('PASS: full repository suite; AUTOMATIC_EXECUTION=DISABLED; LIVE_MUTATION=NONE')
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (Denied, ValueError, OSError, SyntaxError, yaml.YAMLError, subprocess.CalledProcessError):
+        sys.stderr.write('BLOCKER=REPOSITORY_VALIDATION_FAILED\n')
+        raise SystemExit(2)

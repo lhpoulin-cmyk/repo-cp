@@ -1,0 +1,43 @@
+{
+  "repositories": [
+    {
+      "branch": "main",
+      "canonical_remote": "git@github.com:lhpoulin-cmyk/ansible-cp.git",
+      "enrollment_authorization": null,
+      "files": {},
+      "pilot_authorization": null,
+      "repository": "ansible-cp",
+      "source_revision": "4c40a0ef8aaf820dfec4b8562d4f5b39bd89eb86",
+      "state": "DISCOVERED"
+    },
+    {
+      "branch": "main",
+      "canonical_remote": "git@github.com:lhpoulin-cmyk/auth-cp.git",
+      "enrollment_authorization": null,
+      "files": {
+        "AGENTS.md": "1faf6a118006608095c97a27d631d3415907d301c53e538bfe1e6f37279e8db9",
+        "OWNERSHIP.md": "71ca5d5802f3e7322661cc7fff6abb5e44b4919b1789b00245c1258e38b07b46",
+        "PROVENANCE.md": "82de165bb1d43a6a631a574c281df074a3f519ebec2b72d17bc79ea48dc8a37f",
+        "README.md": "f797a5877fe60c35b3f291995c31aebe2965344ce0114f503f994172ad196711",
+        "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+        "registries/b70-revision-handoff.json": "594ae976968aad6fde570246a5aa839d1b443becedfac3cb8293423eff6ec0f3",
+        "tools/validate": "117a13971af854d9ecb120efd35da2cbc288589e71fab0f3ab0f7c38574045a4"
+      },
+      "pilot_authorization": "Louis:repo-cp-auth-cp-repository-only-pilot",
+      "repository": "auth-cp",
+      "source_revision": "f84b7292659d6c4b14a4a1f767367343105a0cfa",
+      "state": "PILOT"
+    },
+    {
+      "branch": "main",
+      "canonical_remote": "git@github.com:lhpoulin-cmyk/foundation-cp.git",
+      "enrollment_authorization": null,
+      "files": {},
+      "pilot_authorization": null,
+      "repository": "foundation-cp",
+      "source_revision": "999fcf6a4bf181bdba201e9ca0c2f2bc4e7e2af5",
+      "state": "DISCOVERED"
+    }
+  ],
+  "schema_version": 1
+}

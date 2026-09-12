@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "ACTIVE_REPOSITORY_DOCTRINE_ONLY",
+  "repository": "foundation-cp",
+  "path": "/home/louis/helix-arpa/foundation-cp",
+  "branch": "main",
+  "baseline_commit": "24446a9627f222e3441bdf09bf9518dd924d5341",
+  "version": "1.0.0",
+  "supersedes": {
+    "version": "unversioned",
+    "commit": "24446a9627f222e3441bdf09bf9518dd924d5341"
+  },
+  "credential_custody_owner": "auth-cp",
+  "runtime_activation": false,
+  "live_recovery_proven": false,
+  "manifest_verification_key": null,
+  "serial_allocator": "existing-foundation-sqlite-serial-row-only",
+  "compatibility": [
+    "v1-requests",
+    "v1-authorizations",
+    "existing-ca",
+    "PT8H",
+    "separate-PT72H",
+    "single-allocator",
+    "passive-recovery"
+  ]
+}
