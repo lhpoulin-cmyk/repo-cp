@@ -1,0 +1,174 @@
+{
+  "automatic_execution": false,
+  "live_mutation": "NONE",
+  "repositories_audited": [
+    "auth-cp"
+  ],
+  "results": [
+    {
+      "check_id": "RC002",
+      "reason": "ENROLLED",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC003",
+      "reason": "REVISION_MATCH",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:AGENTS.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:OWNERSHIP.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:PROVENANCE.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:README.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:VERSION",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:registries/b70-revision-handoff.json",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC004",
+      "reason": "PUBLIC_FILE_PRESENT:tools/validate",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:AGENTS.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:OWNERSHIP.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:PROVENANCE.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:README.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:VERSION",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:registries/b70-revision-handoff.json",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC005",
+      "reason": "DIGEST_MATCH:tools/validate",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:AGENTS.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:OWNERSHIP.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:PROVENANCE.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:README.md",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:VERSION",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:registries/b70-revision-handoff.json",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC006",
+      "reason": "NO_INDICATOR:tools/validate",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC007",
+      "reason": "VERSION_DECLARED",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC008",
+      "reason": "HANDOFF_PINS_MATCH",
+      "repository": "auth-cp",
+      "status": "PASS"
+    },
+    {
+      "check_id": "RC009",
+      "reason": "OFFLINE_AUDIT_NO_REMOTE_QUERY",
+      "repository": "auth-cp",
+      "status": "UNKNOWN"
+    },
+    {
+      "check_id": "RC001",
+      "reason": "ACCEPTED_ARTIFACTS_VERIFIED",
+      "repository": "repo-cp",
+      "status": "PASS"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "REPOSITORY_ONLY",
+  "status": "UNKNOWN"
+}

@@ -53,11 +53,13 @@ reports express the same findings.
 
 Three peers are inventoried: **auth-cp and ansible-cp are ENROLLED**; Foundation
 remains DISCOVERED. auth-cp retains its seven-file scope at
-57815b15533ace72ee3ab2aef82fe3b764925652. ansible-cp has ten reviewed metadata files
+3bdcde14bb7c0d77775cfeb2d1bd5571488d6f2a. ansible-cp has ten reviewed metadata files
 at 554a8509d0b7b30d6e641ac80a15ba2bf22c4b55 under Louis's
 [verified enrollment approval](docs/acceptance/ansible-cp-enrollment.md).
-Default audits select both: 63 PASS, 2 UNKNOWN, no DRIFT/BLOCKED. RC009 remains
-UNKNOWN for each repository; overall status remains UNKNOWN. Earlier pilot
+The [B70 auth identity refresh](docs/acceptance/b70-auth-identity-refresh.md)
+updates auth-cp only. Default audits select both and retain any ansible-cp derived
+auth-pin drift until its owner revalidates. RC009 remains UNKNOWN for each;
+consult the current audit rather than historical aggregate counts. Earlier pilot
 reports and proposals remain historical evidence, not current fleet state.
 
 Only allowlisted metadata and Git HEAD/ref files are read. Unrelated dirty files
