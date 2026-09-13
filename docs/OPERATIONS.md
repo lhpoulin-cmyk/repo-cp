@@ -25,6 +25,13 @@ explicitly scoped approval; no sibling discovery enrolls peers.
 
 ## Checks
 
+The operator-directed [file-integrity doctrine](FILE_INTEGRITY.md) records
+`HELIX_NO_HARDLINKS_V1`, its schema-backed production-engineering requirements,
+verified copy/publication reference and peer adoption process. Run
+`python3 -B tools/audit-hardlinks` for local metadata-only findings. Standard
+peer audits add RC011 only for existing selected public allowlists. Neither
+operation repairs violations or expands peer scope.
+
 | ID | Property | Limit |
 | --- | --- | --- |
 | RC001 | Accepted Foundation bytes and separate pins | Reviewed local trust, not action-artifact checksum enforcement |
@@ -37,6 +44,7 @@ explicitly scoped approval; no sibling discovery enrolls peers.
 | RC008 | Reviewed B70 handoff records match separate Foundation pins | Difference requires owner review, not automatic replacement |
 | RC009 | Current remote publication freshness | UNKNOWN offline; separate operator preflight |
 | RC010 | ansible-cp derived auth policy and containing handoff pins | Independent compatible auth owner-review evidence; no automatic replacement |
+| RC011 | Governed regular-file single-link integrity | Protected violations BLOCKED; ordinary workflow violations DRIFT; unavailable metadata UNKNOWN; exclusions unscanned |
 
 PASS means the named property was observed. DRIFT means accepted evidence
 differs. BLOCKED means a declared check cannot proceed safely. UNKNOWN means

@@ -1,0 +1,349 @@
+{
+  "$id": "urn:helix:repo-cp:file-integrity:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "invariant_id",
+    "version",
+    "authority",
+    "custodian",
+    "scope",
+    "prohibited_uses",
+    "protected_regular_file_nlink",
+    "only_exception",
+    "out_of_scope",
+    "audit",
+    "replacement",
+    "remediation",
+    "automatic_execution",
+    "production_engineering"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "invariant_id": {
+      "const": "HELIX_NO_HARDLINKS_V1"
+    },
+    "version": {
+      "const": "1.0.0"
+    },
+    "authority": {
+      "const": "LOUIS_OPERATOR_DIRECTIVE"
+    },
+    "custodian": {
+      "const": "repo-cp"
+    },
+    "scope": {
+      "const": "HELIX_ARPA_CONTROL_PLANE_ARTIFACTS"
+    },
+    "prohibited_uses": {
+      "const": [
+        "protected_files",
+        "credential_material",
+        "ceremony_ledgers",
+        "intent_records",
+        "receipts",
+        "recovery_state",
+        "backups",
+        "evidence_staging",
+        "publication_staging",
+        "cross_checkout_artifact_reuse",
+        "repository_migration",
+        "repository_synchronization",
+        "snapshot_construction",
+        "normal_test_fixtures",
+        "all_control_plane_file_copy_preserve_publish_restore_operations"
+      ]
+    },
+    "protected_regular_file_nlink": {
+      "const": 1
+    },
+    "only_exception": {
+      "const": {
+        "purpose": "BOUNDED_NEGATIVE_REJECTION_TEST",
+        "must_remain_in_test_directory": true,
+        "normal_fixture_setup": false
+      }
+    },
+    "out_of_scope": {
+      "const": [
+        "operating_system_internals",
+        "package_manager_internals",
+        "git_internals",
+        "unrelated_application_artifacts"
+      ]
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "excluded_components",
+        "exclude_mounts",
+        "follow_symlinks",
+        "read_file_contents",
+        "peer_selection",
+        "repository_excluded_paths",
+        "protected_prefixes",
+        "protected_hardlink_status",
+        "workflow_hardlink_status",
+        "unavailable_status",
+        "symlink_status",
+        "single_link_status"
+      ],
+      "properties": {
+        "excluded_components": {
+          "const": [
+            ".git",
+            ".agent-checkouts",
+            ".venv",
+            "venv",
+            "virtualenv",
+            "node_modules",
+            "site-packages",
+            "__pycache__",
+            ".cache",
+            ".pytest_cache",
+            ".mypy_cache",
+            ".ruff_cache",
+            ".tox",
+            ".nox",
+            "dependency-tree",
+            "mnt",
+            "media",
+            "proc",
+            "sys",
+            "dev",
+            "run"
+          ]
+        },
+        "exclude_mounts": {
+          "const": true
+        },
+        "follow_symlinks": {
+          "const": false
+        },
+        "read_file_contents": {
+          "const": false
+        },
+        "peer_selection": {
+          "const": "EXISTING_ENROLLMENT_PUBLIC_ALLOWLIST"
+        },
+        "repository_excluded_paths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+(?:/[A-Za-z0-9_.-]+)*$"
+          }
+        },
+        "protected_prefixes": {
+          "const": [
+            "pins",
+            "registries",
+            "docs/acceptance"
+          ]
+        },
+        "protected_hardlink_status": {
+          "const": "BLOCKED"
+        },
+        "workflow_hardlink_status": {
+          "const": "DRIFT"
+        },
+        "unavailable_status": {
+          "const": "UNKNOWN"
+        },
+        "symlink_status": {
+          "const": "BLOCKED"
+        },
+        "single_link_status": {
+          "const": "PASS"
+        }
+      }
+    },
+    "replacement": {
+      "const": [
+        "OPEN_SOURCE_NOFOLLOW",
+        "REQUIRE_REGULAR_NLINK_ONE",
+        "CREATE_EXCLUSIVE_TEMP_ON_DESTINATION_FILESYSTEM",
+        "COPY_BYTES_WITHOUT_ARGUMENT_OR_LOG_EXPOSURE",
+        "APPLY_EXPLICIT_OWNERSHIP_AND_MODE",
+        "VERIFY_BYTE_COUNT_AND_SHA256_FROM_OPEN_DESCRIPTORS",
+        "FSYNC_DESTINATION_FILE",
+        "ATOMIC_RENAME_ON_DESTINATION_FILESYSTEM",
+        "FSYNC_CONTAINING_DIRECTORY",
+        "VERIFY_PUBLISHED_REGULAR_OWNERSHIP_MODE_HASH_NLINK_ONE"
+      ]
+    },
+    "remediation": {
+      "const": {
+        "automatic": false,
+        "existing_violation_mutation": false,
+        "requires": [
+          "EXPLICIT_AUTHORIZATION",
+          "BACKUP",
+          "ROLLBACK",
+          "EVIDENCE"
+        ]
+      }
+    },
+    "automatic_execution": {
+      "const": false
+    },
+    "production_engineering": {
+      "const": {
+        "applies_to": [
+          "PRIVILEGED",
+          "SECURITY_SENSITIVE",
+          "STATE_CHANGING",
+          "PUBLICATION"
+        ],
+        "ordinary_utilities": "EXISTING_REPOSITORY_RISK_AND_AUTHORITY_RULES",
+        "requirements": {
+          "Privilege and execution integrity": [
+            "Never execute ignored, generated, untracked, dirty or user-substitutable source with elevated privileges.",
+            "Bind privileged execution to an exact reviewed revision, tracked file set, expected repository identity, clean relevant scope and verified ownership.",
+            "Verify before execution through a trusted launcher or previously installed root-owned entry point; a running program cannot establish trust in its own source.",
+            "Never add global Git safe.directory exceptions; any exception must be command-scoped, exact-path, ownership-checked and end with the command.",
+            "Separate public inspection, preparation, authorization and mutation operations.",
+            "Read-only commands must not write caches, bytecode, lock files or metadata, or change atime through sensitive copies.",
+            "Use least privilege; never grant unrestricted shells, blanket sudo, Docker group/socket access or broader filesystem access for a narrow operation.",
+            "Privileged helpers must expose a fixed documented interface and reject unknown operations or arguments."
+          ],
+          "Filesystem and path safety": [
+            "Use absolute paths for protected operations; reject empty, relative, ambiguous, traversal-containing or unexpectedly resolved paths.",
+            "Never follow symlinks for protected sources or destinations; use descriptor-relative operations, O_NOFOLLOW and exclusive creation where available.",
+            "Validate opened descriptors with fstat; require expected type, owner, group, mode, device and link count, not only a pathname precheck.",
+            "Fail on changes to inode, device, ownership, size, link count or policy-relevant metadata during an operation.",
+            "Create unpredictable temporary names with secure platform randomness in the destination directory/filesystem, with restrictive permissions at creation.",
+            "Never assume /tmp permits atomic target publication; never use shell globs for protected mutation targets.",
+            "Never recursively mutate before independently validating the exact resolved boundary."
+          ],
+          "Durable state and transactions": [
+            "Define preconditions, intended mutation, commit point, success evidence, rollback boundary and crash recovery for every state change.",
+            "Never claim atomicity across systems without a shared transaction mechanism.",
+            "Database-plus-filesystem protocols must durably distinguish mutation not started, prepared, primary committed, receipt pending, completed, rollback required and operator adjudication.",
+            "Persist and fsync intent before the irreversible boundary; make completion and recovery idempotent.",
+            "Report explicit indeterminate/recovery-required state when primary commit may have happened; never report an ordinary failed mutation then.",
+            "Every retry must inspect current state and decide safely whether to resume, finalize, roll back or stop; provide a governed stale-operation resolver.",
+            "Use resource-appropriate locking; detect concurrent writers and fail closed; timestamps alone are not identities or concurrency controls.",
+            "Preserve previous valid state until replacement is verified and durably published.",
+            "Version migrations, identify one-way effects, repeat safely where possible and test rollback or forward recovery."
+          ],
+          "Signals, cancellation and cleanup": [
+            "Handle SIGINT, SIGHUP and SIGTERM where supported; record value-free controlled interruption and release locks.",
+            "Assume SIGKILL, power loss, kernel and storage failure; recovery cannot rely exclusively on handlers.",
+            "Cleanup must preserve the original failure and never falsely claim rollback success.",
+            "Remove temporary artifacts only after revalidating identity and ownership; never delete the last known-good copy in generic cleanup."
+          ],
+          "Input and credential handling": [
+            "Validate structural and policy requirements before durable mutation wherever possible.",
+            "Treat account identifiers as application-defined opaque values unless a schema proves stronger semantics; reject controls and unsafe encodings, and do not infer email semantics.",
+            "Never put credentials, recovery material or private keys in argv, environment, process listings, URLs, receipts, exceptions, tests or logs.",
+            "Obtain secrets only through an approved trusted prompt or protected descriptor; keep secret/account prompts on the trusted terminal, not stdout.",
+            "Clearly label hidden prompts and announce length/format rules first; bound retries for correctable input mistakes.",
+            "Distinguish cancellation, authentication failure, policy rejection, integrity failure, concurrency conflict and internal failure without exposing values.",
+            "Use established cryptographically secure randomness and library cryptography; never invent cryptographic algorithms or password-hashing formats.",
+            "Use constant-time library comparison for authentication-sensitive fixed-length values where applicable.",
+            "Never use unrestricted pickle or unsafe YAML deserialization; parameterize database operations rather than interpolating credential input."
+          ],
+          "Subprocess and shell safety": [
+            "Prefer libraries; pass argument arrays, never interpolated shell strings or shell=True for protected operations.",
+            "Privileged subprocesses require absolute executables, verified executable identity/package provenance, a minimal controlled environment and known working directory.",
+            "Set explicit timeouts and bounded output, check return codes, and retain stderr only for redacted private diagnosis.",
+            "Use stable machine-readable interfaces rather than human-output parsing; bound retries to proven repeatable operations."
+          ],
+          "Error and status integrity": [
+            "Fail closed on unknown authority, schema, ownership, provenance or state; preserve materially distinct outcomes.",
+            "Public errors may be concise; durable private records require value-free categorical causes.",
+            "Public receipts must never contain credentials, usable credential hashes, prompt contents or private paths.",
+            "Broad exceptions must re-raise or map to explicit safe states; never use language assertions for security enforcement.",
+            "Success requires independent postcondition verification, not command exit zero alone.",
+            "STARTED, FAILED, INTERRUPTED, RECOVERY_REQUIRED and COMPLETED have distinct meanings; absent evidence remains UNKNOWN."
+          ],
+          "Determinism and reproducibility": [
+            "Use stable schemas, ordering, encodings and value types; durable timestamps must be UTC with explicit timezone.",
+            "Inject clocks, randomness, host identity and filesystem boundaries in tests; do not depend on ambient live state.",
+            "Normalize only proven semantic equivalences and document every accepted normalization.",
+            "Bind receipts/transitions to content, policy identity and relevant state, not Git ancestry alone.",
+            "Generated artifacts must record inputs, tool version, schema version and immutable source revision.",
+            "Repeated validation of unchanged input must be semantically identical.",
+            "Audits inspect/classify only; peer validator execution or mutation requires a separately authorized execution lane."
+          ],
+          "Dependencies and supply chain": [
+            "Pin production dependencies and record authoritative source and integrity; avoid floating branches, mutable tags and unverified downloads.",
+            "Separate acquisition from privileged installation/execution; verify before use and never execute network streams.",
+            "Minimize privileged-helper dependencies; record introduced dependency licenses, provenance and versions.",
+            "Updates require tests, review, rollback instructions and an explicit revision change."
+          ],
+          "Tests": [
+            "Ordinary tests must not require root, credentials, production mounts, network or live infrastructure; integration tests require separate classification and authorization.",
+            "Use isolated temporary roots with verified identities; never discover/reuse live state and keep cleanup within those roots.",
+            "Normal fixtures use independent copied files; only a bounded negative rejection test may create a hardlink.",
+            "Inject failures at intent write, file copy, hash verification, file fsync, database commit, atomic rename, directory fsync, receipt publication and ledger finalization where applicable.",
+            "Test signals, stale locks/STARTED events, concurrency, partial writes, full filesystem, permission denial, ownership drift, symlinks, hardlinks and cross-filesystem behavior.",
+            "Test recovery with both unchanged and already-committed primary state.",
+            "Skipped or environment-blocked tests are NOT_RUN, never PASS; distinguish implementation, fixture, platform-capability and qualification-environment failures.",
+            "Preserve reproducible failure artifacts only when secret-free; otherwise preserve sanitized metadata and permitted hashes.",
+            "Run focused tests and the complete suite before publication."
+          ],
+          "Code quality and maintainability": [
+            "Separate policy from transport, prompts, filesystems, databases and presentation; centralize invariants for commands, audits and tests.",
+            "Prefer small functions with explicit inputs and typed outcomes; avoid hidden globals and import-time side effects.",
+            "Imports must not write files, contact networks, mutate environments or perform authority checks.",
+            "Document assumptions next to enforcement; version schemas and reject unsupported versions.",
+            "Compatibility cannot weaken security or falsify state; remove dead compatibility paths after governed migration.",
+            "Comments explain why; public interfaces document stable machine-readable output and exit codes."
+          ],
+          "Review and release": [
+            "Security-sensitive changes require independent non-author review covering adversarial assumptions, recovery, privilege and failure semantics.",
+            "Publish additively unless history rewriting is explicitly authorized and the affected revision is proven unpublished.",
+            "Identify exact changed files, tests run/not run, limitations, migration effects and rollback procedure.",
+            "Verify local HEAD, upstream tracking and directly queried canonical remote; check before claiming a clean worktree.",
+            "Do not claim peer/live effects without direct evidence; automatic execution stays disabled until the applicable admission authority enables it."
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "publicationOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "phase",
+        "cause"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "STARTED",
+            "FAILED",
+            "INTERRUPTED",
+            "RECOVERY_REQUIRED",
+            "COMPLETED"
+          ]
+        },
+        "phase": {
+          "enum": [
+            "MUTATION_NOT_STARTED",
+            "MUTATION_PREPARED",
+            "PRIMARY_STATE_COMMIT_ATTEMPTED",
+            "PRIMARY_STATE_COMMITTED",
+            "RECEIPT_PENDING",
+            "OPERATION_COMPLETED",
+            "ROLLBACK_REQUIRED",
+            "OPERATOR_ADJUDICATION"
+          ]
+        },
+        "cause": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]+$"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Local metadata-only audit; never searches peers or reads artifact contents."""
+import json
+from pathlib import Path
+import sys
+
+sys.dont_write_bytecode = True
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'src'))
+from repocp.file_integrity import invariant, local_audit
+from repocp.safety import Denied
+
+
+def main():
+    try:
+        if len(sys.argv) != 1:
+            raise Denied('UNKNOWN_ARGUMENT')
+        data = local_audit(ROOT, invariant(ROOT))
+    except (Denied, OSError, ValueError, KeyError, TypeError):
+        sys.stderr.write('BLOCKER=FILE_INTEGRITY_AUDIT_UNAVAILABLE\n')
+        return 2
+    print(json.dumps(data, sort_keys=True, indent=2))
+    return {'PASS': 0, 'UNKNOWN': 1, 'DRIFT': 1, 'BLOCKED': 2}[data['status']]
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

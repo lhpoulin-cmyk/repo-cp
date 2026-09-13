@@ -2,6 +2,7 @@
 """Full local synthetic suite; never executes a peer validator or action."""
 import ast
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -12,25 +13,46 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from repocp.consumer import verify
 from repocp.audit import registry
+from repocp.file_integrity import excluded, invariant, local_audit, mountpoints
 from repocp.safety import Denied, has_indicator, load, read_public
 from jsonschema import Draft202012Validator
 import yaml
 
 
+def public_files(root):
+    """Use the reviewed invariant's exclusions before any content inspection."""
+    policy = invariant(ROOT)
+    mounts = mountpoints()
+    device = Path(root).stat().st_dev
+    def selected(path):
+        return (not excluded(path.relative_to(root).as_posix(), policy)
+                and str(path.absolute()) not in mounts and path.lstat().st_dev == device)
+    def failed(error):
+        raise Denied('VALIDATION_COVERAGE_UNAVAILABLE') from None
+    for directory, directories, files in os.walk(root, onerror=failed):
+        directories[:] = sorted(name for name in directories if selected(Path(directory) / name))
+        for name in sorted(files):
+            path = Path(directory) / name
+            if selected(path):
+                yield path
+
+
 def main():
     verify()
     registry()
+    policy = invariant(ROOT)
+    first = local_audit(ROOT, policy)
+    if first != local_audit(ROOT, policy) or first['status'] != 'PASS':
+        raise Denied('FILE_INTEGRITY_AUDIT_FAILED')
     counts = {'files_scanned': 0, 'python_syntax': 0, 'json_syntax': 0,
               'yaml_syntax': 0, 'schemas': 0}
-    for path in sorted(ROOT.rglob('*')):
+    for path in public_files(ROOT):
         relative = path.relative_to(ROOT)
-        if any(p in ('.git', '__pycache__', '.venv') for p in relative.parts) or path.is_dir():
-            continue
         raw = read_public(ROOT, str(relative))
         counts['files_scanned'] += 1
         if has_indicator(raw):
             raise Denied('SECRET_INDICATOR')
-        if path.suffix == '.py' or relative.as_posix() in ('tools/validate', 'tools/repo-cp'):
+        if path.suffix == '.py' or relative.as_posix() in ('tools/validate', 'tools/repo-cp', 'tools/audit-hardlinks'):
             ast.parse(raw)
             counts['python_syntax'] += 1
         if path.suffix == '.json':

@@ -34,26 +34,67 @@ def load(raw):
         raise Denied('INVALID_JSON') from None
 
 
-def read_public(root, relative, limit=MAX_BYTES):
-    """Only caller-allowlisted relative regular files; refuse symlinks and devices."""
-    parts = Path(relative).parts
-    if not parts or Path(relative).is_absolute() or any(p in ('.', '..') for p in parts):
+def open_directory(path):
+    """Open every directory component without symlink traversal (Linux)."""
+    absolute = Path(path).absolute()
+    if '..' in absolute.parts:
         raise Denied('UNSAFE_PATH')
-    fd = None
+    fd = os.open('/', os.O_RDONLY | os.O_DIRECTORY)
     try:
-        # Open each ancestor without following links, including the root path.
-        absolute = Path(root).absolute()
-        fd = os.open('/', os.O_RDONLY | os.O_DIRECTORY)
-        for part in absolute.parts[1:] + parts[:-1]:
+        for part in absolute.parts[1:]:
             nxt = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
             os.close(fd)
             fd = nxt
-        source = os.open(parts[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=fd)
+        return fd
+    except BaseException:
+        os.close(fd)
+        raise
+
+
+def open_parent(root, relative):
+    if not isinstance(relative, str) or not relative or relative.startswith('/'):
+        raise Denied('UNSAFE_PATH')
+    parts = relative.split('/')
+    if any(p in ('', '.', '..') for p in parts):
+        raise Denied('UNSAFE_PATH')
+    fd = open_directory(root)
+    try:
+        for part in parts[:-1]:
+            nxt = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=fd)
+            os.close(fd)
+            fd = nxt
+        return fd, parts[-1]
+    except BaseException:
+        os.close(fd)
+        raise
+
+
+def require_single_regular(info):
+    if not stat.S_ISREG(info.st_mode) or info.st_nlink != 1:
+        raise Denied('SINGLE_LINK_REGULAR_REQUIRED')
+
+
+def read_public(root, relative, limit=MAX_BYTES, *, git_internal=False):
+    """Only caller-allowlisted relative regular files; refuse symlinks and devices."""
+    if git_internal and not relative.startswith('.git/'):
+        raise Denied('INVALID_GIT_EXCLUSION')
+    fd = None
+    try:
+        fd, name = open_parent(root, relative)
+        source = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK | os.O_NOATIME, dir_fd=fd)
         with os.fdopen(source, 'rb') as stream:
             info = os.fstat(stream.fileno())
+            if not git_internal:
+                require_single_regular(info)
             if not stat.S_ISREG(info.st_mode) or info.st_size > limit:
                 raise Denied('UNSAFE_FILE_OR_SIZE')
             raw = stream.read(limit + 1)
+            after = os.fstat(stream.fileno())
+            if not git_internal:
+                require_single_regular(after)
+            if (info.st_size, info.st_mtime_ns, info.st_ctime_ns) != (
+                    after.st_size, after.st_mtime_ns, after.st_ctime_ns):
+                raise Denied('PUBLIC_FILE_CHANGED')
             if len(raw) > limit:
                 raise Denied('UNSAFE_FILE_OR_SIZE')
             return raw

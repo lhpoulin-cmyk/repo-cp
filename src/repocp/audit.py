@@ -7,6 +7,7 @@ from jsonschema import Draft202012Validator
 
 from .consumer import ROOT, SOURCE, verify
 from .safety import Denied, has_indicator, load, read_public
+from .file_integrity import invariant, inspect_link
 
 STATES = ('PASS', 'DRIFT', 'BLOCKED', 'NOT_APPLICABLE', 'UNKNOWN')
 CHECKS = {
@@ -20,10 +21,12 @@ CHECKS = {
     'RC008': 'B70 handoff separate Foundation pins',
     'RC009': 'Remote publication freshness',
     'RC010': 'Derived auth policy and containing handoff pins',
+    'RC011': 'Governed artifact single-link integrity',
 }
 
 
 def registry(root=ROOT):
+    invariant(root)
     raw = read_public(root, 'registries/repositories.json')
     data = load(raw)
     def safe(value):
@@ -51,16 +54,16 @@ def registry(root=ROOT):
 
 
 def head(checkout):
-    raw = read_public(checkout, '.git/HEAD', 4096).decode('ascii').strip()
+    raw = read_public(checkout, '.git/HEAD', 4096, git_internal=True).decode('ascii').strip()
     if re.fullmatch('[0-9a-f]{40}', raw):
         return None, raw
     if not re.fullmatch(r'ref: refs/heads/[a-zA-Z0-9_-]+(?:/[a-zA-Z0-9_-]+)*', raw):
         raise Denied('UNSUPPORTED_GIT_LAYOUT')
     ref = raw[5:]
     try:
-        revision = read_public(checkout, '.git/' + ref, 4096).decode('ascii').strip()
+        revision = read_public(checkout, '.git/' + ref, 4096, git_internal=True).decode('ascii').strip()
     except Denied:
-        packed = read_public(checkout, '.git/packed-refs').decode('ascii')
+        packed = read_public(checkout, '.git/packed-refs', git_internal=True).decode('ascii')
         matches = [line.split(' ')[0] for line in packed.splitlines() if line.endswith(' ' + ref)]
         if len(matches) != 1:
             raise Denied('PUBLIC_REVISION_UNAVAILABLE') from None
@@ -77,6 +80,7 @@ def result(repository, check, status, reason):
 def audit(fleet_root, *, pilot=False, repository=None, root=ROOT):
     verify(root)
     entries = registry(root)['repositories']
+    policy = invariant(root)
     selected = [r for r in entries if r['state'] == 'ENROLLED' or
                 (pilot and r['state'] == 'PILOT')]
     if repository is not None:
@@ -100,6 +104,14 @@ def audit(fleet_root, *, pilot=False, repository=None, root=ROOT):
         public = {}
         for filename in sorted(entry['files']):
             # Filename never comes from arbitrary target input: schema allowlist.
+            status, reason = inspect_link(checkout, filename, protected=True, policy=policy)
+            results.append(result(name, 'RC011', status, reason + ':' + filename))
+            if status != 'PASS':
+                # Never read unsafe input after a metadata-only rejection.
+                absent = entry['files'][filename] is None
+                results.append(result(name, 'RC004', 'UNKNOWN' if absent else 'BLOCKED',
+                                      'PUBLIC_FILE_UNAVAILABLE:' + filename))
+                continue
             try:
                 raw = read_public(checkout, filename)
             except Denied:
@@ -137,11 +149,15 @@ def audit(fleet_root, *, pilot=False, repository=None, root=ROOT):
         else:
             results.append(result(name, 'RC008', 'NOT_APPLICABLE', 'NO_B70_HANDOFF_CHECK'))
         results.append(result(name, 'RC009', 'UNKNOWN', 'OFFLINE_AUDIT_NO_REMOTE_QUERY'))
+    return report(results, [r['repository'] for r in selected])
+
+
+def report(results, repositories):
     results.sort(key=lambda r: (r['repository'], r['check_id'], r['reason']))
     overall = next((s for s in ('BLOCKED', 'DRIFT', 'UNKNOWN') if any(r['status'] == s for r in results)), 'PASS')
     return {'schema_version': 1, 'status': overall, 'scope': 'REPOSITORY_ONLY',
             'automatic_execution': False, 'live_mutation': 'NONE',
-            'repositories_audited': [r['repository'] for r in selected], 'results': results}
+            'repositories_audited': repositories, 'results': results}
 
 
 def derived_handoff_checks(public, entries, root):

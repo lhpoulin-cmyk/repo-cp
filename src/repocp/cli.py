@@ -6,6 +6,7 @@ import sys
 
 from .audit import audit, proposals, registry, text_report
 from .consumer import ROOT, render, verify
+from .file_integrity import INVARIANT
 from .safety import Denied, MAX_BYTES
 
 
@@ -32,6 +33,7 @@ def main():
             data = registry()
             if args.command == 'validate':
                 data = {'status': 'PASS', 'foundation_integrity': 'PASS', 'enrollment_schema': 'PASS',
+                        'file_integrity_schema': 'PASS', 'invariant_id': INVARIANT,
                         'automatic_execution': False, 'live_mutation': 'NONE'}
             elif args.command != 'inventory':
                 data = audit(args.fleet_root, pilot=args.pilot, repository=args.repository)
