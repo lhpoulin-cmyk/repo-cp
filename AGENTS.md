@@ -37,4 +37,18 @@ Run tools/validate, focused tests, syntax and secret checks, git diff --check,
 and inspect the complete diff before cohesive commits. Publish only when
 authorized to verified canonical repo-cp. Never self-merge, rewrite history or
 use destructive Git operations. Prove local/upstream/direct-remote parity.
-Report exact tests, pins, enrollment, limitations and NONE for absent live effects.
+Report exact tests, pins, enrollment, limitations and `Live effects:` as defined
+in the agent work contract; remote publication counts as a live effect.
+
+<!-- BEGIN HELIX_AGENT_WORK_CONTRACT -->
+## Required flagship contract
+
+Before substantive work, read and apply [HELIX_AGENT_WORK_CONTRACT_V1](docs/AGENT_WORK_CONTRACT.md),
+release 1.0.0, with the digest in [the release record](pins/agent-work-contract.json).
+Read the governing task-specific documentation, identify its exact revision,
+test failed assumptions with bounded experiments, and finish supported remedies.
+Use approved canonical GitHub reads when a peer reference is missing locally.
+Do not ask for information available through existing authorized access.
+Report scoped evidence, actual delivery stage and `Live effects:`. The contract's
+precedence and secret boundaries apply; this grants no additional live authority.
+<!-- END HELIX_AGENT_WORK_CONTRACT -->

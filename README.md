@@ -1,4 +1,31 @@
-# Repository fleet governance
+# repo-cp — The Helix Agent Work Contract
+
+## Flagship: disciplined autonomy with evidence
+
+The [Helix Agent Work Contract](docs/AGENT_WORK_CONTRACT.md) is repo-cp's
+flagship work: the operator's shared standard for agents that read the right
+documentation, investigate intelligently, finish authorized work, and report
+exactly what their evidence supports.
+
+**Read the source. Test the assumption. Complete the work. Prove the claim.**
+
+The contract turns those expectations into reviewable obligations: explicit
+precedence, source revision identity, bounded experiments, no weakened tests,
+scoped PASS claims, witnessed overrides, and verified delivery stages. It makes
+initiative accountable without granting new credentials, peer ownership or live
+authority. A document cannot guarantee judgment; reviewers assess the work and
+its evidence, not a claim that the agent read the rules.
+
+- [Read the contract — release 1.0.0](docs/AGENT_WORK_CONTRACT.md).
+- [Adopt it and review a task](docs/AGENT_WORK_ADOPTION.md).
+- [Verify the published content digest](pins/agent-work-contract.json).
+
+Repository guidance must reference an exact released revision. Adoption means
+an instruction was installed; it does not prove that every agent complies or
+that an already-running session has reloaded it. Publication receipts distinguish
+verified adoption from pending or inaccessible repositories.
+
+## Repository governance and audit tools
 
 repo-cp inventories the Helix-ARPA repository fleet, checks declared public
 metadata, reports drift and prepares review artifacts. Foundation defines
