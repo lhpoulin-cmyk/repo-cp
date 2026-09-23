@@ -1,0 +1,15 @@
+{
+  "contract_id": "HELIX_AGENT_WORK_CONTRACT_V1",
+  "release": "1.1.0-rc.3",
+  "status": "candidate; existing adoption pins unchanged",
+  "path": "docs/AGENT_WORK_CONTRACT_CANDIDATE.md",
+  "sha256": "ecf323a58e1943fed778054d954cd7defd00794f54f3d6eb314e76f1405c6e3c",
+  "base_release": "1.0.0",
+  "base_commit": "4ede9b73501b38a2b0ba5a50c9c32875a2d0eb19",
+  "requested_date": "2026-09-23",
+  "changes": "Add section 7: canonical repository procedures, staging and tested content, cohesive commit framing, pull request preparation, checks and review, authorized publication and evidence. Direct pinned engineering-standard links and public voice guide; private profile excluded. Add public Helix Control Plane concept and naming companion.",
+  "companions": {
+    "docs/REPOSITORY_VOICE.md": "c61dfbe8fb7d1ca660e7c9ff371b68f0200d175400d778a2c934a022792925ba",
+    "docs/HELIX_CONTROL_PLANE.md": "874499b04a7671d05a51a1a25e079f28a6f3ef0b1901d908a3abc2076477d96f"
+  }
+}

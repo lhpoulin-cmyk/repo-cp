@@ -1,5 +1,9 @@
 # repo-cp — The Helix Agent Work Contract
 
+`repo-cp` means **repository governance control plane**. Read
+[Helix Control Plane: purpose and naming](docs/HELIX_CONTROL_PLANE.md) for the
+architecture, the `-cp` convention and the role of human judgment in automation.
+
 ## Flagship: disciplined autonomy with evidence
 
 The [Helix Agent Work Contract](docs/AGENT_WORK_CONTRACT.md) is repo-cp's
@@ -17,6 +21,8 @@ authority. A document cannot guarantee judgment; reviewers assess the work and
 its evidence, not a claim that the agent read the rules.
 
 - [Read the contract — release 1.0.0](docs/AGENT_WORK_CONTRACT.md).
+- [Review the 1.1.0 candidate — GitHub procedures, staging and commit framing](docs/AGENT_WORK_CONTRACT_CANDIDATE.md#7-make-github-work-deliberate-and-reviewable).
+- [Repository voice guide](docs/REPOSITORY_VOICE.md).
 - [Adopt it and review a task](docs/AGENT_WORK_ADOPTION.md).
 - [Verify the published content digest](pins/agent-work-contract.json).
 
