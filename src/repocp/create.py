@@ -18,7 +18,7 @@ from .consumer import ROOT
 from .diagnostics import blocker
 from .publication import (absolute_file, check_directory_path, exists, locked_directory,
                           rename_exclusive, require_unprivileged, termination_control, Interrupted)
-from .safety import Denied, read_public, require_single_regular
+from .safety import Denied, open_directory, read_public, require_single_regular
 from .scaffold import TEMPLATE_VERSION, scaffold
 
 INTENT = '.repo-cp-create.json'
@@ -60,16 +60,43 @@ def verify_tree(path, files, intent):
             raise Denied('CREATE_CONTENT_MISMATCH')
     if read_public(path, '.git/HEAD') != b'ref: refs/heads/main\n':
         raise Denied('CREATE_CONTENT_MISMATCH')
-    if set(os.listdir(path)) != set(files) | {INTENT, '.git'}:
+    # Inspect only fixed directories through no-follow descriptors. An altered
+    # recovery tree must never redirect inspection through a symlink or hide
+    # commits in packed refs, reflogs, alternate object stores or loose objects.
+    directories = {
+        '': set(files) | {INTENT, '.git'},
+        '.git': {'HEAD', 'config', 'objects', 'refs'},
+        '.git/refs': {'heads', 'tags'},
+        '.git/refs/heads': set(),
+        '.git/refs/tags': set(),
+        '.git/objects': {'info', 'pack'},
+        '.git/objects/info': set(),
+        '.git/objects/pack': set(),
+    }
+    for relative, expected in directories.items():
+        fd = open_directory(Path(path) / relative)
+        try:
+            if set(os.listdir(fd)) != expected:
+                raise Denied('CREATE_CONTENT_MISMATCH')
+        finally:
+            os.close(fd)
+    # This is a strict fresh-init format check, not a general Git config parser.
+    # Reject all other sections/keys, including case variants and include files,
+    # without asking Git to interpret potentially executable configuration.
+    lines = read_public(path, '.git/config').decode('ascii').splitlines()
+    if not lines or lines[0] != '[core]':
         raise Denied('CREATE_CONTENT_MISMATCH')
-    # Fresh init with an empty template has no hooks, refs, commits or remote.
-    if ((Path(path) / '.git/hooks').exists()
-            or set(p.name for p in (Path(path) / '.git/refs').iterdir()) != {'heads', 'tags'}
-            or any((Path(path) / '.git/refs/heads').iterdir())
-            or any((Path(path) / '.git/refs/tags').iterdir())):
-        raise Denied('CREATE_CONTENT_MISMATCH')
-    config = read_public(path, '.git/config')
-    if b'[remote ' in config or b'[include' in config:
+    config = {}
+    for line in lines[1:]:
+        key, separator, value = line.strip().partition(' = ')
+        if not separator or key in config:
+            raise Denied('CREATE_CONTENT_MISMATCH')
+        config[key] = value
+    required = {'repositoryformatversion': {'0'}, 'filemode': {'true', 'false'},
+                'bare': {'false'}, 'logallrefupdates': {'true'}}
+    allowed = {**required, 'ignorecase': {'true'}, 'symlinks': {'false'}}
+    if (not set(required) <= set(config) <= set(allowed)
+            or any(value not in allowed[key] for key, value in config.items())):
         raise Denied('CREATE_CONTENT_MISMATCH')
 
 
@@ -194,7 +221,7 @@ def inspect_repository(path):
     try:
         verify_tree(target, files, raw)
         content = 'VERIFIED'
-    except (Denied, OSError):
+    except (Denied, OSError, UnicodeError):
         content = 'INCOMPLETE_OR_CHANGED'
     return {'schema_version': 1, 'status': 'RECOVERY_REQUIRED', 'content': content,
             'location': 'TARGET' if target.name == data['target'] else 'STAGING',

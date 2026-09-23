@@ -216,6 +216,53 @@ class CreateTests(unittest.TestCase):
         self.assertEqual(create.inspect_repository(str(self.target))['content'], 'INCOMPLETE_OR_CHANGED')
         self.assertEqual(path.read_text(), 'changed')
 
+    def test_inspection_rejects_noninitial_git_config_without_executing_it(self):
+        self.make()
+        config = self.target / '.git/config'
+        original = config.read_bytes()
+        for addition in (b'[Remote "origin"]\n url = https://example.invalid/repo.git\n',
+                         b'[Include]\n path = /unavailable-private-config\n',
+                         b'\tsshCommand = /unavailable-command\n', b'\xff\n'):
+            with self.subTest(addition=addition):
+                config.write_bytes(original + addition)
+                with patch.object(create.subprocess, 'run', side_effect=AssertionError('must not execute')):
+                    self.assertEqual(create.inspect_repository(str(self.target))['content'],
+                                     'INCOMPLETE_OR_CHANGED')
+                self.assertEqual(config.read_bytes(), original + addition)
+        config.write_bytes(original)
+        self.assertEqual(create.inspect_repository(str(self.target))['content'], 'VERIFIED')
+
+    def test_inspection_rejects_commits_even_after_refs_are_packed(self):
+        self.make()
+        result = self.git('-c', 'user.name=Test', '-c', 'user.email=test@example.invalid',
+                          '-c', 'commit.gpgsign=false', 'commit', '--allow-empty', '-m', 'Synthetic commit')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.git('pack-refs', '--all').returncode, 0)
+        self.assertFalse(any((self.target / '.git/refs/heads').iterdir()))
+        self.assertEqual(create.inspect_repository(str(self.target))['content'], 'INCOMPLETE_OR_CHANGED')
+        self.assertEqual(self.git('rev-parse', '--verify', 'HEAD').returncode, 0)
+
+    def test_inspection_refuses_symlinked_git_directories_without_listing_target(self):
+        self.make()
+        outside = self.parent / 'outside'
+        outside.mkdir()
+        listing = os.listdir
+        def guarded_listing(path):
+            if isinstance(path, int):
+                self.assertNotEqual(os.fstat(path).st_ino, outside.stat().st_ino)
+            return listing(path)
+        for relative in ('refs/heads', 'refs/tags', 'objects/info', 'objects/pack'):
+            path = self.target / '.git' / relative
+            with self.subTest(relative=relative):
+                path.rmdir()
+                path.symlink_to(outside)
+                with patch.object(create.os, 'listdir', side_effect=guarded_listing):
+                    self.assertEqual(create.inspect_repository(str(self.target))['content'],
+                                     'INCOMPLETE_OR_CHANGED')
+                path.unlink()
+                path.mkdir()
+        self.assertEqual(create.inspect_repository(str(self.target))['content'], 'VERIFIED')
+
     def test_cli_success_and_error_output(self):
         result = subprocess.run([sys.executable, '-B', str(ROOT / 'tools/repo-cp'),
                                  'create', str(self.target), '--purpose', 'CLI example'], capture_output=True)
