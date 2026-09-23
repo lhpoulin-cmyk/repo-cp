@@ -6,6 +6,7 @@ import sys
 
 from .audit import audit, proposals, registry, text_report
 from .consumer import ROOT, render, verify
+from .diagnostics import blocker
 from .file_integrity import INVARIANT
 from .safety import Denied, MAX_BYTES
 
@@ -44,9 +45,10 @@ def main():
                 status = {'PASS': 0, 'DRIFT': 1, 'UNKNOWN': 1, 'BLOCKED': 2}[data['status']]
             output = (text_report(data) if args.text and args.command in ('audit', 'drift')
                       else json.dumps(data, indent=2, sort_keys=True) + '\n')
-    except (Denied, OSError, ValueError, TypeError, KeyError, RecursionError, ImportError):
-        # No partial stdout, traceback, rejected payload, paths or command text.
-        sys.stderr.write('BLOCKER=REPO_CP_NONCONFORMANCE\n')
+    except (Denied, OSError, ValueError, TypeError, KeyError, RecursionError, ImportError) as error:
+        # No partial stdout, traceback, rejected payload, paths or command text;
+        # only an allowlisted constant reason code may follow the blocker.
+        sys.stderr.write(blocker('REPO_CP_NONCONFORMANCE', error))
         return 2
     sys.stdout.write(output)
     return status

@@ -1,18 +1,42 @@
 #!/usr/bin/env python3
 """Full local synthetic suite; never executes a peer validator or action."""
-import ast
-import json
 import os
-from pathlib import Path
-import re
-import subprocess
 import sys
 
 sys.dont_write_bytecode = True
+
+
+def preflight():
+    """Refuse root and set-ID before imports, validation work, counts or output.
+
+    The suite includes the unprivileged publication reference, which refuses
+    privilege by design; a privileged run could only report misleading failures.
+    Mirrors repocp.publication.require_unprivileged without importing it, so no
+    repository or third-party module-level code runs first.
+    tests/test_validate_preflight.py checks the two predicates stay equivalent.
+    """
+    if os.geteuid() == 0 or os.getuid() != os.geteuid() or os.getgid() != os.getegid():
+        sys.stderr.write('BLOCKER=REPOSITORY_VALIDATION_FAILED\n'
+                         'REASON=UNPRIVILEGED_ENVIRONMENT_REQUIRED\n'
+                         'Run tools/validate as an ordinary user without root, set-user-ID '
+                         'or set-group-ID; the suite does not run privileged.\n')
+        raise SystemExit(2)
+
+
+preflight()
+
+import ast
+import json
+from pathlib import Path
+import re
+import subprocess
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from repocp.consumer import verify
+from repocp.agent_contract import verify_agent_contract
 from repocp.audit import registry
+from repocp.diagnostics import blocker
 from repocp.file_integrity import excluded, invariant, local_audit, mountpoints
 from repocp.safety import Denied, has_indicator, load, read_public
 from jsonschema import Draft202012Validator
@@ -40,12 +64,13 @@ def public_files(root):
 def main():
     verify()
     registry()
+    contract_artifacts = len(verify_agent_contract())
     policy = invariant(ROOT)
     first = local_audit(ROOT, policy)
     if first != local_audit(ROOT, policy) or first['status'] != 'PASS':
         raise Denied('FILE_INTEGRITY_AUDIT_FAILED')
-    counts = {'files_scanned': 0, 'python_syntax': 0, 'json_syntax': 0,
-              'yaml_syntax': 0, 'schemas': 0}
+    counts = {'agent_contract_artifacts': contract_artifacts, 'files_scanned': 0,
+              'python_syntax': 0, 'json_syntax': 0, 'yaml_syntax': 0, 'schemas': 0}
     for path in public_files(ROOT):
         relative = path.relative_to(ROOT)
         raw = read_public(ROOT, str(relative))
@@ -82,6 +107,6 @@ def main():
 if __name__ == '__main__':
     try:
         main()
-    except (Denied, ValueError, OSError, SyntaxError, yaml.YAMLError, subprocess.CalledProcessError):
-        sys.stderr.write('BLOCKER=REPOSITORY_VALIDATION_FAILED\n')
+    except (Denied, ValueError, OSError, SyntaxError, yaml.YAMLError, subprocess.CalledProcessError) as error:
+        sys.stderr.write(blocker('REPOSITORY_VALIDATION_FAILED', error))
         raise SystemExit(2)

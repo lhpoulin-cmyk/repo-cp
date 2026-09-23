@@ -26,6 +26,11 @@ its evidence, not a claim that the agent read the rules.
 - [Adopt it and review a task](docs/AGENT_WORK_ADOPTION.md).
 - [Verify the published content digest](pins/agent-work-contract.json).
 
+`tools/validate` verifies both release records and the release, candidate and
+companion bytes against reviewed anchors in `src/repocp/agent_contract.py`. A pin
+cannot nominate other files; a new candidate revision updates the anchors, pin and
+covered bytes together in one reviewed commit.
+
 Repository guidance must reference an exact released revision. Adoption means
 an instruction was installed; it does not prove that every agent complies or
 that an already-running session has reloaded it. Publication receipts distinguish
@@ -48,7 +53,8 @@ The target-facet contract remains unresolved in
 ## Read-only interfaces
 
 Requires Python 3.11+ on Linux and requirements.txt dependencies. Provision
-those separately, then use:
+those separately, then use the commands below. Run `tools/validate` as an ordinary
+user: it refuses root, set-user-ID and set-group-ID before any other work.
 
 ```sh
 ./tools/validate
@@ -75,6 +81,9 @@ exact copyable command and all Foundation evidence, impact and recovery labels,
 ending with EXECUTION_OCCURRED: NO and MUTATION_AUTHORIZED: NO. Rendering is
 not approval, readiness, execution or live acceptance. Invalid input returns
 exit 2, empty stdout and fixed non-disclosing stderr, without partial commands.
+Local integrity or configuration failures may add one `REASON=<code>` line, only
+for exact codes in the reviewed allowlist in `src/repocp/diagnostics.py`; input,
+argument and secret-indicator rejections keep the fixed blocker line alone.
 
 `validate` checks contract integrity and enrollment structure, not fleet health.
 Audit/drift return 0 for PASS, 1 for DRIFT or UNKNOWN, and 2 for BLOCKED/invalid
