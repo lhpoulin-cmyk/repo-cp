@@ -1,4 +1,4 @@
-"""Read-only consumer interfaces. No action executor exists."""
+"""Repository governance: read-only audits and explicit local repository creation."""
 import argparse
 import json
 from pathlib import Path
@@ -18,8 +18,11 @@ class Parser(argparse.ArgumentParser):
 
 
 def main():
+    if sys.argv[1:2] == ['create']:
+        from .create import main as create_main
+        return create_main(sys.argv[2:])
     try:
-        parser = Parser(description=__doc__)
+        parser = Parser(description=__doc__, epilog='Create a local repository: repo-cp create --help')
         parser.add_argument('command', choices=('validate', 'render', 'inventory', 'audit', 'drift', 'propose'))
         parser.add_argument('--fleet-root', type=Path, default=ROOT.parent)
         parser.add_argument('--pilot', action='store_true')

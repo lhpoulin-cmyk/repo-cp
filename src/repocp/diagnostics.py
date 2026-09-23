@@ -13,7 +13,8 @@ Internal by design:
   argument errors. Promoting them is an acceptance decision.
 - SECRET_INDICATOR, shared with render input; it would be a heuristic oracle.
 - Peer-evidence codes, which audits convert to findings, and every code of the
-  unprivileged publication reference, which no CLI or validation path reaches.
+  unprivileged publication reference, which remain generic even when creation
+  reuses the filesystem primitives.
 
 tests/test_diagnostics.py checks that every literal Denied code in src/repocp
 and tools is classified exactly once and that no classification is stale.
@@ -21,6 +22,9 @@ and tools is classified exactly once and that no classification is stale.
 from .safety import Denied
 
 PUBLIC = frozenset({
+    'CREATE_GIT_UNAVAILABLE', 'CREATE_GIT_FAILED', 'CREATE_CONTENT_MISMATCH',
+    'CREATE_DESTINATION_EXISTS', 'CREATE_RECOVERY_REQUIRED', 'CREATE_PREPARATION_FAILED',
+    'CREATE_INTENT_INVALID', 'CREATE_INTERRUPTED',
     'AGENT_CONTRACT_MISMATCH', 'AGENT_CONTRACT_PIN_INVALID', 'BROKEN_DOCUMENT_LINK',
     'DUPLICATE_REPOSITORY', 'ENROLLMENT_AUTHORITY_CONFLICT', 'ENROLLMENT_NONCONFORMANCE',
     'FILE_INTEGRITY_AUDIT_FAILED', 'FILE_INTEGRITY_NONCONFORMANCE',
@@ -32,7 +36,7 @@ PUBLIC = frozenset({
 })
 INTERNAL = frozenset({
     # Input, parsing, arguments and secret heuristic.
-    'CLI_ARGUMENTS', 'DUPLICATE_FIELD', 'INPUT_SIZE', 'INVALID_JSON',
+    'CREATE_INVALID_INPUT', 'CLI_ARGUMENTS', 'DUPLICATE_FIELD', 'INPUT_SIZE', 'INVALID_JSON',
     'OPERATOR_ACTION_NONCONFORMANCE', 'SECRET_INDICATOR', 'UNKNOWN_ARGUMENT',
     # Peer evidence and local audit internals, reported as findings instead.
     'AUDIT_DIRECTORY_CHANGED', 'AUTH_REVIEW_UNAVAILABLE', 'INVALID_GIT_EXCLUSION',

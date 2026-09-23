@@ -50,6 +50,20 @@ The missing-contract blocker is closed by
 The target-facet contract remains unresolved in
 [Foundation requests](docs/FOUNDATION_REQUESTS.md).
 
+## Create a repository
+
+`tools/repo-cp create /absolute/parent/example-cp --purpose "Describe the repository"`
+creates a local Git repository with baseline `AGENTS.md`,
+`OPENAI_PROJECT_INSTRUCTIONS.md`, README, ownership and provenance documents.
+Use `--dry-run` to preview the exact generated text without creating files.
+The existing parent must be owned by the current user and not group/world writable.
+
+The project Instructions text is ready to paste into the desktop app's project
+settings. Local Codex projects discover `AGENTS.md` from their primary folder;
+the generated Instructions file is not an automatic settings import. Creation
+makes no remote, initial commit or enrollment. See
+[creation, desktop setup and recovery](docs/REPOSITORY_CREATION.md).
+
 ## Read-only interfaces
 
 Requires Python 3.11+ on Linux and requirements.txt dependencies. Provision
@@ -68,12 +82,14 @@ user: it refuses root, set-user-ID and set-group-ID before any other work.
 ./tools/repo-cp render < tests/fixtures/auth-cp/ready.json
 ```
 
-The CLI never executes a declaration or peer tool, elevates, accesses credential
-stores, contacts a network or writes files. Reports/proposals go to stdout; an
-operator may capture a reviewed artifact. tools/validate separately runs local
-synthetic tests and metadata checks, without auditing or executing peers.
-Use `--fleet-root /absolute/fleet/path` for a local checkout parent. Unsupported
-Git layouts report UNKNOWN, without subprocess or credential fallback.
+The read-only commands never execute a declaration or peer tool, elevate, access
+credential stores, contact a network or write files. Only explicit `create`
+invocations write a new local repository and run isolated Git initialization.
+Reports/proposals go to stdout; an operator may capture a reviewed artifact.
+tools/validate separately runs local synthetic tests and metadata checks,
+without auditing or executing peers. Use `--fleet-root /absolute/fleet/path` for
+a local checkout parent. Unsupported Git layouts report UNKNOWN, without
+subprocess or credential fallback.
 
 Rendering verifies accepted Foundation bytes before using its exact parser,
 validator and renderer. BLOCKED has no command. READY_FOR_REVIEW displays one

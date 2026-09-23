@@ -1,5 +1,11 @@
 # Enrollment, audit and recovery
 
+## Local repository creation
+
+Use [repository creation](REPOSITORY_CREATION.md) for the explicit local `create`
+command, generated AGENTS.md and desktop project Instructions. Creation does not
+add or change enrollment records. Existing audit commands remain read-only.
+
 ## Enrollment
 
 Discovery is observation, not enrollment. The local versioned
@@ -78,13 +84,15 @@ No fallback renderer, mutable pin or downloaded-code execution is allowed.
 
 Pin updates require compatibility review, separate immutable repository and
 doctrine pins, SHA-256 checks, reference/consumer tests, diff review and normal
-publication authority. Preserve historical acceptance. Never create self-referential
-commit pins; final handoff commits can follow implementation commits.
-Reversal uses a reviewed follow-up commit, never history rewriting. No runtime
-rollback is needed because no runtime mutation occurs. Durable handoffs include
-commits, acceptance/pilot evidence, checks, limitations, dirty-state handling,
-remote parity and the next exact decision. CI proves only local synthetic
-properties; no peer credentials or operational/live-infrastructure jobs exist.
+publication authority. Preserve historical acceptance. Never create
+self-referential commit pins; final handoff commits can follow implementation
+commits. Reversal uses a reviewed follow-up commit, never history rewriting. The
+read-only interfaces require no runtime rollback. Local creation has its own
+staging, publication and recovery boundaries in the creation procedure. Durable
+handoffs include commits, acceptance/pilot evidence, checks, limitations,
+dirty-state handling, remote parity and the next exact decision. CI proves only
+local synthetic properties; no peer credentials or
+operational/live-infrastructure jobs exist.
 
 ## Historical ansible-cp pilot
 

@@ -15,9 +15,13 @@ remote parity before edits/publication. Preserve unrelated work and continue
 in-scope repairs. Peer enrollment and modifications require separate scope.
 
 Use reviewed public metadata allowlists only. Never read credential stores,
-secret-bearing environments, private material or live dumps. Runtime CLI must
+secret-bearing environments, private material or live dumps. Read-only CLI commands must
 not spawn processes, execute actions or peer validators, discover arbitrary
-files, elevate, contact networks, or write repositories. Test runners may run
+files, elevate, contact networks, or write repositories. The operator-requested
+`create` command is the narrow exception: create one new local Git repository
+with baseline guidance, as specified in docs/REPOSITORY_CREATION.md. It may
+run isolated local Git initialization; it never overwrites an existing target,
+contacts a network, enrolls a peer or edits desktop app settings. Test runners may run
 local synthetic tests only. Never print suspected secret values. Indicator
 scans are heuristics, not proof that arbitrary content is secret-free.
 
