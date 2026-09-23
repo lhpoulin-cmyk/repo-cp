@@ -84,11 +84,13 @@ byte count, hash and single-link status. Source changes are failures. The source
 may be on another filesystem; the temporary-to-final rename MUST NOT be.
 
 [src/repocp/publication.py](../src/repocp/publication.py) is an unprivileged,
-public/synthetic-only reference library. It is never imported by the runtime CLI
-and is not a privileged helper, credential publisher, remediation executor or
-new automatic action lane. The caller must hold exact operation authority and
-supply absolute paths, expected metadata and public content digest, the exact
-reviewed source revision, and a stable
+public/synthetic-only reference library. Read-only CLI commands never import it.
+The operator-requested local `create` command reuses its unprivileged, locking
+and exclusive-rename primitives, under the separate [creation
+procedure](REPOSITORY_CREATION.md). It is not a privileged helper, credential
+publisher, remediation executor or new automatic action lane. The caller must
+hold exact operation authority and supply absolute paths, expected metadata and
+public content digest, the exact reviewed source revision, and a stable
 cryptographically random operation identifier. Digests here are public artifact
 integrity values, never password hashes or other credential material.
 

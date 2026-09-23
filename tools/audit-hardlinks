@@ -8,6 +8,7 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from repocp.file_integrity import invariant, local_audit
+from repocp.diagnostics import blocker
 from repocp.safety import Denied
 
 
@@ -16,8 +17,8 @@ def main():
         if len(sys.argv) != 1:
             raise Denied('UNKNOWN_ARGUMENT')
         data = local_audit(ROOT, invariant(ROOT))
-    except (Denied, OSError, ValueError, KeyError, TypeError):
-        sys.stderr.write('BLOCKER=FILE_INTEGRITY_AUDIT_UNAVAILABLE\n')
+    except (Denied, OSError, ValueError, KeyError, TypeError) as error:
+        sys.stderr.write(blocker('FILE_INTEGRITY_AUDIT_UNAVAILABLE', error))
         return 2
     print(json.dumps(data, sort_keys=True, indent=2))
     return {'PASS': 0, 'UNKNOWN': 1, 'DRIFT': 1, 'BLOCKED': 2}[data['status']]

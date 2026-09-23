@@ -12,8 +12,12 @@ target-facet contract is unresolved; no ownership assignment or virtualization-c
 is created. B70 remains NOT_ADMITTED; its observed 192.168.10.91 endpoint is not
 desired network state; live mutation is NONE.
 
-The local enrollment schema describes audit scope only, not a competing universal
-Foundation standard. Actions are declarations for review; no executor exists.
+The local enrollment schema describes audit scope only, not a competing
+universal Foundation standard. Actions are declarations for review; no
+declaration executor exists. The explicit local repository creation command owns
+only baseline scaffolding, as described in [repository
+creation](docs/REPOSITORY_CREATION.md); it grants no enrollment or remote, peer
+or runtime authority.
 
 Louis's explicit fleet-wide hardlink and production-engineering directive is
 recorded canonically as [HELIX_NO_HARDLINKS_V1](docs/FILE_INTEGRITY.md) in repo-cp's
