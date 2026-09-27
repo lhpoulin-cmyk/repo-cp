@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "synthetic.repo-cp.001",
+  "target_repository": "repo-cp",
+  "objective": "Validate the repository work protocol using synthetic local evidence.",
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "1111111111111111111111111111111111111111"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "synthetic-primary-checkout",
+    "execution_workspace_identity": "synthetic-isolated-checkout",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "1111111111111111111111111111111111111111",
+  "ending_head": "1111111111111111111111111111111111111111",
+  "starting_dirty_state": {
+    "state": "CLEAN",
+    "staged": [],
+    "unstaged": [],
+    "untracked": []
+  },
+  "ending_dirty_state": {
+    "state": "DIRTY",
+    "staged": [],
+    "unstaged": [
+      "README.md"
+    ],
+    "untracked": []
+  },
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {
+      "staged": [],
+      "unstaged": [
+        "README.md"
+      ],
+      "untracked": []
+    },
+    "pre_existing": {
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    },
+    "unrelated": {
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    },
+    "unknown": {
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    }
+  },
+  "files_changed": [],
+  "mutations_performed": [
+    "Validated synthetic JSON in memory"
+  ],
+  "mutations_not_performed": [
+    "No repository, network, or live-state mutation"
+  ],
+  "validation": [
+    {
+      "check": "Synthetic work-result conformance",
+      "status": "PASS",
+      "evidence": "The local validator returned a deterministic receipt."
+    }
+  ],
+  "evidence_produced": [
+    "In-memory conformance receipt"
+  ],
+  "delivery_stage": "LOCAL_UNCOMMITTED",
+  "status_topology": {
+    "nodes": [
+      {
+        "id": "work.validation",
+        "kind": "WORK",
+        "status": "COMPLETED",
+        "summary": "Synthetic validation completed.",
+        "owner": "repo-cp",
+        "blocking": false
+      },
+      {
+        "id": "work.optional-review",
+        "kind": "WORK",
+        "status": "NON_BLOCKING_INCOMPLETE",
+        "summary": "Optional human review remains.",
+        "owner": "reviewer",
+        "blocking": false
+      },
+      {
+        "id": "authority.publish",
+        "kind": "AUTHORIZATION",
+        "status": "AUTHORIZATION_REQUIRED",
+        "summary": "Publication would require operator authority.",
+        "owner": "operator",
+        "blocking": false
+      },
+      {
+        "id": "owner.operator",
+        "kind": "DEPENDENCY",
+        "status": "ACTIVE",
+        "summary": "The operator retains publication authority.",
+        "owner": "operator",
+        "blocking": false
+      }
+    ],
+    "relationships": [
+      {
+        "subject": "work.optional-review",
+        "predicate": "NON_BLOCKING_FOR",
+        "object": "work.validation"
+      },
+      {
+        "subject": "authority.publish",
+        "predicate": "REQUIRES_AUTHORIZATION_FROM",
+        "object": "owner.operator"
+      }
+    ]
+  },
+  "recommended_next_action": "Review the synthetic receipt; perform no live action.",
+  "live_effects": []
+}

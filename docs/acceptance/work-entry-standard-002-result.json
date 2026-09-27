@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "repo-cp.work-entry-standard-002",
+  "target_repository": "repo-cp",
+  "objective": "Establish permanent work-entry, Clean Execution Baseline, upstream-first, status-topology, writer-boundary, and structured work-result standards using the smallest schema-backed repo-cp primitive.",
+  "canonical_baseline": {
+    "intended_ref": "origin/main",
+    "resolved_head": "f1425811f8e7fab2227367cc21b4cacdb9041d0a"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "repo-cp primary checkout on main",
+    "execution_workspace_identity": ".agent-checkouts/codex/work-entry-standard-002 on codex/work-entry-standard-002",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "f1425811f8e7fab2227367cc21b4cacdb9041d0a",
+  "ending_head": "f1425811f8e7fab2227367cc21b4cacdb9041d0a",
+  "starting_dirty_state": {
+    "state": "CLEAN",
+    "staged": [],
+    "unstaged": [],
+    "untracked": []
+  },
+  "ending_dirty_state": {
+    "state": "DIRTY",
+    "staged": [],
+    "unstaged": [
+      "docs/OPERATIONS.md",
+      "src/repocp/cli.py",
+      "src/repocp/diagnostics.py",
+      "tools/validate"
+    ],
+    "untracked": [
+      ".gitattributes",
+      "docs/WORK_PROTOCOL.md",
+      "docs/WORK_PROTOCOL_USAGE.md",
+      "docs/acceptance/work-entry-standard-002-comparison.md",
+      "docs/acceptance/work-entry-standard-002-entry.json",
+      "docs/acceptance/work-entry-standard-002-result.json",
+      "docs/handoffs/WORK_ENTRY_STANDARD_002.md",
+      "research-notes/2026-09-27-clean-execution-baseline.md",
+      "schemas/work-entry-v1.schema.json",
+      "schemas/work-result-v1.schema.json",
+      "src/repocp/work_protocol.py",
+      "tests/fixtures/work-protocol/entry.json",
+      "tests/fixtures/work-protocol/result.json",
+      "tests/test_work_protocol.py"
+    ]
+  },
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {
+      "staged": [],
+      "unstaged": [
+        "docs/OPERATIONS.md",
+        "src/repocp/cli.py",
+        "src/repocp/diagnostics.py",
+        "tools/validate"
+      ],
+      "untracked": [
+        ".gitattributes",
+        "docs/WORK_PROTOCOL.md",
+        "docs/WORK_PROTOCOL_USAGE.md",
+        "docs/acceptance/work-entry-standard-002-comparison.md",
+        "docs/acceptance/work-entry-standard-002-entry.json",
+        "docs/acceptance/work-entry-standard-002-result.json",
+        "docs/handoffs/WORK_ENTRY_STANDARD_002.md",
+        "research-notes/2026-09-27-clean-execution-baseline.md",
+        "schemas/work-entry-v1.schema.json",
+        "schemas/work-result-v1.schema.json",
+        "src/repocp/work_protocol.py",
+        "tests/fixtures/work-protocol/entry.json",
+        "tests/fixtures/work-protocol/result.json",
+        "tests/test_work_protocol.py"
+      ]
+    },
+    "pre_existing": {
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    },
+    "unrelated": {
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    },
+    "unknown": {
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    }
+  },
+  "files_changed": [
+    ".gitattributes",
+    "docs/OPERATIONS.md",
+    "docs/WORK_PROTOCOL.md",
+    "docs/WORK_PROTOCOL_USAGE.md",
+    "docs/acceptance/work-entry-standard-002-comparison.md",
+    "docs/acceptance/work-entry-standard-002-entry.json",
+    "docs/acceptance/work-entry-standard-002-result.json",
+    "docs/handoffs/WORK_ENTRY_STANDARD_002.md",
+    "research-notes/2026-09-27-clean-execution-baseline.md",
+    "schemas/work-entry-v1.schema.json",
+    "schemas/work-result-v1.schema.json",
+    "src/repocp/cli.py",
+    "src/repocp/diagnostics.py",
+    "src/repocp/work_protocol.py",
+    "tests/fixtures/work-protocol/entry.json",
+    "tests/fixtures/work-protocol/result.json",
+    "tests/test_work_protocol.py",
+    "tools/validate"
+  ],
+  "mutations_performed": [
+    "Added the verbatim Standard 002 handoff as task evidence",
+    "Added permanent work protocol, Clean Execution Baseline, upstream-first, status-topology, writer-boundary, ownership, role, and usage documentation",
+    "Added strict work-entry and work-result JSON schemas with a bounded semantic validator",
+    "Added non-executing CLI conformance receipts and integrated both schemas into repository validation",
+    "Added an exact-path whitespace attribute preserving the verbatim Markdown handoff while retaining repository whitespace checks elsewhere",
+    "Added valid, invalid, atomicity, non-execution, and complete status-vocabulary tests",
+    "Saved the original-to-canonical comparison and this schema-valid task evidence",
+    "Recorded the observed bounded adaptation as a research anecdote without making an AGI claim"
+  ],
+  "mutations_not_performed": [
+    "No commit, push, merge, publication, deployment, enrollment, peer-repository, Foundation, credential, service, or storage mutation",
+    "No automatic agent dispatch or execution of work-entry content",
+    "No cleanup, reset, stash, overwrite, or normalization of the original checkout's pre-existing work"
+  ],
+  "validation": [
+    {
+      "check": "Focused work protocol and diagnostic tests",
+      "status": "PASS",
+      "evidence": "15 focused work-protocol and diagnostic tests passed before the full suite."
+    },
+    {
+      "check": "Full repository validation",
+      "status": "PASS",
+      "evidence": "tools/validate passed metadata, syntax, schema, link, indicator, integrity and whitespace checks plus 13 Foundation and 148 repo-cp tests."
+    },
+    {
+      "check": "Local file-integrity audit",
+      "status": "PASS",
+      "evidence": "RC011 reported PASS for all 123 governed files."
+    },
+    {
+      "check": "Enrolled fleet audit",
+      "status": "DRIFT",
+      "evidence": "auth-cp and ansible-cp local revisions and reviewed metadata differ; ansible-cp auth pins require owner review; RC009 remains UNKNOWN offline."
+    },
+    {
+      "check": "Canonical repo-cp base parity",
+      "status": "PASS",
+      "evidence": "The task checkout HEAD and tracking origin/main both equal direct-remote f1425811f8e7fab2227367cc21b4cacdb9041d0a before task edits."
+    }
+  ],
+  "evidence_produced": [
+    "docs/handoffs/WORK_ENTRY_STANDARD_002.md",
+    "docs/acceptance/work-entry-standard-002-comparison.md",
+    "docs/acceptance/work-entry-standard-002-entry.json",
+    "docs/acceptance/work-entry-standard-002-result.json",
+    "research-notes/2026-09-27-clean-execution-baseline.md",
+    "Deterministic CLI PASS receipts for both protocol fixtures"
+  ],
+  "delivery_stage": "LOCAL_UNCOMMITTED",
+  "status_topology": {
+    "nodes": [
+      {
+        "id": "work.standard-002",
+        "kind": "WORK",
+        "status": "COMPLETED",
+        "summary": "Standard 002 documentation, schemas, validator, CLI, tests, comparison, usage, and evidence are implemented.",
+        "owner": "repo-cp",
+        "blocking": false
+      },
+      {
+        "id": "work.clean-execution-baseline",
+        "kind": "WORK",
+        "status": "COMPLETED",
+        "summary": "Portfolio-wide Clean Execution Baseline schema, mutation gate, ending attribution, documentation, research note, fixtures, and tests are implemented.",
+        "owner": "repo-cp",
+        "blocking": false
+      },
+      {
+        "id": "work.validation",
+        "kind": "WORK",
+        "status": "COMPLETED",
+        "summary": "Focused and full local validation passed.",
+        "owner": "repo-cp",
+        "blocking": false
+      },
+      {
+        "id": "unknown.usage-meter",
+        "kind": "EXTERNAL_DEPENDENCY",
+        "status": "UNKNOWN",
+        "summary": "Exact plan percentage and token usage are unavailable from repository tooling.",
+        "owner": "agent platform",
+        "blocking": false
+      },
+      {
+        "id": "drift.auth-cp",
+        "kind": "EXTERNAL_DEPENDENCY",
+        "status": "DRIFT",
+        "summary": "The enrolled auth-cp checkout has revision and accepted-public-metadata drift.",
+        "owner": "auth-cp",
+        "blocking": false
+      },
+      {
+        "id": "drift.ansible-cp",
+        "kind": "EXTERNAL_DEPENDENCY",
+        "status": "DRIFT",
+        "summary": "The enrolled ansible-cp checkout has revision, metadata, and auth-pin drift.",
+        "owner": "ansible-cp",
+        "blocking": false
+      },
+      {
+        "id": "request.auth-cp-review",
+        "kind": "CROSS_CONTROL_PLANE_REQUEST",
+        "status": "PENDING",
+        "summary": "Review current auth-cp public metadata before any repo-cp enrollment refresh.",
+        "owner": "auth-cp",
+        "blocking": false
+      },
+      {
+        "id": "request.ansible-cp-review",
+        "kind": "CROSS_CONTROL_PLANE_REQUEST",
+        "status": "PENDING",
+        "summary": "Review ansible-cp public metadata and auth-policy pins before any repo-cp enrollment refresh.",
+        "owner": "ansible-cp",
+        "blocking": false
+      },
+      {
+        "id": "authority.publication",
+        "kind": "AUTHORIZATION",
+        "status": "AUTHORIZATION_REQUIRED",
+        "summary": "Commit, push, merge, and publication remain subject to Louis's existing authority.",
+        "owner": "Louis",
+        "blocking": false
+      },
+      {
+        "id": "owner.louis",
+        "kind": "DEPENDENCY",
+        "status": "ACTIVE",
+        "summary": "Louis retains approval and publication authority.",
+        "owner": "Louis",
+        "blocking": false
+      }
+    ],
+    "relationships": [
+      {
+        "subject": "work.standard-002",
+        "predicate": "DEPENDS_ON",
+        "object": "work.validation"
+      },
+      {
+        "subject": "work.standard-002",
+        "predicate": "DEPENDS_ON",
+        "object": "work.clean-execution-baseline"
+      },
+      {
+        "subject": "request.auth-cp-review",
+        "predicate": "HANDOFF_TO",
+        "object": "drift.auth-cp"
+      },
+      {
+        "subject": "request.ansible-cp-review",
+        "predicate": "HANDOFF_TO",
+        "object": "drift.ansible-cp"
+      },
+      {
+        "subject": "authority.publication",
+        "predicate": "REQUIRES_AUTHORIZATION_FROM",
+        "object": "owner.louis"
+      }
+    ]
+  },
+  "recommended_next_action": "Review the local task diff and structured result; authorize publication only if the standard and protocol shape are accepted.",
+  "live_effects": []
+}

@@ -31,6 +31,30 @@ explicitly scoped approval; no sibling discovery enrolls peers.
 
 ## Checks
 
+### Work protocol conformance
+
+[`HELIX_REPOSITORY_WORK_PROTOCOL_V1`](WORK_PROTOCOL.md) defines the local,
+schema-backed work-entry and work-result boundary. Validate bounded public JSON
+from standard input with:
+
+```sh
+./tools/repo-cp check-work-entry < work-entry.json
+./tools/repo-cp check-work-result < work-result.json
+```
+
+A PASS receipt proves schema and local relationship conformance only. Work-entry
+receipts also report the `HELIX_CLEAN_EXECUTION_BASELINE_V1` mutation gate;
+`CLOSED` prohibits repository mutation and `OPEN` does not grant authority.
+The entry check exits 1 for a conforming closed gate, 0 for an open gate, and 2
+for nonconformance. Work-result receipts confirm complete ending-dirtiness attribution. These
+commands do not execute work, grant authority, inspect a target repository,
+contact a network, or write an artifact. Failed input produces no partial stdout
+or rejected values. `./tools/repo-cp validate` and `./tools/validate` verify both
+protocol schemas alongside the existing Foundation, enrollment and integrity
+checks.
+
+### Repository and file-integrity checks
+
 The operator-directed [file-integrity doctrine](FILE_INTEGRITY.md) records
 `HELIX_NO_HARDLINKS_V1`, its schema-backed production-engineering requirements,
 verified copy/publication reference and peer adoption process. Run

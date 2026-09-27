@@ -9,6 +9,7 @@ from .consumer import ROOT, render, verify
 from .diagnostics import blocker
 from .file_integrity import INVARIANT
 from .safety import Denied, MAX_BYTES
+from .work_protocol import CLEAN_EXECUTION_BASELINE, schemas as protocol_schemas, validate as validate_work
 
 
 class Parser(argparse.ArgumentParser):
@@ -23,7 +24,8 @@ def main():
         return create_main(sys.argv[2:])
     try:
         parser = Parser(description=__doc__, epilog='Create a local repository: repo-cp create --help')
-        parser.add_argument('command', choices=('validate', 'render', 'inventory', 'audit', 'drift', 'propose'))
+        parser.add_argument('command', choices=('validate', 'render', 'inventory', 'audit', 'drift', 'propose',
+                                                'check-work-entry', 'check-work-result'))
         parser.add_argument('--fleet-root', type=Path, default=ROOT.parent)
         parser.add_argument('--pilot', action='store_true')
         parser.add_argument('--repository', help='Restrict an already selected enrolled/pilot scope')
@@ -32,12 +34,21 @@ def main():
         if args.command == 'render':
             output = render(sys.stdin.buffer.read(MAX_BYTES + 1))
             status = 0
+        elif args.command in ('check-work-entry', 'check-work-result'):
+            verify()
+            kind = 'entry' if args.command == 'check-work-entry' else 'result'
+            data = validate_work(kind, sys.stdin.buffer.read(MAX_BYTES + 1))
+            output = json.dumps(data, indent=2, sort_keys=True) + '\n'
+            status = 1 if kind == 'entry' and data['mutation_gate'] == 'CLOSED' else 0
         else:
             verify()
             data = registry()
             if args.command == 'validate':
+                protocol_schemas()
                 data = {'status': 'PASS', 'foundation_integrity': 'PASS', 'enrollment_schema': 'PASS',
-                        'file_integrity_schema': 'PASS', 'invariant_id': INVARIANT,
+                        'file_integrity_schema': 'PASS', 'work_entry_schema': 'PASS',
+                        'work_result_schema': 'PASS', 'invariant_id': INVARIANT,
+                        'clean_execution_invariant_id': CLEAN_EXECUTION_BASELINE,
                         'automatic_execution': False, 'live_mutation': 'NONE'}
             elif args.command != 'inventory':
                 data = audit(args.fleet_root, pilot=args.pilot, repository=args.repository)

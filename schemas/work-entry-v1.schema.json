@@ -1,0 +1,199 @@
+{
+  "$id": "urn:helix:repo-cp:work-entry:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol",
+    "clean_execution_baseline",
+    "work_entry_id",
+    "work_entry_phase",
+    "prepared_by",
+    "target_repository",
+    "objective",
+    "governing_standards",
+    "authority",
+    "canonical_baseline",
+    "source_workspace",
+    "execution_workspace",
+    "isolation",
+    "dependencies",
+    "expected_validation",
+    "mutation_scope",
+    "required_evidence",
+    "expected_result_protocol"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "HELIX_WORK_ENTRY_V1" },
+    "clean_execution_baseline": { "const": "HELIX_CLEAN_EXECUTION_BASELINE_V1" },
+    "work_entry_id": { "$ref": "#/$defs/id" },
+    "work_entry_phase": { "enum": ["START", "CONTINUE"] },
+    "prepared_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "identifier"],
+      "properties": {
+        "role": { "enum": ["OPERATOR", "ARCHITECT", "EXECUTOR", "EXPEDITION", "OTHER"] },
+        "identifier": { "$ref": "#/$defs/text" }
+      }
+    },
+    "target_repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "canonical_remote", "branch"],
+      "properties": {
+        "name": { "$ref": "#/$defs/name" },
+        "canonical_remote": { "$ref": "#/$defs/text" },
+        "branch": { "$ref": "#/$defs/name" }
+      }
+    },
+    "objective": { "$ref": "#/$defs/text" },
+    "governing_standards": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "granted", "explicitly_not_granted", "live_effects_authorized"],
+      "properties": {
+        "source": { "$ref": "#/$defs/text" },
+        "granted": { "$ref": "#/$defs/unique_texts" },
+        "explicitly_not_granted": { "$ref": "#/$defs/unique_texts" },
+        "live_effects_authorized": { "type": "boolean" }
+      }
+    },
+    "canonical_baseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intended_ref", "resolved_head", "direct_remote_verified"],
+      "properties": {
+        "intended_ref": { "$ref": "#/$defs/text" },
+        "resolved_head": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "direct_remote_verified": { "type": "boolean" }
+      }
+    },
+    "source_workspace": { "$ref": "#/$defs/source_workspace" },
+    "execution_workspace": { "$ref": "#/$defs/execution_workspace" },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["used", "mechanism", "reason"],
+      "properties": {
+        "used": { "type": "boolean" },
+        "mechanism": { "enum": ["NONE", "CHECKOUT", "WORKTREE"] },
+        "reason": { "$ref": "#/$defs/text" }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/dependency" }
+    },
+    "expected_validation": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "mutation_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "prohibited"],
+      "properties": {
+        "allowed": { "$ref": "#/$defs/unique_texts" },
+        "prohibited": { "$ref": "#/$defs/unique_texts" }
+      }
+    },
+    "required_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "expected_result_protocol": { "const": "HELIX_WORK_RESULT_V1" }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/-]*$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "unique_texts": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/text" }
+    },
+    "revision_or_unknown": {
+      "oneOf": [
+        { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        { "type": "null" }
+      ]
+    },
+    "dirty_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "staged", "unstaged", "untracked"],
+      "properties": {
+        "state": { "enum": ["CLEAN", "DIRTY", "UNKNOWN"] },
+        "staged": { "$ref": "#/$defs/unique_texts" },
+        "unstaged": { "$ref": "#/$defs/unique_texts" },
+        "untracked": { "$ref": "#/$defs/unique_texts" }
+      }
+    },
+    "source_workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "head", "dirty_state", "dirtiness_attribution"],
+      "properties": {
+        "identity": { "$ref": "#/$defs/text" },
+        "head": { "$ref": "#/$defs/revision_or_unknown" },
+        "dirty_state": { "$ref": "#/$defs/dirty_state" },
+        "dirtiness_attribution": { "$ref": "#/$defs/dirtiness_attribution" }
+      }
+    },
+    "execution_workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "head", "dirty_state", "dirtiness_attribution", "mutation_gate"],
+      "properties": {
+        "identity": { "$ref": "#/$defs/text" },
+        "head": { "$ref": "#/$defs/revision_or_unknown" },
+        "dirty_state": { "$ref": "#/$defs/dirty_state" },
+        "dirtiness_attribution": { "$ref": "#/$defs/dirtiness_attribution" },
+        "mutation_gate": { "enum": ["OPEN", "CLOSED"] }
+      }
+    },
+    "dirtiness_attribution": {
+      "enum": ["NONE", "CURRENT_WORK_ENTRY", "PRE_EXISTING", "UNRELATED", "MIXED", "UNKNOWN"]
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "description", "owner", "status"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "enum": ["DEPENDENCY", "EXTERNAL_DEPENDENCY", "CROSS_CONTROL_PLANE"] },
+        "description": { "$ref": "#/$defs/text" },
+        "owner": { "$ref": "#/$defs/text" },
+        "status": { "enum": ["COMPLETED", "ACTIVE", "PENDING", "BLOCKED", "UNKNOWN", "DRIFT", "AUTHORIZATION_REQUIRED"] }
+      }
+    }
+  }
+}

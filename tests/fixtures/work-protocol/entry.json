@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_ENTRY_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "synthetic.repo-cp.001",
+  "work_entry_phase": "START",
+  "prepared_by": {
+    "role": "ARCHITECT",
+    "identifier": "synthetic-planner"
+  },
+  "target_repository": {
+    "name": "repo-cp",
+    "canonical_remote": "https://example.invalid/repo-cp.git",
+    "branch": "main"
+  },
+  "objective": "Validate the repository work protocol using synthetic local evidence.",
+  "governing_standards": [
+    "HELIX_REPOSITORY_WORK_PROTOCOL_V1"
+  ],
+  "authority": {
+    "source": "Synthetic unit-test authority only",
+    "granted": [
+      "Read and validate this synthetic fixture"
+    ],
+    "explicitly_not_granted": [
+      "Execute actions or mutate live state"
+    ],
+    "live_effects_authorized": false
+  },
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "1111111111111111111111111111111111111111",
+    "direct_remote_verified": false
+  },
+  "source_workspace": {
+    "identity": "synthetic-primary-checkout",
+    "head": "1111111111111111111111111111111111111111",
+    "dirty_state": {
+      "state": "DIRTY",
+      "staged": [],
+      "unstaged": [
+        "README.md"
+      ],
+      "untracked": []
+    },
+    "dirtiness_attribution": "PRE_EXISTING"
+  },
+  "execution_workspace": {
+    "identity": "synthetic-isolated-checkout",
+    "head": "1111111111111111111111111111111111111111",
+    "dirty_state": {
+      "state": "CLEAN",
+      "staged": [],
+      "unstaged": [],
+      "untracked": []
+    },
+    "dirtiness_attribution": "NONE",
+    "mutation_gate": "OPEN"
+  },
+  "isolation": {
+    "used": true,
+    "mechanism": "CHECKOUT",
+    "reason": "The synthetic source workspace contains pre-existing dirtiness."
+  },
+  "dependencies": [
+    {
+      "id": "dependency.local-schema",
+      "kind": "DEPENDENCY",
+      "description": "The local schema must be available.",
+      "owner": "repo-cp",
+      "status": "COMPLETED"
+    }
+  ],
+  "expected_validation": [
+    "Run the synthetic unit test suite"
+  ],
+  "mutation_scope": {
+    "allowed": [
+      "Synthetic fixture validation"
+    ],
+    "prohibited": [
+      "Network access",
+      "Live mutation"
+    ]
+  },
+  "required_evidence": [
+    "A deterministic PASS receipt"
+  ],
+  "expected_result_protocol": "HELIX_WORK_RESULT_V1"
+}
