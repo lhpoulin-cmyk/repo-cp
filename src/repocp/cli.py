@@ -23,10 +23,19 @@ def main():
     if sys.argv[1:2] == ['create']:
         from .create import main as create_main
         return create_main(sys.argv[2:])
+    if sys.argv[1:2] == ['usage-advice']:
+        try:
+            from .usage_advice import main as usage_advice_main
+            return usage_advice_main(sys.argv[2:])
+        except (Denied, OSError, ValueError, TypeError, KeyError, RecursionError, ImportError) as error:
+            sys.stderr.write(blocker('REPO_CP_NONCONFORMANCE', error))
+            return 2
     try:
-        parser = Parser(description=__doc__, epilog='Create a local repository: repo-cp create --help')
+        parser = Parser(description=__doc__, epilog=(
+            'Create a local repository: repo-cp create --help; '
+            'evaluate capacity evidence: repo-cp usage-advice --help'))
         parser.add_argument('command', choices=('validate', 'render', 'inventory', 'audit', 'drift', 'propose',
-                                                'check-work-entry', 'check-work-result'))
+                                                'check-work-entry', 'check-work-result', 'usage-advice'))
         parser.add_argument('--fleet-root', type=Path, default=ROOT.parent)
         parser.add_argument('--pilot', action='store_true')
         parser.add_argument('--repository', help='Restrict an already selected enrolled/pilot scope')

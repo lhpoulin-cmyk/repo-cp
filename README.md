@@ -80,9 +80,16 @@ user: it refuses root, set-user-ID and set-group-ID before any other work.
 ./tools/repo-cp audit --pilot --text
 ./tools/repo-cp drift --pilot
 ./tools/repo-cp propose --pilot
+./tools/repo-cp usage-advice --work-entry 006 --size S --input observation.json
+./tools/repo-cp usage-advice --work-entry 006 --expected-percentage-points 5 --json < observation.json
 ./tools/repo-cp render < tests/fixtures/auth-cp/blocked.json
 ./tools/repo-cp render < tests/fixtures/auth-cp/ready.json
 ```
+
+[`usage-advice`](docs/usage-governor.md) consumes only explicit manual capacity
+observations and canonical Work Entry topology. Its `FIT`, `REVIEW`, or `DEFER`
+output is advisory, never dispatch or execution authority, and always reports
+`authority_effect: NONE`.
 
 The read-only commands never execute a declaration or peer tool, elevate, access
 credential stores, contact a network or write files. Only explicit `create`
