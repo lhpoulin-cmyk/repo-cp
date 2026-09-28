@@ -107,10 +107,10 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertEqual(current, {
             '001': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '002': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
-            '003': ('ACTIVE', 'GREEN', 'ELIGIBLE', []),
+            '003': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '004': ('PARKED', 'YELLOW', 'INELIGIBLE_STATE', []),
             '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
-            '006': ('BLOCKED', 'RED', 'INELIGIBLE_DEPENDENCY', ['003']),
+            '006': ('PARKED', 'RED', 'INELIGIBLE_STATE', ['003']),
         })
         schema = schemas()['topology']
         automatic = copy.deepcopy(document)

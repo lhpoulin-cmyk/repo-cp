@@ -129,8 +129,10 @@ Scheduling eligibility is derived independently from lifecycle state and
 blocking dependencies; priority is never an eligibility override. `ACTIVE`
 requires satisfied blocking dependencies. `PARKED`, `PAUSED`, `BLOCKED` and
 `COMPLETE` are ineligible. An unsatisfied predecessor makes dependent work
-`BLOCKED` even when its priority is `RED`. The topology records 006 as blocked
-by unpublished 003 governance without authorizing either entry.
+`BLOCKED` even when its priority is `RED`. Work Entry 006 demonstrated this rule
+while 003 governance was unpublished. After canonical publication satisfied
+that dependency, 006 returned to `PARKED`; neither transition authorized its
+execution.
 
 New work entries and results should record their state and priority. Published
 V1 evidence without these additive fields remains valid historical evidence.

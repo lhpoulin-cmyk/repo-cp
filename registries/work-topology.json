@@ -110,13 +110,14 @@
     },
     {
       "id": "003",
-      "state": "ACTIVE",
+      "state": "COMPLETE",
       "priority": "GREEN",
-      "scheduling_eligibility": "ELIGIBLE",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Human-led review and reconciliation reached reconciliation-review closure; review, publication and canonical verification remain.",
+      "summary": "Human-led review, reconciliation, publication and canonical-main verification completed.",
       "provenance": [
-        "docs/handoffs/WORK_ENTRY_003.md"
+        "docs/handoffs/WORK_ENTRY_003.md",
+        "canonical implementation commit 27ac0626d151c5a8dea5cb4198ce728413feea2d"
       ]
     },
     {
@@ -143,16 +144,17 @@
     },
     {
       "id": "006",
-      "state": "BLOCKED",
+      "state": "PARKED",
       "priority": "RED",
-      "scheduling_eligibility": "INELIGIBLE_DEPENDENCY",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [
         "003"
       ],
-      "summary": "Execution-doctrine work is blocked pending canonical publication of its louis-workflow and current-topology dependencies from Work Entry 003.",
+      "summary": "Its Work Entry 003 governance dependency is satisfied; execution-doctrine work remains parked and unstarted pending explicit authority.",
       "provenance": [
         "Work Entry 006 blocked result: priority preemption did not override unpublished Work Entry 003 dependencies",
-        "Louis's Work Entry 003 resume instruction"
+        "Louis's Work Entry 003 resume instruction",
+        "Dependency satisfied by canonical publication of Work Entry 003; execution remains unauthorized"
       ]
     }
   ]

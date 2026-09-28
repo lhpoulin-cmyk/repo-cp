@@ -1,10 +1,10 @@
 # repo-cp Codex Handoff — Work Entry 003
 
-Status: `ACTIVE`
+Status: `COMPLETE`
 
 Priority: `GREEN`
 
-Phase: cleanup/reconciliation review
+Phase: canonical closure
 
 This handoff records findings that must be carried through Work Entry 003. The
 initial cleanup phase remains evidence collection and faithful reporting for
@@ -53,7 +53,7 @@ Record the current work topology:
 
 - 001 — COMPLETE / GREEN
 - 002 — COMPLETE / GREEN
-- 003 — ACTIVE / GREEN
+- 003 — COMPLETE / GREEN
 - 004 — PARKED / YELLOW — publication/evidence infrastructure
 - 005 — PARKED / RED — deterministic repository evidence/review tooling; reference `helix-offload`, `ws-doc-writer`, `ws-code-agent`, and `helix-repo-manager-bot`
 
@@ -137,8 +137,10 @@ satisfies a dependency or grants authority, mutation, execution or preemption.
 Work requiring unpublished predecessor governance is `BLOCKED` until that
 governance is canonical.
 
-Record 006 as `BLOCKED + RED`, dependent on 003, and ineligible for scheduling.
-004 and 005 remain parked. This finding does not authorize any of them.
+Before 003 publication, record 006 as `BLOCKED + RED`, dependent on 003, and
+ineligible for scheduling. Canonical publication satisfies that dependency and
+returns 006 to `PARKED + RED`; it remains unstarted and unauthorized. 004 and
+005 remain parked. This finding does not authorize any of them.
 
 ## Pause/resume continuity finding
 
@@ -183,9 +185,8 @@ authority. R10–R11 are not parked work. The remediation handoff status is
 
 Date: 2026-09-27
 
-Status: `RECONCILIATION_REVIEW_CLOSED`; Work Entry 003 remains `ACTIVE` pending
-Louis + ChatGPT review, authorization, commit/publication and canonical-main
-verification.
+Status: `RECONCILIATION_REVIEW_CLOSED`. Louis + ChatGPT review, authorization,
+commit/publication and canonical-main verification subsequently completed.
 
 Coverage actually examined:
 
@@ -234,3 +235,18 @@ The bounded discovery pass found no additional findings within the coverage
 above; it makes no claim about unexamined scope. Louis's contextual response
 satisfied the resolvable-UNKNOWN checkpoint, so reconciliation review closes
 with the bounded provenance UNKNOWN preserved.
+
+## Canonical closure
+
+Louis authorized publication on 2026-09-27. Commit
+`27ac0626d151c5a8dea5cb4198ce728413feea2d` was published to canonical `main` as
+an ordinary non-forced fast-forward from
+`456c9bc7b2b2372c96b503c73ab2780961bb340f`. An independent remote query and
+fetch resolved canonical `main` exactly to the published commit; the fetched
+tree matched the isolated checkout and passed full validation.
+
+Work Entry 003 therefore satisfies its review, authorization, publication,
+canonical-verification and closure requirements and transitions to `COMPLETE +
+GREEN`. Work Entry 006's dependency on canonical 003 governance is satisfied;
+006 returns to `PARKED + RED` without beginning execution or receiving new
+authority. The preserved primary checkout remains outside the publication path.

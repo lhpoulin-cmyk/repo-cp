@@ -196,9 +196,11 @@ flowchart LR
 ```
 
 Work Entry 006 demonstrated this rule. Its `RED` priority did not preempt 003:
-006 depends on louis-workflow and current topology that remain unpublished 003
-work, so 006 is `BLOCKED + RED` and ineligible until 003 is canonical. This
-finding does not authorize 006 or change the parked state of 004 or 005.
+while louis-workflow and current topology remained unpublished 003 work, 006
+was `BLOCKED + RED`. Canonical publication of 003 satisfied that dependency, so
+006 returned to `PARKED + RED`. It remains ineligible and unstarted until the
+governing workflow and authority advance it. This finding does not authorize
+006 or change the parked state of 004 or 005.
 
 ## Review, authorization and closure
 
