@@ -25,6 +25,8 @@ its evidence, not a claim that the agent read the rules.
 - [Repository voice guide](docs/REPOSITORY_VOICE.md).
 - [Adopt it and review a task](docs/AGENT_WORK_ADOPTION.md).
 - [Verify the published content digest](pins/agent-work-contract.json).
+- [Use louis-workflow](docs/LOUIS_WORKFLOW.md) for human/agent cadence,
+  authority boundaries, finding disposition and work topology.
 
 `tools/validate` verifies both release records and the release, candidate and
 companion bytes against reviewed anchors in `src/repocp/agent_contract.py`. A pin
@@ -133,6 +135,8 @@ See [compatibility requests](docs/FOUNDATION_REQUESTS.md).
 
 Read [ownership](OWNERSHIP.md), [provenance](PROVENANCE.md),
 [working rules](AGENTS.md) and [operations](docs/OPERATIONS.md) before changes.
+Agent-facing navigation is available through [CLAUDE.md](CLAUDE.md) and the
+[shared checkout procedure](docs/AGENT_CHECKOUT_RULES.md).
 
 The [historical ansible-cp pilot](docs/acceptance/ansible-cp-pilot.md) preserves
 the original drift and missing metadata findings. The owner remediation and

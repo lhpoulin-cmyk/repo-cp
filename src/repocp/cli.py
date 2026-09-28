@@ -9,7 +9,8 @@ from .consumer import ROOT, render, verify
 from .diagnostics import blocker
 from .file_integrity import INVARIANT
 from .safety import Denied, MAX_BYTES
-from .work_protocol import CLEAN_EXECUTION_BASELINE, schemas as protocol_schemas, validate as validate_work
+from .work_protocol import (CLEAN_EXECUTION_BASELINE, WORKFLOW, schemas as protocol_schemas,
+                            topology as work_topology, validate as validate_work)
 
 
 class Parser(argparse.ArgumentParser):
@@ -45,9 +46,11 @@ def main():
             data = registry()
             if args.command == 'validate':
                 protocol_schemas()
+                work_topology()
                 data = {'status': 'PASS', 'foundation_integrity': 'PASS', 'enrollment_schema': 'PASS',
                         'file_integrity_schema': 'PASS', 'work_entry_schema': 'PASS',
-                        'work_result_schema': 'PASS', 'invariant_id': INVARIANT,
+                        'work_result_schema': 'PASS', 'work_topology': 'PASS',
+                        'workflow': WORKFLOW, 'invariant_id': INVARIANT,
                         'clean_execution_invariant_id': CLEAN_EXECUTION_BASELINE,
                         'automatic_execution': False, 'live_mutation': 'NONE'}
             elif args.command != 'inventory':

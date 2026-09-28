@@ -1,0 +1,140 @@
+{
+  "$id": "urn:helix:repo-cp:work-topology:1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol",
+    "workflow",
+    "authority",
+    "automatic_preemption",
+    "surface_model",
+    "updated_by_work_entry",
+    "future_work_candidates",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "HELIX_WORK_TOPOLOGY_V1" },
+    "workflow": { "const": "HELIX_LOUIS_WORKFLOW_V1" },
+    "authority": { "const": "NONE" },
+    "automatic_preemption": { "const": false },
+    "surface_model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "portfolio_control_plane",
+        "primary_work_surface",
+        "bounded_agent_work_surface_pattern",
+        "authority_source",
+        "evidence_return",
+        "supporting_projects",
+        "supporting_projects_are_control_planes"
+      ],
+      "properties": {
+        "portfolio_control_plane": { "const": "repo-cp" },
+        "primary_work_surface": { "const": "repo-cp" },
+        "bounded_agent_work_surface_pattern": { "const": "*-cp" },
+        "authority_source": { "const": "EXPLICIT_WORK_ENTRY" },
+        "evidence_return": { "const": "repo-cp" },
+        "supporting_projects": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "helix-offload",
+              "helix-repo-manager-bot",
+              "ws-code-agent",
+              "ws-doc-writer"
+            ]
+          }
+        },
+        "supporting_projects_are_control_planes": { "const": false }
+      }
+    },
+    "updated_by_work_entry": { "$ref": "#/$defs/id" },
+    "future_work_candidates": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/future_work_candidate_group" }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/work_entry" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "future_work_candidate_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "execution_authorized", "members", "provenance"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "FUTURE_WORK_CANDIDATE_GROUP" },
+        "execution_authorized": { "const": false },
+        "members": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "status", "summary"],
+            "properties": {
+              "id": { "$ref": "#/$defs/id" },
+              "status": { "const": "PRESERVED" },
+              "summary": { "$ref": "#/$defs/text" }
+            }
+          }
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "work_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "state", "priority", "scheduling_eligibility", "dependencies", "summary", "provenance"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "state": { "enum": ["PARKED", "ACTIVE", "PAUSED", "BLOCKED", "COMPLETE"] },
+        "priority": { "enum": ["GREEN", "YELLOW", "RED"] },
+        "scheduling_eligibility": {
+          "enum": ["ELIGIBLE", "INELIGIBLE_STATE", "INELIGIBLE_DEPENDENCY"]
+        },
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "summary": { "$ref": "#/$defs/text" },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        }
+      }
+    }
+  }
+}

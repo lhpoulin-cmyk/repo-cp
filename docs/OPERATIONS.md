@@ -50,8 +50,10 @@ for nonconformance. Work-result receipts confirm complete ending-dirtiness attri
 commands do not execute work, grant authority, inspect a target repository,
 contact a network, or write an artifact. Failed input produces no partial stdout
 or rejected values. `./tools/repo-cp validate` and `./tools/validate` verify both
-protocol schemas alongside the existing Foundation, enrollment and integrity
-checks.
+protocol schemas plus the schema-backed current work topology alongside the
+existing Foundation, enrollment and integrity checks. The topology registry has
+authority `NONE`; its state and priority fields do not authorize execution or
+preemption.
 
 ### Repository and file-integrity checks
 

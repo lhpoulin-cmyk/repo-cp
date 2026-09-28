@@ -3,6 +3,8 @@
   "protocol": "HELIX_WORK_RESULT_V1",
   "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
   "work_entry_id": "synthetic.repo-cp.001",
+  "work_state": "ACTIVE",
+  "priority": "GREEN",
   "target_repository": "repo-cp",
   "objective": "Validate the repository work protocol using synthetic local evidence.",
   "canonical_baseline": {
@@ -72,6 +74,18 @@
   "evidence_produced": [
     "In-memory conformance receipt"
   ],
+  "discovery_coverage": {
+    "scope": "Synthetic work-protocol fixture behavior.",
+    "checks_performed": [
+      "Validated the synthetic entry and result contracts"
+    ],
+    "remaining_unknowns": [],
+    "actionable_findings_remaining": [],
+    "recheck_status": "COMPLETED",
+    "recheck_evidence": [
+      "The deterministic conformance checks passed after fixture preparation"
+    ]
+  },
   "delivery_stage": "LOCAL_UNCOMMITTED",
   "status_topology": {
     "nodes": [
@@ -79,6 +93,7 @@
         "id": "work.validation",
         "kind": "WORK",
         "status": "COMPLETED",
+        "priority": "GREEN",
         "summary": "Synthetic validation completed.",
         "owner": "repo-cp",
         "blocking": false
@@ -87,6 +102,7 @@
         "id": "work.optional-review",
         "kind": "WORK",
         "status": "NON_BLOCKING_INCOMPLETE",
+        "priority": "GREEN",
         "summary": "Optional human review remains.",
         "owner": "reviewer",
         "blocking": false
@@ -95,6 +111,7 @@
         "id": "authority.publish",
         "kind": "AUTHORIZATION",
         "status": "AUTHORIZATION_REQUIRED",
+        "priority": "GREEN",
         "summary": "Publication would require operator authority.",
         "owner": "operator",
         "blocking": false
@@ -103,6 +120,7 @@
         "id": "owner.operator",
         "kind": "DEPENDENCY",
         "status": "ACTIVE",
+        "priority": "GREEN",
         "summary": "The operator retains publication authority.",
         "owner": "operator",
         "blocking": false

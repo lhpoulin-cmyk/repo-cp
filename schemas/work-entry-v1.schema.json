@@ -29,7 +29,12 @@
     "protocol": { "const": "HELIX_WORK_ENTRY_V1" },
     "clean_execution_baseline": { "const": "HELIX_CLEAN_EXECUTION_BASELINE_V1" },
     "work_entry_id": { "$ref": "#/$defs/id" },
-    "work_entry_phase": { "enum": ["START", "CONTINUE"] },
+    "work_entry_phase": { "enum": ["START", "CONTINUE", "RESUME"] },
+    "work_state": { "enum": ["PARKED", "ACTIVE", "PAUSED", "BLOCKED", "COMPLETE"] },
+    "priority": { "enum": ["GREEN", "YELLOW", "RED"] },
+    "scheduling_eligibility": {
+      "enum": ["ELIGIBLE", "INELIGIBLE_STATE", "INELIGIBLE_DEPENDENCY"]
+    },
     "prepared_by": {
       "type": "object",
       "additionalProperties": false,
@@ -114,6 +119,7 @@
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/text" }
     },
+    "continuation": { "$ref": "#/$defs/continuation" },
     "expected_result_protocol": { "const": "HELIX_WORK_RESULT_V1" }
   },
   "$defs": {
@@ -192,7 +198,50 @@
         "kind": { "enum": ["DEPENDENCY", "EXTERNAL_DEPENDENCY", "CROSS_CONTROL_PLANE"] },
         "description": { "$ref": "#/$defs/text" },
         "owner": { "$ref": "#/$defs/text" },
+        "blocking": { "type": "boolean" },
         "status": { "enum": ["COMPLETED", "ACTIVE", "PENDING", "BLOCKED", "UNKNOWN", "DRIFT", "AUTHORIZATION_REQUIRED"] }
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "handoff_id",
+        "work_entry_id",
+        "workspace_state_preserved",
+        "mutation_gate_at_handoff",
+        "in_flight_invocation",
+        "session_binding",
+        "session_disposition",
+        "continuation_point",
+        "revalidation_requirements",
+        "revalidation_status"
+      ],
+      "properties": {
+        "handoff_id": { "$ref": "#/$defs/id" },
+        "work_entry_id": { "$ref": "#/$defs/id" },
+        "workspace_state_preserved": { "const": true },
+        "mutation_gate_at_handoff": { "enum": ["OPEN", "CLOSED"] },
+        "in_flight_invocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["identity", "disposition", "attribution"],
+          "properties": {
+            "identity": { "$ref": "#/$defs/text" },
+            "disposition": { "enum": ["NONE", "COMPLETED", "INTERRUPTED", "CANCELLED", "UNKNOWN"] },
+            "attribution": { "enum": ["NONE", "CURRENT_WORK_ENTRY", "PRE_EXISTING", "UNRELATED", "UNKNOWN"] }
+          }
+        },
+        "session_binding": { "$ref": "#/$defs/text" },
+        "session_disposition": { "enum": ["BOUND", "RELEASED", "UNKNOWN"] },
+        "continuation_point": { "$ref": "#/$defs/text" },
+        "revalidation_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        },
+        "revalidation_status": { "enum": ["PENDING", "COMPLETED"] }
       }
     }
   }

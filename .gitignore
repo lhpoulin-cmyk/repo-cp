@@ -1,0 +1,2 @@
+# Private agent-owned development checkouts; never track their directories in the parent repository.
+/.agent-checkouts/

@@ -32,6 +32,8 @@
     "protocol": { "const": "HELIX_WORK_RESULT_V1" },
     "clean_execution_baseline": { "const": "HELIX_CLEAN_EXECUTION_BASELINE_V1" },
     "work_entry_id": { "$ref": "#/$defs/id" },
+    "work_state": { "enum": ["PARKED", "ACTIVE", "PAUSED", "BLOCKED", "COMPLETE"] },
+    "priority": { "enum": ["GREEN", "YELLOW", "RED"] },
     "target_repository": { "$ref": "#/$defs/name" },
     "objective": { "$ref": "#/$defs/text" },
     "canonical_baseline": {
@@ -86,6 +88,8 @@
       }
     },
     "evidence_produced": { "$ref": "#/$defs/unique_texts" },
+    "discovery_coverage": { "$ref": "#/$defs/discovery_coverage" },
+    "continuation": { "$ref": "#/$defs/continuation" },
     "delivery_stage": { "enum": ["LOCAL_UNCOMMITTED", "COMMITTED", "PUSHED", "MERGED", "PUBLISHED", "DEPLOYED", "LIVE_VERIFIED"] },
     "status_topology": {
       "type": "object",
@@ -170,14 +174,70 @@
         "untracked": { "$ref": "#/$defs/unique_texts" }
       }
     },
+    "discovery_coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "checks_performed", "remaining_unknowns", "actionable_findings_remaining", "recheck_status", "recheck_evidence"],
+      "properties": {
+        "scope": { "$ref": "#/$defs/text" },
+        "checks_performed": { "$ref": "#/$defs/unique_texts" },
+        "remaining_unknowns": { "$ref": "#/$defs/unique_texts" },
+        "actionable_findings_remaining": { "$ref": "#/$defs/unique_texts" },
+        "recheck_status": { "enum": ["NOT_REQUIRED", "PENDING", "COMPLETED"] },
+        "recheck_evidence": { "$ref": "#/$defs/unique_texts" }
+      }
+    },
+    "continuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "handoff_id",
+        "work_entry_id",
+        "workspace_state_preserved",
+        "mutation_gate_at_handoff",
+        "in_flight_invocation",
+        "session_binding",
+        "session_disposition",
+        "continuation_point",
+        "revalidation_requirements",
+        "revalidation_status"
+      ],
+      "properties": {
+        "handoff_id": { "$ref": "#/$defs/id" },
+        "work_entry_id": { "$ref": "#/$defs/id" },
+        "workspace_state_preserved": { "const": true },
+        "mutation_gate_at_handoff": { "enum": ["OPEN", "CLOSED"] },
+        "in_flight_invocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["identity", "disposition", "attribution"],
+          "properties": {
+            "identity": { "$ref": "#/$defs/text" },
+            "disposition": { "enum": ["NONE", "COMPLETED", "INTERRUPTED", "CANCELLED", "UNKNOWN"] },
+            "attribution": { "enum": ["NONE", "CURRENT_WORK_ENTRY", "PRE_EXISTING", "UNRELATED", "UNKNOWN"] }
+          }
+        },
+        "session_binding": { "$ref": "#/$defs/text" },
+        "session_disposition": { "enum": ["BOUND", "RELEASED", "UNKNOWN"] },
+        "continuation_point": { "$ref": "#/$defs/text" },
+        "revalidation_requirements": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        },
+        "revalidation_status": { "enum": ["PENDING", "COMPLETED"] }
+      }
+    },
     "status_node": {
       "type": "object",
       "additionalProperties": false,
       "required": ["id", "kind", "status", "summary", "owner", "blocking"],
       "properties": {
         "id": { "$ref": "#/$defs/id" },
-        "kind": { "enum": ["WORK", "DEPENDENCY", "EXTERNAL_DEPENDENCY", "CROSS_CONTROL_PLANE_REQUEST", "AUTHORIZATION"] },
-        "status": { "enum": ["COMPLETED", "ACTIVE", "PENDING", "BLOCKED", "NON_BLOCKING_INCOMPLETE", "UNKNOWN", "DRIFT", "AUTHORIZATION_REQUIRED"] },
+        "kind": { "enum": ["WORK", "FINDING", "FUTURE_WORK", "DEPENDENCY", "EXTERNAL_DEPENDENCY", "CROSS_CONTROL_PLANE_REQUEST", "AUTHORIZATION"] },
+        "status": { "enum": ["COMPLETED", "ACTIVE", "PAUSED", "PARKED", "PENDING", "BLOCKED", "NON_BLOCKING_INCOMPLETE", "UNKNOWN", "DRIFT", "AUTHORIZATION_REQUIRED"] },
+        "priority": { "enum": ["GREEN", "YELLOW", "RED"] },
         "summary": { "$ref": "#/$defs/text" },
         "owner": { "$ref": "#/$defs/text" },
         "blocking": { "type": "boolean" }
@@ -189,7 +249,7 @@
       "required": ["subject", "predicate", "object"],
       "properties": {
         "subject": { "$ref": "#/$defs/id" },
-        "predicate": { "enum": ["BLOCKED_BY", "DEPENDS_ON", "NON_BLOCKING_FOR", "REQUIRES_AUTHORIZATION_FROM", "OWNED_BY", "HANDOFF_TO", "SUPERSEDES"] },
+        "predicate": { "enum": ["BLOCKED_BY", "DEPENDS_ON", "NON_BLOCKING_FOR", "REQUIRES_AUTHORIZATION_FROM", "MAY_BE_RESOLVED_BY", "OWNED_BY", "HANDOFF_TO", "SUPERSEDES", "PROMOTED_TO"] },
         "object": { "$ref": "#/$defs/id" }
       }
     }

@@ -39,7 +39,7 @@ from repocp.audit import registry
 from repocp.diagnostics import blocker
 from repocp.file_integrity import excluded, invariant, local_audit, mountpoints
 from repocp.safety import Denied, has_indicator, load, read_public
-from repocp.work_protocol import schemas as protocol_schemas
+from repocp.work_protocol import schemas as protocol_schemas, topology as work_topology
 from jsonschema import Draft202012Validator
 import yaml
 
@@ -67,6 +67,7 @@ def main():
     registry()
     contract_artifacts = len(verify_agent_contract())
     protocol_schemas()
+    work_topology()
     policy = invariant(ROOT)
     first = local_audit(ROOT, policy)
     if first != local_audit(ROOT, policy) or first['status'] != 'PASS':

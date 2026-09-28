@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_TOPOLOGY_V1",
+  "workflow": "HELIX_LOUIS_WORKFLOW_V1",
+  "authority": "NONE",
+  "automatic_preemption": false,
+  "surface_model": {
+    "portfolio_control_plane": "repo-cp",
+    "primary_work_surface": "repo-cp",
+    "bounded_agent_work_surface_pattern": "*-cp",
+    "authority_source": "EXPLICIT_WORK_ENTRY",
+    "evidence_return": "repo-cp",
+    "supporting_projects": [
+      "helix-offload",
+      "helix-repo-manager-bot",
+      "ws-code-agent",
+      "ws-doc-writer"
+    ],
+    "supporting_projects_are_control_planes": false
+  },
+  "updated_by_work_entry": "003",
+  "future_work_candidates": [
+    {
+      "id": "remediation.hardening-correctness",
+      "kind": "FUTURE_WORK_CANDIDATE_GROUP",
+      "execution_authorized": false,
+      "members": [
+        {
+          "id": "R4",
+          "status": "PRESERVED",
+          "summary": "Hash-locked dependency resolution and explicit supported-Python testing remain unresolved."
+        },
+        {
+          "id": "R5",
+          "status": "PRESERVED",
+          "summary": "Concrete current correctness finding: valid dotted Git branch names are rejected."
+        }
+      ],
+      "provenance": [
+        "docs/handoffs/repo-cp-audit-remediation-20260923.md",
+        "Louis + ChatGPT Work Entry 003 remediation disposition"
+      ]
+    },
+    {
+      "id": "remediation.diagnostics-state-fidelity",
+      "kind": "FUTURE_WORK_CANDIDATE_GROUP",
+      "execution_authorized": false,
+      "members": [
+        {
+          "id": "R6",
+          "status": "PRESERVED",
+          "summary": "Version-source ownership and remaining compound diagnostic distinctions remain unresolved."
+        },
+        {
+          "id": "R9",
+          "status": "PRESERVED",
+          "summary": "Checkout absence remains insufficiently distinguished from inaccessible, unsafe or corrupt state."
+        }
+      ],
+      "provenance": [
+        "docs/handoffs/repo-cp-audit-remediation-20260923.md",
+        "Louis + ChatGPT Work Entry 003 remediation disposition"
+      ]
+    },
+    {
+      "id": "remediation.evidence-trust-architecture",
+      "kind": "FUTURE_WORK_CANDIDATE_GROUP",
+      "execution_authorized": false,
+      "members": [
+        {
+          "id": "R7",
+          "status": "PRESERVED",
+          "summary": "No trusted offline supplied-evidence interface exists for RC009 freshness."
+        },
+        {
+          "id": "R8",
+          "status": "PRESERVED",
+          "summary": "No bounded declarative cross-pin registry or selector model exists."
+        }
+      ],
+      "provenance": [
+        "docs/handoffs/repo-cp-audit-remediation-20260923.md",
+        "Louis + ChatGPT Work Entry 003 remediation disposition"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "001",
+      "state": "COMPLETE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [],
+      "summary": "Historical Work Entry 001; its objective is not restated by the Work Entry 003 finding.",
+      "provenance": [
+        "Louis's Work Entry 003 topology instruction"
+      ]
+    },
+    {
+      "id": "002",
+      "state": "COMPLETE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [],
+      "summary": "Standard 002 repository work protocol and Clean Execution Baseline.",
+      "provenance": [
+        "docs/handoffs/WORK_ENTRY_STANDARD_002.md",
+        "canonical commit 456c9bc7b2b2372c96b503c73ab2780961bb340f"
+      ]
+    },
+    {
+      "id": "003",
+      "state": "ACTIVE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "ELIGIBLE",
+      "dependencies": [],
+      "summary": "Human-led review and reconciliation reached reconciliation-review closure; review, publication and canonical verification remain.",
+      "provenance": [
+        "docs/handoffs/WORK_ENTRY_003.md"
+      ]
+    },
+    {
+      "id": "004",
+      "state": "PARKED",
+      "priority": "YELLOW",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [],
+      "summary": "Publication and evidence infrastructure.",
+      "provenance": [
+        "Work Entry 003 finding; execution not authorized"
+      ]
+    },
+    {
+      "id": "005",
+      "state": "PARKED",
+      "priority": "RED",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [],
+      "summary": "Deterministic repository evidence and review tooling; reference helix-offload, ws-doc-writer, ws-code-agent, and helix-repo-manager-bot.",
+      "provenance": [
+        "Work Entry 003 finding; execution not authorized"
+      ]
+    },
+    {
+      "id": "006",
+      "state": "BLOCKED",
+      "priority": "RED",
+      "scheduling_eligibility": "INELIGIBLE_DEPENDENCY",
+      "dependencies": [
+        "003"
+      ],
+      "summary": "Execution-doctrine work is blocked pending canonical publication of its louis-workflow and current-topology dependencies from Work Entry 003.",
+      "provenance": [
+        "Work Entry 006 blocked result: priority preemption did not override unpublished Work Entry 003 dependencies",
+        "Louis's Work Entry 003 resume instruction"
+      ]
+    }
+  ]
+}

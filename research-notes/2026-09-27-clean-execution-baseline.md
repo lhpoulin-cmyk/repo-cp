@@ -36,9 +36,29 @@ agent's conversational state. This is an observed anecdote relevant to research
 on generally capable agent systems and recursive institutional learning. It is
 not evidence of, or a claim that the system is, AGI.
 
+## Later operator context
+
+Louis later recalled two agent behaviors that he had not marked
+contemporaneously. The second occurred while Codex was running repository test
+files: Louis expected the agent to stop before completing the work, but observed
+it continue through the difficulty. The exact command, failure sequence and
+recovery are not identified by the present note. The earlier behavior was a
+design decision that influenced Louis's subsequent thinking, but he did not
+recall its exact identity without the note. The clean-execution adaptation
+documented above is a possible correspondence, not an established one.
+
+Louis's interpretation is that such behavior could reflect generally capable
+agent behavior, the leverage supplied by a well-crafted repository, or some
+combination. The recorded evidence does not distinguish those explanations.
+This retrospective context remains an anecdote and is not evidence of, or a
+claim that the system is, AGI.
+
 ## Open research question
 
 What combination of machine-checkable provenance, review thresholds and
 exception authority best allows useful agent adaptations to become durable
 institutional rules without overfitting a single successful episode or turning
 local heuristics into unjustified universal policy?
+
+How can later operator recollections be linked to exact execution evidence well
+enough to separate model capability from repository and workflow affordances?

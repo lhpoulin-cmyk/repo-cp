@@ -4,6 +4,9 @@
   "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
   "work_entry_id": "synthetic.repo-cp.001",
   "work_entry_phase": "START",
+  "work_state": "ACTIVE",
+  "priority": "GREEN",
+  "scheduling_eligibility": "ELIGIBLE",
   "prepared_by": {
     "role": "ARCHITECT",
     "identifier": "synthetic-planner"
@@ -68,6 +71,7 @@
       "kind": "DEPENDENCY",
       "description": "The local schema must be available.",
       "owner": "repo-cp",
+      "blocking": true,
       "status": "COMPLETED"
     }
   ],

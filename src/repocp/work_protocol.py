@@ -9,12 +9,19 @@ PROTOCOLS = {
     'entry': ('HELIX_WORK_ENTRY_V1', 'schemas/work-entry-v1.schema.json'),
     'result': ('HELIX_WORK_RESULT_V1', 'schemas/work-result-v1.schema.json'),
 }
+SCHEMA_PATHS = {
+    **{kind: path for kind, (_, path) in PROTOCOLS.items()},
+    'topology': 'schemas/work-topology-v1.schema.json',
+}
 CLEAN_EXECUTION_BASELINE = 'HELIX_CLEAN_EXECUTION_BASELINE_V1'
+WORKFLOW = 'HELIX_LOUIS_WORKFLOW_V1'
+WORK_TOPOLOGY = 'HELIX_WORK_TOPOLOGY_V1'
+TOPOLOGY_PATH = 'registries/work-topology.json'
 
 
 def schemas(root=ROOT):
     result = {}
-    for kind, (_, path) in PROTOCOLS.items():
+    for kind, path in SCHEMA_PATHS.items():
         schema = load(read_public(root, path))
         try:
             Draft202012Validator.check_schema(schema)
@@ -24,7 +31,48 @@ def schemas(root=ROOT):
     return result
 
 
+def topology(root=ROOT):
+    document = load(read_public(root, TOPOLOGY_PATH))
+    schema = schemas(root)['topology']
+    if not isinstance(document, dict) or not Draft202012Validator(schema).is_valid(document):
+        raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+    identifiers = [entry['id'] for entry in document['entries']]
+    if len(identifiers) != len(set(identifiers)):
+        raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+    candidate_identifiers = [candidate['id'] for candidate in document['future_work_candidates']]
+    member_identifiers = [member['id'] for candidate in document['future_work_candidates']
+                          for member in candidate['members']]
+    if len(candidate_identifiers) != len(set(candidate_identifiers)) \
+            or len(member_identifiers) != len(set(member_identifiers)) \
+            or set(candidate_identifiers) & set(identifiers):
+        raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+    by_id = {entry['id']: entry for entry in document['entries']}
+    for entry in document['entries']:
+        if any(identifier not in by_id for identifier in entry['dependencies']):
+            raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+        unsatisfied = [identifier for identifier in entry['dependencies']
+                       if by_id[identifier]['state'] != 'COMPLETE']
+        if entry['state'] == 'ACTIVE':
+            expected = 'ELIGIBLE'
+            if unsatisfied:
+                raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+        elif entry['state'] == 'BLOCKED':
+            expected = 'INELIGIBLE_DEPENDENCY'
+            if not unsatisfied:
+                raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+        else:
+            expected = 'INELIGIBLE_STATE'
+        if entry['scheduling_eligibility'] != expected:
+            raise Denied('WORK_TOPOLOGY_NONCONFORMANCE') from None
+    return document
+
+
 def _semantic_entry(document):
+    state_present = 'work_state' in document
+    if state_present != ('priority' in document):
+        raise Denied('WORK_ENTRY_LIFECYCLE_CONFLICT')
+    if state_present != ('scheduling_eligibility' in document):
+        raise Denied('WORK_ENTRY_LIFECYCLE_CONFLICT')
     authority = document['authority']
     if set(authority['granted']) & set(authority['explicitly_not_granted']):
         raise Denied('WORK_ENTRY_AUTHORITY_CONFLICT')
@@ -34,15 +82,35 @@ def _semantic_entry(document):
     identifiers = [item['id'] for item in document['dependencies']]
     if len(identifiers) != len(set(identifiers)):
         raise Denied('WORK_ENTRY_DUPLICATE_DEPENDENCY')
+    unsatisfied = [item for item in document['dependencies']
+                   if item.get('blocking', True) and item['status'] != 'COMPLETED']
+    if state_present:
+        state = document['work_state']
+        if state == 'ACTIVE':
+            expected_eligibility = 'ELIGIBLE'
+            if unsatisfied:
+                raise Denied('WORK_ENTRY_DEPENDENCY_CONFLICT')
+        elif state == 'BLOCKED':
+            expected_eligibility = 'INELIGIBLE_DEPENDENCY'
+            if not unsatisfied:
+                raise Denied('WORK_ENTRY_DEPENDENCY_CONFLICT')
+        else:
+            expected_eligibility = 'INELIGIBLE_STATE'
+        if 'scheduling_eligibility' in document \
+                and document['scheduling_eligibility'] != expected_eligibility:
+            raise Denied('WORK_ENTRY_DEPENDENCY_CONFLICT')
     source = document['source_workspace']
     execution = document['execution_workspace']
     _semantic_workspace_state(source)
     _semantic_workspace_state(execution)
     gate = execution['mutation_gate']
+    if state_present and document['work_state'] in ('PARKED', 'PAUSED', 'BLOCKED', 'COMPLETE') \
+            and gate != 'CLOSED':
+        raise Denied('WORK_ENTRY_LIFECYCLE_CONFLICT')
     phase = document['work_entry_phase']
     safe_to_open = ((phase == 'START' and execution['dirty_state']['state'] == 'CLEAN'
                      and execution['dirtiness_attribution'] == 'NONE')
-                    or (phase == 'CONTINUE'
+                    or (phase in ('CONTINUE', 'RESUME')
                         and ((execution['dirty_state']['state'] == 'CLEAN'
                               and execution['dirtiness_attribution'] == 'NONE')
                              or (execution['dirty_state']['state'] == 'DIRTY'
@@ -61,6 +129,23 @@ def _semantic_entry(document):
             raise Denied('WORK_ENTRY_ISOLATION_CONFLICT')
     elif isolation['mechanism'] != 'NONE' or source['identity'] != execution['identity']:
         raise Denied('WORK_ENTRY_ISOLATION_CONFLICT')
+    continuation = document.get('continuation')
+    if phase == 'RESUME' or (state_present and document['work_state'] == 'PAUSED'):
+        if continuation is None:
+            raise Denied('WORK_ENTRY_CONTINUATION_CONFLICT')
+    elif continuation is not None:
+        raise Denied('WORK_ENTRY_CONTINUATION_CONFLICT')
+    if continuation is not None:
+        _semantic_continuation(continuation)
+        if continuation['work_entry_id'] != document['work_entry_id'] \
+                or continuation['mutation_gate_at_handoff'] != 'CLOSED':
+            raise Denied('WORK_ENTRY_CONTINUATION_CONFLICT')
+        if phase == 'RESUME':
+            if not state_present or document['work_state'] != 'ACTIVE' \
+                    or continuation['revalidation_status'] != 'COMPLETED':
+                raise Denied('WORK_ENTRY_CONTINUATION_CONFLICT')
+        elif continuation['revalidation_status'] != 'PENDING':
+            raise Denied('WORK_ENTRY_CONTINUATION_CONFLICT')
 
 
 def _semantic_dirty_state(state):
@@ -78,7 +163,16 @@ def _semantic_workspace_state(workspace):
         raise Denied('WORK_PROTOCOL_ATTRIBUTION_CONFLICT')
 
 
+def _semantic_continuation(continuation):
+    invocation = continuation['in_flight_invocation']
+    if (invocation['disposition'] == 'NONE') != (invocation['attribution'] == 'NONE'):
+        raise Denied('WORK_PROTOCOL_CONTINUATION_CONFLICT')
+
+
 def _semantic_result(document):
+    state_present = 'work_state' in document
+    if state_present != ('priority' in document):
+        raise Denied('WORK_RESULT_PRIORITY_CONFLICT')
     _semantic_dirty_state(document['starting_dirty_state'])
     _semantic_dirty_state(document['ending_dirty_state'])
     workspaces = document['workspace_evidence']
@@ -87,6 +181,28 @@ def _semantic_result(document):
         raise Denied('WORK_RESULT_WORKSPACE_CONFLICT')
     if document['starting_head'] != document['canonical_baseline']['resolved_head']:
         raise Denied('WORK_RESULT_WORKSPACE_CONFLICT')
+    continuation = document.get('continuation')
+    if state_present and document['work_state'] == 'PAUSED':
+        if continuation is None:
+            raise Denied('WORK_RESULT_CONTINUATION_CONFLICT')
+    elif continuation is not None:
+        raise Denied('WORK_RESULT_CONTINUATION_CONFLICT')
+    if continuation is not None:
+        _semantic_continuation(continuation)
+        if continuation['work_entry_id'] != document['work_entry_id'] \
+                or continuation['mutation_gate_at_handoff'] != 'CLOSED' \
+                or continuation['revalidation_status'] != 'PENDING':
+            raise Denied('WORK_RESULT_CONTINUATION_CONFLICT')
+    discovery = document.get('discovery_coverage')
+    if discovery is not None:
+        if discovery['recheck_status'] == 'COMPLETED' and not discovery['recheck_evidence']:
+            raise Denied('WORK_RESULT_DISCOVERY_CONFLICT')
+        if discovery['recheck_status'] != 'COMPLETED' and discovery['recheck_evidence']:
+            raise Denied('WORK_RESULT_DISCOVERY_CONFLICT')
+        if state_present and document['work_state'] == 'COMPLETE' \
+                and (discovery['actionable_findings_remaining']
+                     or discovery['recheck_status'] == 'PENDING'):
+            raise Denied('WORK_RESULT_DISCOVERY_CONFLICT')
     attribution = document['ending_dirtiness_attribution']
     for bucket in ('staged', 'unstaged', 'untracked'):
         classified = [path for category in attribution.values() for path in category[bucket]]
@@ -98,8 +214,12 @@ def _semantic_result(document):
     if len(identifiers) != len(set(identifiers)):
         raise Denied('WORK_RESULT_DUPLICATE_NODE')
     by_id = {node['id']: node for node in nodes}
+    priorities = ['priority' in node for node in nodes]
+    if any(priorities) and not all(priorities):
+        raise Denied('WORK_RESULT_PRIORITY_CONFLICT')
     for node in nodes:
-        if node['status'] in ('COMPLETED', 'NON_BLOCKING_INCOMPLETE') and node['blocking']:
+        if node['status'] in ('COMPLETED', 'PAUSED', 'PARKED', 'NON_BLOCKING_INCOMPLETE') \
+                and node['blocking']:
             raise Denied('WORK_RESULT_BLOCKING_CONFLICT')
         if node['status'] == 'BLOCKED' and not node['blocking']:
             raise Denied('WORK_RESULT_BLOCKING_CONFLICT')
@@ -115,8 +235,15 @@ def _semantic_result(document):
             raise Denied('WORK_RESULT_RELATION_CONFLICT')
         if relation['predicate'] == 'REQUIRES_AUTHORIZATION_FROM' and subject['status'] != 'AUTHORIZATION_REQUIRED':
             raise Denied('WORK_RESULT_RELATION_CONFLICT')
+        if relation['predicate'] == 'MAY_BE_RESOLVED_BY' and subject['status'] != 'UNKNOWN':
+            raise Denied('WORK_RESULT_RELATION_CONFLICT')
         if relation['predicate'] == 'HANDOFF_TO' and subject['kind'] != 'CROSS_CONTROL_PLANE_REQUEST':
             raise Denied('WORK_RESULT_RELATION_CONFLICT')
+        if relation['predicate'] == 'PROMOTED_TO':
+            target = by_id[relation['object']]
+            if subject['kind'] != 'FINDING' or target['kind'] != 'FUTURE_WORK' \
+                    or target['status'] != 'PARKED':
+                raise Denied('WORK_RESULT_RELATION_CONFLICT')
 
 
 def validate(kind, raw, root=ROOT):
@@ -142,6 +269,11 @@ def validate(kind, raw, root=ROOT):
         'automatic_execution': False,
         'mutation_authorized': False,
         'live_mutation': 'NONE',
+        **({'work_state': document['work_state'], 'priority': document['priority']}
+           if 'work_state' in document else {}),
+        **({'scheduling_eligibility': document['scheduling_eligibility']}
+           if 'scheduling_eligibility' in document else {}),
+        **({'continuation_ready': True} if document.get('continuation') else {}),
         **({'mutation_gate': document['execution_workspace']['mutation_gate']}
            if kind == 'entry' else {'ending_dirtiness_accounted': True}),
     }

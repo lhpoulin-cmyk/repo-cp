@@ -7,6 +7,12 @@ public repository evidence and produces review artifacts. Each domain repository
 retains desired state. Observation and implementation never confer ownership.
 Do not create virtualization-cp or infer an unpublished target-facet contract.
 
+For an authorized repo-cp task, Claude and Codex may create or use a private
+isolated checkout at `.agent-checkouts/<agent>/<task>/` under the
+[shared checkout procedure](docs/AGENT_CHECKOUT_RULES.md). This grants
+development-workspace setup authority only. It grants no task mutation,
+publication, credential, peer-repository, live-action or other authority.
+
 Read README.md, OWNERSHIP.md, PROVENANCE.md, VERSION, both Foundation pins,
 docs/acceptance/operator-action-v1.md, docs/OPERATIONS.md and applicable tests.
 Historical docs/handoffs records remain evidence, not current acceptance.
