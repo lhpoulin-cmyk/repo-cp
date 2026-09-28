@@ -110,7 +110,7 @@ class WorkProtocolTests(unittest.TestCase):
             '003': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '004': ('PARKED', 'YELLOW', 'INELIGIBLE_STATE', []),
             '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
-            '006': ('PARKED', 'RED', 'INELIGIBLE_STATE', ['003']),
+            '006': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['003']),
         })
         schema = schemas()['topology']
         automatic = copy.deepcopy(document)
