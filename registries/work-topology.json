@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "003",
+  "updated_by_work_entry": "005",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -137,9 +137,13 @@
       "priority": "RED",
       "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Deterministic repository evidence and review tooling; reference helix-offload, ws-doc-writer, ws-code-agent, and helix-repo-manager-bot.",
+      "summary": "Future investigation and governance of the Helix local/offloaded execution plane represented by helix-offload; execution substrate, model/runtime execution, workload routing, GPU use, scheduling, packaging, execution evidence and the relationship with Work Entry 008 remain unresolved.",
       "provenance": [
-        "Work Entry 003 finding; execution not authorized"
+        "Work Entry 003 originally identified Work Entry 005 around deterministic repository measurement and evidence concerns; docs/handoffs/WORK_ENTRY_003.md remains the historical evidence.",
+        "Operator 005/008 topology correction refined that future-work concern into Work Entry 005 for the helix-offload execution plane and Work Entry 008 for the helix-repo-manager-bot repository intelligence/evidence plane.",
+        "Operator planning designation DOUBLE RED is represented with existing PARKED / RED and INELIGIBLE_STATE values; research authority NONE; implementation authority NONE.",
+        "5070 Ti is candidate compute only, not required hardware, an accepted deployment target, an exclusive host, an ownership boundary or a production runtime.",
+        "Logical ownership, execution placement and physical hosting are separate decisions; the Work Entry 005 relationship with Work Entry 008 is intentionally unresolved."
       ]
     },
     {
@@ -157,6 +161,21 @@
         "Dependency satisfied by canonical publication of Work Entry 003; execution remained separately authorized",
         "docs/handoffs/WORK_ENTRY_006.md",
         "canonical implementation commit a74b1e13512c50528643539bd55c6091006ecf73"
+      ]
+    },
+    {
+      "id": "008",
+      "state": "PARKED",
+      "priority": "RED",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [],
+      "summary": "Future investigation and governance of the repository intelligence/evidence plane represented by helix-repo-manager-bot; repository inspection, deterministic facts, evidence and semantic-delta preparation, duplicate/redundancy assistance, dependency analysis, compact context and review assistance are candidate concerns, not accepted implementation scope.",
+      "provenance": [
+        "Operator 005/008 topology correction refined Work Entry 003's original Work Entry 005 future-work concern into Work Entry 005 for the helix-offload execution plane and Work Entry 008 for the helix-repo-manager-bot repository intelligence/evidence plane.",
+        "Operator planning designation DOUBLE RED is represented with existing PARKED / RED and INELIGIBLE_STATE values; research authority NONE; implementation authority NONE.",
+        "The Work Entry 005 relationship is intentionally unresolved: Work Entry 008 may prepare evidence or work for 005, may execute using infrastructure provided by 005 while retaining 008 logical ownership, may do both or may remain substantially independent with a narrower interface.",
+        "Logical ownership, execution placement and physical hosting are separate decisions; physical hosting for Work Entry 008 is unresolved.",
+        "Existing software may already solve candidate concerns, functions may belong elsewhere or should not be built, and execution may occur through Work Entry 005 or independently; no outcome is selected by this planning correction."
       ]
     }
   ]

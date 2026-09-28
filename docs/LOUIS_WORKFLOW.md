@@ -79,6 +79,13 @@ that authority.
 are supporting tools or services available to the control plane. They must not
 independently become competing portfolio control planes.
 
+repo-cp governs work-entry authority, lifecycle and provenance without absorbing
+the implementation domains of those supporting projects. Logical ownership,
+execution placement and physical hosting are separate decisions. Running a
+logically owned component on another project's infrastructure does not transfer
+ownership, and preparing work for an execution plane does not transfer ownership
+of that execution or routing infrastructure.
+
 ```mermaid
 flowchart LR
     L[Louis] <--> C[ChatGPT]
@@ -100,7 +107,43 @@ mechanisms for factual collection. Give models compact structured evidence and
 reserve model reasoning for interpretation, relationships, ambiguity,
 architecture and judgment.
 
-This rule motivates parked Work Entry 005. It does not authorize beginning it.
+Work Entry 003 originally used this rule to motivate parked Work Entry 005 around
+deterministic repository measurement and evidence. A later operator-directed
+topology correction preserved that history while separating future planning into
+Work Entry 005 for the `helix-offload` execution plane and Work Entry 008 for the
+`helix-repo-manager-bot` repository intelligence/evidence plane. It authorizes
+neither entry's research or implementation.
+
+## Work Entries 005 and 008 planning boundary
+
+Work Entry 005 concerns future investigation and governance of the Helix
+local/offloaded execution plane represented by `helix-offload`. Its execution
+substrate, model/runtime execution, workload routing, GPU use, scheduling,
+packaging, returned evidence and relationship with Work Entry 008 remain
+unresolved. The 5070 Ti is candidate compute only: it is not required hardware,
+an accepted deployment target, an exclusive host, an ownership boundary or a
+production runtime.
+
+Work Entry 008 concerns future investigation and governance of the repository
+intelligence/evidence plane represented by `helix-repo-manager-bot`. Repository
+inspection, deterministic repository facts, evidence and semantic-delta
+preparation, duplicate/redundancy assistance, dependency analysis, compact
+context and review assistance are candidate concerns, not accepted
+implementation scope. Research may later find existing solutions, assign
+functions elsewhere, reject proposed functions, place execution through Work
+Entry 005 or keep execution independent.
+
+Their relationship is intentionally unresolved. Later research must distinguish
+whether 008 prepares evidence or work for execution by 005, whether 005 provides
+infrastructure on which the 008-owned bot runs, whether both relationships apply,
+or whether the systems remain substantially independent with a narrower
+interface. Logical ownership, execution placement and physical hosting remain
+independent in every model.
+
+Louis's `DOUBLE RED` designation is operator planning terminology, not a schema
+value or lifecycle state. Both entries use the existing `PARKED + RED` state and
+priority with `INELIGIBLE_STATE` scheduling. Research authority is `NONE` and
+implementation authority is `NONE` for both entries.
 
 ## Resolvable UNKNOWNs
 
@@ -144,7 +187,10 @@ flowchart TD
 Work Entry 003 exercised both branches. State-versus-priority and disposition
 behavior are actionable 003 findings. Publication/evidence architecture became
 004 (`PARKED + YELLOW`), and deterministic evidence/review tooling became 005
-(`PARKED + RED`). Neither parked entry is authorized to execute.
+(`PARKED + RED`). That remains historical provenance rather than an error. The
+later operator-directed correction refined the original 005 concern into the
+current 005 execution-plane and 008 repository-intelligence/evidence-plane
+planning entries. Neither parked entry is authorized to research or execute.
 
 Discovery closure is bounded by the current work entry. A discovery or repair
 pass is complete only when the stated scope and checks yield no additional
@@ -261,6 +307,13 @@ Work Entries 002 and 003 repeatedly used short inspect/reason/act/review loops,
 deterministic repository evidence, explicit authority boundaries and isolated
 execution. During 003, useful out-of-scope discoveries were preserved as 004
 and 005 while the active reconciliation continued.
+
+Subsequent operator clarification preserved that observation and split its
+future-work meaning: 005 now concerns the `helix-offload` execution plane, while
+008 concerns the `helix-repo-manager-bot` repository intelligence/evidence
+plane. The split resolves planning ownership only; architecture, execution
+placement, physical hosting, research and implementation remain unresolved and
+unauthorized.
 
 ### Interpretation
 

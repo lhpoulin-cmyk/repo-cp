@@ -111,7 +111,24 @@ class WorkProtocolTests(unittest.TestCase):
             '004': ('PARKED', 'YELLOW', 'INELIGIBLE_STATE', []),
             '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
             '006': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['003']),
+            '008': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
         })
+        entries = {item['id']: item for item in document['entries']}
+        for entry_id in ('005', '008'):
+            provenance = ' '.join(entries[entry_id]['provenance'])
+            self.assertIn('DOUBLE RED', provenance)
+            self.assertIn('research authority NONE', provenance)
+            self.assertIn('implementation authority NONE', provenance)
+        self.assertIn('local/offloaded execution plane', entries['005']['summary'])
+        self.assertIn('helix-offload', entries['005']['summary'])
+        self.assertIn('5070 Ti is candidate compute only',
+                      ' '.join(entries['005']['provenance']))
+        self.assertIn('helix-repo-manager-bot repository intelligence/evidence plane',
+                      ' '.join(entries['008']['provenance']))
+        self.assertIn('relationship is intentionally unresolved',
+                      ' '.join(entries['008']['provenance']))
+        self.assertIn('Logical ownership, execution placement and physical hosting',
+                      ' '.join(entries['008']['provenance']))
         schema = schemas()['topology']
         automatic = copy.deepcopy(document)
         automatic['automatic_preemption'] = True
