@@ -1,63 +1,84 @@
-# Work Entry 010 — DERP recovery registration
+# Work Entry 010 — DERP delivery record
 
 Name: DERP — Deterministic Engine for Policy and Routing
 
-Status: `PARKED` — recovery and scope preparation complete; implementation absent
+Status: `COMPLETE` — implementation published and synthetically validated;
+live acceptance not run
 
 Priority: `GREEN` (normal attention)
 
-Operator health: `BLUE` — preserved from Louis's statement that DERP was newly
-created and in development. No current evidence supports changing that health.
-`BLUE` remains separate from the canonical priority vocabulary.
+Operator health: `BLUE` — preserved as historical operator context. It is not a
+priority, readiness, or live-acceptance result.
 
-## Recovery boundary
+## Recovery provenance
 
-Louis's 2026-10-01 follow-up establishes that Work Entry 010 belongs to DERP.
-It authorizes recovery and registration, not implementation. The
-machine-readable recovery entry is [WORK_ENTRY_010.json](WORK_ENTRY_010.json).
+Louis's 2026-10-01 recovery instruction established that Work Entry 010 belongs
+to DERP. The first recovery pass found no implementation artifact and therefore
+recorded only the supplied name and health. The machine-readable
+[WORK_ENTRY_010.json](WORK_ENTRY_010.json) remains the historical recovery input;
+its absent-authority and unknown-owner statements describe that capture time,
+not the later implementation authority.
 
-No DERP implementation content was found in freshly fetched canonical repo-cp main
-`d46ac50128ea3491886476b81c5b75b7d6b0bd76`, any fetched remote or local branch,
-registered worktree, preserved checkout, handoff, repository history, reflog,
-or unreachable Git blob. A repository-wide search under
-`/home/louis/helix-arpa` found no separate DERP implementation artifact before
-this recovery record was written.
-
-Accordingly, this record preserves only facts supplied by Louis:
-
-- identifier: Work Entry `010`;
-- name: DERP — Deterministic Engine for Policy and Routing;
-- prior health: `BLUE` because it was newly created and in development.
-
-Later reconciliation found one bounded scope statement in canonical
-helix-offload commit `3073fd4e4c552a692d506489597faaf3f5e1038a`:
-Execution Admission V1 performs matching and explicit selection only, and Work
-Entry 010 / DERP owns any future deterministic routing or policy selection.
-That makes completed Work Entry 005 an interface/reuse dependency and rules out
-duplicating admission. It does not identify DERP's implementation repository,
-detailed owner, architecture, earlier branch, code or validation evidence.
-
-The intended implementation content, owning repository/control plane, detailed
-owner, earlier branch or checkout, validation evidence and implementation
-authority remain `UNKNOWN` or absent. No implementation progress, readiness,
-architecture or runtime claim is reconstructed. The machine-readable START
-record remains historical; the canonical topology carries the later `PARKED`
-state.
-
-## Relationship to the GPU work
-
-The GPU pilot remains Work Entry 009. The execution-host capacity assessment
-was initially assigned 010 in local commit
-`1df7226210012096dde02b84593b4c29351ee14f`; it is now Work Entry 011. The
-immutable historical commit is retained, and the correction is documented in
+The capacity assessment that briefly used 010 was renumbered to 011 without
+rewriting its immutable history. The mapping remains in
 [WORK_ENTRY_010_011_RENUMBER.md](WORK_ENTRY_010_011_RENUMBER.md).
 
-## Exact next action
+## Accepted scope and ownership
 
-Review [the smallest useful slice proposal](../proposals/derp-smallest-useful-slice.md)
-and select an implementation repository/owner or supply any operator-held DERP
-handoff. Reconcile that decision without overwriting recovery provenance. Do
-not begin implementation until the owner, accepted slice and authority are
-explicit.
+Louis's later Work Entry 010 instruction supplied the previously missing scope,
+ownership, and authority:
 
-Live effects: NONE.
+- helix-offload owns the DERP evaluator and bounded execution integration;
+- repo-cp retains policy decisions, authority, work governance, and evidence
+  review;
+- DERP recommends among supplied, already-admissible candidates and cannot grant
+  admission or execution authority;
+- hosted execution is adapter-isolated and requires an exact admission result
+  plus a separate execution grant;
+- local-model and GPU execution, deployments, account or credential changes,
+  automatic retries, frontier calls, dispatch, and publication are outside the
+  implementation's runtime behavior.
+
+The accepted implementation refines the earlier
+[smallest-useful-slice proposal](../proposals/derp-smallest-useful-slice.md)
+without creating a competing admission, attribution, telemetry, or orchestration
+system. It reuses Work Entry 005 candidate identities and explicit admission,
+keeps Work Entry 006 as advice rather than authority, and carries Work Entry 007
+attribution fields into receipts where applicable.
+
+## Delivery
+
+Canonical helix-offload `main` was independently queried after publication and
+resolved to `c1a1c89f4d54d695adf6675e97c045a31267f29d`. That revision contains:
+
+- versioned schemas for workflows, recommendations, receipts, and measurements;
+- deterministic preflight and recommendation with precise `UNKNOWN` and
+  `REFUSED` outcomes;
+- separate fake and bounded OpenAI Responses adapters;
+- document, inference, and isolated light-coding postflight checks;
+- attributable receipts with hashes, admission references, usage, cost, attempt
+  history, evidence gaps, and frontier-review recommendations;
+- a measurement ledger that separates completion, observed displaced frontier
+  usage, total usage/cost, elapsed time, retries, intervention, review effort,
+  and estimates; and
+- one concrete hosted live-acceptance packet that was prepared but not run.
+
+The machine-readable result is
+[WORK_ENTRY_010_RESULT.json](WORK_ENTRY_010_RESULT.json). Detailed validation and
+the live packet are in helix-offload at the published revision under
+`docs/evidence/WORK_ENTRY_010_SYNTHETIC_VALIDATION.md` and
+`docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md`.
+
+## Acceptance boundary and next action
+
+Delivery stage: **IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED**.
+
+Operational stage: **LIVE ACCEPTANCE NOT RUN**. DERP is not operationally proven,
+and the 20% target has not been achieved. The next action is a separately
+authorized execution of the exact hosted acceptance packet after its candidate,
+access, disclosure, price, admission, execution-grant, usage, deadline, and stop
+conditions are freshly verified.
+
+Live effects: Git review-branch publication and ordinary non-forced publication
+to canonical helix-offload `main`; no model call, GPU workload, deployment,
+installation, credential/account change, or runtime configuration mutation.

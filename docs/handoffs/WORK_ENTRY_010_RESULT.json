@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "010",
+  "work_state": "COMPLETE",
+  "priority": "GREEN",
+  "target_repository": "helix-offload",
+  "objective": "Implement and publish the smallest coherent DERP workflow for bounded document work, simple inference and light coding without live model usage.",
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "3073fd4e4c552a692d506489597faaf3f5e1038a"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "/home/louis/helix-arpa/helix-offload",
+    "execution_workspace_identity": "/home/louis/helix-arpa/helix-offload/.agent-checkouts/codex/work-entry-010-derp",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "3073fd4e4c552a692d506489597faaf3f5e1038a",
+  "ending_head": "c1a1c89f4d54d695adf6675e97c045a31267f29d",
+  "starting_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {"staged": [], "unstaged": [], "untracked": []},
+    "pre_existing": {"staged": [], "unstaged": [], "untracked": []},
+    "unrelated": {"staged": [], "unstaged": [], "untracked": []},
+    "unknown": {"staged": [], "unstaged": [], "untracked": []}
+  },
+  "files_changed": [
+    "helix-offload/src/helix_offload/adapters.py",
+    "helix-offload/src/helix_offload/derp.py",
+    "helix-offload/src/helix_offload/measurement.py",
+    "helix-offload/schemas/derp-workflow-v1.schema.json",
+    "helix-offload/schemas/derp-recommendation-v1.schema.json",
+    "helix-offload/schemas/derp-receipt-v1.schema.json",
+    "helix-offload/schemas/derp-measurement-v1.schema.json",
+    "helix-offload/tests/test_derp.py",
+    "helix-offload/docs/contracts/DERP_V1.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_SYNTHETIC_VALIDATION.md"
+  ],
+  "mutations_performed": [
+    "Implemented deterministic DERP preflight, recommendation, hosted-adapter boundary, postflight and receipts",
+    "Added fake-adapter document, inference and light-coding end-to-end fixtures with negative cases",
+    "Added a separated measurement ledger and concrete unexecuted hosted acceptance packet",
+    "Published the review branch and fast-forwarded canonical helix-offload main without force"
+  ],
+  "mutations_not_performed": [
+    "No live or paid model call",
+    "No GPU workload, installation, deployment or live runtime configuration",
+    "No credential, account, subscription or secret creation/change",
+    "No automatic retry, frontier escalation, dispatch or workload publication"
+  ],
+  "validation": [
+    {"check": "Full helix-offload unit suite", "status": "PASS", "evidence": "31 of 31 tests passed at the exact published candidate, including 16 admission and 15 DERP tests."},
+    {"check": "Synthetic end-to-end workflows", "status": "PASS", "evidence": "Bounded document extraction, explicit-rule classification and localized coding repair completed through the fake adapter; malformed, conflicting, unsuitable, over-limit, out-of-scope, timeout and failed-acceptance paths failed closed."},
+    {"check": "Schemas, compilation, links, pins, secret indicators and diff hygiene", "status": "PASS", "evidence": "All seven JSON schemas passed Draft 2020-12 metaschema checks; Python compilation, maintained relative links, pinned governance hashes, secret-indicator scan and git diff checks passed."},
+    {"check": "Canonical publication", "status": "PASS", "evidence": "A direct post-push remote query resolved helix-offload HEAD, refs/heads/main and refs/heads/codex/work-entry-010-derp to c1a1c89f4d54d695adf6675e97c045a31267f29d."},
+    {"check": "Hosted live acceptance", "status": "NOT_APPLICABLE", "evidence": "The task expressly prohibited live or paid calls; the exact packet was prepared but not run."}
+  ],
+  "evidence_produced": [
+    "helix-offload/docs/evidence/WORK_ENTRY_010_SYNTHETIC_VALIDATION.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_010.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_010_RESULT.json"
+  ],
+  "delivery_stage": "PUBLISHED",
+  "status_topology": {
+    "nodes": [
+      {"id": "work.010.implementation", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "The bounded DERP implementation is published and synthetically validated.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.010.live-acceptance", "kind": "FUTURE_WORK", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "The prepared hosted acceptance packet has not been run.", "owner": "Louis", "blocking": false},
+      {"id": "authority.010.live-execution", "kind": "AUTHORIZATION", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "A later exact authorization is required before any live or paid hosted call.", "owner": "Louis", "blocking": false}
+    ],
+    "relationships": [
+      {"subject": "work.010.live-acceptance", "predicate": "REQUIRES_AUTHORIZATION_FROM", "object": "authority.010.live-execution"}
+    ]
+  },
+  "recommended_next_action": "Under a separate exact authorization, freshly verify the packet prerequisites and run its one bounded hosted document workload; otherwise leave the implementation published and inactive.",
+  "live_effects": [
+    {"action": "Publish DERP review branch", "target": "helix-offload refs/heads/codex/work-entry-010-derp", "result": "SUCCEEDED", "evidence": "Direct remote query resolved the review branch to c1a1c89f4d54d695adf6675e97c045a31267f29d."},
+    {"action": "Fast-forward canonical main", "target": "helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved canonical main to c1a1c89f4d54d695adf6675e97c045a31267f29d."}
+  ]
+}

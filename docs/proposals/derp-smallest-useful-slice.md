@@ -1,10 +1,13 @@
 # Work Entry 010 — smallest useful DERP slice
 
-Status: review-only scope proposal; implementation is not authorized.
+Status: historical scope proposal, accepted and superseded by the published
+Work Entry 010 implementation. Live acceptance remains separately unauthorized
+and unperformed.
 
-DERP means Deterministic Engine for Policy and Routing. The name does not define
-an architecture. The only recovered functional statement is canonical
-helix-offload `3073fd4e4c552a692d506489597faaf3f5e1038a`: Work Entry 010 / DERP
+DERP means Deterministic Engine for Policy and Routing. The name did not define
+an architecture at recovery time. The then-recovered functional statement was
+canonical helix-offload `3073fd4e4c552a692d506489597faaf3f5e1038a`:
+Work Entry 010 / DERP
 owns future deterministic routing or policy selection, while Execution Admission
 V1 performs supplied-profile matching and explicit selection without routing.
 
@@ -14,13 +17,13 @@ V1 performs supplied-profile matching and explicit selection without routing.
 | --- | --- | --- | --- |
 | repo-cp topology and work protocol record lifecycle, priority, dependencies, scheduling eligibility and explicit authority | Which recorded candidate may even be considered next without rereading every handoff? | repo-cp | Compact current-state projection; supplied by `CURRENT_STATE.md`, not DERP |
 | Work Entry 006 deterministically advises whether explicit constrained-capacity evidence supports considering one otherwise-eligible entry | Which eligible target/profile should be chosen? | Work Entry 006 remains capacity adviser only | None in 006; do not turn capacity advice into routing or authority |
-| Work Entry 005 validates one execution request, matches supplied qualified profiles and validates an explicit selected identity | When multiple already-qualified candidates are supplied, which one best satisfies an explicit operator policy? | DERP logical function; implementation repository still UNKNOWN | Deterministic selection among supplied, already-admissible candidate identities; return a proposal, never execute |
+| Work Entry 005 validates one execution request, matches supplied qualified profiles and validates an explicit selected identity | When multiple already-qualified candidates are supplied, which one best satisfies an explicit operator policy? | helix-offload owns DERP evaluation and execution integration; repo-cp owns policy, authority and evidence review | Deterministic selection among supplied, already-admissible candidate identities; execution remains a separate explicitly authorized adapter operation |
 | Existing helix-offload matching returns zero, one or multiple candidates and refuses ambiguity | How should policy break an ambiguity without hiding uncertainty or inventing candidate data? | DERP, with helix-offload owning the admission interface it consumes | One stable policy evaluator over explicit candidate metadata; no scheduler, queue, adapter or fallback |
 | Work Entry 008 proposes deterministic repository facts, evidence/semantic-delta preparation, dependency analysis and compact context | What evidence should be prepared for a routing decision? | 008 if later accepted; owning repository facts stay with each source | A future evidence producer may supply bounded facts, but DERP must not duplicate repository inspection |
 
 ## Proposed slice: deterministic candidate recommendation
 
-The first slice accepts only caller-supplied, versioned data:
+The proposed evaluator slice accepted only caller-supplied, versioned data:
 
 - one request identity and content digest;
 - the exact set of candidate `{id, sha256}` identities returned by a valid 005
@@ -70,6 +73,19 @@ DERP slice could then replace a repeated multi-candidate comparison with one
 deterministic review artifact. Validate that estimate against three real routing
 decisions before expanding the rules or building orchestration.
 
-Smallest next decision: name the repository and owner for this review-only
-evaluator, or keep Work Entry 010 parked. No implementation follows from this
-proposal.
+## Implementation disposition
+
+Louis subsequently named helix-offload as the evaluator and execution-integration
+owner, retained policy/authority/evidence review in repo-cp, and authorized the
+bounded implementation. Canonical helix-offload
+`c1a1c89f4d54d695adf6675e97c045a31267f29d` implements the evaluator plus the
+separate explicitly authorized hosted-adapter boundary. The implemented policy
+adds evidence-backed capability and quality gates before supported resource
+comparison; it never invents suitability, quality, cost or savings.
+
+The historical proposal remains useful provenance, but its unknown-owner and
+review-only limitations are superseded. See
+[the maintained delivery record](../handoffs/WORK_ENTRY_010.md) and
+[machine-readable result](../handoffs/WORK_ENTRY_010_RESULT.json). The exact
+next decision is whether Louis separately authorizes the prepared one-call live
+acceptance packet. No live call follows from this proposal or its implementation.

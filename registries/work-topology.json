@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "012",
+  "updated_by_work_entry": "010",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -212,21 +212,24 @@
     },
     {
       "id": "010",
-      "state": "PARKED",
+      "state": "COMPLETE",
       "priority": "GREEN",
       "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [
         "005"
       ],
-      "summary": "DERP — Deterministic Engine for Policy and Routing — is parked after recovery and bounded-scope preparation; canonical helix-offload assigns future deterministic routing and policy selection to it, but its implementation repository, detailed ownership and implementation are not recovered or authorized.",
+      "summary": "DERP — Deterministic Engine for Policy and Routing — is published and synthetically validated in helix-offload for bounded document work, simple inference and light coding; hosted live acceptance remains unperformed and separately authorized.",
       "provenance": [
         "Louis's 2026-10-01 follow-up states that Work Entry 010 is DERP; operator health BLUE is preserved because no current evidence supports changing the newly-created, in-development assessment, while normal priority GREEN is recorded independently.",
-        "The original repo-cp recovery search found no DERP implementation artifact; this remains true for the inspected repo-cp branches, worktrees, handoffs and history.",
+        "The original repo-cp recovery search found no DERP implementation artifact; docs/handoffs/WORK_ENTRY_010.json and repository history preserve that capture-time result.",
         "Canonical helix-offload commit 3073fd4e4c552a692d506489597faaf3f5e1038a states that Work Entry 010 / DERP owns future deterministic routing or policy selection while Execution Admission V1 remains matching and explicit selection only.",
         "docs/handoffs/WORK_ENTRY_010.md and docs/handoffs/WORK_ENTRY_010_011_RENUMBER.md",
         "docs/proposals/derp-smallest-useful-slice.md",
-        "Work Entry 005 is a completed interface/reuse dependency, not implementation authority; the DERP implementation repository and detailed owner remain UNKNOWN.",
-        "Recovery and scope preparation only; implementation state is absent and implementation authority remains NONE."
+        "Louis's later Work Entry 010 instruction assigns evaluator and execution-integration ownership to helix-offload, retains policy/authority/evidence review in repo-cp, and authorizes the bounded implementation and ordinary publication.",
+        "Canonical helix-offload commit c1a1c89f4d54d695adf6675e97c045a31267f29d contains the implementation and synthetic validation; docs/handoffs/WORK_ENTRY_010_RESULT.json records the result.",
+        "Work Entry 005 remains the completed admission dependency; DERP cannot grant admission or execution authority and requires an exact ADMITTED result plus a separate execution grant before adapter invocation.",
+        "No live or paid model call, GPU workload, installation, deployment, account/credential change, automatic retry, frontier escalation, dispatch or runtime configuration mutation was performed.",
+        "The 20 percent successful-offload target is a future measured goal, not an achieved saving; hosted live acceptance remains separately authorized and unperformed."
       ]
     },
     {

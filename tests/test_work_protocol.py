@@ -114,7 +114,7 @@ class WorkProtocolTests(unittest.TestCase):
             '007': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '008': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
             '009': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
-            '010': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['005']),
+            '010': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['005']),
             '011': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '012': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['007']),
         })
@@ -141,13 +141,23 @@ class WorkProtocolTests(unittest.TestCase):
             self.assertIn('normal priority GREEN', provenance)
         self.assertIn('live run was not performed', entries['009']['summary'])
         self.assertIn('Deterministic Engine for Policy and Routing', entries['010']['summary'])
-        self.assertIn('implementation repository', entries['010']['summary'])
+        self.assertIn('synthetically validated', entries['010']['summary'])
+        self.assertIn('hosted live acceptance remains unperformed', entries['010']['summary'])
+        self.assertIn('c1a1c89f4d54d695adf6675e97c045a31267f29d',
+                      ' '.join(entries['010']['provenance']))
         self.assertIn('coordinated Work Entry 009 run', entries['011']['summary'])
         self.assertIn('renumbered this assessment from 010 to 011',
                       ' '.join(entries['011']['provenance']))
         self.assertIn('GitHub-hosted account or repository identity', entries['012']['summary'])
         self.assertIn('live account, credential', ' '.join(entries['012']['provenance']))
-        self.assertEqual(document['updated_by_work_entry'], '012')
+        self.assertEqual(document['updated_by_work_entry'], '010')
+
+        derp_result = json.loads(
+            (ROOT / 'docs/handoffs/WORK_ENTRY_010_RESULT.json').read_bytes())
+        self.assertEqual(validate('result', encoded(derp_result))['status'], 'PASS')
+        self.assertEqual(derp_result['ending_head'],
+                         'c1a1c89f4d54d695adf6675e97c045a31267f29d')
+        self.assertEqual(derp_result['delivery_stage'], 'PUBLISHED')
 
         current_state = (ROOT / 'docs/CURRENT_STATE.md').read_text()
         self.assertIn('| 004 |', current_state)
