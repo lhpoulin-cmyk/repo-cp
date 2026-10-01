@@ -28,9 +28,11 @@ rewriting its immutable history. The mapping remains in
 Louis's later Work Entry 010 instruction supplied the previously missing scope,
 ownership, and authority:
 
-- helix-offload owns the DERP evaluator and bounded execution integration;
-- repo-cp retains policy decisions, authority, work governance, and evidence
-  review;
+- helix-offload owns the portable DERP evaluator, bounded execution integration,
+  artifact/receipt contracts and cohort calculations;
+- repo-cp retains Louis's portfolio policy decisions, priorities, authority,
+  work governance and evidence review; independent consumers supply their own
+  policy and candidate evidence through portable interfaces;
 - DERP recommends among supplied, already-admissible candidates and cannot grant
   admission or execution authority;
 - hosted execution is adapter-isolated and requires an exact admission result
@@ -46,10 +48,16 @@ system. It reuses Work Entry 005 candidate identities and explicit admission,
 keeps Work Entry 006 as advice rather than authority, and carries Work Entry 007
 attribution fields into receipts where applicable.
 
+DERP is helix-offload's governor: it applies explicit supplied policy through
+preflight, recommendation, execution-limit checks, postflight and outcome
+accounting. Adapters perform only separately granted execution. Louis grants
+authority, accepts results and resolves exceptions. This purpose does not imply
+a daemon, automatic dispatch, retry loop or additional control plane.
+
 ## Delivery
 
 Canonical helix-offload `main` was independently queried after publication and
-resolved to `c1a1c89f4d54d695adf6675e97c045a31267f29d`. That revision contains:
+resolved to `28c2dab305e05e18e053321f6a70df9de1b85485`. That revision contains:
 
 - versioned schemas for workflows, recommendations, receipts, and measurements;
 - deterministic preflight and recommendation with precise `UNKNOWN` and
@@ -63,11 +71,37 @@ resolved to `c1a1c89f4d54d695adf6675e97c045a31267f29d`. That revision contains:
   and estimates; and
 - one concrete hosted live-acceptance packet that was prepared but not run.
 
+The resumed slice adds the first usable portable path:
+
+`prepare → preview → explicit grant → one adapter call → postflight → untrusted
+artifact plus receipt → human disposition`.
+
+`change-summary-v1` keeps lane `PORTFOLIO_REPOSITORY`, operation `DOCUMENT` and
+job family separate. Its deterministic Git packer collects bounded revision/path
+facts, normalized supplied validation receipts and allowlisted document excerpts.
+Exact SHAs, statuses, authority values, paths and evidence references are checked
+after generation; semantic adequacy remains human review. Cohort V2 records
+eligible opportunities not routed as well as actual usage/cost,
+preparation/review effort and observed versus estimated frontier displacement.
+
 The machine-readable result is
 [WORK_ENTRY_010_RESULT.json](WORK_ENTRY_010_RESULT.json). Detailed validation and
 the live packet are in helix-offload at the published revision under
 `docs/evidence/WORK_ENTRY_010_SYNTHETIC_VALIDATION.md` and
-`docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md`.
+`docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md`. The resumed validation
+is `docs/evidence/WORK_ENTRY_010_HOSTED_PATH_SYNTHETIC_VALIDATION.md`.
+
+Externally supplied feature research is preserved at
+`research-notes/2026-10-01-helix-offload-feature-research.md` with its source
+manifest and a separate disposition record. Outcome forecasting/calibration is separately recorded at
+`research-notes/2026-10-01-helix-offload-outcome-forecasting.md` as deferred
+roadmap work; it was not implemented and cannot control routing.
+
+The earlier externally supplied practical-workflow research report's full source
+text was not available in this active session. It was not reconstructed from a
+handoff and is not claimed as durably saved; only the complete feature-research
+artifact identified by local commit `f9575a0fc7e9c8eab1c3e10f8073166cbf3be6e6`
+was available, verified and published.
 
 ## Acceptance boundary and next action
 
@@ -79,6 +113,14 @@ authorized execution of the exact hosted acceptance packet after its candidate,
 access, disclosure, price, admission, execution-grant, usage, deadline, and stop
 conditions are freshly verified.
 
-Live effects: Git review-branch publication and ordinary non-forced publication
-to canonical helix-offload `main`; no model call, GPU workload, deployment,
-installation, credential/account change, or runtime configuration mutation.
+The precise currently unmet prerequisites are an authorized exact call; verified
+OpenAI project billing, access and rate limit for the named snapshot; an approved
+credential injector that opens descriptor 3; approved data disclosure; an exact
+qualified candidate and 005 admission identity; fresh pricing/cost evidence; a
+matching LIVE grant; and a new result directory.
+
+Live effects: normal non-forced publication of the feature-research branch and
+records to repo-cp, plus the hosted-path review branch and ordinary fast-forward
+to canonical helix-offload `main`; no model call, GPU workload, generated-text
+publication, deployment, installation, credential/account change, or runtime
+configuration mutation.

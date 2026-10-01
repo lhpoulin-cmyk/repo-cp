@@ -1,9 +1,9 @@
 # Current work state
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
-verified canonical repo-cp `main` at
-`54096cd2338dc58658dc0f9dc82620255b8de345`, canonical helix-offload `main` at
-`c1a1c89f4d54d695adf6675e97c045a31267f29d`, and the Work Entry 010 corrections
+verified canonical repo-cp `main` immediately before this update at
+`e3b03aaa7476b8352c378907d2e732e7c8348e85`, canonical helix-offload `main` at
+`28c2dab305e05e18e053321f6a70df9de1b85485`, and the Work Entry 010 corrections
 in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -34,7 +34,7 @@ label left behind as a proxy.
 | 006 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Commits `a74b1e13512c50528643539bd55c6091006ecf73` and lifecycle closure `c2a3e120de279a0517902ecc07ec1be234f87d66` are ancestors of verified repo-cp main; handoff records 170/170 repository tests and 13/13 Foundation tests | Deterministic usage advice only; no scheduler, dispatch or telemetry integration |
 | 007 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Implementation `2620089` and delivery-rule commit `88d2f71` are ancestors of verified repo-cp main; canonical handoff records 211 repository tests, 33 attribution tests and 7 identity tests | Synthetic supplied-profile checks only; no live identity, account, credential or workstation change |
 | 009 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Pilot packet and handoff are published in repo-cp `37a84624…` | Preparation COMPLETE. GPU workload UNPERFORMED; live authority withheld |
-| 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | DERP evaluator, bounded hosted-adapter integration, synthetic fixtures, receipts and measurement ledger are published in canonical helix-offload `c1a1c89…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. LIVE ACCEPTANCE NOT RUN; 20% target not achieved |
+| 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | DERP governor, explicit hosted CLI, `change-summary-v1`, artifact/receipt/human-disposition path and opportunity-aware cohort accounting are published in canonical helix-offload `28c2dab…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. LIVE ACCEPTANCE NOT RUN; 20% target not achieved |
 | 011 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Capacity decision and coordinated measurement packet are published in repo-cp `37a84624…` | Assessment COMPLETE. Current measurement UNPERFORMED; a later authorized 009 run supplies it once, without a duplicate benchmark |
 
 ## Recommended efficiency order

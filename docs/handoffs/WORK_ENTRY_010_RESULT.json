@@ -6,19 +6,19 @@
   "work_state": "COMPLETE",
   "priority": "GREEN",
   "target_repository": "helix-offload",
-  "objective": "Implement and publish the smallest coherent DERP workflow for bounded document work, simple inference and light coding without live model usage.",
+  "objective": "Publish a portable explicit hosted DERP lifecycle and the first practical change-summary-v1 job family without a live model call.",
   "canonical_baseline": {
     "intended_ref": "refs/heads/main",
-    "resolved_head": "3073fd4e4c552a692d506489597faaf3f5e1038a"
+    "resolved_head": "c1a1c89f4d54d695adf6675e97c045a31267f29d"
   },
   "workspace_evidence": {
     "source_workspace_identity": "/home/louis/helix-arpa/helix-offload",
-    "execution_workspace_identity": "/home/louis/helix-arpa/helix-offload/.agent-checkouts/codex/work-entry-010-derp",
+    "execution_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-010-hosted-path-helix",
     "isolated_execution": true,
     "pre_existing_source_state_preserved": true
   },
-  "starting_head": "3073fd4e4c552a692d506489597faaf3f5e1038a",
-  "ending_head": "c1a1c89f4d54d695adf6675e97c045a31267f29d",
+  "starting_head": "c1a1c89f4d54d695adf6675e97c045a31267f29d",
+  "ending_head": "28c2dab305e05e18e053321f6a70df9de1b85485",
   "starting_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
   "ending_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
   "ending_dirtiness_attribution": {
@@ -28,57 +28,78 @@
     "unknown": {"staged": [], "unstaged": [], "untracked": []}
   },
   "files_changed": [
-    "helix-offload/src/helix_offload/adapters.py",
+    "helix-offload/src/helix_offload/workflow.py",
+    "helix-offload/src/helix_offload/cli.py",
     "helix-offload/src/helix_offload/derp.py",
+    "helix-offload/src/helix_offload/adapters.py",
     "helix-offload/src/helix_offload/measurement.py",
-    "helix-offload/schemas/derp-workflow-v1.schema.json",
-    "helix-offload/schemas/derp-recommendation-v1.schema.json",
-    "helix-offload/schemas/derp-receipt-v1.schema.json",
-    "helix-offload/schemas/derp-measurement-v1.schema.json",
-    "helix-offload/tests/test_derp.py",
-    "helix-offload/docs/contracts/DERP_V1.md",
+    "helix-offload/schemas/change-summary-request-v1.schema.json",
+    "helix-offload/schemas/derp-preview-v1.schema.json",
+    "helix-offload/schemas/execution-grant-v1.schema.json",
+    "helix-offload/schemas/derp-artifact-v1.schema.json",
+    "helix-offload/schemas/human-disposition-v1.schema.json",
+    "helix-offload/schemas/derp-cohort-v2.schema.json",
+    "helix-offload/docs/contracts/CHANGE_SUMMARY_V1.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_PATH_SYNTHETIC_VALIDATION.md",
     "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md",
-    "helix-offload/docs/evidence/WORK_ENTRY_010_SYNTHETIC_VALIDATION.md"
+    "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.md",
+    "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.sources.json",
+    "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.disposition.md",
+    "repo-cp/research-notes/2026-10-01-helix-offload-outcome-forecasting.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_010.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_010_RESULT.json"
   ],
   "mutations_performed": [
-    "Implemented deterministic DERP preflight, recommendation, hosted-adapter boundary, postflight and receipts",
-    "Added fake-adapter document, inference and light-coding end-to-end fixtures with negative cases",
-    "Added a separated measurement ledger and concrete unexecuted hosted acceptance packet",
-    "Published the review branch and fast-forwarded canonical helix-offload main without force"
+    "Preserved and published the feature research with its source manifest and historical commit provenance",
+    "Recorded outcome forecasting and calibration as deferred roadmap work without implementing or authorizing it",
+    "Recorded DERP as helix-offload's governor while preserving repo-cp policy and human authority",
+    "Implemented prepare, preview, explicit grant, one adapter call, postflight, artifact and receipt, and human disposition commands",
+    "Implemented change-summary-v1 with bounded read-only Git packing and exact-reference postflight",
+    "Added opportunity-aware cohort accounting that includes eligible jobs not routed to DERP",
+    "Published the hosted-path review branch and fast-forwarded canonical helix-offload main without force"
   ],
   "mutations_not_performed": [
     "No live or paid model call",
+    "No credential read during validation and no account, subscription, permission or secret change",
     "No GPU workload, installation, deployment or live runtime configuration",
-    "No credential, account, subscription or secret creation/change",
-    "No automatic retry, frontier escalation, dispatch or workload publication"
+    "No automatic retry, frontier escalation, dispatch, daemon, caching, MCP or forecasting implementation",
+    "No automatic application or publication of generated text"
   ],
   "validation": [
-    {"check": "Full helix-offload unit suite", "status": "PASS", "evidence": "31 of 31 tests passed at the exact published candidate, including 16 admission and 15 DERP tests."},
-    {"check": "Synthetic end-to-end workflows", "status": "PASS", "evidence": "Bounded document extraction, explicit-rule classification and localized coding repair completed through the fake adapter; malformed, conflicting, unsuitable, over-limit, out-of-scope, timeout and failed-acceptance paths failed closed."},
-    {"check": "Schemas, compilation, links, pins, secret indicators and diff hygiene", "status": "PASS", "evidence": "All seven JSON schemas passed Draft 2020-12 metaschema checks; Python compilation, maintained relative links, pinned governance hashes, secret-indicator scan and git diff checks passed."},
-    {"check": "Canonical publication", "status": "PASS", "evidence": "A direct post-push remote query resolved helix-offload HEAD, refs/heads/main and refs/heads/codex/work-entry-010-derp to c1a1c89f4d54d695adf6675e97c045a31267f29d."},
-    {"check": "Hosted live acceptance", "status": "NOT_APPLICABLE", "evidence": "The task expressly prohibited live or paid calls; the exact packet was prepared but not run."}
+    {"check": "Full helix-offload unit suite", "status": "PASS", "evidence": "39 of 39 tests passed at the exact published candidate: 16 admission, 15 preserved DERP and 8 hosted-lifecycle/measurement tests."},
+    {"check": "Synthetic explicit lifecycle", "status": "PASS", "evidence": "Prepare, no-effect preview, bound synthetic grant, one fake adapter call, postflight, artifact/receipt and human disposition completed; altered references, stale hashes, missing cost evidence, unallowlisted paths and an existing result directory failed closed."},
+    {"check": "Schemas, compilation, links, pins, secret indicators and diff hygiene", "status": "PASS", "evidence": "24 JSON documents parsed; 13 schemas passed Draft 2020-12 metaschema validation; compilation, 80 maintained relative links, three pinned digests, secret-indicator scan and git diff checks passed. The one pinned-contract link to absent AGENT_WORK_ADOPTION.md remains preserved."},
+    {"check": "Canonical publication", "status": "PASS", "evidence": "A direct post-push query resolved helix-offload HEAD, refs/heads/main and refs/heads/codex/work-entry-010-hosted-path to 28c2dab305e05e18e053321f6a70df9de1b85485."},
+    {"check": "Hosted live acceptance", "status": "NOT_APPLICABLE", "evidence": "Live model use remained outside authority; the exact packet and command path were prepared but not run."}
   ],
   "evidence_produced": [
-    "helix-offload/docs/evidence/WORK_ENTRY_010_SYNTHETIC_VALIDATION.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_PATH_SYNTHETIC_VALIDATION.md",
     "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md",
+    "helix-offload/docs/contracts/CHANGE_SUMMARY_V1.md",
+    "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.md",
+    "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.sources.json",
+    "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.disposition.md",
+    "repo-cp/research-notes/2026-10-01-helix-offload-outcome-forecasting.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010_RESULT.json"
   ],
   "delivery_stage": "PUBLISHED",
   "status_topology": {
     "nodes": [
-      {"id": "work.010.implementation", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "The bounded DERP implementation is published and synthetically validated.", "owner": "helix-offload", "blocking": false},
-      {"id": "work.010.live-acceptance", "kind": "FUTURE_WORK", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "The prepared hosted acceptance packet has not been run.", "owner": "Louis", "blocking": false},
-      {"id": "authority.010.live-execution", "kind": "AUTHORIZATION", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "A later exact authorization is required before any live or paid hosted call.", "owner": "Louis", "blocking": false}
+      {"id": "work.010.implementation", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "The DERP governor, explicit hosted CLI and change-summary-v1 are published and synthetically validated.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.010.live-acceptance", "kind": "FUTURE_WORK", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "The exact hosted acceptance packet has not been run.", "owner": "Louis", "blocking": false},
+      {"id": "authority.010.live-execution", "kind": "AUTHORIZATION", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "A later exact authorization and the packet prerequisites are required before one live call.", "owner": "Louis", "blocking": false},
+      {"id": "work.010.outcome-forecasting", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "Outcome forecasting and calibration are recorded as deferred roadmap research and do not control routing.", "owner": "helix-offload", "blocking": false}
     ],
     "relationships": [
       {"subject": "work.010.live-acceptance", "predicate": "REQUIRES_AUTHORIZATION_FROM", "object": "authority.010.live-execution"}
     ]
   },
-  "recommended_next_action": "Under a separate exact authorization, freshly verify the packet prerequisites and run its one bounded hosted document workload; otherwise leave the implementation published and inactive.",
+  "recommended_next_action": "Under a separate exact authorization, verify the named OpenAI model/account, disclosure, candidate/admission, descriptor-based credential injection, fresh cost evidence, LIVE grant, deadline and stop conditions, then run the one bounded hosted acceptance call. If accepted, begin the comparable change-summary-v1 cohort.",
   "live_effects": [
-    {"action": "Publish DERP review branch", "target": "helix-offload refs/heads/codex/work-entry-010-derp", "result": "SUCCEEDED", "evidence": "Direct remote query resolved the review branch to c1a1c89f4d54d695adf6675e97c045a31267f29d."},
-    {"action": "Fast-forward canonical main", "target": "helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved canonical main to c1a1c89f4d54d695adf6675e97c045a31267f29d."}
+    {"action": "Publish feature research review branch", "target": "repo-cp refs/heads/codex/helix-offload-features-research", "result": "SUCCEEDED", "evidence": "Direct remote query resolved the branch to e3b03aaa7476b8352c378907d2e732e7c8348e85."},
+    {"action": "Publish durable feature research", "target": "repo-cp refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved canonical main to e3b03aaa7476b8352c378907d2e732e7c8348e85 before this control-record update."},
+    {"action": "Publish hosted-path review branch", "target": "helix-offload refs/heads/codex/work-entry-010-hosted-path", "result": "SUCCEEDED", "evidence": "Direct remote query resolved the branch to 28c2dab305e05e18e053321f6a70df9de1b85485."},
+    {"action": "Fast-forward canonical helix-offload main", "target": "helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved canonical main to 28c2dab305e05e18e053321f6a70df9de1b85485."}
   ]
 }
