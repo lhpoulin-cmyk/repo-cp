@@ -20,6 +20,13 @@ class Parser(argparse.ArgumentParser):
 
 
 def main():
+    if sys.argv[1:2] == ['attribution-report']:
+        try:
+            from .attribution import main as attribution_main
+            return attribution_main(sys.argv[2:], sys.stdin.buffer, sys.stdout, sys.stderr)
+        except (ValueError, OSError, ImportError, RecursionError):
+            sys.stderr.write('BLOCKER=REPO_CP_NONCONFORMANCE\n')
+            return 2
     if sys.argv[1:2] == ['create']:
         from .create import main as create_main
         return create_main(sys.argv[2:])

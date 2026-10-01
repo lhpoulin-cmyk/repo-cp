@@ -2,7 +2,7 @@
 
 Status: preparation complete; current live capacity not measured.
 
-This assessment coordinates with Work Entry 009. It uses accepted repository
+This Work Entry 011 assessment coordinates with Work Entry 009. It uses accepted repository
 evidence and delegates its one required current measurement to the 009 packet;
 it does not define or request a second GPU run.
 
@@ -149,7 +149,7 @@ grace, no retry, no model, no installation, no network operation by the
 workload, and transient files only under its task-owned `/tmp` directory. These
 two preflight/execution phases are one measurement packet and one GPU workload.
 
-Capture these 010 fields from the same receipt:
+Capture these 011 fields from the same receipt:
 
 - hypervisor CPU/RAM/swap, storage-pool status, safe VM allocation fields and
   passthrough binding;

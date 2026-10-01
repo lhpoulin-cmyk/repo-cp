@@ -89,10 +89,22 @@ content.
 
 ## Validation, publication and retention
 
-Validate, review, commit and—when separately authorized—publish directly from
-the isolated execution checkout. Do not copy or merge task changes into a dirty
-source checkout merely to stage or publish them. Normal canonical parity,
-review, authorization and closure requirements still apply.
+Validate and review the exact proposed tree in the isolated execution checkout,
+then commit authorized work to its scoped task branch. Preserve a durable work
+result or handoff that names the tested commit, base revision, exact checks and
+results, material limitations and remaining dirty state. A clean working-tree
+test run is not evidence for a different commit; rerun affected checks whenever
+the committed bytes differ from the tested bytes.
+
+When review-branch publication is authorized, push that isolated task branch
+through the canonical remote's normal non-forced workflow and report its exact
+ref and commit with the validation evidence. Do not copy or merge task changes
+into a dirty source checkout merely to stage or publish them. A review-branch
+push does not authorize a pull request, approval, merge or canonical-main
+publication. Advancing canonical main requires the separately applicable
+authority and repository protections; agents must not infer it from task access,
+configuration, a passing check or review-branch publication. Normal canonical
+parity, review, authorization and closure requirements still apply.
 
 The work entry and work result record source and execution workspace identities,
 baseline and ending revisions, dirty state and attribution. These structured

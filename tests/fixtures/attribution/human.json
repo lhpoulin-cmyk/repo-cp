@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-01T00:00:00Z",
+  "registry": {
+    "source_repository_id": "synthetic.auth",
+    "source_revision": "sha1:1111111111111111111111111111111111111111",
+    "principals": [
+      {
+        "id": "human.example",
+        "kind": "human",
+        "source_status": "proposed"
+      },
+      {
+        "id": "human.second",
+        "kind": "human",
+        "source_status": "unverified"
+      }
+    ],
+    "git_identity_bindings": [
+      {
+        "id": "git.example",
+        "principal_id": "human.example",
+        "name": "Synthetic Human",
+        "email": "synthetic@example.invalid",
+        "repository_ids": [
+          "repo.example"
+        ],
+        "source_status": "unverified"
+      }
+    ]
+  },
+  "commits": [
+    {
+      "repository_id": "repo.example",
+      "oid": "sha1:2222222222222222222222222222222222222222",
+      "parents": [],
+      "author": {
+        "name": "Synthetic Human",
+        "email": "synthetic@example.invalid"
+      },
+      "committer": {
+        "name": "Synthetic Human",
+        "email": "synthetic@example.invalid"
+      },
+      "message": "Synthetic public fixture\n\nAttribution-Version: 1\nAttribution-Actor: {\"id\":\"h1\",\"kind\":\"human\",\"principal\":\"human.example\",\"tool\":null,\"models\":[]}\nAttribution-Claim: {\"id\":\"p1\",\"subject\":\"h1\",\"predicate\":\"participation\",\"value\":{\"role\":\"implement\",\"present\":true},\"scope\":{\"kind\":\"commit\",\"target\":\"self\"},\"evidence\":[{\"claim\":\"p1\",\"state\":\"declared\",\"by\":\"h1\",\"method\":\"statement-v1\",\"ref\":\"self:trailer/p1\"}]}\nAttribution-Claim: {\"id\":\"coverage\",\"subject\":\"record\",\"predicate\":\"coverage\",\"value\":\"complete\",\"scope\":{\"kind\":\"commit\",\"target\":\"self\"},\"evidence\":[{\"claim\":\"coverage\",\"state\":\"declared\",\"by\":\"h1\",\"method\":\"statement-v1\",\"ref\":\"self:trailer/coverage\"}]}\nAttribution-Claim: {\"id\":\"executor\",\"subject\":\"record\",\"predicate\":\"commit-execution\",\"value\":{\"executor\":\"h1\",\"mechanism\":\"git-cli\",\"acting_principal\":\"human.example\",\"unknown\":{}},\"scope\":{\"kind\":\"commit\",\"target\":\"self\"},\"evidence\":[{\"claim\":\"executor\",\"state\":\"declared\",\"by\":\"h1\",\"method\":\"statement-v1\",\"ref\":\"self:trailer/executor\"}]}\n"
+    }
+  ],
+  "profile_checks": []
+}

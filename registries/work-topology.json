@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "010",
+  "updated_by_work_entry": "011",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -133,16 +133,18 @@
     },
     {
       "id": "005",
-      "state": "PARKED",
-      "priority": "RED",
+      "state": "COMPLETE",
+      "priority": "GREEN",
       "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Future investigation and governance of the Helix local/offloaded execution plane represented by helix-offload; execution substrate, model/runtime execution, workload routing, GPU use, scheduling, packaging, execution evidence and the relationship with Work Entry 008 remain unresolved.",
+      "summary": "Execution Admission V1 was implemented, validated and published to canonical helix-offload main; it is a deterministic admission boundary and does not implement model/runtime execution.",
       "provenance": [
         "Work Entry 003 originally identified Work Entry 005 around deterministic repository measurement and evidence concerns; docs/handoffs/WORK_ENTRY_003.md remains the historical evidence.",
         "Operator 005/008 topology correction refined that future-work concern into Work Entry 005 for the helix-offload execution plane and Work Entry 008 for the helix-repo-manager-bot repository intelligence/evidence plane.",
-        "Operator planning designation DOUBLE RED is represented with existing PARKED / RED and INELIGIBLE_STATE values; research authority NONE; implementation authority NONE.",
-        "5070 Ti is candidate compute only, not required hardware, an accepted deployment target, an exclusive host, an ownership boundary or a production runtime.",
+        "Louis's 2026-10-01 reconciliation instruction authorized review and ordinary canonical-main publication of the preserved Execution Admission V1 candidate.",
+        "Canonical helix-offload implementation commit 3073fd4e4c552a692d506489597faaf3f5e1038a was independently verified after publication.",
+        "The implementation performs deterministic admission only; no model runner, workload execution, deployment, credential, account, workstation or peer mutation was authorized or performed.",
+        "5070 Ti remains candidate compute only, not required hardware, an accepted deployment target, an exclusive host, an ownership boundary or a production runtime.",
         "Logical ownership, execution placement and physical hosting are separate decisions; the Work Entry 005 relationship with Work Entry 008 is intentionally unresolved."
       ]
     },
@@ -161,6 +163,21 @@
         "Dependency satisfied by canonical publication of Work Entry 003; execution remained separately authorized",
         "docs/handoffs/WORK_ENTRY_006.md",
         "canonical implementation commit a74b1e13512c50528643539bd55c6091006ecf73"
+      ]
+    },
+    {
+      "id": "007",
+      "state": "COMPLETE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [],
+      "summary": "Contribution Attribution and Git Identity Profiles completed as a bounded synthetic implementation: Stage 1 provides contribution reporting and explicit commit-executor attribution; Stage 2 provides supplied Git/account profile comparison and wrong-profile refusal tests.",
+      "provenance": [
+        "Operator instruction on 2026-10-01 assigned repo-cp as lead, auth-cp as owner of identity bindings and ws-cp as owner of workstation integration.",
+        "Louis's 2026-10-01 reconciliation instruction authorized recovery, repair, validation, review-branch publication and ordinary canonical-main publication of the bounded implementation.",
+        "Canonical repo-cp implementation commit 2620089 adds the reporter, schema, fixtures and tests; publication tip 88d2f71 includes the reconciled delivery authority and agent review-branch rule correction.",
+        "No live identity, account, credential, workstation, runtime or peer configuration change was authorized or performed.",
+        "Portfolio voice and personal reflections remain separate from contribution attribution and Git identity profiles."
       ]
     },
     {
@@ -198,11 +215,26 @@
       "priority": "GREEN",
       "scheduling_eligibility": "ELIGIBLE",
       "dependencies": [],
+      "summary": "DERP — Deterministic Engine for Policy and Routing — is registered from operator identity evidence; preserved implementation content, ownership and dependencies remain unlocated and are not invented.",
+      "provenance": [
+        "Louis's 2026-10-01 follow-up states that Work Entry 010 is DERP; operator health BLUE is preserved because no current evidence supports changing the newly-created, in-development assessment, while normal priority GREEN is recorded independently.",
+        "Fresh canonical main d46ac50128ea3491886476b81c5b75b7d6b0bd76, all fetched branches, registered and preserved checkouts, handoffs, reflogs, relevant history and unreachable blobs contained no recoverable DERP artifact.",
+        "docs/handoffs/WORK_ENTRY_010.md and docs/handoffs/WORK_ENTRY_010_011_RENUMBER.md",
+        "Recovery registration only; ownership, dependencies, implementation state and implementation authority remain UNKNOWN."
+      ]
+    },
+    {
+      "id": "011",
+      "state": "ACTIVE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "ELIGIBLE",
+      "dependencies": [],
       "summary": "Assess RTX 5070 Ti host and guest capacity for Work Entry 009 and documented model workloads, reusing its future measurement rather than duplicating execution.",
       "provenance": [
-        "Louis's 2026-10-01 instruction created Work Entry 010 as a separate read-only inventory and assessment coordinated with Work Entry 009.",
+        "Louis's 2026-10-01 instruction created the capacity assessment; Louis's follow-up reserved 010 for DERP and renumbered this assessment from 010 to 011.",
         "Operator health BLUE means requirements and capacity are unverified; BLUE is not inserted into the canonical GREEN/YELLOW/RED priority vocabulary, so normal priority GREEN is recorded independently.",
-        "docs/handoffs/WORK_ENTRY_010.md and docs/proposals/rtx5070ti-capacity-assessment.md",
+        "docs/handoffs/WORK_ENTRY_011.md and docs/proposals/work-entry-011-rtx5070ti-capacity-assessment.md",
+        "Historical local commit 1df7226210012096dde02b84593b4c29351ee14f used 010 before the correction and remains immutable evidence.",
         "Assessment authority only; no benchmark, stress test, installation, reallocation, VM change or purchase is authorized."
       ]
     }

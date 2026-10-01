@@ -11,6 +11,16 @@ PUBLIC_FILES = runpy.run_path(str(Path(__file__).resolve().parents[1] / 'tools/v
 
 
 class ValidationScopeTests(unittest.TestCase):
+    def test_checkout_rules_require_review_branch_evidence_and_separate_main_authority(self):
+        root = Path(__file__).resolve().parents[1]
+        rules = (root / 'docs' / 'AGENT_CHECKOUT_RULES.md').read_text()
+        self.assertIn('commit authorized work to its scoped task branch', rules)
+        self.assertIn('names the tested commit, base revision, exact checks and', rules)
+        self.assertIn('push that isolated task branch', rules)
+        self.assertIn('normal non-forced workflow', rules)
+        self.assertIn('push does not authorize a pull request', rules)
+        self.assertIn('Advancing canonical main requires the separately applicable', rules)
+
     def test_private_checkout_is_pruned_before_traversal(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

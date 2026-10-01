@@ -109,7 +109,7 @@ Return a sanitized receipt containing:
 - preflight and postflight output hashes, exit status and timeout status;
 - runtime-reported GPU name/capability and kernel value `42` verification from
   the fixed script identity plus its compiled-kernel `PASS` result;
-- observed CPU/RAM/swap/storage/PCIe/driver/runtime fields for Work Entry 010;
+- observed CPU/RAM/swap/storage/PCIe/driver/runtime fields for Work Entry 011;
 - cleanup result and confirmation that no model, install, service or config
   action occurred.
 

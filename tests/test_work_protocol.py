@@ -109,21 +109,24 @@ class WorkProtocolTests(unittest.TestCase):
             '002': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '003': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '004': ('PARKED', 'YELLOW', 'INELIGIBLE_STATE', []),
-            '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
+            '005': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '006': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['003']),
+            '007': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '008': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
             '009': ('ACTIVE', 'GREEN', 'ELIGIBLE', []),
             '010': ('ACTIVE', 'GREEN', 'ELIGIBLE', []),
+            '011': ('ACTIVE', 'GREEN', 'ELIGIBLE', []),
         })
         entries = {item['id']: item for item in document['entries']}
-        for entry_id in ('005', '008'):
+        for entry_id in ('008',):
             provenance = ' '.join(entries[entry_id]['provenance'])
             self.assertIn('DOUBLE RED', provenance)
             self.assertIn('research authority NONE', provenance)
             self.assertIn('implementation authority NONE', provenance)
-        self.assertIn('local/offloaded execution plane', entries['005']['summary'])
+        self.assertIn('Execution Admission V1', entries['005']['summary'])
+        self.assertIn('deterministic admission boundary', entries['005']['summary'])
         self.assertIn('helix-offload', entries['005']['summary'])
-        self.assertIn('5070 Ti is candidate compute only',
+        self.assertIn('5070 Ti remains candidate compute only',
                       ' '.join(entries['005']['provenance']))
         self.assertIn('helix-repo-manager-bot repository intelligence/evidence plane',
                       ' '.join(entries['008']['provenance']))
@@ -131,12 +134,16 @@ class WorkProtocolTests(unittest.TestCase):
                       ' '.join(entries['008']['provenance']))
         self.assertIn('Logical ownership, execution placement and physical hosting',
                       ' '.join(entries['008']['provenance']))
-        for entry_id in ('009', '010'):
+        for entry_id in ('009', '010', '011'):
             provenance = ' '.join(entries[entry_id]['provenance'])
             self.assertIn('health BLUE', provenance)
             self.assertIn('normal priority GREEN', provenance)
         self.assertIn('live execution remains withheld', entries['009']['summary'])
-        self.assertIn('reusing its future measurement', entries['010']['summary'])
+        self.assertIn('Deterministic Engine for Policy and Routing', entries['010']['summary'])
+        self.assertIn('remain unlocated', entries['010']['summary'])
+        self.assertIn('reusing its future measurement', entries['011']['summary'])
+        self.assertIn('renumbered this assessment from 010 to 011',
+                      ' '.join(entries['011']['provenance']))
         schema = schemas()['topology']
         automatic = copy.deepcopy(document)
         automatic['automatic_preemption'] = True
