@@ -109,20 +109,21 @@ class WorkProtocolTests(unittest.TestCase):
             '002': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '003': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '004': ('PARKED', 'YELLOW', 'INELIGIBLE_STATE', []),
-            '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
+            '005': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '006': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['003']),
-            '007': ('ACTIVE', 'YELLOW', 'ELIGIBLE', []),
+            '007': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '008': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
         })
         entries = {item['id']: item for item in document['entries']}
-        for entry_id in ('005', '008'):
+        for entry_id in ('008',):
             provenance = ' '.join(entries[entry_id]['provenance'])
             self.assertIn('DOUBLE RED', provenance)
             self.assertIn('research authority NONE', provenance)
             self.assertIn('implementation authority NONE', provenance)
-        self.assertIn('local/offloaded execution plane', entries['005']['summary'])
+        self.assertIn('Execution Admission V1', entries['005']['summary'])
+        self.assertIn('deterministic admission boundary', entries['005']['summary'])
         self.assertIn('helix-offload', entries['005']['summary'])
-        self.assertIn('5070 Ti is candidate compute only',
+        self.assertIn('5070 Ti remains candidate compute only',
                       ' '.join(entries['005']['provenance']))
         self.assertIn('helix-repo-manager-bot repository intelligence/evidence plane',
                       ' '.join(entries['008']['provenance']))

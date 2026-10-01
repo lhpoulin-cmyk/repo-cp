@@ -133,16 +133,18 @@
     },
     {
       "id": "005",
-      "state": "PARKED",
-      "priority": "RED",
+      "state": "COMPLETE",
+      "priority": "GREEN",
       "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Future investigation and governance of the Helix local/offloaded execution plane represented by helix-offload; execution substrate, model/runtime execution, workload routing, GPU use, scheduling, packaging, execution evidence and the relationship with Work Entry 008 remain unresolved.",
+      "summary": "Execution Admission V1 was implemented, validated and published to canonical helix-offload main; it is a deterministic admission boundary and does not implement model/runtime execution.",
       "provenance": [
         "Work Entry 003 originally identified Work Entry 005 around deterministic repository measurement and evidence concerns; docs/handoffs/WORK_ENTRY_003.md remains the historical evidence.",
         "Operator 005/008 topology correction refined that future-work concern into Work Entry 005 for the helix-offload execution plane and Work Entry 008 for the helix-repo-manager-bot repository intelligence/evidence plane.",
-        "Operator planning designation DOUBLE RED is represented with existing PARKED / RED and INELIGIBLE_STATE values; research authority NONE; implementation authority NONE.",
-        "5070 Ti is candidate compute only, not required hardware, an accepted deployment target, an exclusive host, an ownership boundary or a production runtime.",
+        "Louis's 2026-10-01 reconciliation instruction authorized review and ordinary canonical-main publication of the preserved Execution Admission V1 candidate.",
+        "Canonical helix-offload implementation commit 3073fd4e4c552a692d506489597faaf3f5e1038a was independently verified after publication.",
+        "The implementation performs deterministic admission only; no model runner, workload execution, deployment, credential, account, workstation or peer mutation was authorized or performed.",
+        "5070 Ti remains candidate compute only, not required hardware, an accepted deployment target, an exclusive host, an ownership boundary or a production runtime.",
         "Logical ownership, execution placement and physical hosting are separate decisions; the Work Entry 005 relationship with Work Entry 008 is intentionally unresolved."
       ]
     },
@@ -165,15 +167,16 @@
     },
     {
       "id": "007",
-      "state": "ACTIVE",
-      "priority": "YELLOW",
-      "scheduling_eligibility": "ELIGIBLE",
+      "state": "COMPLETE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Contribution Attribution and Git Identity Profiles; current stage is bounded synthetic implementation packet preparation, with Stage 1 covering the contribution-attribution reporter, executor attribution and synthetic identity fixtures, and Stage 2 covering repository Git/account profiles and wrong-profile checks.",
+      "summary": "Contribution Attribution and Git Identity Profiles completed as a bounded synthetic implementation: Stage 1 provides contribution reporting and explicit commit-executor attribution; Stage 2 provides supplied Git/account profile comparison and wrong-profile refusal tests.",
       "provenance": [
         "Operator instruction on 2026-10-01 assigned repo-cp as lead, auth-cp as owner of identity bindings and ws-cp as owner of workstation integration.",
-        "Project health GREEN records that scope and direction are established; priority YELLOW records important attention. Health and priority are distinct and neither grants authority.",
-        "Authorization is limited to recording this work entry and its status. Pilot implementation, live configuration changes, account creation, credentials, commits and publication are not authorized.",
+        "Louis's 2026-10-01 reconciliation instruction authorized recovery, repair, validation, review-branch publication and ordinary canonical-main publication of the bounded implementation.",
+        "Canonical repo-cp implementation commit 2620089 adds the reporter, schema, fixtures and tests; publication tip 88d2f71 includes the reconciled delivery authority and agent review-branch rule correction.",
+        "No live identity, account, credential, workstation, runtime or peer configuration change was authorized or performed.",
         "Portfolio voice and personal reflections remain separate from contribution attribution and Git identity profiles."
       ]
     },
