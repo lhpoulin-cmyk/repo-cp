@@ -1,0 +1,42 @@
+{
+  "id": "check-a",
+  "repository_id": "repo.example",
+  "expected": {
+    "profile_id": "profile-a",
+    "author": {
+      "name": "Synthetic Human",
+      "email": "synthetic@example.invalid"
+    },
+    "committer": {
+      "name": "Synthetic Human",
+      "email": "synthetic@example.invalid"
+    },
+    "fetch_destinations": [
+      "https://example.invalid/a.git"
+    ],
+    "push_destinations": [
+      "https://example.invalid/a.git"
+    ],
+    "transport_account_ref": "account.synthetic-a",
+    "signing_key_ref": "key.synthetic-a"
+  },
+  "observed": {
+    "profile_id": "profile-a",
+    "author": {
+      "name": "Synthetic Human",
+      "email": "synthetic@example.invalid"
+    },
+    "committer": {
+      "name": "Synthetic Human",
+      "email": "synthetic@example.invalid"
+    },
+    "fetch_destinations": [
+      "https://example.invalid/a.git"
+    ],
+    "push_destinations": [
+      "https://example.invalid/a.git"
+    ],
+    "transport_account_ref": "account.synthetic-a",
+    "signing_key_ref": "key.synthetic-a"
+  }
+}

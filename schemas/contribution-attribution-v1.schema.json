@@ -1,0 +1,1455 @@
+{
+  "$defs": {
+    "actor": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "human",
+            "agent",
+            "unknown"
+          ]
+        },
+        "models": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_./:-]+$",
+            "type": "string"
+          },
+          "maxItems": 32,
+          "type": "array"
+        },
+        "principal": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tool": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "principal",
+        "tool",
+        "models"
+      ],
+      "type": "object"
+    },
+    "binding": {
+      "additionalProperties": false,
+      "properties": {
+        "email": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        },
+        "principal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "repository_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_./:-]+$",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        },
+        "source_status": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "principal_id",
+        "name",
+        "email",
+        "repository_ids",
+        "source_status"
+      ],
+      "type": "object"
+    },
+    "claim": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "participation"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "present": {
+                  "enum": [
+                    true,
+                    false,
+                    null
+                  ]
+                },
+                "role": {
+                  "enum": [
+                    "design",
+                    "draft",
+                    "implement",
+                    "review",
+                    "execute"
+                  ]
+                }
+              },
+              "required": [
+                "role",
+                "present"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "coverage"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "enum": [
+                "complete",
+                "partial",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "responsibility"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "enum": [
+                "accepted",
+                null
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "authorization"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "action": {
+                  "maxLength": 2048,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "decision": {
+                  "enum": [
+                    "approved",
+                    "denied",
+                    null
+                  ]
+                }
+              },
+              "required": [
+                "decision",
+                "action"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "provenance"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "relation": {
+                  "enum": [
+                    "rebased-from",
+                    "cherry-picked-from",
+                    "squashed-from",
+                    "copied-from",
+                    "merged-from"
+                  ]
+                },
+                "source": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/commit_ref"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "relation",
+                "source"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "identity-binding"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "anyOf": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "binding_id": {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "pattern": "^[A-Za-z0-9_./:-]+$",
+                      "type": "string"
+                    },
+                    "registry_revision": {
+                      "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "registry_revision",
+                    "binding_id"
+                  ],
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "descriptor-field"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "expected": {
+                  "anyOf": [
+                    {
+                      "maxLength": 2048,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "pointer": {
+                  "maxLength": 128,
+                  "pattern": "^/[A-Za-z_]+$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "pointer",
+                "expected"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "git-header"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "email": {
+                  "maxLength": 2048,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "field": {
+                  "enum": [
+                    "author",
+                    "committer"
+                  ]
+                },
+                "name": {
+                  "maxLength": 2048,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "name",
+                "email"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "signature"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "signer_reference": {
+                  "anyOf": [
+                    {
+                      "maxLength": 2048,
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "valid": {
+                  "enum": [
+                    true,
+                    false,
+                    null
+                  ]
+                }
+              },
+              "required": [
+                "signer_reference",
+                "valid"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            "id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "predicate": {
+              "const": "commit-execution"
+            },
+            "scope": {
+              "$ref": "#/$defs/scope"
+            },
+            "subject": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "value": {
+              "additionalProperties": false,
+              "properties": {
+                "acting_principal": {
+                  "anyOf": [
+                    {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "pattern": "^[A-Za-z0-9_./:-]+$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "executor": {
+                  "anyOf": [
+                    {
+                      "maxLength": 128,
+                      "minLength": 1,
+                      "pattern": "^[A-Za-z0-9_./:-]+$",
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "mechanism": {
+                  "enum": [
+                    "git-cli",
+                    "desktop-client",
+                    "hosting-web",
+                    "hosting-api",
+                    "automation",
+                    null
+                  ]
+                },
+                "unknown": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "acting_principal": {
+                      "enum": [
+                        "not-recorded",
+                        "not-supplied",
+                        "not-exposed",
+                        "withheld",
+                        "unresolved",
+                        "stale",
+                        "not-applicable"
+                      ]
+                    },
+                    "executor": {
+                      "enum": [
+                        "not-recorded",
+                        "not-supplied",
+                        "not-exposed",
+                        "withheld",
+                        "unresolved",
+                        "stale",
+                        "not-applicable"
+                      ]
+                    },
+                    "mechanism": {
+                      "enum": [
+                        "not-recorded",
+                        "not-supplied",
+                        "not-exposed",
+                        "withheld",
+                        "unresolved",
+                        "stale",
+                        "not-applicable"
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "required": [
+                "executor",
+                "mechanism",
+                "acting_principal",
+                "unknown"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "subject",
+            "predicate",
+            "value",
+            "scope",
+            "evidence"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "commit": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "$ref": "#/$defs/identity"
+        },
+        "committer": {
+          "$ref": "#/$defs/identity"
+        },
+        "message": {
+          "maxLength": 131072,
+          "type": "string"
+        },
+        "oid": {
+          "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+          "type": "string"
+        },
+        "parents": {
+          "items": {
+            "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        },
+        "repository_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "repository_id",
+        "oid",
+        "parents",
+        "author",
+        "committer",
+        "message"
+      ],
+      "type": "object"
+    },
+    "commit_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "oid": {
+          "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+          "type": "string"
+        },
+        "repository": {
+          "$ref": "#/$defs/repository"
+        }
+      },
+      "required": [
+        "repository",
+        "oid"
+      ],
+      "type": "object"
+    },
+    "evidence": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "by": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "claim": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "method": {
+              "const": "statement-v1"
+            },
+            "ref": {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            "state": {
+              "const": "declared"
+            }
+          },
+          "required": [
+            "claim",
+            "state",
+            "by",
+            "method",
+            "ref"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "claim": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            "reason": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            },
+            "state": {
+              "const": "unknown"
+            }
+          },
+          "required": [
+            "claim",
+            "state",
+            "reason"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "identity": {
+      "additionalProperties": false,
+      "properties": {
+        "email": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ],
+      "type": "object"
+    },
+    "model": {
+      "additionalProperties": false,
+      "properties": {
+        "deployment": {
+          "enum": [
+            "local",
+            "hosted",
+            "unknown"
+          ]
+        },
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "model_id": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantization": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resolved_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tag": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unavailable": {
+          "additionalProperties": false,
+          "properties": {
+            "model_id": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            },
+            "provider": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            },
+            "quantization": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            },
+            "resolved_digest": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            },
+            "revision": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            },
+            "tag": {
+              "enum": [
+                "not-recorded",
+                "not-supplied",
+                "not-exposed",
+                "withheld",
+                "unresolved",
+                "stale",
+                "not-applicable"
+              ]
+            }
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "deployment",
+        "provider",
+        "model_id",
+        "tag",
+        "resolved_digest",
+        "revision",
+        "quantization",
+        "unavailable"
+      ],
+      "type": "object"
+    },
+    "oid": {
+      "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+      "type": "string"
+    },
+    "principal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "human",
+            "agent",
+            "unknown"
+          ]
+        },
+        "source_status": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "source_status"
+      ],
+      "type": "object"
+    },
+    "profile": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/identity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "committer": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/identity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fetch_destinations": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 2048,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profile_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "push_destinations": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 2048,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 1000,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "signing_key_ref": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transport_account_ref": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_./:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "author",
+        "committer",
+        "fetch_destinations",
+        "push_destinations",
+        "transport_account_ref",
+        "signing_key_ref"
+      ],
+      "type": "object"
+    },
+    "profile_check": {
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "$ref": "#/$defs/profile"
+        },
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "observed": {
+          "$ref": "#/$defs/profile"
+        },
+        "repository_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "repository_id",
+        "expected",
+        "observed"
+      ],
+      "type": "object"
+    },
+    "registry": {
+      "additionalProperties": false,
+      "properties": {
+        "git_identity_bindings": {
+          "items": {
+            "$ref": "#/$defs/binding"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        },
+        "principals": {
+          "items": {
+            "$ref": "#/$defs/principal"
+          },
+          "maxItems": 1000,
+          "type": "array"
+        },
+        "source_repository_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "source_revision": {
+          "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_repository_id",
+        "source_revision",
+        "principals",
+        "git_identity_bindings"
+      ],
+      "type": "object"
+    },
+    "repository": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "scope": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "commit"
+            },
+            "target": {
+              "oneOf": [
+                {
+                  "const": "self"
+                },
+                {
+                  "$ref": "#/$defs/commit_ref"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "target"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "work"
+            },
+            "target": {
+              "$ref": "#/$defs/work"
+            }
+          },
+          "required": [
+            "kind",
+            "target"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "work": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_./:-]+$",
+          "type": "string"
+        },
+        "repository": {
+          "$ref": "#/$defs/repository"
+        },
+        "revision": {
+          "pattern": "^(sha1:[0-9a-f]{40}|sha256:[0-9a-f]{64})$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "repository",
+        "id",
+        "revision"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "captured_at": {
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+      "type": "string"
+    },
+    "commits": {
+      "items": {
+        "$ref": "#/$defs/commit"
+      },
+      "maxItems": 1000,
+      "type": "array"
+    },
+    "profile_checks": {
+      "items": {
+        "$ref": "#/$defs/profile_check"
+      },
+      "maxItems": 1000,
+      "type": "array"
+    },
+    "registry": {
+      "$ref": "#/$defs/registry"
+    },
+    "schema_version": {
+      "const": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "captured_at",
+    "registry",
+    "commits",
+    "profile_checks"
+  ],
+  "title": "Synthetic contribution attribution input V1",
+  "type": "object"
+}
