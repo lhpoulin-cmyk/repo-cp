@@ -142,7 +142,8 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('live run was not performed', entries['009']['summary'])
         self.assertIn('Deterministic Engine for Policy and Routing', entries['010']['summary'])
         self.assertIn('synthetically validated', entries['010']['summary'])
-        self.assertIn('hosted live acceptance remains unperformed', entries['010']['summary'])
+        self.assertIn('one Claude request was sent', entries['010']['summary'])
+        self.assertIn('live acceptance remains unproven', entries['010']['summary'])
         self.assertIn('c1a1c89f4d54d695adf6675e97c045a31267f29d',
                       ' '.join(entries['010']['provenance']))
         self.assertIn('coordinated Work Entry 009 run', entries['011']['summary'])
@@ -156,7 +157,7 @@ class WorkProtocolTests(unittest.TestCase):
             (ROOT / 'docs/handoffs/WORK_ENTRY_010_RESULT.json').read_bytes())
         self.assertEqual(validate('result', encoded(derp_result))['status'], 'PASS')
         self.assertEqual(derp_result['ending_head'],
-                         '475bf31765395e3e4d6a233fd2f774301894463d')
+                         '6e02f1128a990dfc62e28da6adcc90143a2731cf')
         self.assertEqual(derp_result['delivery_stage'], 'PUBLISHED')
 
         current_state = (ROOT / 'docs/CURRENT_STATE.md').read_text()

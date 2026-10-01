@@ -3,7 +3,7 @@
 Name: DERP — Deterministic Engine for Policy and Routing
 
 Status: `COMPLETE` — implementation published and synthetically validated;
-the authorized hosted live-acceptance call was not sent
+one Claude hosted test was sent but did not produce an accepted artifact
 
 Priority: `GREEN` (normal attention)
 
@@ -103,41 +103,63 @@ handoff and is not claimed as durably saved; only the complete feature-research
 artifact identified by local commit `f9575a0fc7e9c8eab1c3e10f8073166cbf3be6e6`
 was available, verified and published.
 
-## Authorized live-acceptance gate
+## Hosted testing slice
 
-Louis subsequently authorized exactly one call from the published hosted packet,
-including disclosure of its synthetic input and the bounded charge. The packet
-matched that authority, but the call was **NOT SENT**. Production qualification
-for the exact model/profile and matching Work Entry 005 `ADMITTED` evidence were
-absent, and no approved credential descriptor or authenticated account/model/
-billing path was available. Synthetic fixtures were not promoted to live
-evidence, and no workflow, LIVE grant, result directory, artifact or receipt was
-created.
+The earlier GPT-only authorization was evaluated but **NOT SENT** because its
+production qualification, matching Work Entry 005 evidence and approved API
+credential/account path were absent. Canonical helix-offload
+`475bf31765395e3e4d6a233fd2f774301894463d` preserves that historical gate.
 
-Canonical helix-offload `475bf31765395e3e4d6a233fd2f774301894463d`
-preserves the sanitized gate evidence. repo-cp's review is
-[WORK_ENTRY_010_LIVE_ACCEPTANCE_GATE_20261001.md](WORK_ENTRY_010_LIVE_ACCEPTANCE_GATE_20261001.md).
+Louis then authorized a Claude-first hosted slice and required separate Claude
+API/subscription and OpenAI API/subscription accounting. Canonical helix-offload
+`6e02f1128a990dfc62e28da6adcc90143a2731cf` now contains:
+
+- bounded Claude Messages API and Claude Code subscription adapters while
+  preserving the OpenAI Responses adapter;
+- billing-source and attempt identities in receipt V2;
+- an exact `TEST_ONLY` qualification/admission path limited to the 38-byte
+  Ada/Basic/`REF-42` extraction, live quality `UNPROVEN`, and no production or
+  general routing eligibility;
+- a content-bound LIVE grant and durable attempt evidence;
+- a four-path support matrix, Claude-first packet and cuda-compute follow-up; and
+- 42 passing tests plus a successful exact synthetic lifecycle.
+
+One Claude Code invocation was **SENT** through the existing first-party
+Claude.ai Pro login. The client returned an envelope, but the adapter rejected
+it as `HOSTED_RESPONSE_INVALID`; no artifact reached postflight. Actual provider
+model, usage, cost and underlying provider request count are `UNKNOWN`. The
+caller made no resend. Human disposition remains `PENDING`. OpenAI was **NOT
+SENT** because API credentials were absent and the subscription client could not
+meet this slice's no-tools/no-retry boundary.
+
+Post-call review found that Claude Code puts schema-constrained output in
+`structured_output`; the adapter had read only `result`. It also found that the
+consumed invocation's structured-output retry variable allowed one retry rather
+than one total attempt, so an internal retry cannot be excluded. Both defects are
+fixed and synthetically covered in the published revision. The fix is not
+retroactive acceptance and grants no retry authority. Sanitized live evidence is
+in helix-offload `docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_RESULT.md` and
+`docs/evidence/work-entry-010-claude-live-20261001/`.
+repo-cp's disposition is
+[WORK_ENTRY_010_HOSTED_SLICE_20261001.md](WORK_ENTRY_010_HOSTED_SLICE_20261001.md).
 
 ## Acceptance boundary and next action
 
 Delivery stage: **IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED**.
 
-Operational stage: **LIVE ACCEPTANCE NOT SENT**. DERP is not operationally proven,
-and the 20% target has not been achieved. Under the exact one-call authority
-already supplied, execution may proceed only after the packet's candidate,
-access, price, admission, execution-grant, usage, deadline, and stop conditions
-are freshly verified.
+Operational stage: **LIVE REQUEST SENT / ACCEPTANCE NOT ESTABLISHED**. DERP is not
+operationally proven, and the 20% target has not been achieved. The Claude
+authorization was consumed and does not authorize a retry or cohort.
 
-Exact call authority and synthetic-input disclosure approval were supplied, and
-fresh official pricing remained within the local ceiling. The unresolved gates
-are verified OpenAI project billing/access/rate limit for the named snapshot, an
-approved credential injector that opens descriptor 3, an exact owner-accepted
-qualified candidate and matching 005 admission identity. Only after those pass
-may a matching LIVE grant and new result directory be created.
+Exact next action is Louis's review of the failed evidence and, only under a new
+explicit authority, one retry through the published corrected Claude adapter.
+The bounded cuda-compute packet is prepared but remains next only after the
+hosted path produces an artifact suitable for human disposition.
 
-Live effects: normal non-forced publication of the feature-research branch and
-records to repo-cp, plus the hosted-path review branch and ordinary fast-forward
-to canonical helix-offload `main`, and publication of the sanitized NOT SENT gate
-record at `475bf31765395e3e4d6a233fd2f774301894463d`; no model call, API charge,
-GPU workload, generated-text publication, deployment, installation,
-credential/account change, or runtime configuration mutation.
+Live effects: one Claude Code invocation disclosed the synthetic Ada/Basic/
+`REF-42` input through Louis's existing Claude.ai Pro allowance; one client
+envelope was returned and rejected locally. No artifact, accepted output, OpenAI
+call, API-billed charge, manual retry, cohort, GPU workload, generated-text
+publication, deployment, installation, credential/account change or runtime
+configuration mutation occurred. The review branch and canonical helix-offload
+main were published non-forced at `6e02f1128a990dfc62e28da6adcc90143a2731cf`.

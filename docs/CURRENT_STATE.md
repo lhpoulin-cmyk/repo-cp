@@ -2,8 +2,8 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`39f37ac5988fc99dbb21568cd008aa2fbfabdaf1`, canonical helix-offload `main` at
-`475bf31765395e3e4d6a233fd2f774301894463d`, and the Work Entry 010 corrections
+`4e077a86b002187dac530c2e735f54070f077120`, canonical helix-offload `main` at
+`6e02f1128a990dfc62e28da6adcc90143a2731cf`, and the Work Entry 010 corrections
 in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -34,7 +34,7 @@ label left behind as a proxy.
 | 006 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Commits `a74b1e13512c50528643539bd55c6091006ecf73` and lifecycle closure `c2a3e120de279a0517902ecc07ec1be234f87d66` are ancestors of verified repo-cp main; handoff records 170/170 repository tests and 13/13 Foundation tests | Deterministic usage advice only; no scheduler, dispatch or telemetry integration |
 | 007 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Implementation `2620089` and delivery-rule commit `88d2f71` are ancestors of verified repo-cp main; canonical handoff records 211 repository tests, 33 attribution tests and 7 identity tests | Synthetic supplied-profile checks only; no live identity, account, credential or workstation change |
 | 009 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Pilot packet and handoff are published in repo-cp `37a84624…` | Preparation COMPLETE. GPU workload UNPERFORMED; live authority withheld |
-| 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | DERP implementation is published at `28c2dab…`; sanitized gate evidence is published in canonical helix-offload `475bf31…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. Authorized live call NOT SENT: exact production qualification/admission and approved credential/account readiness are absent; 20% target not achieved |
+| 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Provider-neutral hosted slice and sanitized evidence are published in canonical helix-offload `6e02f11…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. One Claude request SENT; envelope rejected before artifact/postflight, human disposition PENDING, OpenAI NOT SENT, live acceptance and 20% target unproven |
 | 011 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Capacity decision and coordinated measurement packet are published in repo-cp `37a84624…` | Assessment COMPLETE. Current measurement UNPERFORMED; a later authorized 009 run supplies it once, without a duplicate benchmark |
 
 ## Recommended efficiency order
@@ -42,9 +42,9 @@ label left behind as a proxy.
 This is an attention order, not scheduling eligibility or authority.
 
 1. Maintain this current-state/resume view and registry consistency.
-2. If Louis separately authorizes it, freshly verify and execute DERP's exact
-   one-call hosted acceptance packet; otherwise leave the published implementation
-   inactive.
+2. Review DERP's failed Claude evidence. If Louis separately authorizes it,
+   retry once through the corrected published adapter; do not infer authority
+   from the consumed call.
 3. Assess one narrow Work Entry 008 evidence/compact-context slice only if its
    benefit is supported and existing tools do not already provide it.
 4. Resume Work Entry 012 GitHub/local-auth discovery; move it earlier only when
@@ -54,7 +54,7 @@ This is an attention order, not scheduling eligibility or authority.
 6. Consider GPU expansion only after that evidence demonstrates a need and a
    useful benefit.
 
-Exact next action: a separate Louis authorization may initiate the exact DERP
-hosted acceptance packet after all access, disclosure, candidate, admission,
-execution-grant, price, usage, deadline and stop conditions are freshly verified.
-Until then, no model, GPU or authentication action is required.
+Exact next action: Louis reviews the failed Claude attempt and may separately
+authorize one corrected retry. The cuda-compute follow-up is prepared but remains
+after an artifact-bearing hosted result. Until then, no model, GPU or
+authentication action is authorized.

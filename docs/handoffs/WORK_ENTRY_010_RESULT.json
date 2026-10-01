@@ -6,7 +6,7 @@
   "work_state": "COMPLETE",
   "priority": "GREEN",
   "target_repository": "helix-offload",
-  "objective": "Publish a portable explicit hosted DERP lifecycle and the first practical change-summary-v1 job family without a live model call.",
+  "objective": "Publish a portable explicit hosted DERP lifecycle, support bounded Claude and OpenAI paths, and preserve the authorized Claude-first live test without claiming acceptance.",
   "canonical_baseline": {
     "intended_ref": "refs/heads/main",
     "resolved_head": "c1a1c89f4d54d695adf6675e97c045a31267f29d"
@@ -18,7 +18,7 @@
     "pre_existing_source_state_preserved": true
   },
   "starting_head": "c1a1c89f4d54d695adf6675e97c045a31267f29d",
-  "ending_head": "475bf31765395e3e4d6a233fd2f774301894463d",
+  "ending_head": "6e02f1128a990dfc62e28da6adcc90143a2731cf",
   "starting_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
   "ending_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
   "ending_dirtiness_attribution": {
@@ -48,6 +48,7 @@
     "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.disposition.md",
     "repo-cp/research-notes/2026-10-01-helix-offload-outcome-forecasting.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_010_HOSTED_SLICE_20261001.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010_LIVE_ACCEPTANCE_GATE_20261001.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010_RESULT.json"
   ],
@@ -59,32 +60,42 @@
     "Implemented change-summary-v1 with bounded read-only Git packing and exact-reference postflight",
     "Added opportunity-aware cohort accounting that includes eligible jobs not routed to DERP",
     "Published the hosted-path review branch and fast-forwarded canonical helix-offload main without force",
-    "Evaluated the separately authorized hosted call and published a sanitized NOT SENT gate record without creating an execution bundle or invoking the adapter"
+    "Preserved the earlier GPT-only NOT SENT gate as historical evidence",
+    "Implemented bounded Claude API and Claude Code subscription adapters, explicit billing-source receipts and one exact TEST_ONLY qualification/admission path",
+    "Sent one authorized Claude Code invocation using the synthetic Ada/Basic/REF-42 input and preserved the sanitized failed receipt",
+    "Repaired the documented structured_output parser and disabled both configured retry paths after the consumed call exposed those defects",
+    "Published the hosted-slice review branch and fast-forwarded canonical helix-offload main without force"
   ],
   "mutations_not_performed": [
-    "No live or paid model call",
+    "No OpenAI call, API-key-billed call or second Claude call",
     "No credential read during validation and no account, subscription, permission or secret change",
     "No GPU workload, installation, deployment or live runtime configuration",
-    "No automatic retry, frontier escalation, dispatch, daemon, caching, MCP or forecasting implementation",
+    "No manual retry, frontier escalation, dispatch, daemon, caching, MCP or forecasting implementation",
     "No automatic application or publication of generated text"
   ],
   "validation": [
-    {"check": "Full helix-offload unit suite", "status": "PASS", "evidence": "39 of 39 tests passed at the exact published candidate: 16 admission, 15 preserved DERP and 8 hosted-lifecycle/measurement tests."},
+    {"check": "Full helix-offload unit suite", "status": "PASS", "evidence": "42 of 42 tests passed at the exact published candidate, including Claude API/subscription, OpenAI, test-only admission, billing-source and retry-control coverage."},
     {"check": "Synthetic explicit lifecycle", "status": "PASS", "evidence": "Prepare, no-effect preview, bound synthetic grant, one fake adapter call, postflight, artifact/receipt and human disposition completed; altered references, stale hashes, missing cost evidence, unallowlisted paths and an existing result directory failed closed."},
     {"check": "Schemas, compilation, links, pins, secret indicators and diff hygiene", "status": "PASS", "evidence": "24 JSON documents parsed; 13 schemas passed Draft 2020-12 metaschema validation; compilation, 80 maintained relative links, three pinned digests, secret-indicator scan and git diff checks passed. The one pinned-contract link to absent AGENT_WORK_ADOPTION.md remains preserved."},
-    {"check": "Canonical publication", "status": "PASS", "evidence": "The implementation review branch resolved to 28c2dab305e05e18e053321f6a70df9de1b85485; the later sanitized live-gate record was published to canonical helix-offload at 475bf31765395e3e4d6a233fd2f774301894463d."},
-    {"check": "Hosted live acceptance", "status": "BLOCKED", "evidence": "Louis authorized exactly one packet call, but it was NOT SENT: exact production qualification and matching 005 ADMITTED evidence were absent, approved credential delivery was unavailable, and authenticated account/model/billing readiness could not be verified. No workflow, grant, result directory, attempt, usage or charge was created."}
+    {"check": "Canonical publication", "status": "PASS", "evidence": "Direct remote query resolved the hosted-slice review branch and canonical helix-offload main to 6e02f1128a990dfc62e28da6adcc90143a2731cf."},
+    {"check": "Hosted live acceptance", "status": "BLOCKED", "evidence": "One Claude Code invocation was SENT through an existing Claude.ai Pro login. A client envelope returned but failed local HOSTED_RESPONSE_INVALID validation; no artifact or postflight was produced, usage/cost/actual provider model are UNKNOWN, and human disposition remains PENDING. OpenAI was NOT SENT; retry authority is absent."}
   ],
   "evidence_produced": [
     "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_PATH_SYNTHETIC_VALIDATION.md",
     "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE.md",
     "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_LIVE_ACCEPTANCE_GATE_20261001.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_PATH_MATRIX.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_ACCEPTANCE.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_RESULT.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_HOSTED_SLICE_VALIDATION.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_010_CUDA_COMPUTE_FOLLOWUP.md",
     "helix-offload/docs/contracts/CHANGE_SUMMARY_V1.md",
     "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.md",
     "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.sources.json",
     "repo-cp/research-notes/2026-10-01-helix-offload-feature-research.disposition.md",
     "repo-cp/research-notes/2026-10-01-helix-offload-outcome-forecasting.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_010_HOSTED_SLICE_20261001.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010_LIVE_ACCEPTANCE_GATE_20261001.md",
     "repo-cp/docs/handoffs/WORK_ENTRY_010_RESULT.json"
   ],
@@ -92,22 +103,24 @@
   "status_topology": {
     "nodes": [
       {"id": "work.010.implementation", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "The DERP governor, explicit hosted CLI and change-summary-v1 are published and synthetically validated.", "owner": "helix-offload", "blocking": false},
-      {"id": "work.010.live-acceptance", "kind": "FUTURE_WORK", "status": "BLOCKED", "priority": "GREEN", "summary": "The authorized exact hosted acceptance call was not sent because mandatory evidence and access gates did not pass.", "owner": "Louis", "blocking": true},
-      {"id": "dependency.010.hosted-qualification", "kind": "EXTERNAL_DEPENDENCY", "status": "BLOCKED", "priority": "GREEN", "summary": "Exact owner-accepted production qualification and matching Work Entry 005 ADMITTED evidence are absent.", "owner": "helix-offload", "blocking": true},
-      {"id": "dependency.010.hosted-access", "kind": "EXTERNAL_DEPENDENCY", "status": "BLOCKED", "priority": "GREEN", "summary": "Approved descriptor-based credential delivery and authenticated account/model/billing readiness are unavailable.", "owner": "Louis", "blocking": true},
+      {"id": "work.010.live-acceptance", "kind": "FUTURE_WORK", "status": "BLOCKED", "priority": "GREEN", "summary": "One authorized Claude invocation returned an envelope but produced no artifact; live acceptance remains unproven and retry authority is absent.", "owner": "Louis", "blocking": true},
+      {"id": "dependency.010.hosted-qualification", "kind": "EXTERNAL_DEPENDENCY", "status": "NON_BLOCKING_INCOMPLETE", "priority": "GREEN", "summary": "Exact TEST_ONLY qualification/admission exists for first-live testing; production qualification remains absent.", "owner": "helix-offload", "blocking": false},
+      {"id": "dependency.010.hosted-access", "kind": "EXTERNAL_DEPENDENCY", "status": "NON_BLOCKING_INCOMPLETE", "priority": "GREEN", "summary": "Claude subscription access was verified and used; API credentials remain absent and OpenAI subscription execution is unsuitable for this no-tools/no-retry slice.", "owner": "Louis", "blocking": false},
+      {"id": "authorization.010.claude-retry", "kind": "AUTHORIZATION", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "The Claude call authority was consumed; any corrected retry requires a new explicit authorization.", "owner": "Louis", "blocking": true},
       {"id": "work.010.outcome-forecasting", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "Outcome forecasting and calibration are recorded as deferred roadmap research and do not control routing.", "owner": "helix-offload", "blocking": false}
     ],
     "relationships": [
-      {"subject": "work.010.live-acceptance", "predicate": "BLOCKED_BY", "object": "dependency.010.hosted-qualification"},
-      {"subject": "work.010.live-acceptance", "predicate": "BLOCKED_BY", "object": "dependency.010.hosted-access"}
+      {"subject": "work.010.live-acceptance", "predicate": "BLOCKED_BY", "object": "authorization.010.claude-retry"}
     ]
   },
-  "recommended_next_action": "Establish owner-accepted production qualification for the exact model/profile, produce matching genuine Work Entry 005 ADMITTED evidence, and provide approved descriptor-based credential delivery plus authenticated account/model/billing readiness. Reconcile provider-side request history, freshly recheck price, then create the bound LIVE grant and send once without retry under the exact authorization. Do not begin a cohort.",
+  "recommended_next_action": "Louis reviews the preserved failed Claude evidence and may separately authorize one retry through canonical helix-offload 6e02f1128a990dfc62e28da6adcc90143a2731cf. Do not retry, begin a cohort or execute cuda-compute under the consumed authorization.",
   "live_effects": [
     {"action": "Publish feature research review branch", "target": "repo-cp refs/heads/codex/helix-offload-features-research", "result": "SUCCEEDED", "evidence": "Direct remote query resolved the branch to e3b03aaa7476b8352c378907d2e732e7c8348e85."},
     {"action": "Publish durable feature research", "target": "repo-cp refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved canonical main to e3b03aaa7476b8352c378907d2e732e7c8348e85 before this control-record update."},
     {"action": "Publish hosted-path review branch", "target": "helix-offload refs/heads/codex/work-entry-010-hosted-path", "result": "SUCCEEDED", "evidence": "Direct remote query resolved the branch to 28c2dab305e05e18e053321f6a70df9de1b85485."},
     {"action": "Fast-forward canonical helix-offload main", "target": "helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved canonical main to 28c2dab305e05e18e053321f6a70df9de1b85485."},
-    {"action": "Publish hosted live-gate evidence", "target": "helix-offload refs/heads/codex/work-entry-010-live-acceptance and refs/heads/main", "result": "SUCCEEDED", "evidence": "The sanitized NOT SENT gate record was published at 475bf31765395e3e4d6a233fd2f774301894463d; no OpenAI model request was sent."}
+    {"action": "Publish hosted live-gate evidence", "target": "helix-offload refs/heads/codex/work-entry-010-live-acceptance and refs/heads/main", "result": "SUCCEEDED", "evidence": "The sanitized NOT SENT GPT gate record was published at 475bf31765395e3e4d6a233fd2f774301894463d; no OpenAI model request was sent."},
+    {"action": "Invoke bounded Claude subscription path", "target": "claude-code.subscription.v1 / claude-haiku-4-5-20251001", "result": "FAILED", "evidence": "One CLI invocation was SENT; a client envelope returned but failed HOSTED_RESPONSE_INVALID before artifact creation. No manual resend or OpenAI call occurred."},
+    {"action": "Publish hosted slice and sanitized evidence", "target": "helix-offload refs/heads/codex/work-entry-010-hosted-slice and refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote query resolved both refs to 6e02f1128a990dfc62e28da6adcc90143a2731cf."}
   ]
 }
