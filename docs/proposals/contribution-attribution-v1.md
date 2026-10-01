@@ -1,11 +1,13 @@
 # Synthetic contribution attribution V1
 
-Status: local pilot, not a universal Foundation contract or execution gate.
+Status: bounded repo-cp implementation, not a universal Foundation contract or
+execution gate.
 Implementation baseline: repo-cp `4f47ec6cc4744eaf2a158009c57553a223432cdd`.
 Identity dependency: auth-cp `3bdcde14bb7c0d77775cfeb2d1bd5571488d6f2a`.
-Louis authorized local implementation and isolated synthetic Git tests only.
-No implementation commit, publication, peer edit, credential or workstation
-configuration change is authorized. Preserve the dirty source checkout.
+Louis's 2026-10-01 reconciliation instruction authorizes the scoped recovery,
+implementation commits, validation, review-branch publication and canonical
+repo-cp publication. It does not authorize peer edits, live identity/account,
+credential or workstation configuration changes. Preserve unrelated dirty work.
 
 ## Interface and ownership
 
@@ -286,18 +288,24 @@ preserve human wording and never infer motivations, diagnoses or personality.
 Tests use synthetic profiles A/B and humans under one generic schema. Wrong-profile
 checks must occur before the harness creates a candidate commit. A passing test is
 not account ownership, credential custody or publication proof. Cleanup removes
-only test-owned temporary directories. Retain the uncommitted task checkout for
-review; no broad cleanup, history rewriting, peer changes or publication.
+only test-owned temporary directories. Source publication does not authorize live
+identity, account, credential, workstation or peer changes; broad cleanup and
+history rewriting remain prohibited.
 
-## Local delivery checkpoint
+## Recovery and delivery checkpoint
 
 The initial task checkout at `.agent-checkouts/codex/attribution-pilot/` acquired
 unrelated work-topology/test edits during this session. They were preserved. Only
 the 13 attribution pilot paths were copied (without hardlinks) to the independent
 `.agent-checkouts/codex/attribution-pilot-implementation/` checkout, branch
 `codex/attribution-pilot-implementation`, at the same authorized baseline. The
-original dirty source checkout was not edited. No topology change is part of this
-pilot. No implementation commit or publication is authorized.
+original dirty source checkout was not edited. The complementary registration
+delta was recovered separately from the earlier checkout. During reconciliation,
+those sources became local commits `7f13d83` (implementation) and `71c976a`
+(registration), then were replayed without the obsolete duplicate implementation
+onto the clean canonical baseline as `2620089` and `da63458`. Publication remains
+subject to current canonical parity, required validation and the explicit authority
+recorded above.
 
 Role design records requirements/tradeoff choices; draft records candidate material;
 implement records incorporated changes; review records evaluation, not approval.
