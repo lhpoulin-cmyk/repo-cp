@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "005",
+  "updated_by_work_entry": "007",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -161,6 +161,20 @@
         "Dependency satisfied by canonical publication of Work Entry 003; execution remained separately authorized",
         "docs/handoffs/WORK_ENTRY_006.md",
         "canonical implementation commit a74b1e13512c50528643539bd55c6091006ecf73"
+      ]
+    },
+    {
+      "id": "007",
+      "state": "ACTIVE",
+      "priority": "YELLOW",
+      "scheduling_eligibility": "ELIGIBLE",
+      "dependencies": [],
+      "summary": "Contribution Attribution and Git Identity Profiles; current stage is bounded synthetic implementation packet preparation, with Stage 1 covering the contribution-attribution reporter, executor attribution and synthetic identity fixtures, and Stage 2 covering repository Git/account profiles and wrong-profile checks.",
+      "provenance": [
+        "Operator instruction on 2026-10-01 assigned repo-cp as lead, auth-cp as owner of identity bindings and ws-cp as owner of workstation integration.",
+        "Project health GREEN records that scope and direction are established; priority YELLOW records important attention. Health and priority are distinct and neither grants authority.",
+        "Authorization is limited to recording this work entry and its status. Pilot implementation, live configuration changes, account creation, credentials, commits and publication are not authorized.",
+        "Portfolio voice and personal reflections remain separate from contribution attribution and Git identity profiles."
       ]
     },
     {

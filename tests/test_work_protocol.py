@@ -111,6 +111,7 @@ class WorkProtocolTests(unittest.TestCase):
             '004': ('PARKED', 'YELLOW', 'INELIGIBLE_STATE', []),
             '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
             '006': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['003']),
+            '007': ('ACTIVE', 'YELLOW', 'ELIGIBLE', []),
             '008': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
         })
         entries = {item['id']: item for item in document['entries']}
