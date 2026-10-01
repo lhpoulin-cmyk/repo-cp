@@ -84,6 +84,26 @@ occurred. Git effects were limited to the authorized review-branch and ordinary
 fast-forward canonical-main publications. No force push, history rewrite,
 protection bypass or self-approval occurred.
 
-Live effects: pushed repo-cp review branch `codex/reconcile-preserved-work` at
-`88d2f71`; fast-forwarded repo-cp canonical main to `88d2f71`; fast-forwarded
-helix-offload canonical main to `3073fd4`.
+Live effects: pushed repo-cp review branch `codex/reconcile-preserved-work`
+through `702c3fc`; fast-forwarded repo-cp canonical main through `702c3fc`;
+fast-forwarded helix-offload canonical main to `3073fd4`; deleted both merged
+review branches after directly verifying their exact tips on canonical main.
+
+## Final branch and checkout disposition
+
+| Repository / branch or checkout | Disposition | Evidence and reason |
+| --- | --- | --- |
+| helix-offload `codex/005-execution-admission-v1` | Published, branch retired, checkout removed | Review branch and canonical main both resolved to `3073fd4` before retirement. |
+| repo-cp `codex/reconcile-preserved-work` | Published, branch retired; checkout retained on clean `main` | Review branch and canonical main both resolved to `702c3fc` before retirement; retained checkout is the clean synchronized starting point. |
+| repo-cp attribution registration / implementation checkouts | Recovered duplicates retired and removed | Patch IDs for `71c976a`/`da63458` and `7f13d83`/`2620089` matched exactly; canonical main contains the replayed commits and the private shutdown handoff remains. |
+| repo-cp hardlink-policy-release, work-entry-003-review, work-entry-005 and work-entry-standard-002 checkouts | Merged duplicates retired and removed | Each checkout was clean and its HEAD was an ancestor of canonical main. |
+| repo-cp primary checkout | Preserved | Dirty state predates this recovery. Some paths now match canonical bytes; other agent-contract candidate and guidance paths remain distinct and require their own scoped review before synchronization. |
+| repo-cp agent-contract-publication checkout | Preserved | Dirty 1.1.0-rc.4 candidate/audit material is outside Work Entry 007. Its four dirty files are byte-identical to copies preserved in the primary checkout. |
+| repo-cp work-entry-006 checkout | Preserved | Untracked `observation.json` is unrelated work. |
+| repo-cp work-entry-009-gpu-pilot-prep checkout | Preserved | Dirty Work Entry 009/010 preparation appeared during final inventory and is unrelated concurrent work. |
+| helix-offload `adr/0002-repo-cp-local-lane` primary checkout | Preserved | Local `da96e7a` is unrelated to Execution Admission V1 and is not on canonical main; its former remote branch is absent. |
+
+The removed checkouts are recoverable from the cited canonical commits and the
+preserved private handoff. No dirty unrelated checkout was deleted. Remote review
+branches were removed only after direct evidence showed their exact tips on
+canonical main.
