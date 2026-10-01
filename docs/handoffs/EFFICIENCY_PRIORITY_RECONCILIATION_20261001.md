@@ -49,6 +49,17 @@ of this record.
   `git diff --check` and complete staged-diff review: PASS.
 - The 19 accepted Foundation artifacts and both Foundation pins are unchanged.
 
+## Publication receipt
+
+The exact validated candidate commit is
+`e01ed241f417520e93554ef2123635e4d79f537c`, based directly on
+`37a84624c029fba101f9899affab714e4b31b49f`. It was pushed normally to
+`refs/heads/codex/efficiency-priority-reconciliation`, then canonical `main` was
+fast-forwarded without force. An independent direct remote query resolved both
+refs exactly to `e01ed241f417520e93554ef2123635e4d79f537c` before this
+documentation-only receipt successor. The final canonical SHA is independently
+verified and reported with task delivery.
+
 ## Live effects boundary
 
 Only repo-cp documentation, registry, validation, Git commit and authorized
