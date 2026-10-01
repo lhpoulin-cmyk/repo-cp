@@ -21,3 +21,13 @@ existing registry/schema/audit lane. Repo-cp is its publication custodian;
 Foundation contracts are unchanged. Each peer owns adoption and any separately
 authorized remediation. The unprivileged public-artifact reference is not a CLI
 executor, credential workflow or authorization to mutate existing violations.
+
+## Agent work contract custodianship
+
+At Louis's explicit direction, repo-cp maintains and publishes the
+[Helix Agent Work Contract](docs/AGENT_WORK_CONTRACT.md) as its flagship agent
+working agreement. It owns the release record, adoption instructions and
+publication evidence. This custodianship does not turn agent guidance into a
+Foundation universal contract or transfer domain, credential or runtime authority.
+Peer AGENTS.md references record operator-directed adoption, separately from
+repo-cp enrollment and all live permissions.

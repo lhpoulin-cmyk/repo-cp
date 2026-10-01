@@ -1,0 +1,2 @@
+# Private agent-owned development checkouts; never publish their contents.
+/.agent-checkouts/

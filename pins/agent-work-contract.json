@@ -1,0 +1,10 @@
+{
+  "contract_id": "HELIX_AGENT_WORK_CONTRACT_V1",
+  "release": "1.0.0",
+  "path": "docs/AGENT_WORK_CONTRACT.md",
+  "sha256": "a4838c4bfd8e1d27ed794c48ca1d475d76929309fabc212368234c4073df7674",
+  "authority": "Louis, operator-directed agent working agreement",
+  "publication_custodian": "repo-cp",
+  "approved_date": "2026-09-22",
+  "changes": "Initial reviewed release; source identity, precedence, initiative, acceptance, communication, delivery evidence and live-effect reporting."
+}

@@ -19,3 +19,13 @@ digests and compatibility. The [pilot](docs/acceptance/auth-cp-pilot.md) separat
 public repository observations, synthetic rendering, enrollment and live state.
 No credentials, private keys or runtime state were imported. jsonschema 4.23.0
 is the reference dependency; PyYAML checks local CI YAML syntax only.
+
+## Agent work contract 1.0.0
+
+On 2026-09-22 Louis requested a shared communication and problem-solving
+contract, reviewed and refined its precedence, acceptance, source identity,
+delivery and live-effect rules, and explicitly authorized publication and
+repository adoption. Louis then directed that it become repo-cp's flagship work.
+[Release metadata](pins/agent-work-contract.json) binds the reviewed content
+by SHA-256; consumer references bind its publication commit without a
+self-referential commit pin. Foundation artifacts and enrollment remain unchanged.
