@@ -3,7 +3,7 @@
 Name: DERP — Deterministic Engine for Policy and Routing
 
 Status: `COMPLETE` — implementation published and synthetically validated;
-live acceptance not run
+the authorized hosted live-acceptance call was not sent
 
 Priority: `GREEN` (normal attention)
 
@@ -56,8 +56,8 @@ a daemon, automatic dispatch, retry loop or additional control plane.
 
 ## Delivery
 
-Canonical helix-offload `main` was independently queried after publication and
-resolved to `28c2dab305e05e18e053321f6a70df9de1b85485`. That revision contains:
+Canonical helix-offload `main` was independently queried after implementation
+publication and resolved to `28c2dab305e05e18e053321f6a70df9de1b85485`. That revision contains:
 
 - versioned schemas for workflows, recommendations, receipts, and measurements;
 - deterministic preflight and recommendation with precise `UNKNOWN` and
@@ -103,24 +103,41 @@ handoff and is not claimed as durably saved; only the complete feature-research
 artifact identified by local commit `f9575a0fc7e9c8eab1c3e10f8073166cbf3be6e6`
 was available, verified and published.
 
+## Authorized live-acceptance gate
+
+Louis subsequently authorized exactly one call from the published hosted packet,
+including disclosure of its synthetic input and the bounded charge. The packet
+matched that authority, but the call was **NOT SENT**. Production qualification
+for the exact model/profile and matching Work Entry 005 `ADMITTED` evidence were
+absent, and no approved credential descriptor or authenticated account/model/
+billing path was available. Synthetic fixtures were not promoted to live
+evidence, and no workflow, LIVE grant, result directory, artifact or receipt was
+created.
+
+Canonical helix-offload `475bf31765395e3e4d6a233fd2f774301894463d`
+preserves the sanitized gate evidence. repo-cp's review is
+[WORK_ENTRY_010_LIVE_ACCEPTANCE_GATE_20261001.md](WORK_ENTRY_010_LIVE_ACCEPTANCE_GATE_20261001.md).
+
 ## Acceptance boundary and next action
 
 Delivery stage: **IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED**.
 
-Operational stage: **LIVE ACCEPTANCE NOT RUN**. DERP is not operationally proven,
-and the 20% target has not been achieved. The next action is a separately
-authorized execution of the exact hosted acceptance packet after its candidate,
-access, disclosure, price, admission, execution-grant, usage, deadline, and stop
-conditions are freshly verified.
+Operational stage: **LIVE ACCEPTANCE NOT SENT**. DERP is not operationally proven,
+and the 20% target has not been achieved. Under the exact one-call authority
+already supplied, execution may proceed only after the packet's candidate,
+access, price, admission, execution-grant, usage, deadline, and stop conditions
+are freshly verified.
 
-The precise currently unmet prerequisites are an authorized exact call; verified
-OpenAI project billing, access and rate limit for the named snapshot; an approved
-credential injector that opens descriptor 3; approved data disclosure; an exact
-qualified candidate and 005 admission identity; fresh pricing/cost evidence; a
-matching LIVE grant; and a new result directory.
+Exact call authority and synthetic-input disclosure approval were supplied, and
+fresh official pricing remained within the local ceiling. The unresolved gates
+are verified OpenAI project billing/access/rate limit for the named snapshot, an
+approved credential injector that opens descriptor 3, an exact owner-accepted
+qualified candidate and matching 005 admission identity. Only after those pass
+may a matching LIVE grant and new result directory be created.
 
 Live effects: normal non-forced publication of the feature-research branch and
 records to repo-cp, plus the hosted-path review branch and ordinary fast-forward
-to canonical helix-offload `main`; no model call, GPU workload, generated-text
-publication, deployment, installation, credential/account change, or runtime
-configuration mutation.
+to canonical helix-offload `main`, and publication of the sanitized NOT SENT gate
+record at `475bf31765395e3e4d6a233fd2f774301894463d`; no model call, API charge,
+GPU workload, generated-text publication, deployment, installation,
+credential/account change, or runtime configuration mutation.

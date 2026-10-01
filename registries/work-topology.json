@@ -218,7 +218,7 @@
       "dependencies": [
         "005"
       ],
-      "summary": "DERP — Deterministic Engine for Policy and Routing, helix-offload's deterministic governor — is published and synthetically validated with an explicit hosted CLI and change-summary-v1; hosted live acceptance remains unperformed and separately authorized.",
+      "summary": "DERP — Deterministic Engine for Policy and Routing, helix-offload's deterministic governor — is published and synthetically validated with an explicit hosted CLI and change-summary-v1; hosted live acceptance remains unperformed because the authorized call was not sent after prerequisite gates failed.",
       "provenance": [
         "Louis's 2026-10-01 follow-up states that Work Entry 010 is DERP; operator health BLUE is preserved because no current evidence supports changing the newly-created, in-development assessment, while normal priority GREEN is recorded independently.",
         "The original repo-cp recovery search found no DERP implementation artifact; docs/handoffs/WORK_ENTRY_010.json and repository history preserve that capture-time result.",
@@ -230,9 +230,10 @@
         "Canonical helix-offload commit 28c2dab305e05e18e053321f6a70df9de1b85485 adds the portable prepare, preview, explicit grant, one-call, postflight, artifact/receipt and human-disposition path plus change-summary-v1 and opportunity-aware cohort accounting; 39 tests passed.",
         "DERP applies supplied policy as helix-offload's governor; repo-cp retains Louis's portfolio policy, priorities, authority, work governance and evidence review, while adapters perform only separately granted execution.",
         "Feature research and the deferred outcome-forecasting/calibration roadmap record are preserved under research-notes; forecasting was not implemented and cannot silently control routing.",
+        "Louis authorized exactly one call from the published hosted packet and approved its synthetic-input disclosure, but canonical helix-offload 475bf31765395e3e4d6a233fd2f774301894463d records NOT SENT: exact production qualification, matching 005 ADMITTED evidence, approved credential delivery and authenticated account/model/billing readiness were absent.",
         "Work Entry 005 remains the completed admission dependency; DERP cannot grant admission or execution authority and requires an exact ADMITTED result plus a separate execution grant before adapter invocation.",
         "No live or paid model call, GPU workload, installation, deployment, account/credential change, automatic retry, frontier escalation, dispatch or runtime configuration mutation was performed.",
-        "The 20 percent successful-offload target is a future measured goal, not an achieved saving; hosted live acceptance remains separately authorized and unperformed."
+        "The 20 percent successful-offload target is a future measured goal, not an achieved saving; the authorized hosted live acceptance remains blocked and unperformed."
       ]
     },
     {

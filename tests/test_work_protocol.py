@@ -156,7 +156,7 @@ class WorkProtocolTests(unittest.TestCase):
             (ROOT / 'docs/handoffs/WORK_ENTRY_010_RESULT.json').read_bytes())
         self.assertEqual(validate('result', encoded(derp_result))['status'], 'PASS')
         self.assertEqual(derp_result['ending_head'],
-                         '28c2dab305e05e18e053321f6a70df9de1b85485')
+                         '475bf31765395e3e4d6a233fd2f774301894463d')
         self.assertEqual(derp_result['delivery_stage'], 'PUBLISHED')
 
         current_state = (ROOT / 'docs/CURRENT_STATE.md').read_text()
