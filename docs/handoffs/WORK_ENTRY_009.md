@@ -1,6 +1,6 @@
 # Work Entry 009 — bounded RTX 5070 Ti execution pilot preparation
 
-Status: `ACTIVE`
+Status: `COMPLETE` — preparation published; live execution unperformed
 
 Priority: `GREEN` (normal attention)
 
@@ -20,6 +20,8 @@ adapter or runtime.
 The machine-readable entry is [WORK_ENTRY_009.json](WORK_ENTRY_009.json). The
 reviewable run packet is
 [rtx5070ti-execution-pilot.md](../proposals/rtx5070ti-execution-pilot.md).
+The JSON is the immutable START record and therefore retains its then-current
+`ACTIVE` state; this handoff and the canonical topology carry the later closure.
 
 ## Finding
 
@@ -78,5 +80,11 @@ and no live telemetry, host probe or CUDA command was run during preparation.
 The smallest next action is review and exact authorization of the packet. A
 later run must stop before execution if the guest identity, script hash, profile
 hash, device identity, storage reserve or live authority differs.
+
+Preparation, review-branch delivery, ordinary publication and independent
+canonical verification completed in repo-cp commit
+`37a84624c029fba101f9899affab714e4b31b49f`. The preparation entry is therefore
+complete and scheduling-ineligible. The packet remains an unperformed proposal;
+its exact live authority must come from a separate later decision.
 
 Live effects: NONE.

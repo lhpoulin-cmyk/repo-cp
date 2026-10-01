@@ -10,8 +10,12 @@ handoff behavior
 `louis-workflow` is an operational contract, not a personality description. It
 describes the working loop around which repo-cp is engineered. The
 machine-readable current topology is
-[`registries/work-topology.json`](../registries/work-topology.json); the work
-entry and result schemas carry bounded task state and evidence.
+[`registries/work-topology.json`](../registries/work-topology.json); the
+[compact current-state report](CURRENT_STATE.md) projects its unfinished work,
+recent preparation/execution distinction and exact next actions for fast
+resumption. The registry remains authoritative when a projection and registry
+disagree. Work-entry START records and historical handoffs preserve the state at
+their capture time rather than silently changing with the current topology.
 
 ## Cadence
 
@@ -109,20 +113,23 @@ architecture and judgment.
 
 Work Entry 003 originally used this rule to motivate parked Work Entry 005 around
 deterministic repository measurement and evidence. A later operator-directed
-topology correction preserved that history while separating future planning into
-Work Entry 005 for the `helix-offload` execution plane and Work Entry 008 for the
-`helix-repo-manager-bot` repository intelligence/evidence plane. It authorizes
-neither entry's research or implementation.
+topology correction preserved that history while separating Work Entry 005 for
+the `helix-offload` execution plane from parked Work Entry 008 for the proposed
+`helix-repo-manager-bot` repository intelligence/evidence plane. Work Entry 005
+subsequently delivered Execution Admission V1 and is complete. Work Entry 008
+remains parked and unauthorized.
 
-## Work Entries 005 and 008 planning boundary
+## Work Entries 005 and 008 boundary
 
-Work Entry 005 concerns future investigation and governance of the Helix
-local/offloaded execution plane represented by `helix-offload`. Its execution
-substrate, model/runtime execution, workload routing, GPU use, scheduling,
-packaging, returned evidence and relationship with Work Entry 008 remain
-unresolved. The 5070 Ti is candidate compute only: it is not required hardware,
-an accepted deployment target, an exclusive host, an ownership boundary or a
-production runtime.
+Work Entry 005 delivered a deterministic admission boundary in canonical
+`helix-offload` commit
+`3073fd4e4c552a692d506489597faaf3f5e1038a`. It validates a supplied request,
+matches supplied qualified profiles and verifies explicit profile selection. It
+does not route, execute, invoke an adapter, qualify hardware or grant authority.
+Canonical helix-offload assigns future deterministic routing or policy selection
+to Work Entry 010 / DERP. The 5070 Ti remains candidate compute only: it is not
+required hardware, an accepted deployment target, an exclusive host, an
+ownership boundary or a production runtime.
 
 Work Entry 008 concerns future investigation and governance of the repository
 intelligence/evidence plane represented by `helix-repo-manager-bot`. Repository
@@ -133,17 +140,19 @@ implementation scope. Research may later find existing solutions, assign
 functions elsewhere, reject proposed functions, place execution through Work
 Entry 005 or keep execution independent.
 
-Their relationship is intentionally unresolved. Later research must distinguish
-whether 008 prepares evidence or work for execution by 005, whether 005 provides
-infrastructure on which the 008-owned bot runs, whether both relationships apply,
-or whether the systems remain substantially independent with a narrower
-interface. Logical ownership, execution placement and physical hosting remain
-independent in every model.
+The relationship between 005 and 008 remains intentionally unresolved. Later
+research must distinguish whether 008 prepares evidence consumed before
+admission, prepares evidence for a later execution adapter, executes on shared
+infrastructure while retaining logical ownership, or remains independent with a
+narrower interface. Work Entry 005's completed admission contract is not itself
+an execution substrate. Logical ownership, execution placement and physical
+hosting remain independent in every model.
 
 Louis's `DOUBLE RED` designation is operator planning terminology, not a schema
-value or lifecycle state. Both entries use the existing `PARKED + RED` state and
-priority with `INELIGIBLE_STATE` scheduling. Research authority is `NONE` and
-implementation authority is `NONE` for both entries.
+value or lifecycle state. Work Entry 008 uses the existing `PARKED + RED` state
+and priority with `INELIGIBLE_STATE` scheduling. Its research and implementation
+authority are `NONE`. Work Entry 005 is `COMPLETE + GREEN`; completion grants no
+ongoing execution or mutation authority.
 
 ## Resolvable UNKNOWNs
 
@@ -311,9 +320,10 @@ and 005 while the active reconciliation continued.
 Subsequent operator clarification preserved that observation and split its
 future-work meaning: 005 now concerns the `helix-offload` execution plane, while
 008 concerns the `helix-repo-manager-bot` repository intelligence/evidence
-plane. The split resolves planning ownership only; architecture, execution
-placement, physical hosting, research and implementation remain unresolved and
-unauthorized.
+plane. The split initially resolved planning identity only. Work Entry 005 later
+delivered its admission boundary; execution, routing, physical hosting and the
+005/008 relationship remain unresolved or separately owned. Work Entry 008
+research and implementation remain unauthorized.
 
 ### Interpretation
 

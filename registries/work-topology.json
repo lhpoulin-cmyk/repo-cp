@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "011",
+  "updated_by_work_entry": "012",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -197,45 +197,69 @@
     },
     {
       "id": "009",
-      "state": "ACTIVE",
+      "state": "COMPLETE",
       "priority": "GREEN",
-      "scheduling_eligibility": "ELIGIBLE",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Prepare the first bounded RTX 5070 Ti execution pilot from existing gpu-cp, gpu-compute, compute-cp and ws-cp evidence; live execution remains withheld.",
+      "summary": "The first bounded RTX 5070 Ti execution pilot was prepared and published from existing gpu-cp, gpu-compute, compute-cp and ws-cp evidence; the live run was not performed and requires separate exact authorization.",
       "provenance": [
         "Louis's 2026-10-01 instruction created Work Entry 009 separately from Work Entries 005 and 007.",
         "Operator health BLUE means newly scoped with readiness unverified; BLUE is not inserted into the canonical GREEN/YELLOW/RED priority vocabulary, so normal priority GREEN is recorded independently.",
         "docs/handoffs/WORK_ENTRY_009.md and docs/proposals/rtx5070ti-execution-pilot.md",
-        "Preparation authority only; no model invocation, GPU workload, installation, deployment, credential change or live configuration mutation is authorized."
+        "Preparation was published and canonically verified in repo-cp commit 37a84624c029fba101f9899affab714e4b31b49f; no model invocation, GPU workload, installation, deployment, credential change or live configuration mutation occurred.",
+        "Completion applies to preparation only; it does not grant or report live execution authority."
       ]
     },
     {
       "id": "010",
-      "state": "ACTIVE",
+      "state": "PARKED",
       "priority": "GREEN",
-      "scheduling_eligibility": "ELIGIBLE",
-      "dependencies": [],
-      "summary": "DERP — Deterministic Engine for Policy and Routing — is registered from operator identity evidence; preserved implementation content, ownership and dependencies remain unlocated and are not invented.",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [
+        "005"
+      ],
+      "summary": "DERP — Deterministic Engine for Policy and Routing — is parked after recovery and bounded-scope preparation; canonical helix-offload assigns future deterministic routing and policy selection to it, but its implementation repository, detailed ownership and implementation are not recovered or authorized.",
       "provenance": [
         "Louis's 2026-10-01 follow-up states that Work Entry 010 is DERP; operator health BLUE is preserved because no current evidence supports changing the newly-created, in-development assessment, while normal priority GREEN is recorded independently.",
-        "Fresh canonical main d46ac50128ea3491886476b81c5b75b7d6b0bd76, all fetched branches, registered and preserved checkouts, handoffs, reflogs, relevant history and unreachable blobs contained no recoverable DERP artifact.",
+        "The original repo-cp recovery search found no DERP implementation artifact; this remains true for the inspected repo-cp branches, worktrees, handoffs and history.",
+        "Canonical helix-offload commit 3073fd4e4c552a692d506489597faaf3f5e1038a states that Work Entry 010 / DERP owns future deterministic routing or policy selection while Execution Admission V1 remains matching and explicit selection only.",
         "docs/handoffs/WORK_ENTRY_010.md and docs/handoffs/WORK_ENTRY_010_011_RENUMBER.md",
-        "Recovery registration only; ownership, dependencies, implementation state and implementation authority remain UNKNOWN."
+        "docs/proposals/derp-smallest-useful-slice.md",
+        "Work Entry 005 is a completed interface/reuse dependency, not implementation authority; the DERP implementation repository and detailed owner remain UNKNOWN.",
+        "Recovery and scope preparation only; implementation state is absent and implementation authority remains NONE."
       ]
     },
     {
       "id": "011",
-      "state": "ACTIVE",
+      "state": "COMPLETE",
       "priority": "GREEN",
-      "scheduling_eligibility": "ELIGIBLE",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
       "dependencies": [],
-      "summary": "Assess RTX 5070 Ti host and guest capacity for Work Entry 009 and documented model workloads, reusing its future measurement rather than duplicating execution.",
+      "summary": "The RTX 5070 Ti host-capacity assessment and bounded measurement plan are complete; current measurements, if later authorized, are consumed from the coordinated Work Entry 009 run rather than duplicated.",
       "provenance": [
         "Louis's 2026-10-01 instruction created the capacity assessment; Louis's follow-up reserved 010 for DERP and renumbered this assessment from 010 to 011.",
         "Operator health BLUE means requirements and capacity are unverified; BLUE is not inserted into the canonical GREEN/YELLOW/RED priority vocabulary, so normal priority GREEN is recorded independently.",
         "docs/handoffs/WORK_ENTRY_011.md and docs/proposals/work-entry-011-rtx5070ti-capacity-assessment.md",
         "Historical local commit 1df7226210012096dde02b84593b4c29351ee14f used 010 before the correction and remains immutable evidence.",
-        "Assessment authority only; no benchmark, stress test, installation, reallocation, VM change or purchase is authorized."
+        "Assessment and measurement-plan publication was canonically verified in repo-cp commit 37a84624c029fba101f9899affab714e4b31b49f.",
+        "The future 009 measurement is a coordinated evidence source, not a blocking topology dependency and not execution authority; no benchmark, stress test, installation, reallocation, VM change or purchase occurred."
+      ]
+    },
+    {
+      "id": "012",
+      "state": "PARKED",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [
+        "007"
+      ],
+      "summary": "Discover and reconcile GitHub-hosted account or repository identity with local Git authentication and identity surfaces without reading credentials or changing accounts, credentials or configuration.",
+      "provenance": [
+        "Louis's 2026-10-01 efficiency-priority reconciliation instruction required locating the previously requested GitHub/local-auth discovery task and registering it if absent.",
+        "Fresh canonical registry, direct remote branch inventory, local branches, preserved repo-cp checkouts and relevant public repository text contained no earlier numbered record or recoverable implementation for this task; Work Entry 012 was the next unclaimed number.",
+        "Work Entry 007 supplies bounded synthetic Git identity-profile comparison only; it is prior evidence, not live GitHub authentication proof or authority.",
+        "docs/handoffs/WORK_ENTRY_012.md",
+        "Discovery is parked behind the explicit efficiency order; implementation and all live account, credential, authentication and configuration changes remain unauthorized."
       ]
     }
   ]

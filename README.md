@@ -27,6 +27,8 @@ its evidence, not a claim that the agent read the rules.
 - [Verify the published content digest](pins/agent-work-contract.json).
 - [Use louis-workflow](docs/LOUIS_WORKFLOW.md) for human/agent cadence,
   authority boundaries, finding disposition and work topology.
+- [Resume from the compact current-state report](docs/CURRENT_STATE.md) before
+  reopening historical handoffs.
 
 `tools/validate` verifies both release records and the release, candidate and
 companion bytes against reviewed anchors in `src/repocp/agent_contract.py`. A pin

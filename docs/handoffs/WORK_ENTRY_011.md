@@ -1,6 +1,6 @@
 # Work Entry 011 — RTX 5070 Ti execution-host capacity assessment
 
-Status: `ACTIVE`
+Status: `COMPLETE` — assessment and measurement plan published; measurement unperformed
 
 Priority: `GREEN` (normal attention)
 
@@ -19,6 +19,8 @@ host, or purchase hardware.
 The machine-readable entry is [WORK_ENTRY_011.json](WORK_ENTRY_011.json). The
 capacity decision and coordinated measurement plan are
 [work-entry-011-rtx5070ti-capacity-assessment.md](../proposals/work-entry-011-rtx5070ti-capacity-assessment.md).
+The JSON is the immutable START record and therefore retains its then-current
+`ACTIVE` state; this handoff and the canonical topology carry the later closure.
 
 This assessment was initially recorded as Work Entry 010 in local commit
 `1df7226210012096dde02b84593b4c29351ee14f`. Louis's follow-up reserved 010 for
@@ -78,5 +80,11 @@ larger contexts, or QLoRA training. It also does not justify an upgrade. The
 smallest next action is to execute the already prepared 009 packet only after
 separate live authorization; its preflight and postflight measurements satisfy
 011 without a duplicate benchmark.
+
+Assessment, measurement-plan preparation, review-branch delivery, ordinary
+publication and independent canonical verification completed in repo-cp commit
+`37a84624c029fba101f9899affab714e4b31b49f`. Work Entry 011 is therefore
+complete and scheduling-ineligible. The later 009 measurement is a coordinated
+evidence source, not a blocking topology dependency and not execution authority.
 
 Live effects: NONE.

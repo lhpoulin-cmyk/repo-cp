@@ -40,10 +40,14 @@ use 010 for the capacity assessment.
 
 ## DERP evidence disposition
 
-The only recovered DERP identity evidence is Louis's follow-up naming Work
-Entry 010 and preserving its earlier BLUE health because it was newly created
-and in development. No content, owner, dependencies, branch, checkout, handoff,
-implementation or validation evidence was found. The DERP record therefore
-labels those facts `UNKNOWN` instead of manufacturing progress.
+The initial recovery found only Louis's follow-up naming Work Entry 010 and
+preserving its earlier BLUE health because it was newly created and in
+development. No DERP implementation, branch, checkout, handoff or validation
+evidence was recovered. A later efficiency reconciliation found canonical
+helix-offload `3073fd4e4c552a692d506489597faaf3f5e1038a` assigning future
+deterministic routing or policy selection to Work Entry 010 / DERP while keeping
+that behavior outside Execution Admission V1. The maintained DERP record now
+preserves that narrow relationship, while the implementation repository,
+detailed owner and implementation remain `UNKNOWN` or absent.
 
 Live effects: NONE.
