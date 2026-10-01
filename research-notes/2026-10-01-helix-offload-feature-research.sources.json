@@ -1,6 +1,9 @@
 {
   "format": "external-research-source-manifest/v1",
   "research_artifact": "research-notes/2026-10-01-helix-offload-feature-research.md",
+  "related_operator_supplied_roadmap_records": [
+    "research-notes/2026-10-01-helix-offload-outcome-forecasting.md"
+  ],
   "retrieved_on": "2026-10-01",
   "evidence_status": "EXTERNAL_RESEARCH_NOT_LOCAL_IMPLEMENTATION_EVIDENCE",
   "local_baselines": {

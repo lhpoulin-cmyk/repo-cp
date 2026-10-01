@@ -502,6 +502,12 @@ does not make the editor a policy authority and cannot silently redirect work.
 
 ## Explicit deferrals and rejections
 
+- **Outcome forecasting and calibration:** defer until the explicit hosted path
+  has live acceptance and a comparable resolved cohort. The separately preserved
+  [future-feature record](2026-10-01-helix-offload-outcome-forecasting.md)
+  defines immutable pre-execution forecasts, receipt-based resolution, calibration
+  limits, and the authority boundary. It adds no trading mechanics and must not
+  let uncalibrated predictions silently control routing.
 - **Local RTX 5070 Ti adapter:** defer until the hosted path has an accepted job
   and comparable quality pack. Proceed only with measured quality, tokens/second,
   latency, energy or wall-power basis, memory headroom, maintenance time, runtime
