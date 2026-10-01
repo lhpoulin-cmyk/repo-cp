@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "005",
+  "updated_by_work_entry": "010",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -176,6 +176,34 @@
         "The Work Entry 005 relationship is intentionally unresolved: Work Entry 008 may prepare evidence or work for 005, may execute using infrastructure provided by 005 while retaining 008 logical ownership, may do both or may remain substantially independent with a narrower interface.",
         "Logical ownership, execution placement and physical hosting are separate decisions; physical hosting for Work Entry 008 is unresolved.",
         "Existing software may already solve candidate concerns, functions may belong elsewhere or should not be built, and execution may occur through Work Entry 005 or independently; no outcome is selected by this planning correction."
+      ]
+    },
+    {
+      "id": "009",
+      "state": "ACTIVE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "ELIGIBLE",
+      "dependencies": [],
+      "summary": "Prepare the first bounded RTX 5070 Ti execution pilot from existing gpu-cp, gpu-compute, compute-cp and ws-cp evidence; live execution remains withheld.",
+      "provenance": [
+        "Louis's 2026-10-01 instruction created Work Entry 009 separately from Work Entries 005 and 007.",
+        "Operator health BLUE means newly scoped with readiness unverified; BLUE is not inserted into the canonical GREEN/YELLOW/RED priority vocabulary, so normal priority GREEN is recorded independently.",
+        "docs/handoffs/WORK_ENTRY_009.md and docs/proposals/rtx5070ti-execution-pilot.md",
+        "Preparation authority only; no model invocation, GPU workload, installation, deployment, credential change or live configuration mutation is authorized."
+      ]
+    },
+    {
+      "id": "010",
+      "state": "ACTIVE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "ELIGIBLE",
+      "dependencies": [],
+      "summary": "Assess RTX 5070 Ti host and guest capacity for Work Entry 009 and documented model workloads, reusing its future measurement rather than duplicating execution.",
+      "provenance": [
+        "Louis's 2026-10-01 instruction created Work Entry 010 as a separate read-only inventory and assessment coordinated with Work Entry 009.",
+        "Operator health BLUE means requirements and capacity are unverified; BLUE is not inserted into the canonical GREEN/YELLOW/RED priority vocabulary, so normal priority GREEN is recorded independently.",
+        "docs/handoffs/WORK_ENTRY_010.md and docs/proposals/rtx5070ti-capacity-assessment.md",
+        "Assessment authority only; no benchmark, stress test, installation, reallocation, VM change or purchase is authorized."
       ]
     }
   ]

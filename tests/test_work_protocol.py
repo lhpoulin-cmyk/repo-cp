@@ -112,6 +112,8 @@ class WorkProtocolTests(unittest.TestCase):
             '005': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
             '006': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['003']),
             '008': ('PARKED', 'RED', 'INELIGIBLE_STATE', []),
+            '009': ('ACTIVE', 'GREEN', 'ELIGIBLE', []),
+            '010': ('ACTIVE', 'GREEN', 'ELIGIBLE', []),
         })
         entries = {item['id']: item for item in document['entries']}
         for entry_id in ('005', '008'):
@@ -129,6 +131,12 @@ class WorkProtocolTests(unittest.TestCase):
                       ' '.join(entries['008']['provenance']))
         self.assertIn('Logical ownership, execution placement and physical hosting',
                       ' '.join(entries['008']['provenance']))
+        for entry_id in ('009', '010'):
+            provenance = ' '.join(entries[entry_id]['provenance'])
+            self.assertIn('health BLUE', provenance)
+            self.assertIn('normal priority GREEN', provenance)
+        self.assertIn('live execution remains withheld', entries['009']['summary'])
+        self.assertIn('reusing its future measurement', entries['010']['summary'])
         schema = schemas()['topology']
         automatic = copy.deepcopy(document)
         automatic['automatic_preemption'] = True
