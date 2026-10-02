@@ -3,7 +3,7 @@
 Name: DERP — Deterministic Engine for Policy and Routing
 
 Status: `COMPLETE` — implementation published and synthetically validated;
-one Claude hosted test was sent but did not produce an accepted artifact
+one bounded local test produced an artifact that awaits human disposition
 
 Priority: `GREEN` (normal attention)
 
@@ -37,9 +37,10 @@ ownership, and authority:
   admission or execution authority;
 - hosted execution is adapter-isolated and requires an exact admission result
   plus a separate execution grant;
-- local-model and GPU execution, deployments, account or credential changes,
-  automatic retries, frontier calls, dispatch, and publication are outside the
-  implementation's runtime behavior.
+- deployments, account or credential changes, automatic retries, frontier calls,
+  dispatch, and generated-text publication remain outside the implementation's
+  runtime behavior. The later local slice added only a separately granted,
+  test-only local adapter path.
 
 The accepted implementation refines the earlier
 [smallest-useful-slice proposal](../proposals/derp-smallest-useful-slice.md)
@@ -156,32 +157,54 @@ call occurred.
 
 The full disposition is
 [WORK_ENTRY_010_CLAUDE_RECOVERY_20261001.md](WORK_ENTRY_010_CLAUDE_RECOVERY_20261001.md).
-Sanitized helix-offload evidence is committed at
-`9ec732046ba6481be70018277b91ff04534baa8d` and published on review branch
-`codex/work-entry-010-recovery`; canonical helix-offload main is still
-`6e02f1128a990dfc62e28da6adcc90143a2731cf`, so that evidence is not claimed
-merged or canonical.
+Sanitized helix-offload evidence was committed at
+`9ec732046ba6481be70018277b91ff04534baa8d`, published on review branch
+`codex/work-entry-010-recovery`, and later fast-forwarded to canonical main
+before the local slice began.
+
+## Local OpenClaw baseline
+
+Louis stopped hosted troubleshooting and selected the owned local system as the
+first baseline. Canonical helix-offload
+`811b952da451a21ebc2e68df0751c012df63dddc` adds a portable, consumer-configured
+OpenClaw/Ollama adapter with exact model-digest verification, a tool-free
+one-shot client boundary, no fallback, bounded deadline/output and original
+envelope capture.
+
+OpenClaw is the client/orchestrator on `ws-hadrian`; Ollama is the inference
+runtime in VM 320 `cuda-compute-katra`; `phi4-mini:latest` digest
+`78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753`
+executed on the passed-through RTX 5070 Ti. The exact test-only attempt
+`work-entry-010-openclaw-local-live-001` was **SENT** once, produced the requested
+Ada/Basic/`REF-42` artifact and passed all four deterministic postflight checks.
+Semantic adequacy and human disposition remain `PENDING`; tokens, operating cost
+and review effort remain `UNKNOWN`.
+
+The detailed repo-cp disposition is
+[WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md](WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md).
+Helix-offload preserves the packet, response envelope, artifact, receipt and
+measurements under `docs/evidence/work-entry-010-openclaw-local-20261001/`.
+This one result proves connectivity and bounded behavior only, not production
+qualification, throughput, general quality or the 20% target.
 
 ## Acceptance boundary and next action
 
 Delivery stage: **IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED**.
 
-Operational stage: **TWO LIVE REQUESTS SENT / ACCEPTANCE NOT ESTABLISHED**. DERP is not
-operationally proven, and the 20% target has not been achieved. The Claude
-authorizations were consumed and do not authorize another retry or cohort.
+Operational stage: **ONE LOCAL ARTIFACT PRODUCED / HUMAN DISPOSITION PENDING**.
+DERP is not operationally proven, and the 20% target has not been achieved. The
+local one-call authority and earlier Claude authorizations are consumed; they do
+not authorize another call, retry or cohort.
 
-Exact next action is to make failed-envelope evidence bounded and recoverable,
-then, only under a new explicit authority, run one diagnostic acceptance call.
-The bounded cuda-compute packet is prepared but remains next only after the
-hosted path produces an artifact suitable for human disposition.
+Exact next action is for Louis to review the local artifact and record
+`ACCEPTED`, `REJECTED` or `FRONTIER_CONTINUATION` plus actual review effort.
+Work Entry 013 then holds the separately authorized future Claude implementation
+and comparison; Work Entry 014 remains parked behind it for ChatGPT/OpenAI.
 
-Live effects: two separately authorized Claude Code invocations disclosed the
-same synthetic Ada/Basic/`REF-42` input through Louis's existing Claude.ai Pro
-allowance; both client envelopes were rejected locally. No artifact, accepted
-output, OpenAI call, API-billed charge, manual retry, cohort, GPU workload,
-generated-text publication, deployment, installation, credential/account change
-or runtime configuration mutation occurred. The original hosted-slice review
-branch and canonical helix-offload main were published non-forced at
-`6e02f1128a990dfc62e28da6adcc90143a2731cf`; the follow-up sanitized evidence is
-published only on review branch `codex/work-entry-010-recovery` at
-`9ec732046ba6481be70018277b91ff04534baa8d`.
+Live effects: historical Work Entry 010 made two separately authorized Claude
+Code requests, both rejected locally before artifact creation. This local slice
+made one bounded OpenClaw/Ollama request on cuda-compute-katra and published its
+sanitized evidence plus implementation non-forced to helix-offload main at
+`811b952da451a21ebc2e68df0751c012df63dddc`. No OpenAI call, retry, fallback,
+cohort, generated-text application, deployment, installation, credential/account
+change, network exposure, resource reallocation or service mutation occurred.

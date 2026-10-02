@@ -117,6 +117,8 @@ class WorkProtocolTests(unittest.TestCase):
             '010': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['005']),
             '011': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', []),
             '012': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['007']),
+            '013': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['010']),
+            '014': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['013']),
         })
         entries = {item['id']: item for item in document['entries']}
         for entry_id in ('008',):
@@ -142,15 +144,21 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('live run was not performed', entries['009']['summary'])
         self.assertIn('Deterministic Engine for Policy and Routing', entries['010']['summary'])
         self.assertIn('synthetically validated', entries['010']['summary'])
-        self.assertIn('one Claude request was sent', entries['010']['summary'])
-        self.assertIn('live acceptance remains unproven', entries['010']['summary'])
+        self.assertIn('one bounded local OpenClaw/Ollama request', entries['010']['summary'])
+        self.assertIn('awaits Louis', entries['010']['summary'])
         self.assertIn('c1a1c89f4d54d695adf6675e97c045a31267f29d',
+                      ' '.join(entries['010']['provenance']))
+        self.assertIn('811b952da451a21ebc2e68df0751c012df63dddc',
                       ' '.join(entries['010']['provenance']))
         self.assertIn('coordinated Work Entry 009 run', entries['011']['summary'])
         self.assertIn('renumbered this assessment from 010 to 011',
                       ' '.join(entries['011']['provenance']))
         self.assertIn('GitHub-hosted account or repository identity', entries['012']['summary'])
         self.assertIn('live account, credential', ' '.join(entries['012']['provenance']))
+        self.assertIn('Claude API', entries['013']['summary'])
+        self.assertIn('response envelope', ' '.join(entries['013']['provenance']))
+        self.assertIn('OpenAI API', entries['014']['summary'])
+        self.assertIn('subscription allowance', ' '.join(entries['014']['provenance']))
         self.assertEqual(document['updated_by_work_entry'], '010')
 
         derp_result = json.loads(
@@ -165,6 +173,8 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('| 008 |', current_state)
         self.assertIn('| 010 |', current_state)
         self.assertIn('| 012 |', current_state)
+        self.assertIn('| 013 |', current_state)
+        self.assertIn('| 014 |', current_state)
         self.assertIn('GPU workload UNPERFORMED', current_state)
         self.assertIn('measurement UNPERFORMED', current_state)
         schema = schemas()['topology']

@@ -218,7 +218,7 @@
       "dependencies": [
         "005"
       ],
-      "summary": "DERP — Deterministic Engine for Policy and Routing, helix-offload's deterministic governor — is published and synthetically validated with Claude and OpenAI hosted boundaries; one Claude request was sent but no artifact reached postflight, so live acceptance remains unproven.",
+      "summary": "DERP — Deterministic Engine for Policy and Routing, helix-offload's deterministic governor — is published and synthetically validated; one bounded local OpenClaw/Ollama request produced an artifact that passed deterministic postflight and awaits Louis's semantic disposition.",
       "provenance": [
         "Louis's 2026-10-01 follow-up states that Work Entry 010 is DERP; operator health BLUE is preserved because no current evidence supports changing the newly-created, in-development assessment, while normal priority GREEN is recorded independently.",
         "The original repo-cp recovery search found no DERP implementation artifact; docs/handoffs/WORK_ENTRY_010.json and repository history preserve that capture-time result.",
@@ -235,7 +235,11 @@
         "No live or paid model call, GPU workload, installation, deployment, account/credential change, automatic retry, frontier escalation, dispatch or runtime configuration mutation was performed.",
         "Canonical helix-offload 6e02f1128a990dfc62e28da6adcc90143a2731cf adds provider-neutral billing/attempt receipts, bounded Claude API and subscription adapters, an exact TEST_ONLY bootstrap, a four-path matrix and cuda-compute follow-up packet; 42 tests passed.",
         "One Claude Code invocation was SENT through an existing Claude.ai Pro login, but its envelope failed local validation and produced no artifact; OpenAI was NOT SENT, human disposition remains PENDING, and the consumed call grants no retry authority.",
-        "The 20 percent successful-offload target is a future measured goal, not an achieved saving; live acceptance remains unproven."
+        "The 20 percent successful-offload target is a future measured goal, not an achieved saving; live acceptance remains unproven.",
+        "Louis redirected the active slice to the owned local system and parked hosted comparison work under separately registered Work Entries 013 and 014.",
+        "Canonical helix-offload 811b952da451a21ebc2e68df0751c012df63dddc adds the portable OpenClaw/Ollama adapter, test-only local admission, exact packet and sanitized evidence for one bounded local request.",
+        "Attempt work-entry-010-openclaw-local-live-001 was SENT once; it produced an artifact, passed four deterministic document checks and remains semantically PENDING. Tokens, operating cost and human effort are UNKNOWN.",
+        "docs/handoffs/WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md"
       ]
     },
     {
@@ -269,6 +273,40 @@
         "Work Entry 007 supplies bounded synthetic Git identity-profile comparison only; it is prior evidence, not live GitHub authentication proof or authority.",
         "docs/handoffs/WORK_ENTRY_012.md",
         "Discovery is parked behind the explicit efficiency order; implementation and all live account, credential, authentication and configuration changes remain unauthorized."
+      ]
+    },
+    {
+      "id": "013",
+      "state": "PARKED",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [
+        "010"
+      ],
+      "summary": "Implement Claude API and supported subscription-backed execution as distinct paths, then compare the same bounded acceptance workload against the completed Work Entry 010 local OpenClaw baseline.",
+      "provenance": [
+        "Louis's 2026-10-01 local-first sequence parks Claude until the owned local baseline is available.",
+        "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
+        "Work Entry 010 attempts 001 and 002 remain failed historical evidence; the second attempt did not retain the response envelope despite the prior recovery instruction.",
+        "Future implementation must capture a bounded sanitized original envelope before strict parsing and must keep Claude API billing separate from subscription allowance.",
+        "Registration authorizes no live call, retry, account/credential change, purchase or implementation."
+      ]
+    },
+    {
+      "id": "014",
+      "state": "PARKED",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [
+        "013"
+      ],
+      "summary": "Implement OpenAI API and supported ChatGPT or Codex subscription-backed execution as distinct paths, then compare the same bounded workload against the established local and Claude baselines.",
+      "provenance": [
+        "Louis's 2026-10-01 local-first sequence parks ChatGPT/OpenAI until the Claude comparison follows the owned local baseline.",
+        "docs/handoffs/WORK_ENTRY_014.md and docs/handoffs/WORK_ENTRY_014.json",
+        "The existing OpenAI Responses adapter and documented subscription-client boundary limitations are preserved; neither path is presumed suitable without enforceable bounds.",
+        "API billing and ChatGPT or Codex subscription allowance remain distinct and must be recorded separately.",
+        "Registration authorizes no live call, account/credential change, purchase or implementation."
       ]
     }
   ]

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_ENTRY_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "014",
+  "work_entry_phase": "START",
+  "work_state": "PARKED",
+  "priority": "GREEN",
+  "scheduling_eligibility": "INELIGIBLE_STATE",
+  "prepared_by": {
+    "role": "EXECUTOR",
+    "identifier": "Codex Work Entry 010 local-redirection session 2026-10-01"
+  },
+  "target_repository": {
+    "name": "repo-cp",
+    "canonical_remote": "https://github.com/lhpoulin-cmyk/repo-cp.git",
+    "branch": "main"
+  },
+  "objective": "Implement OpenAI API and supported ChatGPT or Codex subscription-backed execution separately, then compare the same bounded workload against the established local and Claude baselines.",
+  "governing_standards": [
+    "HELIX_REPOSITORY_WORK_PROTOCOL_V1",
+    "HELIX_AGENT_WORK_CONTRACT_V1 release 1.0.0",
+    "Louis's 2026-10-01 local-first hosted-comparison sequence"
+  ],
+  "authority": {
+    "source": "Louis's 2026-10-01 Work Entry 010 local-first redirection",
+    "granted": [
+      "Register this future work after Work Entry 013 at the next freshly verified available number",
+      "Preserve OpenAI API and subscription-backed execution as distinct paths",
+      "Preserve the existing OpenAI adapter and documented client-boundary limitations"
+    ],
+    "explicitly_not_granted": [
+      "Any OpenAI or ChatGPT model invocation",
+      "Account, credential, subscription, permission or billing changes",
+      "Implementation before the Work Entry 013 Claude comparison is available"
+    ],
+    "live_effects_authorized": false
+  },
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "509644e5ce71d41a0930d69c7c46ba590e6f0c59",
+    "direct_remote_verified": true
+  },
+  "source_workspace": {
+    "identity": "/home/louis/helix-arpa/repo-cp primary checkout",
+    "head": "509644e5ce71d41a0930d69c7c46ba590e6f0c59",
+    "dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+    "dirtiness_attribution": "NONE"
+  },
+  "execution_workspace": {
+    "identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-010-recovery-control",
+    "head": "509644e5ce71d41a0930d69c7c46ba590e6f0c59",
+    "dirty_state": {"state": "DIRTY", "staged": [], "unstaged": [], "untracked": ["docs/handoffs/WORK_ENTRY_014.md", "docs/handoffs/WORK_ENTRY_014.json"]},
+    "dirtiness_attribution": "IN_SCOPE",
+    "mutation_gate": "CLOSED"
+  },
+  "isolation": {
+    "used": true,
+    "mechanism": "CHECKOUT",
+    "reason": "The parked future entry is registered without modifying the clean primary checkout or starting hosted implementation."
+  },
+  "dependencies": [
+    {
+      "id": "013",
+      "kind": "DEPENDENCY",
+      "description": "Work Entry 013 must first produce the Claude comparison following the Work Entry 010 local baseline.",
+      "owner": "repo-cp and helix-offload",
+      "blocking": true,
+      "status": "PARKED"
+    }
+  ],
+  "expected_validation": [
+    "Verify the same bounded workload and acceptance criteria against both established baselines",
+    "Validate API billing and subscription allowance paths separately using official interfaces",
+    "Enforce tool, retry, fallback, deadline and output boundaries before any live request",
+    "Leave human disposition explicit and provider usage unknown when not observable"
+  ],
+  "mutation_scope": {
+    "allowed": ["Register and preserve this future work entry in repo-cp"],
+    "prohibited": ["Hosted invocation, implementation, account or credential change under this registration"]
+  },
+  "required_evidence": [
+    "Completed Work Entry 010 local baseline and Work Entry 013 Claude comparison",
+    "Existing OpenAI Responses adapter and client-boundary findings",
+    "Official OpenAI API and supported subscription-client interface evidence current at execution time",
+    "Exact model, billing or allowance source, limits, artifact, receipt and human disposition"
+  ],
+  "expected_result_protocol": "HELIX_WORK_RESULT_V1"
+}
