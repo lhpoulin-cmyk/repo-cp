@@ -94,3 +94,25 @@ its proposed grant is `UNISSUED` and submission is `NOT_SENT`. See
 `WORK_ENTRY_015_FORMAT_REPAIR_20261001.md` and
 `WORK_ENTRY_015_FORMAT_REPAIR_RESULT_20261001.json`. No inference occurred in
 the repair.
+
+## Repaired local attempt 002
+
+Louis authorized exactly one invocation from packet
+`f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41`.
+Attempt `work-entry-015-local-change-summary-live-002` was sent once through the
+verified local OpenClaw/Ollama/phi4-mini path and completed in 8,306 ms. There
+was no retry, fallback or hosted call.
+
+The original strict result remains `REFUSED / MALFORMED_OUTPUT`: the complete
+response used a `json` fence and singleton risk/review objects. Louis then
+directed postflight repair. Bounded offline reprocessing invoked no model,
+preserved the raw response, explicitly recorded each compatibility
+normalization, resolved source IDs and assembled deterministic metadata. Its
+disposition is `CANDIDATE_OUTPUT_REVIEW_REQUIRED`; human disposition remains
+`PENDING`. Tokens, cost, stop reason and truncation remain `UNKNOWN`.
+
+Canonical helix-offload
+`5b1c53025b29b858650b2a62fe0f4cfcf7361862` preserves both results. See
+`WORK_ENTRY_015_ATTEMPT_002_20261002.md` and
+`WORK_ENTRY_015_ATTEMPT_002_RESULT_20261002.json`. No further inference is
+authorized; Work Entries 013 and 014 remain parked.

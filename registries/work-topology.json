@@ -320,7 +320,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "Attempt 001 remains REFUSED / MALFORMED_OUTPUT with human disposition PENDING; the published change-summary-v1 format repair now assigns known facts to deterministic assembly and leaves one compact next attempt prepared but NOT SENT.",
+      "summary": "The change-summary-v1 attempt 001 remains preserved; repaired attempt 002 was sent exactly once, its original strict result was REFUSED / MALFORMED_OUTPUT, and bounded offline postflight reprocessing produced an assembled review artifact with human disposition PENDING.",
       "provenance": [
         "Louis's 2026-10-01 instruction authorizes one local OpenClaw/Ollama invocation with no retry, fallback, hosted call or cohort.",
         "docs/handoffs/WORK_ENTRY_015.md and docs/handoffs/WORK_ENTRY_015.json",
@@ -331,6 +331,10 @@
         "Canonical helix-offload 11a2cba48540e5501a3b67699ecd20a52ca7fbec publishes packet-v2 short source IDs, compact generated claims, deterministic artifact assembly, receipt-v3 runtime observations and offline validation while preserving attempt 001 byte-identically.",
         "The prepared next packet SHA-256 is f5bb1cd016bd36f847d9129e; full SHA-256 f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41. Its proposed grant is UNISSUED and submission is NOT SENT; no inference occurred during the repair.",
         "docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_20261001.md and docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_RESULT_20261001.json",
+        "Louis's 2026-10-02 authority granted exactly one fresh local invocation bound to the prepared packet; attempt work-entry-015-local-change-summary-live-002 was SENT once with no retry or fallback.",
+        "The original strict result remains REFUSED / MALFORMED_OUTPUT. Offline postflight reprocessing invoked no model, explicitly recorded code-fence removal and singleton wrapping, and produced CANDIDATE_OUTPUT_REVIEW_REQUIRED without changing raw model text.",
+        "Canonical helix-offload 5b1c53025b29b858650b2a62fe0f4cfcf7361862 preserves both results, the 8306 ms runtime observation, UNKNOWN tokens/cost/stop metadata, and human disposition PENDING.",
+        "docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_20261002.md and docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_RESULT_20261002.json",
         "Work Entries 013 and 014 remain PARKED."
       ]
     }

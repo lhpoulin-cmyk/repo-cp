@@ -2,8 +2,8 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`4860242f7d1ea26eb8abdab1f59ff6db6ec172d9`, canonical helix-offload `main` at
-`11a2cba48540e5501a3b67699ecd20a52ca7fbec`, and the Work Entry 015 result
+`613a67ff8c2cbb9db059da7817b50fd061061aad`, canonical helix-offload `main` at
+`5b1c53025b29b858650b2a62fe0f4cfcf7361862`, and the Work Entry 015 result
 in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -38,16 +38,15 @@ label left behind as a proxy.
 | 009 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Pilot packet and handoff are published in repo-cp `37a84624…` | Preparation COMPLETE. GPU workload UNPERFORMED; live authority withheld |
 | 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Portable local adapter, sanitized evidence and human disposition are published in canonical helix-offload `ca99987…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. One local request SENT; artifact passed deterministic postflight and Louis ACCEPTED it after 2 minutes review and 0 preparation effort. Tokens/cost, production readiness and the 20% target remain unproven |
 | 011 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Capacity decision and coordinated measurement packet are published in repo-cp `37a84624…` | Assessment COMPLETE. Current measurement UNPERFORMED; a later authorized 009 run supplies it once, without a duplicate benchmark |
-| 015 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Attempt 001 and the compact-output format repair are published in canonical helix-offload `11a2cba…` | Attempt 001 remains REFUSED / MALFORMED_OUTPUT with human disposition PENDING. The repaired packet is prepared with an unissued proposed grant and submission NOT SENT; no repair-time inference occurred |
+| 015 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Attempts 001/002, both attempt-002 postflight results and the bounded postflight repair are published in canonical helix-offload `5b1c530…` | Attempt 002 was SENT once. Original strict result: REFUSED / MALFORMED_OUTPUT. Offline reprocessing: CANDIDATE_OUTPUT_REVIEW_REQUIRED. Human disposition remains PENDING; tokens, cost, stop reason and truncation remain UNKNOWN |
 
 ## Recommended efficiency order
 
 This is an attention order, not scheduling eligibility or authority.
 
-1. Louis separately authorizes exactly one invocation from Work Entry 015's
-   published repaired packet if he wants the prepared next attempt sent. The
-   caller must revalidate its hashes, runtime and model, then issue a fresh
-   content-bound grant and attempt identity. Attempt 001 remains preserved.
+1. Louis reviews Work Entry 015 attempt 002's raw generated analysis and
+   deterministic assembled artifact, then records `ACCEPTED`, `REJECTED`, or
+   `FRONTIER_CONTINUATION`. No additional invocation is authorized.
 2. Maintain this current-state/resume view and registry consistency.
 3. Separately resume Work Entry 013 only if Louis authorizes Claude
    implementation/comparison and an exact hosted call.
@@ -60,9 +59,8 @@ This is an attention order, not scheduling eligibility or authority.
 7. Consider GPU expansion only after that evidence demonstrates a need and a
    useful benefit.
 
-Exact next action: Louis separately authorizes exactly one local invocation from
-packet SHA-256
-`f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41`.
-Until then its proposed grant remains `UNISSUED` and submission remains
-`NOT_SENT`. The accepted local smoke baseline remains available; Work Entries
-013 and 014 remain parked.
+Exact next action: Louis reviews the published attempt-002 raw and assembled
+artifacts and records `ACCEPTED`, `REJECTED`, or `FRONTIER_CONTINUATION` with
+preparation/review effort when known. The one invocation authority is consumed;
+no retry or additional inference is authorized. Work Entries 013 and 014 remain
+parked.

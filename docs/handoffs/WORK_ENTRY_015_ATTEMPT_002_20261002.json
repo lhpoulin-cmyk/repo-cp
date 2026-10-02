@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_ENTRY_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "015",
+  "work_entry_phase": "CONTINUE",
+  "work_state": "ACTIVE",
+  "priority": "GREEN",
+  "scheduling_eligibility": "ELIGIBLE",
+  "prepared_by": {"role": "EXECUTOR", "identifier": "Codex Work Entry 015 attempt 002 2026-10-02"},
+  "target_repository": {"name": "helix-offload", "canonical_remote": "https://github.com/lhpoulin-cmyk/helix-offload.git", "branch": "main"},
+  "objective": "Send exactly one authorized repaired local change-summary request, preserve the response, repair postflight offline at Louis's direction, and publish both results for human review.",
+  "governing_standards": ["HELIX_REPOSITORY_WORK_PROTOCOL_V1", "HELIX_AGENT_WORK_CONTRACT_V1 release 1.0.0", "helix-offload DERP V1 and change-summary-v1", "Louis's 2026-10-02 one-invocation authority and postflight-repair direction"],
+  "authority": {
+    "source": "Louis's 2026-10-02 Work Entry 015 fresh local invocation and postflight-repair instructions",
+    "granted": ["One fresh local inference from the exact prepared packet", "Bounded offline postflight repair with both results preserved", "Scoped evidence, tests, commits, review push and ordinary canonical publication"],
+    "explicitly_not_granted": ["Retry, fallback, additional inference or hosted call", "Automatic generated-text application", "Installation, credential/account change or runtime-service mutation", "Activation of Work Entries 013 or 014"],
+    "live_effects_authorized": true
+  },
+  "canonical_baseline": {"intended_ref": "refs/heads/main", "resolved_head": "11a2cba48540e5501a3b67699ecd20a52ca7fbec", "direct_remote_verified": true},
+  "source_workspace": {"identity": "/home/louis/helix-arpa/helix-offload primary checkout", "head": "11a2cba48540e5501a3b67699ecd20a52ca7fbec", "dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []}, "dirtiness_attribution": "NONE"},
+  "execution_workspace": {"identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-015-attempt-002-helix", "head": "11a2cba48540e5501a3b67699ecd20a52ca7fbec", "dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []}, "dirtiness_attribution": "NONE", "mutation_gate": "OPEN"},
+  "isolation": {"used": true, "mechanism": "CHECKOUT", "reason": "Live evidence and postflight repair were isolated from clean primary checkouts and unrelated research work."},
+  "dependencies": [{"id": "015.format-repair", "kind": "DEPENDENCY", "description": "Published repaired packet, TEST_ONLY admission and local adapter", "owner": "helix-offload", "blocking": true, "status": "COMPLETED"}],
+  "expected_validation": ["Exactly one persisted attempt and response envelope", "Original strict result preserved", "Offline postflight reprocessing invokes no model and binds both results", "Full repository tests and schema validation", "Independent publication verification"],
+  "mutation_scope": {"allowed": ["One bounded local inference, offline postflight repair, evidence and normal Git publication"], "prohibited": ["Additional inference, hosted call, automatic application or unrelated work"]},
+  "required_evidence": ["Attempt intent, grant, response envelope, original receipt/artifact/manifest", "Reprocessed receipt/artifact/recovery binding", "PENDING human dispositions", "Runtime observations and explicit UNKNOWNs"],
+  "expected_result_protocol": "HELIX_WORK_RESULT_V1"
+}

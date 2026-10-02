@@ -174,6 +174,12 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41',
                       ' '.join(entries['015']['provenance']))
         self.assertIn('NOT SENT', ' '.join(entries['015']['provenance']))
+        self.assertIn('5b1c53025b29b858650b2a62fe0f4cfcf7361862',
+                      ' '.join(entries['015']['provenance']))
+        self.assertIn('work-entry-015-local-change-summary-live-002',
+                      ' '.join(entries['015']['provenance']))
+        self.assertIn('CANDIDATE_OUTPUT_REVIEW_REQUIRED',
+                      ' '.join(entries['015']['provenance']))
         self.assertEqual(document['updated_by_work_entry'], '015')
 
         derp_result = json.loads(

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "015",
+  "work_state": "COMPLETE",
+  "priority": "GREEN",
+  "target_repository": "helix-offload",
+  "objective": "Execute one authorized repaired local change-summary request and preserve both the original strict result and Louis-directed offline postflight result.",
+  "canonical_baseline": {"intended_ref": "refs/heads/main", "resolved_head": "11a2cba48540e5501a3b67699ecd20a52ca7fbec"},
+  "workspace_evidence": {"source_workspace_identity": "/home/louis/helix-arpa/helix-offload", "execution_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-015-attempt-002-helix", "isolated_execution": true, "pre_existing_source_state_preserved": true},
+  "starting_head": "11a2cba48540e5501a3b67699ecd20a52ca7fbec",
+  "ending_head": "5b1c53025b29b858650b2a62fe0f4cfcf7361862",
+  "starting_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirtiness_attribution": {"current_work_entry": {"staged": [], "unstaged": [], "untracked": []}, "pre_existing": {"staged": [], "unstaged": [], "untracked": []}, "unrelated": {"staged": [], "unstaged": [], "untracked": []}, "unknown": {"staged": [], "unstaged": [], "untracked": []}},
+  "files_changed": ["helix-offload/src/helix_offload/derp.py", "helix-offload/src/helix_offload/workflow.py", "helix-offload/src/helix_offload/cli.py", "helix-offload/schemas/postflight-recovery-v1.schema.json", "helix-offload/tests/test_workflow.py", "helix-offload/docs/evidence/WORK_ENTRY_015_REPAIRED_LOCAL_CHANGE_SUMMARY_RESULT.md", "helix-offload/docs/evidence/work-entry-015-local-change-summary-repaired-20261002/", "repo-cp/docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_20261002.md", "repo-cp/docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_20261002.json", "repo-cp/docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_RESULT_20261002.json"],
+  "mutations_performed": ["Verified packet, source, schema, adapter, runtime and exact model digest", "Issued one content-bound LIVE grant and persisted attempt intent before send", "Sent exactly one local request and preserved its bounded response envelope", "Preserved the original REFUSED / MALFORMED_OUTPUT result unchanged", "Implemented bounded explicit postflight normalization and offline reprocessing", "Published implementation and both sanitized results to helix-offload review and canonical refs"],
+  "mutations_not_performed": ["No retry, fallback, additional inference or hosted call", "No model download, installation, credential/account change or service mutation", "No automatic generated-text application or human acceptance", "No activation of Work Entries 013 or 014"],
+  "validation": [
+    {"check": "Single local invocation", "status": "PASS", "evidence": "Attempt work-entry-015-local-change-summary-live-002 was SENT once and completed in 8306 ms; one response envelope and one retry-history entry were preserved."},
+    {"check": "Original strict postflight", "status": "BLOCKED", "evidence": "Original result is preserved as REFUSED / MALFORMED_OUTPUT because the complete response used a JSON fence and singleton collection objects."},
+    {"check": "Offline postflight reprocessing", "status": "PASS", "evidence": "No model was invoked; the recovery record binds both results and records all three bounded compatibility transformations plus the 180-to-320-character policy change."},
+    {"check": "Repository validation", "status": "PASS", "evidence": "47 of 47 unit tests passed; 121 JSON documents parsed; 18 schemas passed Draft 2020-12 metaschema validation; compilation, three pins, whitespace and secret-indicator checks passed."},
+    {"check": "Canonical helix-offload publication", "status": "PASS", "evidence": "Independent remote query resolved both main and codex/work-entry-015-attempt-002 to 5b1c53025b29b858650b2a62fe0f4cfcf7361862."},
+    {"check": "Human semantic acceptance", "status": "UNKNOWN", "evidence": "Human disposition remains PENDING; reference and structural checks do not prove semantic adequacy."}
+  ],
+  "evidence_produced": ["helix-offload/docs/evidence/WORK_ENTRY_015_REPAIRED_LOCAL_CHANGE_SUMMARY_RESULT.md", "helix-offload/docs/evidence/work-entry-015-local-change-summary-repaired-20261002/", "repo-cp/docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_20261002.md", "repo-cp/docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_RESULT_20261002.json"],
+  "delivery_stage": "PUBLISHED",
+  "status_topology": {
+    "nodes": [
+      {"id": "work.015.attempt-002", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "One local invocation and both postflight results are published.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.015.human-disposition", "kind": "WORK", "status": "PENDING", "priority": "GREEN", "summary": "Louis must assess semantic adequacy and record the final disposition.", "owner": "Louis", "blocking": true},
+      {"id": "work.013.claude", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "Claude implementation and comparison remain parked.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.014.openai", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "OpenAI implementation and comparison remain parked behind Work Entry 013.", "owner": "helix-offload", "blocking": false}
+    ],
+    "relationships": [{"subject": "work.014.openai", "predicate": "DEPENDS_ON", "object": "work.013.claude"}]
+  },
+  "recommended_next_action": "Louis reviews the raw generated analysis and deterministic assembled artifact, then records ACCEPTED, REJECTED or FRONTIER_CONTINUATION with preparation/review effort when known. No additional invocation is authorized.",
+  "live_effects": [
+    {"action": "Invoke bounded local change-summary attempt 002", "target": "OpenClaw/Ollama phi4-mini on cuda-compute-katra", "result": "SUCCEEDED", "evidence": "One response completed in 8306 ms and is bound by the published result manifest."},
+    {"action": "Publish helix-offload review branch", "target": "refs/heads/codex/work-entry-015-attempt-002", "result": "SUCCEEDED", "evidence": "Independent remote query resolved the branch to 5b1c53025b29b858650b2a62fe0f4cfcf7361862."},
+    {"action": "Fast-forward canonical helix-offload main", "target": "refs/heads/main", "result": "SUCCEEDED", "evidence": "Independent remote query resolved main to 5b1c53025b29b858650b2a62fe0f4cfcf7361862."}
+  ]
+}
