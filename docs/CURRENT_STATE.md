@@ -2,8 +2,8 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`8bd9329eca7a72f55b50aaf9d9ff5daaefd98141`, canonical helix-offload `main` at
-`cb2cc72d799f2828188b5060d1e64c4a242f6016`, and the Work Entry 015 result
+`4860242f7d1ea26eb8abdab1f59ff6db6ec172d9`, canonical helix-offload `main` at
+`11a2cba48540e5501a3b67699ecd20a52ca7fbec`, and the Work Entry 015 result
 in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -38,14 +38,16 @@ label left behind as a proxy.
 | 009 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Pilot packet and handoff are published in repo-cp `37a84624…` | Preparation COMPLETE. GPU workload UNPERFORMED; live authority withheld |
 | 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Portable local adapter, sanitized evidence and human disposition are published in canonical helix-offload `ca99987…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. One local request SENT; artifact passed deterministic postflight and Louis ACCEPTED it after 2 minutes review and 0 preparation effort. Tokens/cost, production readiness and the 20% target remain unproven |
 | 011 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Capacity decision and coordinated measurement packet are published in repo-cp `37a84624…` | Assessment COMPLETE. Current measurement UNPERFORMED; a later authorized 009 run supplies it once, without a duplicate benchmark |
-| 015 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | One bounded change-summary request and its unaccepted evidence are published in canonical helix-offload `cb2cc72…` | Request SENT once; the 600-token response ended mid-JSON, so postflight returned REFUSED / MALFORMED_OUTPUT. Human disposition remains PENDING; tokens, cost and human-effort durations are UNKNOWN |
+| 015 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | Attempt 001 and the compact-output format repair are published in canonical helix-offload `11a2cba…` | Attempt 001 remains REFUSED / MALFORMED_OUTPUT with human disposition PENDING. The repaired packet is prepared with an unissued proposed grant and submission NOT SENT; no repair-time inference occurred |
 
 ## Recommended efficiency order
 
 This is an attention order, not scheduling eligibility or authority.
 
-1. Louis records a human disposition for Work Entry 015's preserved malformed
-   output; no further inference request is authorized by that entry.
+1. Louis separately authorizes exactly one invocation from Work Entry 015's
+   published repaired packet if he wants the prepared next attempt sent. The
+   caller must revalidate its hashes, runtime and model, then issue a fresh
+   content-bound grant and attempt identity. Attempt 001 remains preserved.
 2. Maintain this current-state/resume view and registry consistency.
 3. Separately resume Work Entry 013 only if Louis authorizes Claude
    implementation/comparison and an exact hosted call.
@@ -58,8 +60,9 @@ This is an attention order, not scheduling eligibility or authority.
 7. Consider GPU expansion only after that evidence demonstrates a need and a
    useful benefit.
 
-Exact next action: Louis records `REJECTED` or `FRONTIER_CONTINUATION` for Work
-Entry 015's preserved malformed output, or otherwise supplies an explicit human
-disposition. The accepted local smoke baseline remains available; Work Entries
-013 and 014 remain parked. No further model or GPU invocation is authorized by
-these records.
+Exact next action: Louis separately authorizes exactly one local invocation from
+packet SHA-256
+`f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41`.
+Until then its proposed grant remains `UNISSUED` and submission remains
+`NOT_SENT`. The accepted local smoke baseline remains available; Work Entries
+013 and 014 remain parked.

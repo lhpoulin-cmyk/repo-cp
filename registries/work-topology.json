@@ -320,7 +320,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "One bounded local change-summary-v1 request was sent over the published OpenClaw integration; the response reached its output ceiling mid-JSON, deterministic postflight refused it as malformed, and human disposition remains PENDING.",
+      "summary": "Attempt 001 remains REFUSED / MALFORMED_OUTPUT with human disposition PENDING; the published change-summary-v1 format repair now assigns known facts to deterministic assembly and leaves one compact next attempt prepared but NOT SENT.",
       "provenance": [
         "Louis's 2026-10-01 instruction authorizes one local OpenClaw/Ollama invocation with no retry, fallback, hosted call or cohort.",
         "docs/handoffs/WORK_ENTRY_015.md and docs/handoffs/WORK_ENTRY_015.json",
@@ -328,6 +328,9 @@
         "Packet change-summary-packet:39d71e272bc23e39333fb6f0 is published in canonical helix-offload cb2cc72d799f2828188b5060d1e64c4a242f6016 with the original bounded envelope, artifact, receipt and measurements.",
         "Attempt work-entry-015-local-change-summary-live-001 was SENT once and completed in 10560 ms; postflight returned REFUSED / MALFORMED_OUTPUT because the 600-token response ended mid-JSON.",
         "Tokens, operating cost, preparation time and review time remain UNKNOWN; frontier preparation occurred, no retry or fallback was attempted, and the human disposition remains PENDING.",
+        "Canonical helix-offload 11a2cba48540e5501a3b67699ecd20a52ca7fbec publishes packet-v2 short source IDs, compact generated claims, deterministic artifact assembly, receipt-v3 runtime observations and offline validation while preserving attempt 001 byte-identically.",
+        "The prepared next packet SHA-256 is f5bb1cd016bd36f847d9129e; full SHA-256 f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41. Its proposed grant is UNISSUED and submission is NOT SENT; no inference occurred during the repair.",
+        "docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_20261001.md and docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_RESULT_20261001.json",
         "Work Entries 013 and 014 remain PARKED."
       ]
     }

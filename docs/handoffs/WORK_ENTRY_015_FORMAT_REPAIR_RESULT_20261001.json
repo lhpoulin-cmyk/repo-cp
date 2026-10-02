@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "015",
+  "work_state": "COMPLETE",
+  "priority": "GREEN",
+  "target_repository": "helix-offload",
+  "objective": "Repair change-summary-v1 so deterministic assembly owns known facts and the model emits only bounded summary, risk and review-note claims, then prepare but do not invoke the next local attempt.",
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "cb2cc72d799f2828188b5060d1e64c4a242f6016"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "/home/louis/helix-arpa/helix-offload",
+    "execution_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-015-format-repair-helix",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "cb2cc72d799f2828188b5060d1e64c4a242f6016",
+  "ending_head": "11a2cba48540e5501a3b67699ecd20a52ca7fbec",
+  "starting_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {"staged": [], "unstaged": [], "untracked": []},
+    "pre_existing": {"staged": [], "unstaged": [], "untracked": []},
+    "unrelated": {"staged": [], "unstaged": [], "untracked": []},
+    "unknown": {"staged": [], "unstaged": [], "untracked": []}
+  },
+  "files_changed": [
+    "helix-offload/src/helix_offload/adapters.py",
+    "helix-offload/src/helix_offload/derp.py",
+    "helix-offload/src/helix_offload/workflow.py",
+    "helix-offload/schemas/change-summary-request-v1.schema.json",
+    "helix-offload/schemas/derp-receipt-v3.schema.json",
+    "helix-offload/tests/test_derp.py",
+    "helix-offload/tests/test_workflow.py",
+    "helix-offload/docs/contracts/CHANGE_SUMMARY_V1.md",
+    "helix-offload/docs/contracts/DERP_V1.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_015_FORMAT_REPAIR.md",
+    "helix-offload/docs/evidence/work-entry-015-format-repair-20261001/",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_20261001.json",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_20261001.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_RESULT_20261001.json"
+  ],
+  "mutations_performed": [
+    "Moved known repository, revision, validation, authority and reference facts from model generation into deterministic assembly",
+    "Bound compact summary, risk and review-note claims to short source IDs with explicit field, item and text limits",
+    "Added packet v2 source registry and optional validation-revision provenance while retaining request-v1 and artifact-v1 compatibility",
+    "Added receipt v3 model-output, assembled-output and runtime observation fields while retaining receipt V1 and V2",
+    "Preserved exposed local token and completion metadata and retained unavailable values as UNKNOWN",
+    "Validated compact output, deterministic assembly, failures, usage metadata and PENDING human disposition synthetically",
+    "Prepared an exact TEST_ONLY next-attempt profile, admission, preview and unissued proposed grant",
+    "Published the scoped repair and sanitized offline evidence to the review branch and canonical helix-offload main"
+  ],
+  "mutations_not_performed": [
+    "No inference request, retry, fallback, hosted call, cohort or benchmark",
+    "No LIVE execution grant was issued and the next attempt remains NOT SENT",
+    "No model download, installation, credential/account change or runtime-service mutation",
+    "No modification of Work Entry 015 attempt 001 evidence or human disposition",
+    "No activation of parked Work Entries 013 or 014 and no modification of the unrelated research branch"
+  ],
+  "validation": [
+    {"check": "Helix-offload unit suite", "status": "PASS", "evidence": "46 of 46 tests passed, including compact assembly, source-ID refusal, malformed/truncated JSON, content limits, UNKNOWN usage, runtime usage/stop retention and PENDING disposition."},
+    {"check": "Offline packet lifecycle", "status": "PASS", "evidence": "Packet preparation, exact TEST_ONLY admission, no-effect preview, SYNTHETIC grant, fake execution, postflight, deterministic artifact assembly, receipt v3 and PENDING disposition completed without a model call."},
+    {"check": "Attempt 001 preservation", "status": "PASS", "evidence": "Artifact, attempt intent, manifest, receipt and response-envelope file hashes exactly matched canonical cb2cc72d799f2828188b5060d1e64c4a242f6016."},
+    {"check": "Schemas, JSON, compilation, pins, links and diff hygiene", "status": "PASS", "evidence": "109 JSON files parsed, 17 schemas passed metaschema validation, compilation and three pin digests passed, diff checks passed, and the one known absent AGENT_WORK_ADOPTION.md link remained unchanged."},
+    {"check": "Canonical helix-offload publication", "status": "PASS", "evidence": "Independent remote query resolved both the format-repair review branch and canonical helix-offload main to 11a2cba48540e5501a3b67699ecd20a52ca7fbec."},
+    {"check": "Next live attempt", "status": "NOT_APPLICABLE", "evidence": "The proposed grant is UNISSUED and submission is NOT_SENT; this task authorized no inference."}
+  ],
+  "evidence_produced": [
+    "helix-offload/docs/evidence/WORK_ENTRY_015_FORMAT_REPAIR.md",
+    "helix-offload/docs/evidence/work-entry-015-format-repair-20261001/",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_20261001.json",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_20261001.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_FORMAT_REPAIR_RESULT_20261001.json"
+  ],
+  "delivery_stage": "PUBLISHED",
+  "status_topology": {
+    "nodes": [
+      {"id": "work.015.format-repair", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "Compact generation, deterministic assembly, runtime metadata preservation and offline evidence are published.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.015.attempt-001-disposition", "kind": "WORK", "status": "PENDING", "priority": "GREEN", "summary": "Attempt 001 remains REFUSED / MALFORMED_OUTPUT and its human disposition remains PENDING.", "owner": "Louis", "blocking": false},
+      {"id": "work.015.next-attempt", "kind": "FUTURE_WORK", "status": "PENDING", "priority": "GREEN", "summary": "The exact next packet and preview are ready, but its LIVE grant is unissued and submission is NOT SENT.", "owner": "helix-offload", "blocking": true},
+      {"id": "authorization.015.next-attempt", "kind": "AUTHORIZATION", "status": "AUTHORIZATION_REQUIRED", "priority": "GREEN", "summary": "Exactly one fresh local invocation requires Louis's separate authorization and a new content-bound execution grant.", "owner": "Louis", "blocking": true},
+      {"id": "owner.louis", "kind": "DEPENDENCY", "status": "ACTIVE", "priority": "GREEN", "summary": "Louis retains authority to authorize the next bounded local invocation.", "owner": "Louis", "blocking": false},
+      {"id": "work.013.claude", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "Claude implementation and comparison remain parked.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.014.openai", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "OpenAI implementation and comparison remain parked behind Work Entry 013.", "owner": "helix-offload", "blocking": false}
+    ],
+    "relationships": [
+      {"subject": "work.015.next-attempt", "predicate": "DEPENDS_ON", "object": "authorization.015.next-attempt"},
+      {"subject": "authorization.015.next-attempt", "predicate": "REQUIRES_AUTHORIZATION_FROM", "object": "owner.louis"},
+      {"subject": "work.014.openai", "predicate": "DEPENDS_ON", "object": "work.013.claude"}
+    ]
+  },
+  "recommended_next_action": "Louis separately authorizes exactly one local invocation from packet f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41. The caller then revalidates the exact published hashes, runtime and model digest, issues one content-bound execution-grant/v1 and records a fresh attempt identity before sending.",
+  "live_effects": [
+    {"action": "Publish Work Entry 015 format-repair review branch", "target": "helix-offload refs/heads/codex/work-entry-015-format-repair", "result": "SUCCEEDED", "evidence": "Independent remote query resolved the branch to 11a2cba48540e5501a3b67699ecd20a52ca7fbec."},
+    {"action": "Fast-forward canonical helix-offload main", "target": "helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Independent remote query resolved canonical main to 11a2cba48540e5501a3b67699ecd20a52ca7fbec."}
+  ]
+}

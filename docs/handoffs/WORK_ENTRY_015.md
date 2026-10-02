@@ -76,3 +76,21 @@ evidence and the packer repair were published to the helix-offload review
 branch and canonical main. No hosted request, retry, fallback, installation,
 account or credential change, service mutation, generated-text application or
 cohort execution occurred.
+
+## Follow-on format repair
+
+Canonical helix-offload
+`11a2cba48540e5501a3b67699ecd20a52ca7fbec` publishes a compatible repair that
+keeps the final artifact shape but asks the model only for bounded `summary`,
+`risks` and `review_notes` claims using short source IDs. Repository, revision,
+validation, authority, execution and receipt facts are now assembled and checked
+deterministically. Receipt v3 preserves exposed usage and stop metadata; absent
+measurements remain `UNKNOWN`.
+
+Attempt 001 remains byte-identical, `REFUSED / MALFORMED_OUTPUT`, and `PENDING`.
+The next packet SHA-256 is
+`f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41`;
+its proposed grant is `UNISSUED` and submission is `NOT_SENT`. See
+`WORK_ENTRY_015_FORMAT_REPAIR_20261001.md` and
+`WORK_ENTRY_015_FORMAT_REPAIR_RESULT_20261001.json`. No inference occurred in
+the repair.
