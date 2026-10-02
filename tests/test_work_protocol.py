@@ -145,10 +145,12 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('Deterministic Engine for Policy and Routing', entries['010']['summary'])
         self.assertIn('synthetically validated', entries['010']['summary'])
         self.assertIn('one bounded local OpenClaw/Ollama request', entries['010']['summary'])
-        self.assertIn('awaits Louis', entries['010']['summary'])
+        self.assertIn('Louis accepted', entries['010']['summary'])
         self.assertIn('c1a1c89f4d54d695adf6675e97c045a31267f29d',
                       ' '.join(entries['010']['provenance']))
         self.assertIn('811b952da451a21ebc2e68df0751c012df63dddc',
+                      ' '.join(entries['010']['provenance']))
+        self.assertIn('ca9998755a463980bf9f618338d4e9303cd1f7bc',
                       ' '.join(entries['010']['provenance']))
         self.assertIn('coordinated Work Entry 009 run', entries['011']['summary'])
         self.assertIn('renumbered this assessment from 010 to 011',

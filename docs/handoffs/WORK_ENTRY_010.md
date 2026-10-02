@@ -3,7 +3,7 @@
 Name: DERP — Deterministic Engine for Policy and Routing
 
 Status: `COMPLETE` — implementation published and synthetically validated;
-one bounded local test produced an artifact that awaits human disposition
+one bounded local test produced a human-accepted artifact
 
 Priority: `GREEN` (normal attention)
 
@@ -177,13 +177,17 @@ runtime in VM 320 `cuda-compute-katra`; `phi4-mini:latest` digest
 executed on the passed-through RTX 5070 Ti. The exact test-only attempt
 `work-entry-010-openclaw-local-live-001` was **SENT** once, produced the requested
 Ada/Basic/`REF-42` artifact and passed all four deterministic postflight checks.
-Semantic adequacy and human disposition remain `PENDING`; tokens, operating cost
-and review effort remain `UNKNOWN`.
+Louis recorded semantic disposition `ACCEPTED`, preparation effort 0 ms and
+review effort 120,000 ms (2 minutes). Tokens and operating cost remain `UNKNOWN`.
 
 The detailed repo-cp disposition is
 [WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md](WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md).
 Helix-offload preserves the packet, response envelope, artifact, receipt and
 measurements under `docs/evidence/work-entry-010-openclaw-local-20261001/`.
+Canonical helix-offload
+`ca9998755a463980bf9f618338d4e9303cd1f7bc` publishes Louis's accepted
+disposition and reported effort without modifying the original artifact or
+receipt.
 This one result proves connectivity and bounded behavior only, not production
 qualification, throughput, general quality or the 20% target.
 
@@ -191,15 +195,15 @@ qualification, throughput, general quality or the 20% target.
 
 Delivery stage: **IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED**.
 
-Operational stage: **ONE LOCAL ARTIFACT PRODUCED / HUMAN DISPOSITION PENDING**.
+Operational stage: **ONE LOCAL ARTIFACT PRODUCED / HUMAN DISPOSITION ACCEPTED**.
 DERP is not operationally proven, and the 20% target has not been achieved. The
 local one-call authority and earlier Claude authorizations are consumed; they do
 not authorize another call, retry or cohort.
 
-Exact next action is for Louis to review the local artifact and record
-`ACCEPTED`, `REJECTED` or `FRONTIER_CONTINUATION` plus actual review effort.
-Work Entry 013 then holds the separately authorized future Claude implementation
-and comparison; Work Entry 014 remains parked behind it for ChatGPT/OpenAI.
+Exact next action is to separately resume Work Entry 013 if Louis authorizes the
+Claude implementation and comparison. The local comparison baseline is now
+accepted, but Work Entry 013 remains parked and grants no hosted call. Work Entry
+014 remains parked behind it for ChatGPT/OpenAI.
 
 Live effects: historical Work Entry 010 made two separately authorized Claude
 Code requests, both rejected locally before artifact creation. This local slice

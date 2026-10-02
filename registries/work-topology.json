@@ -218,7 +218,7 @@
       "dependencies": [
         "005"
       ],
-      "summary": "DERP — Deterministic Engine for Policy and Routing, helix-offload's deterministic governor — is published and synthetically validated; one bounded local OpenClaw/Ollama request produced an artifact that passed deterministic postflight and awaits Louis's semantic disposition.",
+      "summary": "DERP — Deterministic Engine for Policy and Routing, helix-offload's deterministic governor — is published and synthetically validated; one bounded local OpenClaw/Ollama request produced an artifact that passed deterministic postflight and Louis accepted after two minutes of review.",
       "provenance": [
         "Louis's 2026-10-01 follow-up states that Work Entry 010 is DERP; operator health BLUE is preserved because no current evidence supports changing the newly-created, in-development assessment, while normal priority GREEN is recorded independently.",
         "The original repo-cp recovery search found no DERP implementation artifact; docs/handoffs/WORK_ENTRY_010.json and repository history preserve that capture-time result.",
@@ -239,7 +239,9 @@
         "Louis redirected the active slice to the owned local system and parked hosted comparison work under separately registered Work Entries 013 and 014.",
         "Canonical helix-offload 811b952da451a21ebc2e68df0751c012df63dddc adds the portable OpenClaw/Ollama adapter, test-only local admission, exact packet and sanitized evidence for one bounded local request.",
         "Attempt work-entry-010-openclaw-local-live-001 was SENT once; it produced an artifact, passed four deterministic document checks and remains semantically PENDING. Tokens, operating cost and human effort are UNKNOWN.",
-        "docs/handoffs/WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md"
+        "docs/handoffs/WORK_ENTRY_010_LOCAL_OPENCLAW_20261001.md",
+        "Louis recorded ACCEPTED for the local artifact with 0 ms preparation effort and 120000 ms review effort; tokens and operating cost remain UNKNOWN, and one accepted artifact does not prove the 20 percent target.",
+        "Canonical helix-offload ca9998755a463980bf9f618338d4e9303cd1f7bc publishes the accepted human disposition without modifying the original artifact, receipt or response envelope."
       ]
     },
     {
@@ -289,7 +291,8 @@
         "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
         "Work Entry 010 attempts 001 and 002 remain failed historical evidence; the second attempt did not retain the response envelope despite the prior recovery instruction.",
         "Future implementation must capture a bounded sanitized original envelope before strict parsing and must keep Claude API billing separate from subscription allowance.",
-        "Registration authorizes no live call, retry, account/credential change, purchase or implementation."
+        "Registration authorizes no live call, retry, account/credential change, purchase or implementation.",
+        "Louis accepted the Work Entry 010 local artifact with 0 ms preparation effort and 120000 ms review effort, satisfying the comparison-evidence prerequisite without activating this parked entry."
       ]
     },
     {

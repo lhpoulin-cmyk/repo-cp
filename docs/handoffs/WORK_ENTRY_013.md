@@ -37,4 +37,9 @@ authorized by this parked registration.
 
 Dependency: Work Entry 010 local OpenClaw acceptance baseline.
 
+Dependency update: Louis accepted the Work Entry 010 local artifact with 0 ms
+preparation effort and 120,000 ms review effort. The comparison baseline is now
+available. This satisfies the evidence dependency only; Work Entry 013 remains
+`PARKED` and no implementation or hosted invocation is authorized.
+
 Live effects: NONE.

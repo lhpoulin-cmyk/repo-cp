@@ -29,13 +29,15 @@ Exactly one test-only local attempt,
 result and content-bound LIVE grant. The 38-byte synthetic Ada/Basic/`REF-42`
 input produced customer `Ada`, plan `Basic`, and preserved `REF-42`. DERP's four
 deterministic document checks passed. The artifact is untrusted and semantic
-adequacy remains Louis's decision; human disposition is `PENDING`.
+adequacy remained Louis's decision. Louis subsequently recorded `ACCEPTED`,
+0 ms preparation effort and 120,000 ms (2 minutes) review effort. This accepts
+the one artifact; it does not broaden model qualification or execution authority.
 
 The adapter elapsed time was 9,432 ms from a cold state. The post-call Ollama
 snapshot reported 3,087,615,917 bytes loaded and the same amount in VRAM at
 context 4096, supporting full GPU residency at that snapshot. Token counts,
-energy integral, operating cost, preparation effort and review effort are
-`UNKNOWN`. One result is connectivity and bounded-behavior evidence only, not
+energy integral and operating cost are `UNKNOWN`. One result is connectivity,
+bounded-behavior and human-acceptance evidence only, not
 throughput, production qualification, comparative savings or proof of the 20%
 frontier-usage target.
 
@@ -45,10 +47,16 @@ Canonical helix-offload main and review branch
 helix-offload at `docs/evidence/WORK_ENTRY_010_OPENCLAW_LOCAL_RESULT.md` and
 `docs/evidence/work-entry-010-openclaw-local-20261001/`.
 
-Exact next action: Louis reviews the artifact and records `ACCEPTED`, `REJECTED`
-or `FRONTIER_CONTINUATION` with actual review effort. Only after that local
-baseline disposition should Work Entry 013 be separately resumed for Claude
-implementation/comparison. Work Entry 014 remains parked behind 013.
+The later disposition commit
+`ca9998755a463980bf9f618338d4e9303cd1f7bc` publishes Louis's acceptance and
+reported effort on canonical helix-offload main and review branch
+`codex/work-entry-010-local-acceptance-disposition`. It does not modify the
+original artifact, receipt or response envelope.
+
+Exact next action: separately resume Work Entry 013 if Louis authorizes Claude
+implementation/comparison. The accepted local baseline satisfies its comparison
+prerequisite but does not activate the parked entry or authorize a hosted call.
+Work Entry 014 remains parked behind 013.
 
 Live effects: one bounded local inference request ran through OpenClaw and
 Ollama on the existing cuda-compute-katra RTX 5070 Ti; the helix-offload review
