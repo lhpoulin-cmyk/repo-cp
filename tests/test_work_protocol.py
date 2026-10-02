@@ -119,6 +119,7 @@ class WorkProtocolTests(unittest.TestCase):
             '012': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['007']),
             '013': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['010']),
             '014': ('PARKED', 'GREEN', 'INELIGIBLE_STATE', ['013']),
+            '015': ('COMPLETE', 'GREEN', 'INELIGIBLE_STATE', ['010']),
         })
         entries = {item['id']: item for item in document['entries']}
         for entry_id in ('008',):
@@ -161,7 +162,14 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('response envelope', ' '.join(entries['013']['provenance']))
         self.assertIn('OpenAI API', entries['014']['summary'])
         self.assertIn('subscription allowance', ' '.join(entries['014']['provenance']))
-        self.assertEqual(document['updated_by_work_entry'], '010')
+        self.assertIn('change-summary-v1', entries['015']['summary'])
+        self.assertIn('no retry, fallback, hosted call or cohort',
+                      ' '.join(entries['015']['provenance']))
+        self.assertIn('REFUSED / MALFORMED_OUTPUT',
+                      ' '.join(entries['015']['provenance']))
+        self.assertIn('cb2cc72d799f2828188b5060d1e64c4a242f6016',
+                      ' '.join(entries['015']['provenance']))
+        self.assertEqual(document['updated_by_work_entry'], '015')
 
         derp_result = json.loads(
             (ROOT / 'docs/handoffs/WORK_ENTRY_010_RESULT.json').read_bytes())
@@ -177,6 +185,7 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('| 012 |', current_state)
         self.assertIn('| 013 |', current_state)
         self.assertIn('| 014 |', current_state)
+        self.assertIn('| 015 |', current_state)
         self.assertIn('GPU workload UNPERFORMED', current_state)
         self.assertIn('measurement UNPERFORMED', current_state)
         schema = schemas()['topology']

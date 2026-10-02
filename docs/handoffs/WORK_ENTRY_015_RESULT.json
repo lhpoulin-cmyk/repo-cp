@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "015",
+  "work_state": "COMPLETE",
+  "priority": "GREEN",
+  "target_repository": "helix-offload",
+  "objective": "Run one bounded local change-summary-v1 job over the published OpenClaw integration and accepted disposition, preserve the untrusted result, and return it for human disposition.",
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "ca9998755a463980bf9f618338d4e9303cd1f7bc"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "/home/louis/helix-arpa/helix-offload",
+    "execution_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-015-helix-offload",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "ca9998755a463980bf9f618338d4e9303cd1f7bc",
+  "ending_head": "cb2cc72d799f2828188b5060d1e64c4a242f6016",
+  "starting_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {"staged": [], "unstaged": [], "untracked": []},
+    "pre_existing": {"staged": [], "unstaged": [], "untracked": []},
+    "unrelated": {"staged": [], "unstaged": [], "untracked": []},
+    "unknown": {"staged": [], "unstaged": [], "untracked": []}
+  },
+  "files_changed": [
+    "helix-offload/src/helix_offload/workflow.py",
+    "helix-offload/schemas/change-summary-request-v1.schema.json",
+    "helix-offload/tests/test_workflow.py",
+    "helix-offload/docs/contracts/CHANGE_SUMMARY_V1.md",
+    "helix-offload/docs/evidence/WORK_ENTRY_015_LOCAL_CHANGE_SUMMARY_RESULT.md",
+    "helix-offload/docs/evidence/work-entry-015-local-change-summary-20261001/",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015.json",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_RESULT.json",
+    "repo-cp/registries/work-topology.json",
+    "repo-cp/docs/CURRENT_STATE.md"
+  ],
+  "mutations_performed": [
+    "Registered Work Entry 015 without reopening or overwriting the completed Work Entry 010 smoke result",
+    "Added an explicit changed-path allowlist that verifies membership in the exact commit range while preserving the full revision boundary",
+    "Prepared and synthetically validated a bounded five-path packet over the two local-integration commits",
+    "Issued one content-bound TEST_ONLY admission and one-use LIVE execution grant",
+    "Sent exactly one bounded local OpenClaw/Ollama request and preserved its response envelope before parsing",
+    "Ran deterministic postflight and preserved the malformed unaccepted output with human disposition PENDING",
+    "Published the scoped repair and sanitized evidence to the review branch and canonical helix-offload main"
+  ],
+  "mutations_not_performed": [
+    "No retry, fallback, second local request, cohort or hosted model call",
+    "No download, installation, upgrade, credential/account change, network exposure, resource reallocation or service mutation",
+    "No automatic application or authoritative publication of the generated model text",
+    "No activation or implementation of parked Work Entries 013 or 014"
+  ],
+  "validation": [
+    {"check": "Helix-offload unit suite", "status": "PASS", "evidence": "44 of 44 tests passed, including scoped changed-path packing, synthetic lifecycle, admission, grant and adapter coverage."},
+    {"check": "Schemas, compilation, pins, secret indicators and diff hygiene", "status": "PASS", "evidence": "94 JSON documents parsed, 16 schemas passed metaschema validation, three pinned digests matched, compilation and git diff checks passed, and the secret-indicator scan found no hits."},
+    {"check": "Bounded packet and evidence integrity", "status": "PASS", "evidence": "Packet change-summary-packet:39d71e272bc23e39333fb6f0 and the result manifest passed content-hash verification."},
+    {"check": "Local change-summary postflight", "status": "BLOCKED", "evidence": "The single request completed in 10560 ms, but its 600-token response ended mid-JSON; deterministic postflight returned REFUSED / MALFORMED_OUTPUT at OUTPUT_JSON, and human disposition remains PENDING."},
+    {"check": "Canonical helix-offload publication", "status": "PASS", "evidence": "An independent remote query resolved both the Work Entry 015 review branch and canonical helix-offload main to cb2cc72d799f2828188b5060d1e64c4a242f6016."}
+  ],
+  "evidence_produced": [
+    "helix-offload/docs/evidence/WORK_ENTRY_015_LOCAL_CHANGE_SUMMARY_RESULT.md",
+    "helix-offload/docs/evidence/work-entry-015-local-change-summary-20261001/",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015.md",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015.json",
+    "repo-cp/docs/handoffs/WORK_ENTRY_015_RESULT.json"
+  ],
+  "delivery_stage": "PUBLISHED",
+  "status_topology": {
+    "nodes": [
+      {"id": "work.015.execution", "kind": "WORK", "status": "COMPLETED", "priority": "GREEN", "summary": "The one authorized local request was sent once and its bounded evidence was published.", "owner": "helix-offload", "blocking": false},
+      {"id": "finding.015.postflight", "kind": "FINDING", "status": "BLOCKED", "priority": "GREEN", "summary": "The generated output ended mid-JSON at the configured output ceiling and failed deterministic postflight.", "owner": "helix-offload", "blocking": true},
+      {"id": "work.015.human-disposition", "kind": "WORK", "status": "PENDING", "priority": "GREEN", "summary": "The untrusted generated output awaits Louis's explicit disposition and cannot be applied automatically.", "owner": "Louis", "blocking": true},
+      {"id": "work.013.claude", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "Claude implementation and comparison remain separately parked.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.014.openai", "kind": "FUTURE_WORK", "status": "PARKED", "priority": "GREEN", "summary": "OpenAI implementation and comparison remain separately parked behind Work Entry 013.", "owner": "helix-offload", "blocking": false}
+    ],
+    "relationships": [
+      {"subject": "work.015.human-disposition", "predicate": "DEPENDS_ON", "object": "finding.015.postflight"},
+      {"subject": "work.014.openai", "predicate": "DEPENDS_ON", "object": "work.013.claude"}
+    ]
+  },
+  "recommended_next_action": "Louis records REJECTED or FRONTIER_CONTINUATION for the preserved malformed output, or otherwise supplies an explicit human disposition. No further inference request is authorized by Work Entry 015.",
+  "live_effects": [
+    {"action": "Invoke bounded local change-summary", "target": "OpenClaw on ws-hadrian through Ollama in cuda-compute-katra using phi4-mini digest 78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753", "result": "FAILED", "evidence": "Attempt work-entry-015-local-change-summary-live-001 was SENT once and completed in 10560 ms; output was preserved but deterministic postflight refused malformed JSON."},
+    {"action": "Publish Work Entry 015 review branch", "target": "helix-offload refs/heads/codex/work-entry-015-local-change-summary", "result": "SUCCEEDED", "evidence": "Independent remote query resolved the branch to cb2cc72d799f2828188b5060d1e64c4a242f6016."},
+    {"action": "Fast-forward canonical helix-offload main", "target": "helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Independent remote query resolved canonical main to cb2cc72d799f2828188b5060d1e64c4a242f6016."}
+  ]
+}

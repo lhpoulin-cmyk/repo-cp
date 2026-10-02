@@ -18,7 +18,7 @@
     ],
     "supporting_projects_are_control_planes": false
   },
-  "updated_by_work_entry": "010",
+  "updated_by_work_entry": "015",
   "future_work_candidates": [
     {
       "id": "remediation.hardening-correctness",
@@ -310,6 +310,25 @@
         "The existing OpenAI Responses adapter and documented subscription-client boundary limitations are preserved; neither path is presumed suitable without enforceable bounds.",
         "API billing and ChatGPT or Codex subscription allowance remain distinct and must be recorded separately.",
         "Registration authorizes no live call, account/credential change, purchase or implementation."
+      ]
+    },
+    {
+      "id": "015",
+      "state": "COMPLETE",
+      "priority": "GREEN",
+      "scheduling_eligibility": "INELIGIBLE_STATE",
+      "dependencies": [
+        "010"
+      ],
+      "summary": "One bounded local change-summary-v1 request was sent over the published OpenClaw integration; the response reached its output ceiling mid-JSON, deterministic postflight refused it as malformed, and human disposition remains PENDING.",
+      "provenance": [
+        "Louis's 2026-10-01 instruction authorizes one local OpenClaw/Ollama invocation with no retry, fallback, hosted call or cohort.",
+        "docs/handoffs/WORK_ENTRY_015.md and docs/handoffs/WORK_ENTRY_015.json",
+        "Source range 9ec732046ba6481be70018277b91ff04534baa8d..ca9998755a463980bf9f618338d4e9303cd1f7bc contains the local integration and accepted-disposition commits.",
+        "Packet change-summary-packet:39d71e272bc23e39333fb6f0 is published in canonical helix-offload cb2cc72d799f2828188b5060d1e64c4a242f6016 with the original bounded envelope, artifact, receipt and measurements.",
+        "Attempt work-entry-015-local-change-summary-live-001 was SENT once and completed in 10560 ms; postflight returned REFUSED / MALFORMED_OUTPUT because the 600-token response ended mid-JSON.",
+        "Tokens, operating cost, preparation time and review time remain UNKNOWN; frontier preparation occurred, no retry or fallback was attempted, and the human disposition remains PENDING.",
+        "Work Entries 013 and 014 remain PARKED."
       ]
     }
   ]

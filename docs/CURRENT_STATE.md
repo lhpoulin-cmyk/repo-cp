@@ -2,8 +2,8 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`4dfa8f595ee4131c4dc0f95958ac926b9f51f1a6`, canonical helix-offload `main` at
-`ca9998755a463980bf9f618338d4e9303cd1f7bc`, and the Work Entry 010 disposition
+`8bd9329eca7a72f55b50aaf9d9ff5daaefd98141`, canonical helix-offload `main` at
+`cb2cc72d799f2828188b5060d1e64c4a242f6016`, and the Work Entry 015 result
 in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -38,24 +38,28 @@ label left behind as a proxy.
 | 009 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Pilot packet and handoff are published in repo-cp `37a84624…` | Preparation COMPLETE. GPU workload UNPERFORMED; live authority withheld |
 | 010 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Portable local adapter, sanitized evidence and human disposition are published in canonical helix-offload `ca99987…` | IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED. One local request SENT; artifact passed deterministic postflight and Louis ACCEPTED it after 2 minutes review and 0 preparation effort. Tokens/cost, production readiness and the 20% target remain unproven |
 | 011 | COMPLETE | GREEN | BLUE | INELIGIBLE_STATE | Capacity decision and coordinated measurement packet are published in repo-cp `37a84624…` | Assessment COMPLETE. Current measurement UNPERFORMED; a later authorized 009 run supplies it once, without a duplicate benchmark |
+| 015 | COMPLETE | GREEN | NOT RECORDED | INELIGIBLE_STATE | One bounded change-summary request and its unaccepted evidence are published in canonical helix-offload `cb2cc72…` | Request SENT once; the 600-token response ended mid-JSON, so postflight returned REFUSED / MALFORMED_OUTPUT. Human disposition remains PENDING; tokens, cost and human-effort durations are UNKNOWN |
 
 ## Recommended efficiency order
 
 This is an attention order, not scheduling eligibility or authority.
 
-1. Maintain this current-state/resume view and registry consistency.
-2. Separately resume Work Entry 013 only if Louis authorizes Claude
+1. Louis records a human disposition for Work Entry 015's preserved malformed
+   output; no further inference request is authorized by that entry.
+2. Maintain this current-state/resume view and registry consistency.
+3. Separately resume Work Entry 013 only if Louis authorizes Claude
    implementation/comparison and an exact hosted call.
-3. Assess one narrow Work Entry 008 evidence/compact-context slice only if its
+4. Assess one narrow Work Entry 008 evidence/compact-context slice only if its
    benefit is supported and existing tools do not already provide it.
-4. Resume Work Entry 012 GitHub/local-auth discovery; move it earlier only when
+5. Resume Work Entry 012 GitHub/local-auth discovery; move it earlier only when
    missing identity evidence blocks current authorized work.
-5. If Louis separately authorizes live execution, run one coordinated Work
+6. If Louis separately authorizes live execution, run one coordinated Work
    Entry 009 pilot whose pre/post measurements also satisfy Work Entry 011.
-6. Consider GPU expansion only after that evidence demonstrates a need and a
+7. Consider GPU expansion only after that evidence demonstrates a need and a
    useful benefit.
 
-Exact next action: separately resume Work Entry 013 only with Louis's explicit
-Claude implementation/comparison and hosted-call authority. The accepted local
-baseline is available; Work Entry 014 remains parked behind 013. No further
-model or GPU invocation is authorized by these records.
+Exact next action: Louis records `REJECTED` or `FRONTIER_CONTINUATION` for Work
+Entry 015's preserved malformed output, or otherwise supplies an explicit human
+disposition. The accepted local smoke baseline remains available; Work Entries
+013 and 014 remain parked. No further model or GPU invocation is authorized by
+these records.

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_ENTRY_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "015",
+  "work_entry_phase": "START",
+  "work_state": "ACTIVE",
+  "priority": "GREEN",
+  "scheduling_eligibility": "ELIGIBLE",
+  "prepared_by": {
+    "role": "EXECUTOR",
+    "identifier": "Codex Work Entry 015 local change-summary session 2026-10-01"
+  },
+  "target_repository": {
+    "name": "helix-offload",
+    "canonical_remote": "https://github.com/lhpoulin-cmyk/helix-offload.git",
+    "branch": "main"
+  },
+  "objective": "Produce one useful bounded change-summary-v1 artifact for the published local OpenClaw integration and accepted disposition.",
+  "governing_standards": [
+    "HELIX_REPOSITORY_WORK_PROTOCOL_V1",
+    "HELIX_AGENT_WORK_CONTRACT_V1 release 1.0.0",
+    "helix-offload change-summary-v1 and DERP V1 contracts",
+    "Louis's 2026-10-01 one-call Work Entry 015 authority"
+  ],
+  "authority": {
+    "source": "Louis's 2026-10-01 first useful local change-summary-v1 instruction",
+    "granted": [
+      "Prepare and validate one bounded real change-summary-v1 packet",
+      "Run exactly one local OpenClaw/Ollama invocation with a 120-second and 600-token ceiling",
+      "Publish scoped implementation repairs and sanitized evidence through ordinary non-forced Git workflows"
+    ],
+    "explicitly_not_granted": [
+      "Retry, fallback, second benchmark or cohort",
+      "Any Claude, OpenAI or other hosted invocation",
+      "Download, upgrade, installation, credential/account change, network exposure, resource reallocation or service mutation",
+      "Automatic application or authoritative publication of generated prose"
+    ],
+    "live_effects_authorized": true
+  },
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "ca9998755a463980bf9f618338d4e9303cd1f7bc",
+    "direct_remote_verified": true
+  },
+  "source_workspace": {
+    "identity": "/home/louis/helix-arpa/helix-offload primary checkout",
+    "head": "ca9998755a463980bf9f618338d4e9303cd1f7bc",
+    "dirty_state": {"state": "CLEAN", "staged": [], "unstaged": [], "untracked": []},
+    "dirtiness_attribution": "NONE"
+  },
+  "execution_workspace": {
+    "identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-015-helix-offload",
+    "head": "ca9998755a463980bf9f618338d4e9303cd1f7bc",
+    "dirty_state": {"state": "DIRTY", "staged": [], "unstaged": ["scoped packer repair"], "untracked": ["Work Entry 015 packet/evidence"]},
+    "dirtiness_attribution": "IN_SCOPE",
+    "mutation_gate": "OPEN"
+  },
+  "isolation": {
+    "used": true,
+    "mechanism": "CHECKOUT",
+    "reason": "The real packet, scoped repair and one live local result must not modify either primary checkout."
+  },
+  "dependencies": [
+    {
+      "id": "010",
+      "kind": "DEPENDENCY",
+      "description": "Accepted local OpenClaw connectivity and bounded-behavior baseline.",
+      "owner": "helix-offload",
+      "blocking": true,
+      "status": "COMPLETED"
+    }
+  ],
+  "expected_validation": [
+    "Exact revision and path-scope preservation",
+    "Synthetic change-summary and local-adapter lifecycle",
+    "One content-bound TEST_ONLY admission and LIVE grant",
+    "Deterministic postflight with semantic human review remaining PENDING"
+  ],
+  "mutation_scope": {
+    "allowed": ["Scoped helix-offload repair, tests, packet/evidence, review publication and ordinary canonical publication", "Work Entry 015 control records"],
+    "prohibited": ["Hosted invocation, retry, cohort, unrelated implementation or automatic generated-text application"]
+  },
+  "required_evidence": [
+    "Exact source range and bounded packet hash",
+    "Exact local model/runtime identity and one-use grant",
+    "Original bounded response envelope, artifact, receipt and postflight",
+    "Observed measurements with unavailable values recorded UNKNOWN",
+    "Louis's later semantic disposition"
+  ],
+  "expected_result_protocol": "HELIX_WORK_RESULT_V1"
+}
