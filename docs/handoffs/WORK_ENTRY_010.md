@@ -143,23 +143,45 @@ in helix-offload `docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_RESULT.md` and
 repo-cp's disposition is
 [WORK_ENTRY_010_HOSTED_SLICE_20261001.md](WORK_ENTRY_010_HOSTED_SLICE_20261001.md).
 
+## Recovery and corrected live call
+
+The original attempt's client envelope was not recoverable from durable evidence
+or safely available Claude Code session/output locations. Louis authorized one
+corrected call. `work-entry-010-claude-live-002` was **SENT** once with a fresh
+content-bound LIVE grant and zero configured retries, but its returned envelope
+also failed `HOSTED_RESPONSE_INVALID`; again no artifact reached postflight.
+Actual provider model, usage, cost and the precise rejected field remain
+`UNKNOWN`, and human disposition remains `PENDING`. No resend or other provider
+call occurred.
+
+The full disposition is
+[WORK_ENTRY_010_CLAUDE_RECOVERY_20261001.md](WORK_ENTRY_010_CLAUDE_RECOVERY_20261001.md).
+Sanitized helix-offload evidence is committed at
+`9ec732046ba6481be70018277b91ff04534baa8d` and published on review branch
+`codex/work-entry-010-recovery`; canonical helix-offload main is still
+`6e02f1128a990dfc62e28da6adcc90143a2731cf`, so that evidence is not claimed
+merged or canonical.
+
 ## Acceptance boundary and next action
 
 Delivery stage: **IMPLEMENTATION PUBLISHED / SYNTHETICALLY VALIDATED**.
 
-Operational stage: **LIVE REQUEST SENT / ACCEPTANCE NOT ESTABLISHED**. DERP is not
+Operational stage: **TWO LIVE REQUESTS SENT / ACCEPTANCE NOT ESTABLISHED**. DERP is not
 operationally proven, and the 20% target has not been achieved. The Claude
-authorization was consumed and does not authorize a retry or cohort.
+authorizations were consumed and do not authorize another retry or cohort.
 
-Exact next action is Louis's review of the failed evidence and, only under a new
-explicit authority, one retry through the published corrected Claude adapter.
+Exact next action is to make failed-envelope evidence bounded and recoverable,
+then, only under a new explicit authority, run one diagnostic acceptance call.
 The bounded cuda-compute packet is prepared but remains next only after the
 hosted path produces an artifact suitable for human disposition.
 
-Live effects: one Claude Code invocation disclosed the synthetic Ada/Basic/
-`REF-42` input through Louis's existing Claude.ai Pro allowance; one client
-envelope was returned and rejected locally. No artifact, accepted output, OpenAI
-call, API-billed charge, manual retry, cohort, GPU workload, generated-text
-publication, deployment, installation, credential/account change or runtime
-configuration mutation occurred. The review branch and canonical helix-offload
-main were published non-forced at `6e02f1128a990dfc62e28da6adcc90143a2731cf`.
+Live effects: two separately authorized Claude Code invocations disclosed the
+same synthetic Ada/Basic/`REF-42` input through Louis's existing Claude.ai Pro
+allowance; both client envelopes were rejected locally. No artifact, accepted
+output, OpenAI call, API-billed charge, manual retry, cohort, GPU workload,
+generated-text publication, deployment, installation, credential/account change
+or runtime configuration mutation occurred. The original hosted-slice review
+branch and canonical helix-offload main were published non-forced at
+`6e02f1128a990dfc62e28da6adcc90143a2731cf`; the follow-up sanitized evidence is
+published only on review branch `codex/work-entry-010-recovery` at
+`9ec732046ba6481be70018277b91ff04534baa8d`.
