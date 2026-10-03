@@ -83,3 +83,27 @@ The detailed result is
 [`WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md`](WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md).
 The one-run authority is consumed. Work Entry 013 is parked without a usable
 Claude comparison artifact, and Work Entry 014 remains parked.
+
+## Offline subscription stream repair — 2026-10-03
+
+Louis then authorized implementation and publication of an offline-only repair,
+with no model invocation. Canonical helix-offload commit
+`c1c061f73c61329df7a53921afbda6fb19d6a58e` removes `--json-schema` from the
+Claude Code subscription route, captures bounded `stream-json` evidence before
+DERP parsing, refuses ambiguous/incomplete/tool/retry events, and retains
+submission and inference uncertainty when later processing fails.
+
+The failed attempt remains unchanged. Its supported conclusion remains: Claude
+Code reported a 650-character summary with missing required fields and ended in
+structured-output retry exhaustion; a reported upstream defect is only a
+possible explanation. Provider execution, actual model and usage remain
+`UNKNOWN`.
+
+A fresh TEST_ONLY packet for the same Work Entry 015 evidence is published at
+source packet SHA-256
+`f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41`.
+Its generated-content contract is explicitly v2, its proposed grant is
+`UNISSUED`, and its submission state is `NOT_SENT`. Offline validation passed
+62/62 under unittest and pytest. Work Entry 013 remains `PARKED`; a live run
+requires fresh exact authority and issuance of a real grant. Work Entry 014
+remains parked.

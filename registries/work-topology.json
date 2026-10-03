@@ -285,7 +285,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "The Claude API and subscription connector repair is published, and one bounded subscription-backed client run was captured. It failed before producing an artifact, so the entry is parked without a usable Claude comparison and no further invocation authority.",
+      "summary": "The separate Claude API connector remains available, and the Claude subscription stream boundary is repaired and published offline. A same-evidence TEST_ONLY change-summary packet is previewed with its grant unissued and submission NOT_SENT; the entry remains parked without a usable Claude comparison or invocation authority.",
       "provenance": [
         "Louis's 2026-10-01 local-first sequence parks Claude until the owned local baseline is available.",
         "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
@@ -301,7 +301,12 @@
         "Canonical helix-offload commit 8421ac36e9563120c670a2d803295faf22969c18 corrects HTTP-versus-inference accounting and preserves the TEST_ONLY packet, grant and sanitized attempt evidence.",
         "Attempt work-entry-013-claude-change-summary-live-001 returned a CLIENT_ERROR before an artifact reached postflight; one client run is observed, while provider requests, retries and inference remain UNKNOWN. Human disposition is PENDING.",
         "docs/handoffs/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md and docs/handoffs/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_RESULT_20261003.json",
-        "The one-run authority is consumed. Work Entry 013 remains PARKED without a usable Claude comparison; Work Entry 014 remains parked behind that comparison."
+        "The one-run authority is consumed. Work Entry 013 remains PARKED without a usable Claude comparison; Work Entry 014 remains parked behind that comparison.",
+        "Louis's later 2026-10-03 instruction authorized offline repair of the Claude Code subscription adapter only and expressly prohibited model invocation.",
+        "Canonical helix-offload commit c1c061f73c61329df7a53921afbda6fb19d6a58e removes Claude Code --json-schema from the subscription route, captures bounded stream-json events before DERP parsing, versions tighter generated-content bounds compatibly, and preserves the failed attempt unchanged.",
+        "The prepared work-entry-013-claude-change-summary-live-002 packet reuses source packet f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41; its proposed grant is UNISSUED and submission is NOT_SENT.",
+        "docs/handoffs/WORK_ENTRY_013_STREAM_REPAIR_20261003.md and docs/handoffs/WORK_ENTRY_013_STREAM_REPAIR_RESULT_20261003.json",
+        "A future live attempt requires fresh one-client-run authority and issuance of a real execution-grant/v1; Work Entry 014 remains parked."
       ]
     },
     {
