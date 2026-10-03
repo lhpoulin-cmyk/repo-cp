@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "013",
+  "work_state": "PARKED",
+  "priority": "GREEN",
+  "target_repository": "helix-offload",
+  "objective": "Record the rejected Claude disposition, establish durable private recovery storage, add durable submission/capture phases and read-only reconciliation, and migrate the protected capture without model execution.",
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "d6c7f708fa5bee2845fbd11b67a946161898dfe1"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "/home/louis/helix-arpa/helix-offload primary checkout",
+    "execution_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-013-durable-recovery-helix",
+    "control_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-013-durable-recovery-control",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "d6c7f708fa5bee2845fbd11b67a946161898dfe1",
+  "ending_head": "3f99e0fda9a84b99b52019cf463a061da906215a",
+  "starting_dirty_state": {
+    "state": "CLEAN",
+    "staged": [],
+    "unstaged": [],
+    "untracked": []
+  },
+  "ending_dirty_state": {
+    "state": "CLEAN",
+    "staged": [],
+    "unstaged": [],
+    "untracked": []
+  },
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {"staged": [], "unstaged": [], "untracked": []},
+    "pre_existing": {"staged": [], "unstaged": [], "untracked": []},
+    "unrelated": {"staged": [], "unstaged": [], "untracked": []},
+    "unknown": {"staged": [], "unstaged": [], "untracked": []}
+  },
+  "files_changed": [
+    "README.md",
+    "docs/ARCHITECTURE.md",
+    "docs/INDEX.md",
+    "docs/INTERFACE.md",
+    "docs/MVP.md",
+    "docs/SAFETY.md",
+    "docs/contracts/DERP_V1.md",
+    "docs/contracts/GRANT_RESERVATION_V1.md",
+    "docs/contracts/RECOVERY_LIFECYCLE_V1.md",
+    "docs/evidence/WORK_ENTRY_013_DURABLE_RECOVERY_RESULT.md",
+    "docs/evidence/work-entry-013-claude-stream-live-002-20261003/human-disposition-rejected.json",
+    "docs/evidence/work-entry-013-claude-stream-live-002-20261003/private-migration-metadata.json",
+    "docs/evidence/work-entry-013-claude-stream-live-002-20261003/private-migration-restore-verification.json",
+    "docs/evidence/work-entry-013-claude-stream-live-002-20261003/rejected-disposition-migration-metadata.json",
+    "docs/evidence/work-entry-013-claude-stream-live-002-20261003/rejected-disposition-private-inventory.json",
+    "docs/evidence/work-entry-013-claude-stream-live-002-20261003/rejected-disposition-restore-verification.json",
+    "docs/evidence/work-entry-013-durable-recovery-20261003/migration-verification.json",
+    "docs/evidence/work-entry-013-durable-recovery-20261003/validation.json",
+    "schemas/execution-lifecycle-event-v1.schema.json",
+    "schemas/recovery-attempt-v1.schema.json",
+    "schemas/recovery-capture-v1.schema.json",
+    "schemas/recovery-migration-v1.schema.json",
+    "schemas/recovery-reconciliation-v1.schema.json",
+    "schemas/recovery-restore-verification-v1.schema.json",
+    "schemas/recovery-root-v1.schema.json",
+    "src/helix_offload/cli.py",
+    "src/helix_offload/recovery.py",
+    "tests/test_recovery.py",
+    "tests/test_workflow.py"
+  ],
+  "mutations_performed": [
+    "Published a new content-bound REJECTED disposition while preserving the original attempt, receipt, response, PENDING checkpoint and null artifact.",
+    "Configured a private persistent local recovery root outside repositories, checkouts and temporary directories.",
+    "Added an append-only hash-linked execution lifecycle after the one-use grant reservation and applied it across all five explicit executors.",
+    "Added read-only no-replay reconciliation, verified-copy migration and independent retained restore verification.",
+    "Verified and copied the protected nine-file Claude capture plus separate rejected disposition without deleting the legacy source.",
+    "Published implementation and sanitized evidence through the review branch and an ordinary fast-forward of canonical helix-offload main."
+  ],
+  "mutations_not_performed": [
+    "No model, provider API or GPU invocation, retry or fallback.",
+    "No prompt, model, generated-content contract, usage-limit or subscription-adapter behavior change for the Claude failure.",
+    "No credential/account change, installation, deployment, paid-route substitution or runtime-service mutation.",
+    "No deletion or retirement of the legacy private evidence directory and no publication of raw captures.",
+    "No claim of independent backup, distributed coordination or exactly-once provider execution."
+  ],
+  "validation": [
+    {"check": "helix-offload unittest suite", "status": "PASS", "evidence": "80 of 80 offline synthetic tests passed."},
+    {"check": "reservation/concurrency/crash lifecycle", "status": "PASS", "evidence": "Two-process reservation race, changed-attempt reuse refusal, crash after reservation, submission-boundary uncertainty, response-before-capture and restart no-replay cases passed."},
+    {"check": "storage integrity and failure", "status": "PASS", "evidence": "Partial/corrupt records, hash mismatches, write failures, unsafe paths/modes/symlinks and failed migration all failed closed while preserving source evidence."},
+    {"check": "migration and restore", "status": "PASS", "evidence": "Nine original private files and one separate rejection file matched source/destination hashes, mode 0600, expected owner, single links and distinct inodes; retained restore tests passed."},
+    {"check": "repository JSON and schemas", "status": "PASS", "evidence": "173 of 173 JSON files parsed and 28 of 28 schemas passed Draft 2020-12 metaschema validation."},
+    {"check": "compile, pinned digests, changed links, whitespace, indicators and hard links", "status": "PASS", "evidence": "Compilation, three pinned governance digests, changed Markdown relative links, git diff --check, bounded secret-indicator and changed-file link-count checks passed."},
+    {"check": "canonical remote publication", "status": "PASS", "evidence": "Direct git ls-remote resolved both helix-offload main and codex/work-entry-013-durable-recovery to 3f99e0fda9a84b99b52019cf463a061da906215a."}
+  ],
+  "evidence_produced": [
+    "helix-offload docs/evidence/WORK_ENTRY_013_DURABLE_RECOVERY_RESULT.md",
+    "helix-offload docs/evidence/work-entry-013-durable-recovery-20261003/validation.json",
+    "helix-offload docs/evidence/work-entry-013-durable-recovery-20261003/migration-verification.json",
+    "repo-cp docs/handoffs/WORK_ENTRY_013_DURABLE_RECOVERY_20261003.md",
+    "repo-cp docs/handoffs/WORK_ENTRY_013_CLAUDE_FAILURE_RESEARCH_HANDOFF_20261003.md"
+  ],
+  "delivery_stage": "PUBLISHED",
+  "status_topology": {
+    "nodes": [
+      {"id": "work.013.durable-recovery", "kind": "WORK", "status": "COMPLETED", "summary": "Private recovery, execution lifecycle, reconciliation and verified migration are implemented, tested and published.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.013.human-disposition", "kind": "WORK", "status": "COMPLETED", "summary": "Louis recorded REJECTED for the refused Claude attempt; no artifact exists and effort durations remain unknown.", "owner": "Louis", "blocking": false},
+      {"id": "work.013.claude-failure-research", "kind": "FUTURE_WORK", "status": "PARKED", "summary": "Prompt-authority and token-accounting analysis is preserved as separate research with no model execution or implementation authority.", "owner": "repo-cp evidence review and helix-offload at Louis's direction", "blocking": false},
+      {"id": "work.013.claude-comparison", "kind": "WORK", "status": "PARKED", "summary": "No usable Claude comparison artifact exists; any further attempt requires separate authority.", "owner": "helix-offload implementation and repo-cp evidence review", "blocking": false},
+      {"id": "work.014.openai", "kind": "FUTURE_WORK", "status": "PARKED", "summary": "Work Entry 014 remains parked behind a usable Claude comparison.", "owner": "helix-offload implementation and repo-cp evidence review", "blocking": false}
+    ],
+    "relationships": [
+      {"subject": "work.014.openai", "predicate": "DEPENDS_ON", "object": "work.013.claude-comparison"}
+    ]
+  },
+  "recommended_next_action": "Resume the separately preserved Claude failure research only under later explicit research authority; do not issue another call or alter the preserved attempt. Work Entry 014 remains parked.",
+  "live_effects": [
+    {"action": "Configured durable private recovery domain", "target": "/home/louis/.local/state/helix-offload/recovery-v1", "result": "SUCCEEDED", "evidence": "Root marker abf6132bfd6759667944ad3266f81fe0e00c5688a6eecc21c002f547dd36bad9; mode/owner/symlink checks passed."},
+    {"action": "Copied and verified protected private evidence", "target": "work-entry-013-claude-change-summary-live-002-attempt-001", "result": "SUCCEEDED", "evidence": "Migration record hashes fb19fa241d28392bb0e9a66cce34d8582b9c905ec5406f399b47851c1649242c and 1a7cb0d53dc7f70a2e975392c68ef24af96f0d5e36d54749132ff8e1eaa59e88; legacy source retained."},
+    {"action": "Published review branch", "target": "lhpoulin-cmyk/helix-offload refs/heads/codex/work-entry-013-durable-recovery", "result": "SUCCEEDED", "evidence": "Direct remote ref 3f99e0fda9a84b99b52019cf463a061da906215a."},
+    {"action": "Fast-forwarded canonical main", "target": "lhpoulin-cmyk/helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote ref 3f99e0fda9a84b99b52019cf463a061da906215a."}
+  ]
+}

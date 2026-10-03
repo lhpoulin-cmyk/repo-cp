@@ -91,12 +91,12 @@
         {
           "id": "durable-submission-capture-phases",
           "status": "PRESERVED",
-          "summary": "Priority 1: add durable submission and capture phases plus crash reconciliation on top of the published one-use reservation key."
+          "summary": "Published in canonical helix-offload 3f99e0fda9a84b99b52019cf463a061da906215a: append-only submission/capture phases and read-only crash reconciliation now extend the one-use reservation boundary."
         },
         {
           "id": "private-recovery-storage",
           "status": "PRESERVED",
-          "summary": "Priority 2: migrate protected recovery evidence outside disposable checkout trees only after retention, backup, integrity and restore requirements are approved and verified."
+          "summary": "Published and deployed in the bounded 2026-10-03 slice: protected evidence was copied, hash/permission/restore verified into configured persistent local private storage outside repositories and disposable checkouts; the legacy source remains retained and no independent backup is claimed."
         },
         {
           "id": "allowlisted-public-evidence-derivatives",
@@ -121,7 +121,7 @@
         {
           "id": "prompt-authority-and-token-accounting",
           "status": "PRESERVED",
-          "summary": "Priority 7: separate historical authority facts, current host authority and untrusted model data, and establish evidence-based input-token accounting."
+          "summary": "Priority 7, separately handed off for research: separate historical authority facts, current host authority and untrusted model data, and establish evidence-based input-token accounting without changing the preserved attempt."
         },
         {
           "id": "standalone-release-adoption",
@@ -133,7 +133,10 @@
         "research-notes/2026-10-03-helix-offload-security-safety-durability-reusability-review.md at commit 4eae1b63e85cdfe42ff64a4ab149e2661ab86150",
         "research-notes/2026-10-03-helix-offload-security-safety-durability-reusability-review-disposition.md",
         "docs/handoffs/WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md",
-        "Louis's 2026-10-03 instruction preserved these candidates without authorizing implementation or assigning Work Entry numbers"
+        "Louis's 2026-10-03 instruction preserved these candidates without authorizing implementation or assigning Work Entry numbers",
+        "Louis's later 2026-10-03 instruction authorized and completed only the durable-submission-capture-phases and private-recovery-storage members without allocating a new Work Entry number.",
+        "docs/handoffs/WORK_ENTRY_013_DURABLE_RECOVERY_20261003.md",
+        "docs/handoffs/WORK_ENTRY_013_CLAUDE_FAILURE_RESEARCH_HANDOFF_20261003.md"
       ]
     }
   ],
@@ -338,7 +341,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "Atomic one-use grant reservation is published and synthetically validated, and the separate Claude API connector remains available. The repaired Claude subscription run remains REFUSED before postflight with no artifact and human disposition PENDING; the entry is parked without a usable Claude comparison or further invocation authority.",
+      "summary": "Durable one-use grant reservation, private recovery and submission/capture lifecycle are published and synthetically validated, and the separate Claude API connector remains available. The repaired Claude subscription run remains REFUSED before postflight with no artifact and human disposition REJECTED; the entry is parked without a usable Claude comparison or further invocation authority.",
       "provenance": [
         "Louis's 2026-10-01 local-first sequence parks Claude until the owned local baseline is available.",
         "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
@@ -368,7 +371,13 @@
         "Canonical helix-offload d6c7f708fa5bee2845fbd11b67a946161898dfe1 adds the shared filesystem grant-reservation/v1 boundary and passed 69/69 offline tests including race, crash/restart, changed-attempt reuse and storage-failure cases.",
         "The Claude packet exposed historical authority facts inside model-visible data and its input/total checks were retrospective; prompt-authority separation and preventive token accounting are preserved as future candidates rather than attributed to an unproven model/upstream defect.",
         "docs/handoffs/WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md and docs/handoffs/WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_RESULT_20261003.json",
-        "The protected private capture remains retained outside Git; its later migration requires approved durable storage plus copy, hash and restore verification before any source retirement."
+        "The protected private capture remains retained outside Git; its later migration requires approved durable storage plus copy, hash and restore verification before any source retirement.",
+        "Louis recorded REJECTED for work-entry-013-claude-change-summary-live-002-attempt-001 because of authoritative USAGE_LIMIT_EXCEEDED; a separately labelled offline diagnostic also found malformed generated-content JSON. The original SENT / RESPONSE_RECEIVED / GENERATION_COMPLETED / DERP_REFUSED outcome, prior PENDING evidence and null artifact remain unchanged; effort durations remain UNKNOWN.",
+        "Canonical helix-offload 3f99e0fda9a84b99b52019cf463a061da906215a publishes the content-bound rejection, configured private recovery root, append-only hash-linked execution lifecycle, read-only no-replay reconciliation and verified migration tooling; 80 of 80 offline tests passed.",
+        "The nine-file protected capture and separate rejected disposition were copied with source/destination hash, mode, owner, link and inode verification plus retained restore tests. The legacy source remains preserved, and the persistent local store is not an independent backup.",
+        "docs/handoffs/WORK_ENTRY_013_DURABLE_RECOVERY_20261003.md and docs/handoffs/WORK_ENTRY_013_DURABLE_RECOVERY_RESULT_20261003.json",
+        "Claude prompt/model failure analysis is kept separate at docs/handoffs/WORK_ENTRY_013_CLAUDE_FAILURE_RESEARCH_HANDOFF_20261003.md; this slice changed no prompt, model, generated-content contract, usage limit or subscription-adapter behavior.",
+        "No model, provider API or GPU invocation, retry, credential/account change, installation, paid-route substitution or runtime-service mutation occurred. Work Entry 014 remains parked."
       ]
     },
     {

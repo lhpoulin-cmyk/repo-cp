@@ -161,3 +161,36 @@ The detailed continuation is
 The remaining ranked hardening findings are one non-executing future-work
 candidate group; no new Work Entry numbers were allocated. Work Entry 014
 remains parked.
+
+## Durable recovery and execution lifecycle — 2026-10-03
+
+Louis recorded `REJECTED` for
+`work-entry-013-claude-change-summary-live-002-attempt-001`. The authoritative
+reason remains `USAGE_LIMIT_EXCEEDED`; the unchanged output also failed the
+requested JSON contract in a separately labelled offline diagnostic. The
+original `SENT / RESPONSE_RECEIVED / GENERATION_COMPLETED / DERP_REFUSED`
+outcome, earlier `PENDING` records and all attempt evidence remain unchanged.
+No artifact exists, and preparation/review durations remain `UNKNOWN`.
+
+Canonical helix-offload
+`3f99e0fda9a84b99b52019cf463a061da906215a` adds a deployment-configured
+private recovery root, append-only hash-linked submission/capture lifecycle,
+read-only no-replay reconciliation, verified evidence migration and the new
+content-bound disposition. All five explicit executors share the lifecycle
+after the existing grant-reservation boundary. The boundary continues to
+provide at-most-once local admission within one shared domain, not exactly-once
+provider execution.
+
+The protected nine-file Claude capture and new disposition were copied and
+hash/permission/restore verified in persistent local XDG state. Raw content was
+not published. The legacy checkout copy remains preserved; the new local store
+and restore-test copy are not independent backup.
+
+Offline validation passed 80/80 tests, 173/173 repository JSON parsing and
+28/28 schema metaschema checks. No model, provider API or GPU invocation
+occurred. The detailed continuation is
+[`WORK_ENTRY_013_DURABLE_RECOVERY_20261003.md`](WORK_ENTRY_013_DURABLE_RECOVERY_20261003.md).
+Claude failure analysis is preserved separately in
+[`WORK_ENTRY_013_CLAUDE_FAILURE_RESEARCH_HANDOFF_20261003.md`](WORK_ENTRY_013_CLAUDE_FAILURE_RESEARCH_HANDOFF_20261003.md)
+without changing the prompt, model, contract, limits or adapter. Work Entry 014
+remains parked.

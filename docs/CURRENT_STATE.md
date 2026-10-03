@@ -2,8 +2,8 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`04aa7360bc2215fb4557da0280ff0c4bca41b818`, canonical helix-offload `main` at
-`d6c7f708fa5bee2845fbd11b67a946161898dfe1`, and the Work Entry 013 live-result
+`27d18a00c269b8c8652ca251bb2119dea6b5bafc`, canonical helix-offload `main` at
+`3f99e0fda9a84b99b52019cf463a061da906215a`, and the Work Entry 013 live-result
 and offline-hardening evidence in the commits that contain this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -20,7 +20,7 @@ Health, priority, lifecycle, scheduling eligibility and authority are separate.
 | 004 | PARKED | YELLOW | NOT RECORDED | INELIGIBLE_STATE | Publication/evidence infrastructure; future planning only | repo-cp planning; implementation owner unresolved | NONE | None recorded | Keep parked until a bounded outcome and owner are approved | Canonical topology; Work Entry 003 finding |
 | 008 | PARKED | RED | NOT RECORDED | INELIGIBLE_STATE | Decide whether a repository-intelligence/evidence plane adds value; candidate functions only | Proposed logical surface: helix-repo-manager-bot; repository/hosting unresolved | Research NONE; implementation NONE | Relationship to completed 005 remains unresolved | After DERP scoping, assess one narrow evidence/compact-context slice and reuse before build | Canonical topology; `LOUIS_WORKFLOW.md` |
 | 012 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Discover and reconcile GitHub-hosted identity/authentication boundaries with local Git identity/authentication surfaces | repo-cp leads the inventory; auth-cp owns bindings, ws-cp owns workstation realization, GitHub owns service state | Registered read-only discovery; no credential access or account/config mutation | 007 is completed synthetic identity-profile evidence, not live proof | Run a separately resumed, read-only, non-secret discovery pass if it becomes blocking or reaches its turn | `WORK_ENTRY_012.md` |
-| 013 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Atomic one-use grant reservation is published and tested; the Claude run remains refused before postflight with no artifact and human disposition PENDING | helix-offload implementation; repo-cp policy/evidence review | Offline hardening was authorized and completed; no retry or additional call is authorized | 010 accepted local baseline is available | Louis records human disposition; any further attempt or hardening slice needs separate authority | `WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md` |
+| 013 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Durable one-use reservation, private recovery and submission/capture lifecycle are published and tested; the refused Claude attempt has no artifact and human disposition REJECTED | helix-offload implementation; repo-cp policy/evidence review | Offline hardening and migration were authorized and completed; no retry or additional call is authorized | 010 accepted local baseline is available | Keep separate Claude failure research preserved; any investigation, retry or further slice needs separate authority | `WORK_ENTRY_013_DURABLE_RECOVERY_20261003.md` |
 | 014 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Implement OpenAI API and ChatGPT/Codex subscription-backed execution separately and compare established baselines | helix-offload implementation; repo-cp policy/evidence review | Registration only; no hosted call or implementation | 013 Claude comparison | Keep parked until 013 has an accepted comparison baseline | `WORK_ENTRY_014.md` |
 
 There are no currently `ACTIVE / ELIGIBLE` entries after this reconciliation.
@@ -45,9 +45,10 @@ label left behind as a proxy.
 This is an attention order, not scheduling eligibility or authority.
 
 1. Maintain this current-state/resume view and registry consistency.
-2. Review Work Entry 013's completed but refused subscription result and record
-   human disposition. The one-use grant defect is repaired, but no usable
-   comparison artifact exists and no further call is authorized.
+2. Keep Work Entry 013's rejected subscription result and durable private
+   evidence intact. Its one-use reservation and crash-reconciliation slice is
+   complete; Claude failure research is a separate preserved follow-up and no
+   further call is authorized.
 3. Assess one narrow Work Entry 008 evidence/compact-context slice only if its
    benefit is supported and existing tools do not already provide it.
 4. Resume Work Entry 012 GitHub/local-auth discovery; move it earlier only when
@@ -57,8 +58,10 @@ This is an attention order, not scheduling eligibility or authority.
 6. Consider GPU expansion only after that evidence demonstrates a need and a
    useful benefit.
 
-Exact next action: Louis reviews Work Entry 013 attempt
-`work-entry-013-claude-change-summary-live-002-attempt-001` and records a human
-disposition. Work Entry 014 remains parked behind a usable Claude comparison;
-the ranked hardening candidates remain non-executing and unnumbered.
+Exact next action: resume the separate Claude failure research only under a
+specific later research authority, using the preserved packet, complete private
+capture, usage and connector evidence without issuing another call or changing
+historical evidence. Work Entry 014 remains parked behind a usable Claude
+comparison; the remaining ranked hardening candidates remain non-executing and
+unnumbered.
 Work Entry 015's invocation authority remains consumed.
