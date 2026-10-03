@@ -3,7 +3,8 @@
 Status: `PARKED / OFFLINE REPAIR PUBLISHED / NEXT GRANT UNISSUED / NOT SENT`
 
 Canonical helix-offload commit
-`c1c061f73c61329df7a53921afbda6fb19d6a58e` publishes the offline repair. The
+`15b86e6c09a5602bc40125fe6bee2a45727c787a` publishes the offline repair and its
+corrected 147-file JSON evidence count. The
 subscription adapter now captures bounded Claude Code `stream-json` evidence,
 chooses only a single final terminal result, and delegates all JSON,
 source-reference and postflight authority to DERP. It no longer uses the

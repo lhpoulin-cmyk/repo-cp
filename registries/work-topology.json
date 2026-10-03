@@ -303,7 +303,7 @@
         "docs/handoffs/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md and docs/handoffs/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_RESULT_20261003.json",
         "The one-run authority is consumed. Work Entry 013 remains PARKED without a usable Claude comparison; Work Entry 014 remains parked behind that comparison.",
         "Louis's later 2026-10-03 instruction authorized offline repair of the Claude Code subscription adapter only and expressly prohibited model invocation.",
-        "Canonical helix-offload commit c1c061f73c61329df7a53921afbda6fb19d6a58e removes Claude Code --json-schema from the subscription route, captures bounded stream-json events before DERP parsing, versions tighter generated-content bounds compatibly, and preserves the failed attempt unchanged.",
+        "Canonical helix-offload commit 15b86e6c09a5602bc40125fe6bee2a45727c787a removes Claude Code --json-schema from the subscription route, captures bounded stream-json events before DERP parsing, versions tighter generated-content bounds compatibly, preserves the failed attempt unchanged and records the corrected 147-file JSON validation count.",
         "The prepared work-entry-013-claude-change-summary-live-002 packet reuses source packet f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41; its proposed grant is UNISSUED and submission is NOT_SENT.",
         "docs/handoffs/WORK_ENTRY_013_STREAM_REPAIR_20261003.md and docs/handoffs/WORK_ENTRY_013_STREAM_REPAIR_RESULT_20261003.json",
         "A future live attempt requires fresh one-client-run authority and issuance of a real execution-grant/v1; Work Entry 014 remains parked."

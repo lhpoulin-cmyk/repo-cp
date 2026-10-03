@@ -3,7 +3,7 @@
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
 `fc869de8da792daf37e77718ef8b35f308b0e95f`, canonical helix-offload `main` at
-`c1c061f73c61329df7a53921afbda6fb19d6a58e`, and the Work Entry 013 offline
+`15b86e6c09a5602bc40125fe6bee2a45727c787a`, and the Work Entry 013 offline
 stream-repair evidence in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
