@@ -1,0 +1,233 @@
+{
+  "format": "external-research-source-manifest/v1",
+  "research_artifact": "research-notes/2026-10-03-helix-offload-security-safety-durability-reusability-review.md",
+  "research_artifact_sha256": "cb8605eaa5b44230edb61e5a11e526b996302bcc53248e3ff16a51af58a97974",
+  "retrieved_on": "2026-10-03",
+  "evidence_cutoff": "2026-10-03",
+  "evidence_status": "RESEARCH_RECOMMENDATION_NOT_IMPLEMENTATION_OR_LIVE_ACCEPTANCE_EVIDENCE",
+  "local_baselines": {
+    "repo-cp": {
+      "remote": "https://github.com/lhpoulin-cmyk/repo-cp.git",
+      "canonical_branch": "main",
+      "revision": "04aa7360bc2215fb4557da0280ff0c4bca41b818",
+      "verification": "direct git ls-remote refs/heads/main on 2026-10-03"
+    },
+    "helix-offload": {
+      "remote": "https://github.com/lhpoulin-cmyk/helix-offload.git",
+      "canonical_branch": "main",
+      "revision": "f24cdc317c364aa01c72eac162fb1281fcafa2f5",
+      "verification": "direct git ls-remote refs/heads/main on 2026-10-03"
+    }
+  },
+  "methods": [
+    "Read applicable AGENTS.md and HELIX_AGENT_WORK_CONTRACT_V1 guidance.",
+    "Inspected source, contracts, schemas, tests, packaging, published work records, and sanitized live evidence at exact Git revisions.",
+    "Distinguished source, synthetic, live, human-disposition, documentation, and external-research evidence.",
+    "Ran the helix-offload offline unittest suite with bytecode writes disabled; 62 of 62 tests passed.",
+    "Did not access credentials, private account/session stores, GitHub repository settings, live infrastructure, backups, or provider histories.",
+    "Did not invoke a model, provider API, GPU workload, connector, installer, deployment, or live runtime."
+  ],
+  "reviewed_local_files": {
+    "helix-offload@f24cdc317c364aa01c72eac162fb1281fcafa2f5": {
+      "AGENTS.md": "aad7f0780821b8310168f7064619aa95cca08bc5420c08826b61d0f8eb6e24b2",
+      "README.md": "ae62eb2fd6084490b7a553f84fe34eda7875db903deb8c0d5927c3b7d4ab275e",
+      "SECURITY.md": "a6f75e94da9a457beb60c844da55e69c291b934fd7c8125b7fd6562fd2e80b5c",
+      "VERSION": "c2a8ecb6027f9152af99a6d70d9bebc372fb8f421c5f044dc0cadf9c8fdf5308",
+      "pyproject.toml": "8d4ddaaed21730845b6756ecd45ac7998ad807833a9a69a0e62292e6239a13f4",
+      "docs/ARCHITECTURE.md": "e62e5ceb3175e018f33bd1e64575a08613f4476cdd7255b544c751c9952f0890",
+      "docs/TRUST_AND_THREATS.md": "f32114b9cf864b0770fb48dc2130092154737723fa5f42098fd06b3430125890",
+      "docs/SAFETY.md": "676f87d7052e75870d04d7ea32c43e69018dd7f373996cdb48632c87a425b46d",
+      "docs/MVP.md": "e0534061e5b1b50635c41832f7792131419a84dbea5e3f8fbc22d69a511b61ce",
+      "docs/contracts/DERP_V1.md": "11f3c84e1f70748fb0418bad049c48125672b84e80bcf037be6cf86ce657640a",
+      "docs/contracts/CHANGE_SUMMARY_V1.md": "8ef8956ab793180ff83a6a8511fb87e626e3175c26e5d603eab494dbb5519a3e",
+      "src/helix_offload/admission.py": "da4f5e07b4828811b642562cfb3f9a5bc7cd9d5d8b70ef3fe5bfee5057d8b090",
+      "src/helix_offload/adapters.py": "a2bcfebb35b3a7c6b11df6da7ffef7191dad269b5e379bf1ac2893b125dc307d",
+      "src/helix_offload/connector_evidence.py": "f2479582cc0986a024a83180f6fb906231dc5ffaaa3d3ccb257cd4e6aa19224a",
+      "src/helix_offload/derp.py": "2fd7918df0dd0dbabf59650076829a7c56682aa79320149984855a1847cff12c",
+      "src/helix_offload/workflow.py": "150fe02e56be9cc56b57efc41381475a7e61352e3b3d9c4b94200d26174cec33",
+      "src/helix_offload/measurement.py": "b67f44fa0bdd86576462f0d40cd970caadca55867cb5cb7b63a3fbc61953158c",
+      "src/helix_offload/cli.py": "1f19c082d45ed38807da39c336965c4cf9dc46b50f7832fde86acccef53de8f8",
+      "schemas/execution-grant-v1.schema.json": "81fa6b2dfc296fc0c1de094091e8f98f48914a2191b61f720a8e08e1ae971876",
+      "schemas/connector-outcome-v1.schema.json": "f86ed7b2e416c66e0e3fff11368be53dcf17e9c0181e3b1cf7c7de9ced714351",
+      "schemas/derp-receipt-v4.schema.json": "38f4f146e31a24363d51d5a9ceb5966790bb066faecc6447ca2ad6f82402ce3b",
+      "schemas/derp-workflow-v1.schema.json": "22f59855a4c8d6e839a0e279e08fe3225c960867a2bfc764721a155cd0112fef",
+      "schemas/human-disposition-v1.schema.json": "8684fa14eef101e2334bcb8dce2b171de4f661c307322d32e36f5fcb35ca91d5",
+      "schemas/postflight-recovery-v1.schema.json": "c15ad07156fecc9cff7f07fee6343221df45775543ad85334b016ba42a7b6225",
+      "tests/test_admission.py": "74bf59a27755c586d95e9c479708b27bca7af139023fb72772e1abb999a1178a",
+      "tests/test_derp.py": "484801d99f2e72e2c0532ad648831db492e59d93ffc5828ca6a4c98a6920e194",
+      "tests/test_workflow.py": "00dc91cfd555974b3403add9121d2dea6fae5728393f6ca05b355c144238a494",
+      "docs/evidence/WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_RESULT.md": "f94d040c3d0dcece9d12a169b7029e1cba3e6c80eb638721188e1de9b8053fe0",
+      "docs/evidence/work-entry-013-claude-stream-live-002-20261003/manifest.json": "7cc33a14a6580312bbc098cc1d5ab30cee0ad5187beebf991610eeda8e5c1aaf",
+      "docs/evidence/work-entry-013-claude-stream-live-002-20261003/connector-outcome.json": "005ae0da6ceaab531da5d0b91f9786314db4b04f1c273dc0ea97bdb409cbee1b",
+      "docs/evidence/work-entry-013-claude-stream-live-002-20261003/receipt.json": "714b708b90696501c28ced941d9a0efcf7d129ede828244a353ef000be558432",
+      "docs/evidence/work-entry-013-claude-stream-live-002-20261003/response-envelope-public.json": "dd9eca5ac200c4a86e24307a4e3d851cdf899ee06eb3122bb6c16e16af309922",
+      "docs/evidence/work-entry-013-claude-stream-live-002-20261003/generated-analysis.txt": "b0dceef95c6d65cb034b6853bf30fdbcf62d2ffeec849186f83174f44dc827b0"
+    },
+    "repo-cp@04aa7360bc2215fb4557da0280ff0c4bca41b818": {
+      "AGENTS.md": "b74198ea54e8f789fb3c4307d3ce328e17f778bd5673154d19f11f08505efd96",
+      "README.md": "80d438a9b00fc57b5e8fa9c26435a02c3f0d0b26fd86b264ed0e83bd254a457c",
+      "OWNERSHIP.md": "14f593afbf6631ce50e22e39b67290e3ff003cc64e239503407fed413faf5866",
+      "PROVENANCE.md": "7d1cefc35ae98eda6d9946409ee6cbbabf1b056c6e19c36152886d82f854da1a",
+      "VERSION": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67",
+      "docs/AGENT_WORK_CONTRACT.md": "a4838c4bfd8e1d27ed794c48ca1d475d76929309fabc212368234c4073df7674",
+      "docs/AGENT_CHECKOUT_RULES.md": "1aeae36eac1027632e6a617984b79559d7ee1bb24d22d71fa7ed61d684895bdb",
+      "docs/CURRENT_STATE.md": "a7f1605e12abb46cb4611e26f52d55c281978691e635c6f49f83166aa06dbf0b",
+      "docs/WORK_PROTOCOL.md": "49578d219a18ddf59cd9a1b6bc2f1e15cfb0a3437aa5089b0ad2464fc3cc52ec",
+      "docs/OPERATIONS.md": "2cb66dc50f97a121712b7c55f4007ff7f1d62209f2ead1f7db2f537092b7c1d2",
+      "docs/handoffs/WORK_ENTRY_010.md": "d999631328dd041b5835d90f9dffd999da5654eb9e2b0afff428ffa666093cc1",
+      "docs/handoffs/WORK_ENTRY_013.md": "57e794142bb29590cf27259aea42503826bba504bf1cd146cb8d8da9323cfafe",
+      "docs/handoffs/WORK_ENTRY_014.md": "c68d5270a944b6a62c350c745fb270df3cde0f4714d24903037ae04339b04193",
+      "docs/handoffs/WORK_ENTRY_015.md": "4452c59609fc1d912d14f161bd5082e105df1e87ac8805abd8863eb6474037e7",
+      "docs/handoffs/WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md": "f4d4b776671b57f9ed87a5bcffb0d9d88beb508093e599c02c7b77fe57d10de6",
+      "docs/handoffs/WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_RESULT_20261003.json": "498c3f48c1374885f8572ece98af93b58c3ba18039ae0b29d55252e9de31bfc9",
+      "registries/work-topology.json": "c2add20b4f92a460c496851c3693805dc04ac50d06db16613b037945adb1efa3"
+    }
+  },
+  "private_recovery_observation": {
+    "path": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-013-private-evidence/result/",
+    "inspection_scope": "path, directory/file permissions, names, sizes, and hashes only; content and credentials were not inspected for this research",
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "durability_status": "LOCAL_CHECKOUT_TREE_ONLY_IN_PUBLISHED_EVIDENCE_AVAILABLE_TO_REVIEWER",
+    "confidentiality_status": "SAME_USER_BACKUP_AND_LATER_PUBLICATION_BOUNDARIES_UNKNOWN"
+  },
+  "external_sources": [
+    {
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "publisher": "Anthropic",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "Claude Code print/stream controls, restricted and safe modes, tool/MCP settings, model, turns, budget, prompt, session persistence, and authentication route behavior"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/settings",
+      "publisher": "Anthropic",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "settings precedence, managed settings, and the limits of command-line settings overrides"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/hooks",
+      "publisher": "Anthropic",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "command, HTTP, MCP, prompt, and agent hook behavior and hook security implications"
+    },
+    {
+      "url": "https://github.com/openclaw/openclaw/blob/main/docs/cli/infer.md",
+      "publisher": "OpenClaw maintained repository",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "one-shot local model-run topology, no agent tools/MCP, JSON envelope, model selection, and documented prompt interface"
+    },
+    {
+      "url": "https://docs.ollama.com/api/generate",
+      "publisher": "Ollama",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "generate response fields including model, done reason, prompt/output token counts, and timing"
+    },
+    {
+      "url": "https://docs.ollama.com/api/tags",
+      "publisher": "Ollama",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "installed model inventory and digest fields"
+    },
+    {
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "publisher": "Python Software Foundation",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "subprocess argument handling, timeouts, process sessions/groups, and capture semantics"
+    },
+    {
+      "url": "https://docs.python.org/3/library/json.html",
+      "publisher": "Python Software Foundation",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "default acceptance of repeated names and non-finite values and parser resource warnings"
+    },
+    {
+      "url": "https://docs.python.org/3/library/urllib.request.html",
+      "publisher": "Python Software Foundation",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "proxy and redirect handler behavior for HTTP clients"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8259.html",
+      "publisher": "IETF / RFC Editor",
+      "published_on": "2017-12",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "JSON interoperability, unique object names, parser limits, and Unicode edge cases"
+    },
+    {
+      "url": "https://man7.org/linux/man-pages/man5/proc_pid_cmdline.5.html",
+      "publisher": "Linux man-pages project",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "process command-line exposure through procfs"
+    },
+    {
+      "url": "https://man7.org/linux/man-pages/man5/procfs.5.html",
+      "publisher": "Linux man-pages project",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "procfs access policy and hidepid context"
+    },
+    {
+      "url": "https://man7.org/linux/man-pages/man2/fsync.2.html",
+      "publisher": "Linux man-pages project",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "file fsync does not by itself make a containing directory entry durable"
+    },
+    {
+      "url": "https://man7.org/linux/man-pages/man2/open.2.html",
+      "publisher": "Linux man-pages project",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "exclusive creation, no-follow behavior, and descriptor-relative path-hardening context"
+    },
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "publisher": "NIST",
+      "published_on": "2024-07-26",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "generative-AI risk coverage including indirect prompt injection, data privacy, human oversight, and incident/evaluation considerations"
+    },
+    {
+      "url": "https://csrc.nist.gov/pubs/sp/800/218/final",
+      "publisher": "NIST",
+      "published_on": "2022-02-03",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "secure development, protected artifacts, release integrity, vulnerability response, and provenance coverage"
+    },
+    {
+      "url": "https://packaging.python.org/en/latest/specifications/pyproject-toml/",
+      "publisher": "Python Packaging Authority",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "project/build metadata, versions, dependencies, and license expression/files"
+    },
+    {
+      "url": "https://packaging.python.org/en/latest/specifications/pylock-toml/",
+      "publisher": "Python Packaging Authority",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "reproducible environment lock-file context"
+    },
+    {
+      "url": "https://packaging.python.org/en/latest/tutorials/packaging-projects/",
+      "publisher": "Python Packaging Authority",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "sdist/wheel build, distribution contents, and clean install expectations"
+    },
+    {
+      "url": "https://slsa.dev/spec/v1.2/provenance",
+      "publisher": "OpenSSF SLSA",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "build provenance as a deferred release-hardening option rather than proof of current security"
+    },
+    {
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
+      "publisher": "GitHub",
+      "retrieved_on": "2026-10-03",
+      "claim_use": "remote enforcement capabilities for reviews and required status checks; actual private-repository settings were not inspected"
+    }
+  ],
+  "limitations": [
+    "No credential, account, subscription, browser, client-session, or private infrastructure inspection was performed.",
+    "No live model/provider/GPU invocation or runtime probe was performed.",
+    "No GitHub branch-protection or backup configuration was available to this research; those states remain unknown.",
+    "The report assesses exact reviewed revisions; later commits may change the findings.",
+    "Framework and vendor documentation are coverage and interface evidence, not proof that local controls operate effectively.",
+    "Mode and hash observations do not establish independent backup, confidentiality from same-user processes, or tested recoverability."
+  ]
+}
