@@ -2,9 +2,9 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`30c50500fd4768fa1f064f5627e8d01feb0fab1b`, canonical helix-offload `main` at
-`f24cdc317c364aa01c72eac162fb1281fcafa2f5`, and the Work Entry 013 live-result
-evidence in the commit that contains this report. The machine-readable
+`04aa7360bc2215fb4557da0280ff0c4bca41b818`, canonical helix-offload `main` at
+`d6c7f708fa5bee2845fbd11b67a946161898dfe1`, and the Work Entry 013 live-result
+and offline-hardening evidence in the commits that contain this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
 records and handoffs remain evidence of their capture time.
@@ -20,7 +20,7 @@ Health, priority, lifecycle, scheduling eligibility and authority are separate.
 | 004 | PARKED | YELLOW | NOT RECORDED | INELIGIBLE_STATE | Publication/evidence infrastructure; future planning only | repo-cp planning; implementation owner unresolved | NONE | None recorded | Keep parked until a bounded outcome and owner are approved | Canonical topology; Work Entry 003 finding |
 | 008 | PARKED | RED | NOT RECORDED | INELIGIBLE_STATE | Decide whether a repository-intelligence/evidence plane adds value; candidate functions only | Proposed logical surface: helix-repo-manager-bot; repository/hosting unresolved | Research NONE; implementation NONE | Relationship to completed 005 remains unresolved | After DERP scoping, assess one narrow evidence/compact-context slice and reuse before build | Canonical topology; `LOUIS_WORKFLOW.md` |
 | 012 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Discover and reconcile GitHub-hosted identity/authentication boundaries with local Git identity/authentication surfaces | repo-cp leads the inventory; auth-cp owns bindings, ws-cp owns workstation realization, GitHub owns service state | Registered read-only discovery; no credential access or account/config mutation | 007 is completed synthetic identity-profile evidence, not live proof | Run a separately resumed, read-only, non-secret discovery pass if it becomes blocking or reaches its turn | `WORK_ENTRY_012.md` |
-| 013 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Repaired subscription run completed, but DERP refused observed input/total-token overruns before postflight; no artifact, human disposition PENDING | helix-offload implementation; repo-cp policy/evidence review | The one-run grant is consumed; no retry or additional call is authorized | 010 accepted local baseline is available | Louis records human disposition; any further attempt needs a newly reviewed bounded packet and separate authority | `WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md` |
+| 013 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Atomic one-use grant reservation is published and tested; the Claude run remains refused before postflight with no artifact and human disposition PENDING | helix-offload implementation; repo-cp policy/evidence review | Offline hardening was authorized and completed; no retry or additional call is authorized | 010 accepted local baseline is available | Louis records human disposition; any further attempt or hardening slice needs separate authority | `WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md` |
 | 014 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Implement OpenAI API and ChatGPT/Codex subscription-backed execution separately and compare established baselines | helix-offload implementation; repo-cp policy/evidence review | Registration only; no hosted call or implementation | 013 Claude comparison | Keep parked until 013 has an accepted comparison baseline | `WORK_ENTRY_014.md` |
 
 There are no currently `ACTIVE / ELIGIBLE` entries after this reconciliation.
@@ -46,8 +46,8 @@ This is an attention order, not scheduling eligibility or authority.
 
 1. Maintain this current-state/resume view and registry consistency.
 2. Review Work Entry 013's completed but refused subscription result and record
-   human disposition. No usable comparison artifact exists and no further call
-   is authorized.
+   human disposition. The one-use grant defect is repaired, but no usable
+   comparison artifact exists and no further call is authorized.
 3. Assess one narrow Work Entry 008 evidence/compact-context slice only if its
    benefit is supported and existing tools do not already provide it.
 4. Resume Work Entry 012 GitHub/local-auth discovery; move it earlier only when
@@ -59,5 +59,6 @@ This is an attention order, not scheduling eligibility or authority.
 
 Exact next action: Louis reviews Work Entry 013 attempt
 `work-entry-013-claude-change-summary-live-002-attempt-001` and records a human
-disposition. Work Entry 014 remains parked behind a usable Claude comparison.
+disposition. Work Entry 014 remains parked behind a usable Claude comparison;
+the ranked hardening candidates remain non-executing and unnumbered.
 Work Entry 015's invocation authority remains consumed.

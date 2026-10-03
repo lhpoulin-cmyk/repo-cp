@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "record_type": "PROTECTED_PRIVATE_CAPTURE_INTEGRITY_INVENTORY",
+  "verified_at": "2026-10-03",
+  "root": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-013-claude-live-002-private",
+  "source_classification": "PRIVATE_RETAINED_DO_NOT_PUBLISH_OR_RETIRE",
+  "record_classification": "SANITIZED_PATH_SIZE_MODE_AND_HASH_METADATA",
+  "directory_mode": "0700",
+  "content_inspected": false,
+  "verification_method": "path, regular-file size, mode and SHA-256 only",
+  "files": [
+    {"path": "execution-grant.json", "mode": "0600", "size": 713, "sha256": "b6425ea935e8a46ee404abc6d7d42adb487a94ecf048b5c8a99ebca74a2d82cd"},
+    {"path": "human-disposition.json", "mode": "0600", "size": 691, "sha256": "cc39e16396b3997fbed0cab6c8351f80083c0cd972c761d78423a542f5ea316d"},
+    {"path": "result/attempt.json", "mode": "0600", "size": 559, "sha256": "bb09390b5c7d48e66fb8588b340fe92ba7f553888dc5bb28054ffd8ddf722ba3"},
+    {"path": "result/connector-outcome.json", "mode": "0600", "size": 1106, "sha256": "005ae0da6ceaab531da5d0b91f9786314db4b04f1c273dc0ea97bdb409cbee1b"},
+    {"path": "result/manifest.json", "mode": "0600", "size": 454, "sha256": "7aea53b45a80ce121bfe0243d483d39b723ff09c870d23e9264620ab933d43fb"},
+    {"path": "result/receipt.json", "mode": "0600", "size": 2769, "sha256": "714b708b90696501c28ced941d9a0efcf7d129ede828244a353ef000be558432"},
+    {"path": "result/response-envelope.json", "mode": "0600", "size": 48295, "sha256": "4c6af71d876f8272ae63b95ac3772533dec7b3da3c727d8d306dc5c35a899270"},
+    {"path": "result/response-stderr.raw", "mode": "0600", "size": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"path": "result/response-stdout.raw", "mode": "0600", "size": 52712, "sha256": "e068be86bb5e913aace8db00334b53bf10dd428c8f0d674c749e859a1245cdca"}
+  ],
+  "file_count": 9,
+  "migration_status": "NOT_STARTED",
+  "retirement_authorized": false,
+  "migration_requirements": [
+    "Approved durable private destination, owner, retention and backup boundary",
+    "Independent non-hardlinked copy with exclusive creation and private modes",
+    "Pre-copy and post-copy path, size, mode and SHA-256 parity",
+    "Independent restore test with full hash verification",
+    "Separate Louis approval before source retirement"
+  ]
+}

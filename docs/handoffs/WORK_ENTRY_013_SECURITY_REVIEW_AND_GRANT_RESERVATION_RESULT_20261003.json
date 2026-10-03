@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "clean_execution_baseline": "HELIX_CLEAN_EXECUTION_BASELINE_V1",
+  "work_entry_id": "013",
+  "work_state": "PARKED",
+  "priority": "GREEN",
+  "target_repository": "helix-offload",
+  "objective": "Preserve the security review and Claude result together, then implement and publish the first bounded offline hardening slice: atomic one-use execution-grant reservation.",
+  "canonical_baseline": {
+    "intended_ref": "refs/heads/main",
+    "resolved_head": "f24cdc317c364aa01c72eac162fb1281fcafa2f5"
+  },
+  "workspace_evidence": {
+    "source_workspace_identity": "/home/louis/helix-arpa/helix-offload primary checkout",
+    "execution_workspace_identity": "/home/louis/helix-arpa/repo-cp/.agent-checkouts/codex/work-entry-013-grant-reservation-helix",
+    "isolated_execution": true,
+    "pre_existing_source_state_preserved": true
+  },
+  "starting_head": "f24cdc317c364aa01c72eac162fb1281fcafa2f5",
+  "ending_head": "d6c7f708fa5bee2845fbd11b67a946161898dfe1",
+  "starting_dirty_state": {
+    "state": "CLEAN",
+    "staged": [],
+    "unstaged": [],
+    "untracked": []
+  },
+  "ending_dirty_state": {
+    "state": "CLEAN",
+    "staged": [],
+    "unstaged": [],
+    "untracked": []
+  },
+  "ending_dirtiness_attribution": {
+    "current_work_entry": {"staged": [], "unstaged": [], "untracked": []},
+    "pre_existing": {"staged": [], "unstaged": [], "untracked": []},
+    "unrelated": {"staged": [], "unstaged": [], "untracked": []},
+    "unknown": {"staged": [], "unstaged": [], "untracked": []}
+  },
+  "files_changed": [
+    "README.md",
+    "docs/ACCEPTANCE.md",
+    "docs/ARCHITECTURE.md",
+    "docs/INDEX.md",
+    "docs/INTERFACE.md",
+    "docs/MVP.md",
+    "docs/SAFETY.md",
+    "docs/contracts/CHANGE_SUMMARY_V1.md",
+    "docs/contracts/DERP_V1.md",
+    "docs/contracts/GRANT_RESERVATION_V1.md",
+    "docs/evidence/WORK_ENTRY_013_GRANT_RESERVATION_RESULT.md",
+    "docs/evidence/work-entry-013-grant-reservation-20261003/README.md",
+    "docs/evidence/work-entry-013-grant-reservation-20261003/validation.json",
+    "pyproject.toml",
+    "schemas/grant-reservation-v1.schema.json",
+    "src/helix_offload/cli.py",
+    "src/helix_offload/grant_reservation.py",
+    "tests/test_grant_reservation.py",
+    "tests/test_workflow.py"
+  ],
+  "mutations_performed": [
+    "Added an immutable versioned reservation keyed by the canonical execution-grant digest using exclusive creation and file/directory fsync.",
+    "Required every supported explicit executor to share the reservation boundary before adapter construction or invocation.",
+    "Added synthetic race, changed-attempt reuse, crash/restart, storage-failure and entrypoint-consistency tests.",
+    "Published the implementation through the review branch and an ordinary fast-forward of canonical helix-offload main."
+  ],
+  "mutations_not_performed": [
+    "No model, provider API or GPU invocation.",
+    "No retry, fallback, credential/account change, installation, deployment or runtime-service mutation.",
+    "No relocation, deletion or publication of the protected private Claude capture.",
+    "No implementation of durable submission phases, crash reconciliation, distributed coordination or another hardening candidate."
+  ],
+  "validation": [
+    {"check": "helix-offload unittest suite", "status": "PASS", "evidence": "69 of 69 offline synthetic tests passed."},
+    {"check": "two-process reservation race", "status": "PASS", "evidence": "Exactly one process reserved the grant and reached the fake adapter; the second was refused."},
+    {"check": "crash and restart", "status": "PASS", "evidence": "A process exited immediately after reservation and a restarted caller could not reserve or resend the same grant."},
+    {"check": "storage failure", "status": "PASS", "evidence": "Injected write failure prevented adapter invocation and the created reservation continued to block reuse."},
+    {"check": "repository JSON and schemas", "status": "PASS", "evidence": "158 of 158 JSON files parsed and 21 of 21 schemas passed Draft 2020-12 metaschema validation."},
+    {"check": "compile, pinned digests, changed links, whitespace and secret indicators", "status": "PASS", "evidence": "Compilation, three pinned governance digests, changed Markdown relative links, git diff --check and the bounded indicator scan passed."},
+    {"check": "canonical remote publication", "status": "PASS", "evidence": "Direct git ls-remote resolved both helix-offload main and codex/work-entry-013-grant-reservation to d6c7f708fa5bee2845fbd11b67a946161898dfe1."}
+  ],
+  "evidence_produced": [
+    "helix-offload docs/evidence/WORK_ENTRY_013_GRANT_RESERVATION_RESULT.md",
+    "helix-offload docs/evidence/work-entry-013-grant-reservation-20261003/validation.json",
+    "repo-cp research-notes/2026-10-03-helix-offload-security-safety-durability-reusability-review-disposition.md",
+    "repo-cp docs/handoffs/WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md",
+    "repo-cp docs/handoffs/WORK_ENTRY_013_PRIVATE_CAPTURE_INTEGRITY_20261003.json"
+  ],
+  "delivery_stage": "PUBLISHED",
+  "status_topology": {
+    "nodes": [
+      {"id": "work.013.offline-hardening", "kind": "WORK", "status": "COMPLETED", "summary": "Atomic one-use grant reservation is implemented, validated and published.", "owner": "helix-offload", "blocking": false},
+      {"id": "work.013.human-disposition", "kind": "WORK", "status": "PENDING", "summary": "The preserved refused Claude result has no artifact and human disposition remains pending.", "owner": "Louis", "blocking": false},
+      {"id": "work.013.claude-comparison", "kind": "WORK", "status": "PARKED", "summary": "No usable Claude comparison artifact exists; any further attempt requires a new packet and separate authority.", "owner": "helix-offload implementation and repo-cp evidence review", "blocking": false},
+      {"id": "future.helix-offload.hardening", "kind": "FUTURE_WORK", "status": "PARKED", "summary": "Remaining security, durability and standalone-adoption candidates are preserved without execution authority or numbered Work Entries.", "owner": "helix-offload and repo-cp at Louis's direction", "blocking": false},
+      {"id": "work.014.openai", "kind": "FUTURE_WORK", "status": "PARKED", "summary": "Work Entry 014 remains parked behind a usable Claude comparison.", "owner": "helix-offload implementation and repo-cp evidence review", "blocking": false}
+    ],
+    "relationships": [
+      {"subject": "work.014.openai", "predicate": "DEPENDS_ON", "object": "work.013.claude-comparison"}
+    ]
+  },
+  "recommended_next_action": "Louis records ACCEPTED, REJECTED or FRONTIER_CONTINUATION for the preserved Claude result; any new inference or hardening implementation requires separate authority.",
+  "live_effects": [
+    {"action": "Published review branch", "target": "lhpoulin-cmyk/helix-offload refs/heads/codex/work-entry-013-grant-reservation", "result": "SUCCEEDED", "evidence": "Direct remote ref d6c7f708fa5bee2845fbd11b67a946161898dfe1."},
+    {"action": "Fast-forwarded canonical main", "target": "lhpoulin-cmyk/helix-offload refs/heads/main", "result": "SUCCEEDED", "evidence": "Direct remote ref d6c7f708fa5bee2845fbd11b67a946161898dfe1."}
+  ]
+}

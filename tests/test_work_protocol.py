@@ -93,6 +93,16 @@ class WorkProtocolTests(unittest.TestCase):
             'remediation.hardening-correctness': ['R4', 'R5'],
             'remediation.diagnostics-state-fidelity': ['R6', 'R9'],
             'remediation.evidence-trust-architecture': ['R7', 'R8'],
+            'helix-offload.security-durability-reusability': [
+                'durable-submission-capture-phases',
+                'private-recovery-storage',
+                'allowlisted-public-evidence-derivatives',
+                'connector-accounting-parity',
+                'protected-openclaw-prompt-transport',
+                'preventive-resource-controls',
+                'prompt-authority-and-token-accounting',
+                'standalone-release-adoption',
+            ],
         })
         self.assertTrue(all(not candidate['execution_authorized']
                             for candidate in document['future_work_candidates']))
@@ -185,7 +195,7 @@ class WorkProtocolTests(unittest.TestCase):
         self.assertIn('FRONTIER_CONTINUATION', entries['015']['summary'])
         self.assertIn('semantic acceptance remains UNKNOWN',
                       ' '.join(entries['015']['provenance']))
-        self.assertEqual(document['updated_by_work_entry'], '015')
+        self.assertEqual(document['updated_by_work_entry'], '013')
 
         derp_result = json.loads(
             (ROOT / 'docs/handoffs/WORK_ENTRY_010_RESULT.json').read_bytes())

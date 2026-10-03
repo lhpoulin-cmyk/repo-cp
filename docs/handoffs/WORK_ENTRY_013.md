@@ -128,3 +128,36 @@ The detailed result is
 [`WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md`](WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md).
 The one-run authority is consumed. Work Entry 013 remains parked without a
 usable Claude comparison artifact; Work Entry 014 remains parked.
+
+## Security review and one-use grant reservation — 2026-10-03
+
+Louis then authorized preservation of the security review and Claude result
+together plus one bounded offline hardening slice. The research commit
+`4eae1b63e85cdfe42ff64a4ab149e2661ab86150` is integrated with its exact report
+and source-manifest hashes; it remains research evidence rather than
+implementation proof.
+
+Canonical helix-offload `d6c7f708fa5bee2845fbd11b67a946161898dfe1`
+implements an immutable filesystem reservation keyed by canonical grant digest.
+Every supported explicit executor now records intent and durably reserves the
+grant in one configured shared private local store before adapter construction
+or invocation. Different attempt IDs, crashes and restarts do not release or
+reuse it. The boundary provides local at-most-once admission, not exactly-once
+provider execution or coordination across independent stores.
+
+Offline validation passed 69/69 tests including a two-process race with exactly
+one fake-adapter invocation, changed-attempt reuse refusal, immediate
+post-reservation crash/restart refusal and storage-failure prevention. No model,
+provider API or GPU call occurred.
+
+The preserved Claude result remains refused with no artifact and human
+disposition `PENDING`. Its packet made historical authority facts model-visible,
+and its input/total limits detected excess usage only after consumption. Prompt-
+authority separation and preventive token accounting are prepared follow-ups,
+not retroactive acceptance or a proven provider defect.
+
+The detailed continuation is
+[`WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md`](WORK_ENTRY_013_SECURITY_REVIEW_AND_GRANT_RESERVATION_20261003.md).
+The remaining ranked hardening findings are one non-executing future-work
+candidate group; no new Work Entry numbers were allocated. Work Entry 014
+remains parked.
