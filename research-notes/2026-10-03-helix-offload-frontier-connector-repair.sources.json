@@ -1,0 +1,277 @@
+{
+  "format": "external-research-source-manifest/v1",
+  "research_artifact": "research-notes/2026-10-03-helix-offload-frontier-connector-repair-research.md",
+  "comparison_artifact": "research-notes/2026-10-03-helix-offload-frontier-interface-comparison.csv",
+  "research_id": "helix-offload-frontier-connector-repair-2026-10-03",
+  "retrieved_on": "2026-10-03",
+  "evidence_status": "EXTERNAL_RESEARCH_AND_REPOSITORY_OBSERVATION_NOT_IMPLEMENTATION_EVIDENCE",
+  "local_baselines": {
+    "repo-cp": "20674f38a8efc568c0b77b94b8de0201efe45e30",
+    "helix-offload": "8bb94065b3948ae625a372ab70cfd6e23900e707"
+  },
+  "repository_observations": [
+    {
+      "repository": "https://github.com/lhpoulin-cmyk/helix-offload",
+      "revision": "8bb94065b3948ae625a372ab70cfd6e23900e707",
+      "verified_ref": "refs/heads/main",
+      "files": [
+        {"path": "src/helix_offload/adapters.py", "sha256": "ea205bd0574fa0640f6f1e93edfe0bb30da0bc308fe93cd7c71fef52b6b588fb"},
+        {"path": "src/helix_offload/derp.py", "sha256": "18a16dc4da1f97884f25be43e3591f87c98a9142756acac3cb2b15b6cafa87a6"},
+        {"path": "src/helix_offload/workflow.py", "sha256": "df18f88caa168e0d7bfa5ceb101a1c8c4b4d08bdbeb85ad0d47645fe0c2c489c"},
+        {"path": "src/helix_offload/cli.py", "sha256": "724b95b0fb4c6c5c2ce103eb595728182ed5d7db305765427e777c498588d45c"},
+        {"path": "schemas/derp-receipt-v3.schema.json", "sha256": "b908d3470893ad81157d6eaaf29766e1c27e8e4410dff9cf4d45a48d9de5dc0f"},
+        {"path": "tests/test_derp.py", "sha256": "9291e4395fd2e6a8c07b919c3b3b7e68b2a75dd778b1cf473c2e94be3edb95cf"},
+        {"path": "docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_RECOVERY_RESULT.md", "sha256": "e22a9b1f4a92868443bf64eed8b79860477ea9bd4cc2fa7c891304a1a6775d9d"},
+        {"path": "docs/evidence/WORK_ENTRY_010_OPENCLAW_LOCAL_RESULT.md", "sha256": "02d46c074f628a7bb87c2be079d0ea2dac745117a7d150327842acfcaa54f847"},
+        {"path": "docs/evidence/WORK_ENTRY_015_LOCAL_CHANGE_SUMMARY_RESULT.md", "sha256": "bbc4e07fd68138cd23a99881223955bbb71e936c0bae11b4fb2beb61d8fc90cf"},
+        {"path": "docs/evidence/WORK_ENTRY_015_FORMAT_REPAIR.md", "sha256": "8bf85cb1a107449efeaf8ef1b422ee3b9ff6dd5235611d9d3f48e1b9f11fb040"},
+        {"path": "docs/evidence/WORK_ENTRY_015_REPAIRED_LOCAL_CHANGE_SUMMARY_RESULT.md", "sha256": "c70b99b1f8b6554a588411e94d85bfdb0208790d814febb099128bf1039d9c78"},
+        {"path": "docs/evidence/work-entry-015-local-change-summary-repaired-20261002/result/response-envelope.json", "sha256": "7ff7d199f2bc2abdf986181fab0821955393dc1e824d92f804d9610fa78d7bf4"}
+      ],
+      "claims": "Current adapter, CLI, workflow, receipt, test, and historical attempt behavior."
+    },
+    {
+      "repository": "https://github.com/lhpoulin-cmyk/repo-cp",
+      "revision": "20674f38a8efc568c0b77b94b8de0201efe45e30",
+      "verified_ref": "refs/heads/main",
+      "files": [
+        {"path": "docs/handoffs/WORK_ENTRY_013.md", "sha256": "ae75976ddbfc6cbcffec02601a00eb931ea8e0f29b2dcccb64a4d592b8045e5c", "purpose": "Parked Claude implementation/comparison scope and preserved failure requirements."},
+        {"path": "docs/handoffs/WORK_ENTRY_014.md", "sha256": "c68d5270a944b6a62c350c745fb270df3cde0f4714d24903037ae04339b04193", "purpose": "Parked OpenAI implementation/comparison scope and dependency."},
+        {"path": "docs/handoffs/WORK_ENTRY_015.md", "sha256": "4452c59609fc1d912d14f161bd5082e105df1e87ac8805abd8863eb6474037e7", "purpose": "Local summary attempts, recovery, and frontier-continuation state."},
+        {"path": "docs/handoffs/WORK_ENTRY_015_FRONTIER_CONTINUATION_20261003.md", "sha256": "79f883093fe0bd4c976ee279366756cae92212416b4722203d97dd2d2cc1ca27", "purpose": "Louis's recorded FRONTIER_CONTINUATION decision."}
+      ],
+      "claims": "Work-entry sequencing, authority boundaries, and current human disposition."
+    }
+  ],
+  "sources": [
+    "https://code.claude.com/docs/en/headless",
+    "https://code.claude.com/docs/en/cli-reference",
+    "https://code.claude.com/docs/en/settings",
+    "https://platform.claude.com/docs/en/api/messages/create",
+    "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+    "https://platform.claude.com/docs/en/api/errors",
+    "https://platform.claude.com/docs/en/manage-claude/authentication",
+    "https://platform.claude.com/docs/en/models/overview",
+    "https://support.anthropic.com/en/articles/9876003-i-subscribe-to-a-paid-claude-ai-plan-why-do-i-have-to-pay-separately-for-api-usage-on-console",
+    "https://platform.claude.com/docs/en/api/claude-code/routines-fire",
+    "https://platform.claude.com/docs/en/cli-sdks-libraries/overview",
+    "https://developers.openai.com/api/reference/overview",
+    "https://developers.openai.com/api/docs/guides/structured-outputs",
+    "https://developers.openai.com/api/reference/cli/resources/responses/methods/create",
+    "https://developers.openai.com/api/docs/guides/rate-limits",
+    "https://developers.openai.com/api/docs/libraries/openai-cli",
+    "https://developers.openai.com/api/docs/models",
+    "https://developers.openai.com/api/docs/pricing",
+    "https://developers.openai.com/siwc/token-sharing-open-source",
+    "https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server",
+    "https://developers.openai.com/cookbook/articles/sign-in-with-chatgpt",
+    "https://developers.openai.com/blog/eval-skills"
+  ],
+  "source_details": [
+    {
+      "id": "anthropic-headless",
+      "publisher": "Anthropic",
+      "title": "Run Claude Code programmatically",
+      "url": "https://code.claude.com/docs/en/headless",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["JSON and JSONL output", "structured_output wrapper", "bare-mode subscription exclusion", "api_retry events", "client-side cost estimates"]
+    },
+    {
+      "id": "anthropic-cli-reference",
+      "publisher": "Anthropic",
+      "title": "Claude Code CLI reference",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["tools and MCP restrictions", "restricted and safe modes", "one-turn and fallback controls", "schema and session flags"]
+    },
+    {
+      "id": "anthropic-settings",
+      "publisher": "Anthropic",
+      "title": "Claude Code settings files and precedence",
+      "url": "https://code.claude.com/docs/en/settings",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["settings precedence", "fallback model setting behavior", "effective configuration caveats"]
+    },
+    {
+      "id": "anthropic-messages",
+      "publisher": "Anthropic",
+      "title": "Create a Message",
+      "url": "https://platform.claude.com/docs/en/api/messages/create",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["Messages response fields", "model", "stop_reason", "usage", "structured output request surface"]
+    },
+    {
+      "id": "anthropic-structured-outputs",
+      "publisher": "Anthropic",
+      "title": "Structured outputs",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["output_config.format", "schema-valid JSON on success", "refusal and max-token exceptions"]
+    },
+    {
+      "id": "anthropic-errors",
+      "publisher": "Anthropic",
+      "title": "Claude API errors",
+      "url": "https://platform.claude.com/docs/en/api/errors",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["request-id", "error envelope", "two default SDK retries", "stream errors after HTTP 200"]
+    },
+    {
+      "id": "anthropic-auth",
+      "publisher": "Anthropic",
+      "title": "Authentication",
+      "url": "https://platform.claude.com/docs/en/manage-claude/authentication",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["API credential mechanisms", "workspace attribution", "secret handling"]
+    },
+    {
+      "id": "anthropic-models",
+      "publisher": "Anthropic",
+      "title": "Models overview",
+      "url": "https://platform.claude.com/docs/en/models/overview",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["current model IDs", "pricing", "latency categories", "retirement not-before dates"]
+    },
+    {
+      "id": "anthropic-subscription-api-separation",
+      "publisher": "Anthropic",
+      "title": "I subscribe to a paid Claude.ai plan. Why do I have to pay separately for API usage on Console?",
+      "url": "https://support.anthropic.com/en/articles/9876003-i-subscribe-to-a-paid-claude-ai-plan-why-do-i-have-to-pay-separately-for-api-usage-on-console",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["Claude subscription does not include API usage"]
+    },
+    {
+      "id": "anthropic-routines",
+      "publisher": "Anthropic",
+      "title": "Trigger a routine through the API",
+      "url": "https://platform.claude.com/docs/en/api/claude-code/routines-fire",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["subscription-backed routine trigger", "no idempotency key", "new session on every successful retry", "experimental/no SDK support"]
+    },
+    {
+      "id": "anthropic-cli-sdk-overview",
+      "publisher": "Anthropic",
+      "title": "SDKs, CLI, and libraries",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/overview",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["official ant CLI and SDK roles", "agent clients are higher-level than Messages API"]
+    },
+    {
+      "id": "openai-api-overview",
+      "publisher": "OpenAI",
+      "title": "API overview",
+      "url": "https://developers.openai.com/api/reference/overview",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["API authentication", "server request IDs", "X-Client-Request-Id", "additive response evolution", "pinned model guidance"]
+    },
+    {
+      "id": "openai-structured-outputs",
+      "publisher": "OpenAI",
+      "title": "Structured Outputs",
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["Responses text.format", "JSON Schema subset", "refusal and incomplete handling"]
+    },
+    {
+      "id": "openai-responses-create",
+      "publisher": "OpenAI",
+      "title": "Create a model response",
+      "url": "https://developers.openai.com/api/reference/cli/resources/responses/methods/create",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["response ID/status/error/incomplete/model/output/usage shape", "request parameters"]
+    },
+    {
+      "id": "openai-retries",
+      "publisher": "OpenAI",
+      "title": "Rate limits",
+      "url": "https://developers.openai.com/api/docs/guides/rate-limits",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["official SDK retries", "nested retry warning", "timeout versus operation deadline"]
+    },
+    {
+      "id": "openai-cli",
+      "publisher": "OpenAI",
+      "title": "OpenAI CLI",
+      "url": "https://developers.openai.com/api/docs/libraries/openai-cli",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["API-key authentication", "JSON/JSONL/raw output", "repeatable API work", "debug-data warning"]
+    },
+    {
+      "id": "openai-models",
+      "publisher": "OpenAI",
+      "title": "Models",
+      "url": "https://developers.openai.com/api/docs/models",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["current model positioning", "GPT-6.1 Sol and GPT-6 Luna prices and capabilities"]
+    },
+    {
+      "id": "openai-pricing",
+      "publisher": "OpenAI",
+      "title": "Pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["current token rates", "tier and long-context dimensions", "Responses has no separate fee"]
+    },
+    {
+      "id": "openai-siwc-overview",
+      "publisher": "OpenAI",
+      "title": "Sign in with ChatGPT — Overview",
+      "url": "https://developers.openai.com/siwc/token-sharing-open-source",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["eligible open-source/local apps", "OAuth plan permission", "no ChatGPT conversation access", "client registration"]
+    },
+    {
+      "id": "openai-codex-app-server-siwc",
+      "publisher": "OpenAI",
+      "title": "Codex app-server — Sign in with ChatGPT",
+      "url": "https://developers.openai.com/siwc/token-sharing-open-source/codex-app-server",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["OAuth token to Responses", "NDJSON lifecycle", "turn completion states", "model list not entitlement proof"]
+    },
+    {
+      "id": "openai-siwc-cookbook",
+      "publisher": "OpenAI",
+      "title": "Integrating Sign in with ChatGPT in your Opensource App",
+      "url": "https://developers.openai.com/cookbook/articles/sign-in-with-chatgpt",
+      "publication_date": "2026-09-28",
+      "retrieved": "2026-10-03",
+      "claims": ["local app integration", "Responses completion", "plan-use disclosure and usage management"]
+    },
+    {
+      "id": "openai-codex-jsonl",
+      "publisher": "OpenAI",
+      "title": "Testing Agent Skills Systematically with Evals",
+      "url": "https://developers.openai.com/blog/eval-skills",
+      "publication_date": "2026-01-22",
+      "retrieved": "2026-10-03",
+      "claims": ["codex exec JSONL", "output schema", "agent-oriented automation and tool trace"]
+    }
+  ],
+  "limitations": [
+    "No private provider account, credential, billing, entitlement, dashboard, or session state was accessed.",
+    "No provider endpoint, model, GPU, benchmark, installation, or runtime was invoked.",
+    "Living documentation may change after the retrieval date; reverify before implementation or live use.",
+    "Historic Claude attempt 001 and 002 raw envelopes are absent, so their exact parse failures cannot be reconstructed.",
+    "Cost figures in the report are arithmetic estimates from published list prices, not observed bills or provider-enforced per-call caps."
+  ]
+}
