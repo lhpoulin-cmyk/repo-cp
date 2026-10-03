@@ -180,6 +180,11 @@ class WorkProtocolTests(unittest.TestCase):
                       ' '.join(entries['015']['provenance']))
         self.assertIn('CANDIDATE_OUTPUT_REVIEW_REQUIRED',
                       ' '.join(entries['015']['provenance']))
+        self.assertIn('8bb94065b3948ae625a372ab70cfd6e23900e707',
+                      ' '.join(entries['015']['provenance']))
+        self.assertIn('FRONTIER_CONTINUATION', entries['015']['summary'])
+        self.assertIn('semantic acceptance remains UNKNOWN',
+                      ' '.join(entries['015']['provenance']))
         self.assertEqual(document['updated_by_work_entry'], '015')
 
         derp_result = json.loads(

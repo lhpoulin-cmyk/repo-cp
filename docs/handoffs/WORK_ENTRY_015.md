@@ -116,3 +116,16 @@ Canonical helix-offload
 `WORK_ENTRY_015_ATTEMPT_002_20261002.md` and
 `WORK_ENTRY_015_ATTEMPT_002_RESULT_20261002.json`. No further inference is
 authorized; Work Entries 013 and 014 remain parked.
+
+## Human disposition
+
+On 2026-10-03 Louis recorded `FRONTIER_CONTINUATION` for attempt 002's
+reprocessed artifact. This is not `ACCEPTED`: semantic acceptance remains
+`UNKNOWN`, generated text remains unapplied, and preparation/review durations
+remain `UNKNOWN`. Canonical helix-offload
+`8bb94065b3948ae625a372ab70cfd6e23900e707` preserves the new content-bound
+decision without overwriting the two earlier `PENDING` checkpoint records.
+
+The decision does not authorize a retry, hosted call or other inference. See
+`WORK_ENTRY_015_FRONTIER_CONTINUATION_20261003.md`. Work Entries 013 and 014
+remain parked.

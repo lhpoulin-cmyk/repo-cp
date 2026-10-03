@@ -320,7 +320,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "The change-summary-v1 attempt 001 remains preserved; repaired attempt 002 was sent exactly once, its original strict result was REFUSED / MALFORMED_OUTPUT, and bounded offline postflight reprocessing produced an assembled review artifact with human disposition PENDING.",
+      "summary": "The change-summary-v1 attempt 001 remains preserved; repaired attempt 002 was sent exactly once, its original strict result was REFUSED / MALFORMED_OUTPUT, bounded offline postflight reprocessing produced an assembled review artifact, and Louis recorded FRONTIER_CONTINUATION without semantic acceptance.",
       "provenance": [
         "Louis's 2026-10-01 instruction authorizes one local OpenClaw/Ollama invocation with no retry, fallback, hosted call or cohort.",
         "docs/handoffs/WORK_ENTRY_015.md and docs/handoffs/WORK_ENTRY_015.json",
@@ -335,6 +335,9 @@
         "The original strict result remains REFUSED / MALFORMED_OUTPUT. Offline postflight reprocessing invoked no model, explicitly recorded code-fence removal and singleton wrapping, and produced CANDIDATE_OUTPUT_REVIEW_REQUIRED without changing raw model text.",
         "Canonical helix-offload 5b1c53025b29b858650b2a62fe0f4cfcf7361862 preserves both results, the 8306 ms runtime observation, UNKNOWN tokens/cost/stop metadata, and human disposition PENDING.",
         "docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_20261002.md and docs/handoffs/WORK_ENTRY_015_ATTEMPT_002_RESULT_20261002.json",
+        "Louis's 2026-10-03 review decision is FRONTIER_CONTINUATION for the reprocessed artifact; semantic acceptance remains UNKNOWN and no additional inference is authorized.",
+        "Canonical helix-offload 8bb94065b3948ae625a372ab70cfd6e23900e707 records the content-bound final disposition while preserving the earlier PENDING checkpoints and both result variants.",
+        "docs/handoffs/WORK_ENTRY_015_FRONTIER_CONTINUATION_20261003.md",
         "Work Entries 013 and 014 remain PARKED."
       ]
     }
