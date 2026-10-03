@@ -285,7 +285,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "The separate Claude API connector remains available, and the Claude subscription stream boundary is repaired and published offline. A same-evidence TEST_ONLY change-summary packet is previewed with its grant unissued and submission NOT_SENT; the entry remains parked without a usable Claude comparison or invocation authority.",
+      "summary": "The separate Claude API connector remains available. The repaired Claude subscription stream path completed one authorized client run, but DERP refused observed input and total-token overruns before postflight; no artifact was assembled, human disposition is PENDING, and the entry remains parked without a usable Claude comparison or further invocation authority.",
       "provenance": [
         "Louis's 2026-10-01 local-first sequence parks Claude until the owned local baseline is available.",
         "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
@@ -306,7 +306,11 @@
         "Canonical helix-offload commit 15b86e6c09a5602bc40125fe6bee2a45727c787a removes Claude Code --json-schema from the subscription route, captures bounded stream-json events before DERP parsing, versions tighter generated-content bounds compatibly, preserves the failed attempt unchanged and records the corrected 147-file JSON validation count.",
         "The prepared work-entry-013-claude-change-summary-live-002 packet reuses source packet f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41; its proposed grant is UNISSUED and submission is NOT_SENT.",
         "docs/handoffs/WORK_ENTRY_013_STREAM_REPAIR_20261003.md and docs/handoffs/WORK_ENTRY_013_STREAM_REPAIR_RESULT_20261003.json",
-        "A future live attempt requires fresh one-client-run authority and issuance of a real execution-grant/v1; Work Entry 014 remains parked."
+        "Louis's 2026-10-03 instruction authorized one fresh Claude Code subscription run bound to source f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41, workflow 5e623d2c4b43c7746507aa9570a45b09ad6e71b2854fac0a825e244cd4e7f93f, preview be693bcc30b56eedec5bee93b6b45693326d1c902b5dd4b2954daf41fd60587a and grant a7e0750f532c8e1cec8c59ee2c485ae0dae2f5b0f5581cce6662ad61785a80e9.",
+        "Canonical helix-offload commit f24cdc317c364aa01c72eac162fb1281fcafa2f5 preserves attempt work-entry-013-claude-change-summary-live-002-attempt-001. One client run completed with the requested model, 5202 input/372 output/5574 total observed tokens and no observable retry or tool event.",
+        "DERP refused USAGE_LIMIT_EXCEEDED before postflight; the terminal prose was also malformed for the generated-content JSON contract, no artifact was assembled and human disposition remains PENDING.",
+        "docs/handoffs/WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md and docs/handoffs/WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_RESULT_20261003.json",
+        "The one-run authority is consumed. Any further Claude attempt requires a new bounded packet and separate authority; Work Entry 014 remains parked."
       ]
     },
     {

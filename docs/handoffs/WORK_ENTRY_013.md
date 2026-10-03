@@ -107,3 +107,24 @@ Its generated-content contract is explicitly v2, its proposed grant is
 62/62 under unittest and pytest; 147/147 repository JSON files parsed. Work Entry 013 remains `PARKED`; a live run
 requires fresh exact authority and issuance of a real grant. Work Entry 014
 remains parked.
+
+## Repaired subscription stream attempt — 2026-10-03
+
+Louis then authorized exactly one Claude Code subscription-backed client run
+bound to the published repaired packet. Canonical helix-offload
+`f24cdc317c364aa01c72eac162fb1281fcafa2f5` preserves attempt
+`work-entry-013-claude-change-summary-live-002-attempt-001` and its sanitized
+evidence.
+
+The requested and observed model was `claude-haiku-4-5-20251001`. One client
+run completed with `end_turn`; no client retry or tool/MCP event was observed,
+while underlying provider request/retry behavior remains `UNKNOWN`. Claude Code
+reported 5,202 input, 372 output and 5,574 total tokens. DERP refused the result
+as `USAGE_LIMIT_EXCEEDED` against the packet's 4,000-input/4,600-total limits
+before postflight. The returned prose was not the required JSON, no artifact was
+assembled and human disposition remains `PENDING`.
+
+The detailed result is
+[`WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md`](WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_20261003.md).
+The one-run authority is consumed. Work Entry 013 remains parked without a
+usable Claude comparison artifact; Work Entry 014 remains parked.

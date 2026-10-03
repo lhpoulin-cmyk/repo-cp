@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "work_entry_id": "013",
+  "result_scope": "CLAUDE_SUBSCRIPTION_STREAM_CHANGE_SUMMARY_ATTEMPT",
+  "state": "PARKED",
+  "delivery_stage": "ONE_CLIENT_RUN_COMPLETED_DERP_REFUSED_NO_ARTIFACT",
+  "implementation": {
+    "repository": "lhpoulin-cmyk/helix-offload",
+    "branch": "main",
+    "commit": "f24cdc317c364aa01c72eac162fb1281fcafa2f5",
+    "review_branch": "codex/work-entry-013-claude-live-002"
+  },
+  "bindings": {
+    "source_packet_sha256": "f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41",
+    "workflow_sha256": "5e623d2c4b43c7746507aa9570a45b09ad6e71b2854fac0a825e244cd4e7f93f",
+    "preview_sha256": "be693bcc30b56eedec5bee93b6b45693326d1c902b5dd4b2954daf41fd60587a",
+    "grant_sha256": "a7e0750f532c8e1cec8c59ee2c485ae0dae2f5b0f5581cce6662ad61785a80e9"
+  },
+  "execution": {
+    "attempt_id": "work-entry-013-claude-change-summary-live-002-attempt-001",
+    "billing_source": "CLAUDE_SUBSCRIPTION",
+    "client": "Claude Code 2.1.283",
+    "requested_model": "claude-haiku-4-5-20251001",
+    "observed_model": "claude-haiku-4-5-20251001",
+    "client_runs": 1,
+    "provider_requests": null,
+    "observable_retry_events": 0,
+    "unobservable_provider_retries": null,
+    "submission_state": "RESPONSE_RECEIVED",
+    "terminal_state": "COMPLETED",
+    "execution_occurred": true,
+    "stop_reason": "end_turn",
+    "truncated": false,
+    "artifact": null,
+    "authoritative_postflight": null,
+    "final_disposition": "REFUSED",
+    "reason_code": "USAGE_LIMIT_EXCEEDED",
+    "human_disposition": "PENDING"
+  },
+  "measurements": {
+    "elapsed_ms": 5550,
+    "input_tokens": 5202,
+    "output_tokens": 372,
+    "total_tokens": 5574,
+    "client_reported_list_cost_usd": 0.012261,
+    "actual_subscription_charge": null,
+    "preparation_effort_ms": null,
+    "review_effort_ms": null
+  },
+  "generated_output": {
+    "terminal_result_utf8_sha256": "840bb9a7aca03098f8b2a49ba62ae09c6184dcd9893fd54884453feab77cbaac",
+    "contract_valid": false,
+    "diagnostic_parser_result": "REFUSED_MALFORMED_OUTPUT",
+    "assembled_artifact": false
+  },
+  "validation": {
+    "helix_offload": {
+      "unittest": "62/62 PASS",
+      "pytest": "62/62 PASS",
+      "compileall": "PASS",
+      "repository_json": "156/156 PASS",
+      "schema_metaschema": "20/20 PASS",
+      "manifest": "10/10 PASS",
+      "diff_check": "PASS",
+      "secret_indicator_scan": "PASS"
+    },
+    "repo_cp": {
+      "tools_validate": "PASS",
+      "unittest": "211/211 PASS",
+      "repository_json": "69/69 PASS",
+      "diff_check": "PASS",
+      "secret_indicator_scan": "PASS"
+    }
+  },
+  "remaining": {
+    "claude_comparison_artifact": "NOT_PRODUCED",
+    "human_disposition": "PENDING",
+    "new_live_authority": "NOT_GRANTED",
+    "work_entry_014": "PARKED_BEHIND_USABLE_CLAUDE_COMPARISON"
+  },
+  "live_effects": [
+    "Launched one bounded Claude Code subscription-backed client run",
+    "Published helix-offload review branch codex/work-entry-013-claude-live-002",
+    "Fast-forwarded canonical helix-offload main to f24cdc317c364aa01c72eac162fb1281fcafa2f5",
+    "Published the repo-cp review branch and fast-forwarded canonical repo-cp main to the commit containing this record"
+  ]
+}
