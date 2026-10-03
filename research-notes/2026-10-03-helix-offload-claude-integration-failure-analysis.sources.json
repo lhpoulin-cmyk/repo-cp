@@ -1,0 +1,227 @@
+{
+  "format": "external-research-source-manifest/v1",
+  "research_artifact": "research-notes/2026-10-03-helix-offload-claude-integration-failure-analysis.md",
+  "research_id": "helix-offload-claude-integration-failure-analysis-2026-10-03",
+  "retrieved_on": "2026-10-03",
+  "evidence_status": "EXTERNAL_RESEARCH_AND_REPOSITORY_OBSERVATION_NOT_IMPLEMENTATION_EVIDENCE",
+  "local_baselines": {
+    "repo-cp": "27d18a00c269b8c8652ca251bb2119dea6b5bafc",
+    "helix-offload": "d6c7f708fa5bee2845fbd11b67a946161898dfe1"
+  },
+  "installed_client": {
+    "name": "Claude Code",
+    "version": "2.1.283",
+    "executable_sha256": "1859583ce32920595c61ef868bee52e1b1594f7486db209935e01f1e5e804ae2",
+    "inspection": ["--version", "--help"],
+    "model_invocations": 0,
+    "authentication_commands": 0
+  },
+  "repository_observations": [
+    {
+      "repository": "https://github.com/lhpoulin-cmyk/helix-offload",
+      "revision": "d6c7f708fa5bee2845fbd11b67a946161898dfe1",
+      "verified_ref": "refs/heads/main",
+      "files": [
+        {"path": "docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_RESULT.md", "sha256": "87b96920b4f42924193510fcb89e58e67ddb7ba9b6fd7d70c606fd14c9c26434"},
+        {"path": "docs/evidence/WORK_ENTRY_010_CLAUDE_LIVE_RECOVERY_RESULT.md", "sha256": "e22a9b1f4a92868443bf64eed8b79860477ea9bd4cc2fa7c891304a1a6775d9d"},
+        {"path": "docs/evidence/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_RESULT.md", "sha256": "e6fe9f63347850d325009c1721c69364f54af811d5782d1cf3c8a4fa8492e071"},
+        {"path": "docs/evidence/WORK_ENTRY_013_CLAUDE_STREAM_REPAIR.md", "sha256": "ff1a8789d8e779848538581224420992df370ef73f57eea619e886bfe47df824"},
+        {"path": "docs/evidence/WORK_ENTRY_013_CLAUDE_STREAM_LIVE_002_RESULT.md", "sha256": "f94d040c3d0dcece9d12a169b7029e1cba3e6c80eb638721188e1de9b8053fe0"},
+        {"path": "docs/evidence/WORK_ENTRY_013_GRANT_RESERVATION_RESULT.md", "sha256": "8f69bed353b98b0e3868609d02341c707d2de15bc6d7a1d7321664650c6530d6"},
+        {"path": "docs/evidence/work-entry-013-claude-subscription-20261003/response-envelope.sanitized.json", "sha256": "2e6642f1ccf48b57e72718016f44fd0e7e3d3dfddb2c46b588581f022382e8c9"},
+        {"path": "docs/evidence/work-entry-013-claude-stream-live-002-20261003/response-envelope-public.json", "sha256": "dd9eca5ac200c4a86e24307a4e3d851cdf899ee06eb3122bb6c16e16af309922"},
+        {"path": "docs/evidence/work-entry-013-claude-stream-live-002-20261003/generated-analysis.txt", "sha256": "b0dceef95c6d65cb034b6853bf30fdbcf62d2ffeec849186f83174f44dc827b0"},
+        {"path": "docs/evidence/work-entry-013-claude-stream-live-002-20261003/receipt.json", "sha256": "714b708b90696501c28ced941d9a0efcf7d129ede828244a353ef000be558432"},
+        {"path": "docs/evidence/work-entry-013-claude-stream-live-002-20261003/offline-output-diagnostic.json", "sha256": "8be7cb4c7ba415fdf8c66cecd9079145f94313327e4b57414cface1697de205e"},
+        {"path": "docs/evidence/work-entry-013-claude-stream-repair-20261003/control-verification.json", "sha256": "bf9d843cbe76c73b1503c15e8c3a687a826d2216317ff1416c0c7e7f4cad341e"},
+        {"path": "docs/evidence/work-entry-015-format-repair-20261001/request.json", "sha256": "99c1d3644275c8fdbdd153e463033969876d1c84750b3fccd690fb82f37dabd4"},
+        {"path": "docs/evidence/work-entry-015-format-repair-20261001/workflow.json", "sha256": "09bbedb4db34f4e039f68654958607c745972f81b0ed9a4ec80ca3d2dbf9e03e"},
+        {"path": "src/helix_offload/adapters.py", "sha256": "a2bcfebb35b3a7c6b11df6da7ffef7191dad269b5e379bf1ac2893b125dc307d"},
+        {"path": "src/helix_offload/derp.py", "sha256": "2fd7918df0dd0dbabf59650076829a7c56682aa79320149984855a1847cff12c"},
+        {"path": "src/helix_offload/workflow.py", "sha256": "150fe02e56be9cc56b57efc41381475a7e61352e3b3d9c4b94200d26174cec33"},
+        {"path": "schemas/connector-outcome-v1.schema.json", "sha256": "f86ed7b2e416c66e0e3fff11368be53dcf17e9c0181e3b1cf7c7de9ced714351"},
+        {"path": "schemas/derp-receipt-v4.schema.json", "sha256": "38f4f146e31a24363d51d5a9ceb5966790bb066faecc6447ca2ad6f82402ce3b"}
+      ],
+      "evidence_commits": [
+        "6e02f1128a990dfc62e28da6adcc90143a2731cf",
+        "9ec732046ba6481be70018277b91ff04534baa8d",
+        "8421ac36e9563120c670a2d803295faf22969c18",
+        "15b86e6c09a5602bc40125fe6bee2a45727c787a",
+        "f24cdc317c364aa01c72eac162fb1281fcafa2f5"
+      ],
+      "claims": "Four client-run ledger, adapter evolution, packet/prompt boundary, structured-output failure, stream result, usage accounting and present connector behavior."
+    },
+    {
+      "repository": "https://github.com/lhpoulin-cmyk/repo-cp",
+      "revision": "a48a802132f1db64304a032bcc4b207d7f26ea71",
+      "verified_ref": "refs/heads/codex/frontier-connector-research",
+      "files": [
+        {"path": "research-notes/2026-10-03-helix-offload-frontier-connector-repair-research.md", "sha256": "c21aababb63c5ae6b9b0cbc2da1565091a2921a15a62b9c85aeae8cada63423d"},
+        {"path": "research-notes/2026-10-03-helix-offload-frontier-connector-repair.sources.json", "sha256": "1e8acd6a17a8164d0b43421c64efe580eba1e14d2ff4deedcb4c7c9988181331"},
+        {"path": "research-notes/2026-10-03-helix-offload-frontier-interface-comparison.csv", "sha256": "1ff37c1c99cf1f61b4888c7b1c37195e7c56209953f45e8eda665d7dbee9c8df"}
+      ],
+      "claims": "Prior provider-independent connector diagnosis, evidence-first boundary and direct-API versus subscription-client tradeoff."
+    }
+  ],
+  "source_details": [
+    {
+      "id": "claude-cli-reference",
+      "publisher": "Anthropic",
+      "title": "CLI reference",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["headless and input/output flags", "system-prompt flags", "tool and MCP controls", "max-turns", "model and fallback", "session persistence", "safe and restricted modes"]
+    },
+    {
+      "id": "claude-headless",
+      "publisher": "Anthropic",
+      "title": "Run Claude Code programmatically",
+      "url": "https://code.claude.com/docs/en/headless",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["stdin behavior", "JSON structured_output", "stream JSON terminal result", "partial messages", "system-prompt replacement", "client-side cost estimates"]
+    },
+    {
+      "id": "claude-env-vars",
+      "publisher": "Anthropic",
+      "title": "Environment variables",
+      "url": "https://code.claude.com/docs/en/env-vars",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["output-token setting", "failed API retry setting", "structured-output attempt setting", "API-key override", "retry watchdog caveat"]
+    },
+    {
+      "id": "claude-settings",
+      "publisher": "Anthropic",
+      "title": "Settings files and precedence",
+      "url": "https://code.claude.com/docs/en/settings",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["managed settings precedence", "system prompt not published", "command-line versus local setting behavior"]
+    },
+    {
+      "id": "claude-authentication",
+      "publisher": "Anthropic",
+      "title": "Authentication",
+      "url": "https://code.claude.com/docs/en/authentication",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["subscription OAuth", "Console/API authentication distinction"]
+    },
+    {
+      "id": "claude-model-config",
+      "publisher": "Anthropic",
+      "title": "Model configuration",
+      "url": "https://code.claude.com/docs/en/model-config",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["model selection", "fallback chains", "model configuration precedence"]
+    },
+    {
+      "id": "claude-costs",
+      "publisher": "Anthropic",
+      "title": "Manage costs effectively",
+      "url": "https://code.claude.com/docs/en/costs",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["list-price estimate", "subscription billing interpretation", "usage credits", "plan versus Console billing"]
+    },
+    {
+      "id": "claude-pro-max",
+      "publisher": "Anthropic",
+      "title": "Use Claude Code with your Pro or Max plan",
+      "url": "https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["shared plan allowance", "API key overrides subscription and incurs API charges", "API-credit choice"]
+    },
+    {
+      "id": "claude-usage-credits",
+      "publisher": "Anthropic",
+      "title": "Manage usage credits for paid Claude plans",
+      "url": "https://support.claude.com/en/articles/12429409-manage-usage-credits-for-paid-claude-plans",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["separate prepaid plan usage credits", "standard API-rate billing", "Claude Code applicability"]
+    },
+    {
+      "id": "claude-subscription-api-separation",
+      "publisher": "Anthropic",
+      "title": "Paid Claude subscription versus Claude API and Console",
+      "url": "https://support.claude.com/en/articles/9876003-i-have-a-paid-claude-subscription-pro-max-team-or-enterprise-plans-why-do-i-have-to-pay-separately-to-use-the-claude-api-and-console",
+      "publication_date": "2026-03-16",
+      "retrieved": "2026-10-03",
+      "claims": ["subscription and Console/API are separate products", "subscription does not include API access"]
+    },
+    {
+      "id": "anthropic-messages",
+      "publisher": "Anthropic",
+      "title": "Create a Message",
+      "url": "https://platform.claude.com/docs/en/api/messages/create",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["direct request fields", "max_tokens", "model and usage", "stop reasons", "provider request transformation caveat"]
+    },
+    {
+      "id": "anthropic-token-counting",
+      "publisher": "Anthropic",
+      "title": "Token counting",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
+      "publication_date": null,
+      "retrieved": "2026-10-03",
+      "claims": ["separate token-count request", "preflight input estimate", "separate rate limits", "API-platform compatibility"]
+    },
+    {
+      "id": "claude-code-issue-37904",
+      "publisher": "anthropics/claude-code contributors",
+      "title": "--json-schema causes infinite loop: model treats StructuredOutput tool as prompt injection",
+      "url": "https://github.com/anthropics/claude-code/issues/37904",
+      "publication_date": "2026-03-23",
+      "retrieved": "2026-10-03",
+      "claims": ["analogous 2.1.81 structured-output behavior"],
+      "applicability": "Secondary evidence only; different client version and symptom."
+    },
+    {
+      "id": "claude-code-issue-23265",
+      "publisher": "anthropics/claude-code contributors",
+      "title": "--json-schema flag: first invocation always fails, retry succeeds",
+      "url": "https://github.com/anthropics/claude-code/issues/23265",
+      "publication_date": "2026-02-05",
+      "retrieved": "2026-10-03",
+      "claims": ["analogous 2.1.30/2.1.31 structured-output cold-start report"],
+      "applicability": "Secondary evidence only; different client version, platform and retained symptom."
+    },
+    {
+      "id": "claude-code-issue-79019",
+      "publisher": "anthropics/claude-code contributors",
+      "title": "Workflow StructuredOutput invalid JSON escapes",
+      "url": "https://github.com/anthropics/claude-code/issues/79019",
+      "publication_date": "2026-07-19",
+      "retrieved": "2026-10-03",
+      "claims": ["analogous structured-output retry exhaustion on 2.1.215"],
+      "applicability": "Secondary evidence only; Workflow subagent mode and backslash-heavy schema differ."
+    },
+    {
+      "id": "claude-code-issue-57757",
+      "publisher": "anthropics/claude-code contributors",
+      "title": "--json-schema with format uri silently disables structured output",
+      "url": "https://github.com/anthropics/claude-code/issues/57757",
+      "publication_date": "2026-05-10",
+      "retrieved": "2026-10-03",
+      "claims": ["schema-specific structured-output issue on 2.1.136"],
+      "applicability": "Not a match: the helix-offload schema did not use format: uri."
+    }
+  ],
+  "limitations": [
+    "No credential store, secret-bearing environment, provider account, dashboard or authentication state was inspected.",
+    "No provider endpoint, model, GPU, authentication flow, installation or runtime was invoked.",
+    "Attempts 001 and 002 have no retained response envelope, so their exact parse failures, models, usage and provider behavior are unknowable.",
+    "The first two attempts do not cryptographically bind an exact Claude Code executable or runtime code tree.",
+    "One client run does not prove one provider request; provider request and retry counts remain unknown.",
+    "Aggregate 5,202 input tokens cannot be partitioned precisely among visible input, system instructions, client/provider scaffolding and cache categories.",
+    "Current Claude subscription allowance, usage-credit state, Console/API credits and model entitlement were not checked.",
+    "The recommended model-view projection has not been implemented or live-tested.",
+    "Living documentation and installed client behavior may change after the retrieval date; reverify before implementation or execution."
+  ]
+}
