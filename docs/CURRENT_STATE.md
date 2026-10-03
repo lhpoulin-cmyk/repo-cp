@@ -2,8 +2,8 @@
 
 This is the compact resume view for repo-cp work. Its evidence basis is freshly
 verified canonical repo-cp `main` immediately before this update at
-`68fddb61427c11e91b1f3a31ef04e0314374af19`, canonical helix-offload `main` at
-`8bb94065b3948ae625a372ab70cfd6e23900e707`, and the Work Entry 015 result
+`20674f38a8efc568c0b77b94b8de0201efe45e30`, canonical helix-offload `main` at
+`6b88dea4066d1711ead5de5914bd7f5992abcf87`, and the Work Entry 013 repair result
 in the commit that contains this report. The machine-readable
 [`work-topology.json`](../registries/work-topology.json) is authoritative for
 state, priority, scheduling eligibility and topology dependencies. Older START
@@ -20,7 +20,7 @@ Health, priority, lifecycle, scheduling eligibility and authority are separate.
 | 004 | PARKED | YELLOW | NOT RECORDED | INELIGIBLE_STATE | Publication/evidence infrastructure; future planning only | repo-cp planning; implementation owner unresolved | NONE | None recorded | Keep parked until a bounded outcome and owner are approved | Canonical topology; Work Entry 003 finding |
 | 008 | PARKED | RED | NOT RECORDED | INELIGIBLE_STATE | Decide whether a repository-intelligence/evidence plane adds value; candidate functions only | Proposed logical surface: helix-repo-manager-bot; repository/hosting unresolved | Research NONE; implementation NONE | Relationship to completed 005 remains unresolved | After DERP scoping, assess one narrow evidence/compact-context slice and reuse before build | Canonical topology; `LOUIS_WORKFLOW.md` |
 | 012 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Discover and reconcile GitHub-hosted identity/authentication boundaries with local Git identity/authentication surfaces | repo-cp leads the inventory; auth-cp owns bindings, ws-cp owns workstation realization, GitHub owns service state | Registered read-only discovery; no credential access or account/config mutation | 007 is completed synthetic identity-profile evidence, not live proof | Run a separately resumed, read-only, non-secret discovery pass if it becomes blocking or reaches its turn | `WORK_ENTRY_012.md` |
-| 013 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Implement Claude API and subscription-backed execution separately and compare against the accepted local baseline | helix-offload implementation; repo-cp policy/evidence review | Registration only; no hosted call or implementation | 010 accepted local baseline is available | Separately resume 013 with exact implementation and hosted-call authority | `WORK_ENTRY_013.md` |
+| 013 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Offline connector repair published; exact Claude API/subscription live comparison not run | helix-offload implementation; repo-cp policy/evidence review | Offline repair complete; no model-call authority | 010 accepted local baseline is available | Separately authorize one exact Claude path/model/limit packet if a live comparison is wanted | `WORK_ENTRY_013_CONNECTOR_REPAIR_20261003.md` |
 | 014 | PARKED | GREEN | NOT RECORDED | INELIGIBLE_STATE | Implement OpenAI API and ChatGPT/Codex subscription-backed execution separately and compare established baselines | helix-offload implementation; repo-cp policy/evidence review | Registration only; no hosted call or implementation | 013 Claude comparison | Keep parked until 013 has an accepted comparison baseline | `WORK_ENTRY_014.md` |
 
 There are no currently `ACTIVE / ELIGIBLE` entries after this reconciliation.
@@ -45,8 +45,8 @@ label left behind as a proxy.
 This is an attention order, not scheduling eligibility or authority.
 
 1. Maintain this current-state/resume view and registry consistency.
-2. Separately resume Work Entry 013 only if Louis authorizes Claude
-   implementation/comparison and an exact hosted call.
+2. Resume Work Entry 013 only with an exact Claude path/model/limit packet and
+   separate model-invocation authority; the offline connector repair is done.
 3. Assess one narrow Work Entry 008 evidence/compact-context slice only if its
    benefit is supported and existing tools do not already provide it.
 4. Resume Work Entry 012 GitHub/local-auth discovery; move it earlier only when
@@ -56,7 +56,7 @@ This is an attention order, not scheduling eligibility or authority.
 6. Consider GPU expansion only after that evidence demonstrates a need and a
    useful benefit.
 
-Exact next action: none remains inside Work Entry 015. Louis's
-`FRONTIER_CONTINUATION` decision does not itself authorize a provider call or a
-new execution. Work Entries 013 and 014 remain parked until separately resumed;
-the one Work Entry 015 invocation authority remains consumed.
+Exact next action: none remains inside this offline repair. If Louis wants the
+comparison, separately authorize exactly one bounded Claude execution path after
+reviewing its model, billing source, packet and limits. Work Entry 014 remains
+parked behind that result. Work Entry 015's invocation authority remains consumed.

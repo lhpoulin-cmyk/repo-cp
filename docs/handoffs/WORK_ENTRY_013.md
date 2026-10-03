@@ -42,4 +42,27 @@ preparation effort and 120,000 ms review effort. The comparison baseline is now
 available. This satisfies the evidence dependency only; Work Entry 013 remains
 `PARKED` and no implementation or hosted invocation is authorized.
 
-Live effects: NONE.
+## Offline connector-repair update — 2026-10-03
+
+Louis separately resumed Work Entry 013 for the repair only. Canonical
+helix-offload commit `6b88dea4066d1711ead5de5914bd7f5992abcf87`
+implements a provider-neutral connector outcome, bounded mode-0600 raw capture,
+a key-redacted review envelope before strict parsing, receipt V4 and truthful
+nullable execution accounting for Claude API and Claude Code. Offline synthetic
+validation passed 51/51 under both unittest and pytest. No model invocation,
+credential access, account/billing change or runtime mutation occurred.
+
+The implementation used the externally researched report at repo-cp branch
+`codex/frontier-connector-research`, commit
+`a48a802132f1db64304a032bcc4b207d7f26ea71`. The report remains research
+evidence rather than implementation proof. The implementation's separate tests
+and published source are the verification evidence.
+
+This closes the required offline repair, not the entry's live Claude comparison.
+Work Entry 013 returns to `PARKED`; a later task must choose one exact supported
+Claude execution path and independently authorize its model invocation. Work
+Entry 014 remains parked behind that comparison.
+
+Live effects: canonical helix-offload and review branch publication only. No
+model invocation, credential access, account/billing change, installation,
+deployment or runtime mutation occurred.

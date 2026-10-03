@@ -285,14 +285,19 @@
       "dependencies": [
         "010"
       ],
-      "summary": "Implement Claude API and supported subscription-backed execution as distinct paths, then compare the same bounded acceptance workload against the completed Work Entry 010 local OpenClaw baseline.",
+      "summary": "The offline Claude API and subscription connector repair is published: bounded response evidence precedes strict parsing and submission accounting remains truthful. The exact Claude live comparison remains separately parked behind explicit invocation authority.",
       "provenance": [
         "Louis's 2026-10-01 local-first sequence parks Claude until the owned local baseline is available.",
         "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
         "Work Entry 010 attempts 001 and 002 remain failed historical evidence; the second attempt did not retain the response envelope despite the prior recovery instruction.",
         "Future implementation must capture a bounded sanitized original envelope before strict parsing and must keep Claude API billing separate from subscription allowance.",
         "Registration authorizes no live call, retry, account/credential change, purchase or implementation.",
-        "Louis accepted the Work Entry 010 local artifact with 0 ms preparation effort and 120000 ms review effort, satisfying the comparison-evidence prerequisite without activating this parked entry."
+        "Louis accepted the Work Entry 010 local artifact with 0 ms preparation effort and 120000 ms review effort, satisfying the comparison-evidence prerequisite without activating this parked entry.",
+        "Louis's 2026-10-03 instruction resumed Work Entry 013 for offline connector repair only and expressly withheld all model invocation authority.",
+        "Published research branch codex/frontier-connector-research commit a48a802132f1db64304a032bcc4b207d7f26ea71 informed the repair but remains research evidence, not implementation proof.",
+        "Canonical helix-offload commit 6b88dea4066d1711ead5de5914bd7f5992abcf87 adds bounded pre-parse response capture, connector-outcome/v1, DERP receipt/v4 and nullable execution accounting; unittest and pytest each passed 51/51 with no model invocation.",
+        "docs/handoffs/WORK_ENTRY_013_CONNECTOR_REPAIR_20261003.md and docs/handoffs/WORK_ENTRY_013_CONNECTOR_REPAIR_RESULT_20261003.json",
+        "Work Entry 013 remains PARKED for a separately authorized exact Claude live comparison; Work Entry 014 remains parked behind that comparison."
       ]
     },
     {

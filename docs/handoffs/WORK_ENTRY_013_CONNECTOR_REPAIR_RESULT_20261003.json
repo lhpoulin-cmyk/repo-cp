@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "work_entry_id": "013",
+  "result_scope": "OFFLINE_FRONTIER_CONNECTOR_REPAIR",
+  "state": "PARKED",
+  "delivery_stage": "OFFLINE_REPAIR_COMPLETE_LIVE_COMPARISON_NOT_RUN",
+  "research": {
+    "repository": "lhpoulin-cmyk/repo-cp",
+    "branch": "codex/frontier-connector-research",
+    "commit": "a48a802132f1db64304a032bcc4b207d7f26ea71",
+    "classification": "EXTERNAL_RESEARCH_EVIDENCE_NOT_IMPLEMENTATION_PROOF"
+  },
+  "implementation": {
+    "repository": "lhpoulin-cmyk/helix-offload",
+    "branch": "main",
+    "commit": "6b88dea4066d1711ead5de5914bd7f5992abcf87",
+    "review_branch": "codex/work-entry-013-frontier-connector",
+    "features": [
+      "bounded response capture before strict Claude parsing",
+      "raw local recovery evidence and key-redacted review envelope",
+      "connector-outcome/v1 separate submission and terminal states",
+      "derp-receipt/v4 content-bound outcome and nullable execution accounting"
+    ]
+  },
+  "validation": {
+    "unittest": "51/51 PASS",
+    "pytest": "51/51 PASS",
+    "compileall": "PASS",
+    "repository_json": "124/124 PASS",
+    "schema_metaschema": "20/20 PASS",
+    "diff_check": "PASS",
+    "credential_indicator_scan": "PASS"
+  },
+  "live_execution": {
+    "model_invocations": 0,
+    "paid_path_selected": false,
+    "credentials_accessed": false,
+    "historical_attempts_modified": false
+  },
+  "remaining": {
+    "claude_live_comparison": "PARKED_REQUIRES_SEPARATE_EXACT_AUTHORITY",
+    "work_entry_014": "PARKED_BEHIND_CLAUDE_COMPARISON"
+  },
+  "live_effects": [
+    "Published helix-offload review branch codex/work-entry-013-frontier-connector",
+    "Fast-forwarded canonical helix-offload main to 6b88dea4066d1711ead5de5914bd7f5992abcf87"
+  ]
+}
