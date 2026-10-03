@@ -66,3 +66,20 @@ Entry 014 remains parked behind that comparison.
 Live effects: canonical helix-offload and review branch publication only. No
 model invocation, credential access, account/billing change, installation,
 deployment or runtime mutation occurred.
+
+## Claude subscription comparison attempt — 2026-10-03
+
+Louis subsequently authorized one Claude Code subscription-backed client run
+using the repaired Work Entry 015 change-summary packet. Canonical helix-offload
+`8421ac36e9563120c670a2d803295faf22969c18` preserves the exact grant, the
+compatible HTTP/inference-accounting correction and sanitized result evidence.
+
+The client run returned a structured-output client error and no artifact. One
+client run is observed; provider submission, provider retries, inference, model
+identity, normalized token usage and cost remain `UNKNOWN`. No postflight could
+run and human disposition remains `PENDING`. No retry or fallback occurred.
+
+The detailed result is
+[`WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md`](WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md).
+The one-run authority is consumed. Work Entry 013 is parked without a usable
+Claude comparison artifact, and Work Entry 014 remains parked.

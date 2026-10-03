@@ -285,7 +285,7 @@
       "dependencies": [
         "010"
       ],
-      "summary": "The offline Claude API and subscription connector repair is published: bounded response evidence precedes strict parsing and submission accounting remains truthful. The exact Claude live comparison remains separately parked behind explicit invocation authority.",
+      "summary": "The Claude API and subscription connector repair is published, and one bounded subscription-backed client run was captured. It failed before producing an artifact, so the entry is parked without a usable Claude comparison and no further invocation authority.",
       "provenance": [
         "Louis's 2026-10-01 local-first sequence parks Claude until the owned local baseline is available.",
         "docs/handoffs/WORK_ENTRY_013.md and docs/handoffs/WORK_ENTRY_013.json",
@@ -297,7 +297,11 @@
         "Published research branch codex/frontier-connector-research commit a48a802132f1db64304a032bcc4b207d7f26ea71 informed the repair but remains research evidence, not implementation proof.",
         "Canonical helix-offload commit 6b88dea4066d1711ead5de5914bd7f5992abcf87 adds bounded pre-parse response capture, connector-outcome/v1, DERP receipt/v4 and nullable execution accounting; unittest and pytest each passed 51/51 with no model invocation.",
         "docs/handoffs/WORK_ENTRY_013_CONNECTOR_REPAIR_20261003.md and docs/handoffs/WORK_ENTRY_013_CONNECTOR_REPAIR_RESULT_20261003.json",
-        "Work Entry 013 remains PARKED for a separately authorized exact Claude live comparison; Work Entry 014 remains parked behind that comparison."
+        "Louis's 2026-10-03 instruction authorized one bounded Claude Code subscription-backed client run using the repaired Work Entry 015 change-summary packet; paid API execution remained unauthorized.",
+        "Canonical helix-offload commit 8421ac36e9563120c670a2d803295faf22969c18 corrects HTTP-versus-inference accounting and preserves the TEST_ONLY packet, grant and sanitized attempt evidence.",
+        "Attempt work-entry-013-claude-change-summary-live-001 returned a CLIENT_ERROR before an artifact reached postflight; one client run is observed, while provider requests, retries and inference remain UNKNOWN. Human disposition is PENDING.",
+        "docs/handoffs/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_20261003.md and docs/handoffs/WORK_ENTRY_013_CLAUDE_SUBSCRIPTION_RESULT_20261003.json",
+        "The one-run authority is consumed. Work Entry 013 remains PARKED without a usable Claude comparison; Work Entry 014 remains parked behind that comparison."
       ]
     },
     {

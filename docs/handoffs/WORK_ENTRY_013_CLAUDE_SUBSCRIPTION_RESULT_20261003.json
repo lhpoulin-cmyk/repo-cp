@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "protocol": "HELIX_WORK_RESULT_V1",
+  "work_entry_id": "013",
+  "result_scope": "CLAUDE_SUBSCRIPTION_CHANGE_SUMMARY_ATTEMPT",
+  "state": "PARKED",
+  "delivery_stage": "ONE_CLIENT_RUN_FAILED_NO_ARTIFACT",
+  "implementation": {
+    "repository": "lhpoulin-cmyk/helix-offload",
+    "branch": "main",
+    "commit": "8421ac36e9563120c670a2d803295faf22969c18",
+    "review_branch": "codex/work-entry-013-claude-live",
+    "accounting_correction": "HTTP or client response proves communication; execution remains unknown unless a parsed model terminal result proves inference"
+  },
+  "workload": {
+    "job_family": "change-summary-v1",
+    "lane": "PORTFOLIO_REPOSITORY",
+    "operation": "DOCUMENT",
+    "input_sha256": "f5bb1cd016bd36f847d9129efd2057b6a36ddc9d67bbddce56e6384e07966f41",
+    "same_source_registry_as_work_entry_015": true
+  },
+  "execution": {
+    "attempt_id": "work-entry-013-claude-change-summary-live-001",
+    "billing_source": "CLAUDE_SUBSCRIPTION",
+    "client": "Claude Code 2.1.283",
+    "requested_model": "claude-haiku-4-5-20251001",
+    "observed_model": null,
+    "client_runs": 1,
+    "provider_requests": null,
+    "provider_retries": null,
+    "submission_state": "RESPONSE_RECEIVED",
+    "terminal_state": "CLIENT_ERROR",
+    "reason_code": "ADAPTER_CLIENT_FAILED",
+    "execution_occurred": null,
+    "artifact": null,
+    "postflight": null,
+    "human_disposition": "PENDING"
+  },
+  "measurements": {
+    "connector_elapsed_ms": 8415,
+    "client_duration_ms": 8172,
+    "input_tokens": null,
+    "output_tokens": null,
+    "cost_microusd": null,
+    "preparation_effort_ms": null,
+    "review_effort_ms": null
+  },
+  "validation": {
+    "unittest": "52/52 PASS",
+    "compileall": "PASS",
+    "repository_json": "136/136 PASS",
+    "schema_metaschema": "20/20 PASS",
+    "diff_check": "PASS",
+    "credential_indicator_scan": "PASS"
+  },
+  "remaining": {
+    "claude_comparison_artifact": "NOT_PRODUCED",
+    "new_live_authority": "NOT_GRANTED",
+    "work_entry_014": "PARKED_BEHIND_USABLE_CLAUDE_COMPARISON"
+  },
+  "live_effects": [
+    "Launched one bounded Claude Code subscription-backed client run",
+    "Published helix-offload review branch codex/work-entry-013-claude-live",
+    "Fast-forwarded canonical helix-offload main to 8421ac36e9563120c670a2d803295faf22969c18"
+  ]
+}
+
